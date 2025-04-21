@@ -51,12 +51,12 @@ export default function AuthPage() {
     }
   }, [user, navigate]);
 
-  // Login form
+  // Login form com credenciais pré-preenchidas para teste
   const loginForm = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
-      username: "",
-      password: "",
+      username: "usuario_demo",
+      password: "senha123",
     },
   });
 
@@ -102,15 +102,15 @@ export default function AuthPage() {
           <div className="grid md:grid-cols-2 gap-10 items-center">
             {/* Auth Form Section */}
             <div className="bg-zinc-900 p-8 rounded-xl border border-white/10">
-              <h1 className="text-3xl font-semibold mb-6">Welcome</h1>
+              <h1 className="text-3xl font-semibold mb-6">Bem-vindo</h1>
               <p className="text-gray-400 mb-8">
-                Sign in to your account or create a new one to showcase your work and manage your portfolio.
+                Entre na sua conta ou crie uma nova para exibir seu trabalho e gerenciar seu portfólio.
               </p>
 
               <Tabs defaultValue="login" className="w-full">
                 <TabsList className="grid grid-cols-2 mb-8">
-                  <TabsTrigger value="login">Login</TabsTrigger>
-                  <TabsTrigger value="register">Register</TabsTrigger>
+                  <TabsTrigger value="login">Entrar</TabsTrigger>
+                  <TabsTrigger value="register">Cadastrar</TabsTrigger>
                 </TabsList>
                 
                 {/* Login Tab */}
@@ -122,9 +122,9 @@ export default function AuthPage() {
                         name="username"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Username</FormLabel>
+                            <FormLabel>Usuário</FormLabel>
                             <FormControl>
-                              <Input placeholder="Enter your username" {...field} />
+                              <Input placeholder="Digite seu nome de usuário" {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -136,7 +136,7 @@ export default function AuthPage() {
                         name="password"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Password</FormLabel>
+                            <FormLabel>Senha</FormLabel>
                             <FormControl>
                               <Input type="password" placeholder="••••••••" {...field} />
                             </FormControl>
@@ -153,10 +153,10 @@ export default function AuthPage() {
                         {loginMutation.isPending ? (
                           <>
                             <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                            Signing in...
+                            Entrando...
                           </>
                         ) : (
-                          "Sign in"
+                          "Entrar"
                         )}
                       </Button>
                     </form>

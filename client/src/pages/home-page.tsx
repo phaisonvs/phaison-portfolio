@@ -229,42 +229,74 @@ export default function HomePage() {
           <div className="container mx-auto">
             <h2 className="text-2xl md:text-3xl font-semibold mb-10 animate-on-scroll">Top Plugins</h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="animate-on-scroll">
-                <PluginCard
-                  title="3D Rotator"
-                  description="Add stunning 3D rotations to any element"
-                  icon={Box}
-                  iconBgColor="bg-blue-500"
-                />
-              </div>
-              
-              <div className="animate-on-scroll">
-                <PluginCard
-                  title="Smart Controls"
-                  description="Interactive controls with advanced animations"
-                  icon={SlidersIcon}
-                  iconBgColor="bg-orange-500"
-                />
-              </div>
-              
-              <div className="animate-on-scroll">
-                <PluginCard
-                  title="Image Effects"
-                  description="Professional image filters and effects"
-                  icon={ImageIcon}
-                  iconBgColor="bg-green-500"
-                />
-              </div>
-              
-              <div className="animate-on-scroll">
-                <PluginCard
-                  title="Smart Motion"
-                  description="Create lifelike animations with ease"
-                  icon={LightbulbIcon}
-                  iconBgColor="bg-yellow-500"
-                />
-              </div>
+            <div className="animate-on-scroll relative">
+              <Carousel
+                setApi={setPluginsApi}
+                opts={{
+                  align: "start",
+                  loop: true,
+                }}
+                className="w-full"
+              >
+                <CarouselContent className="-ml-2 md:-ml-4">
+                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+                    <PluginCard
+                      title="Rotacionador 3D"
+                      description="Adicione rotações 3D impressionantes"
+                      icon={Box}
+                      iconBgColor="bg-blue-500"
+                    />
+                  </CarouselItem>
+                  
+                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+                    <PluginCard
+                      title="Controles Inteligentes"
+                      description="Controles interativos com animações"
+                      icon={SlidersIcon}
+                      iconBgColor="bg-orange-500"
+                    />
+                  </CarouselItem>
+                  
+                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+                    <PluginCard
+                      title="Efeitos de Imagem"
+                      description="Filtros e efeitos de imagem profissionais"
+                      icon={ImageIcon}
+                      iconBgColor="bg-green-500"
+                    />
+                  </CarouselItem>
+                  
+                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+                    <PluginCard
+                      title="Movimento Inteligente"
+                      description="Crie animações realistas facilmente"
+                      icon={LightbulbIcon}
+                      iconBgColor="bg-yellow-500"
+                    />
+                  </CarouselItem>
+                  
+                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+                    <PluginCard
+                      title="Parallax Avançado"
+                      description="Efeitos parallax com profundidade incrível"
+                      icon={Box}
+                      iconBgColor="bg-purple-500"
+                    />
+                  </CarouselItem>
+                  
+                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+                    <PluginCard
+                      title="Suavizador de Vídeo"
+                      description="Integração de vídeo perfeita e responsiva"
+                      icon={SlidersIcon}
+                      iconBgColor="bg-pink-500"
+                    />
+                  </CarouselItem>
+                </CarouselContent>
+                <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 lg:-translate-x-0 bg-black/40 hover:bg-black/60 border-none" />
+                <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 lg:translate-x-0 bg-black/40 hover:bg-black/60 border-none" />
+              </Carousel>
+              <CarouselDots api={pluginsApi} className="mt-6" />
             </div>
           </div>
         </section>
@@ -274,58 +306,98 @@ export default function HomePage() {
           <div className="container mx-auto">
             <h2 className="text-2xl md:text-3xl font-semibold mb-10 animate-on-scroll">Top Templates</h2>
           
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="animate-on-scroll">
-                <TemplateCard
-                  title="Portfolio Pro"
-                  description="Modern portfolio template"
-                  image="https://images.unsplash.com/photo-1517292987719-0369a794ec0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
-                  author={{
-                    name: "Design Studio",
-                    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=48&h=48&q=80"
-                  }}
-                  price="$79"
-                />
-              </div>
-              
-              <div className="animate-on-scroll">
-                <TemplateCard
-                  title="Ecommerce Black"
-                  description="Premium shopping experience"
-                  image="https://images.unsplash.com/photo-1481487196290-c152efe083f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
-                  author={{
-                    name: "ShopMakers",
-                    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=48&h=48&q=80"
-                  }}
-                  price="$99"
-                />
-              </div>
-              
-              <div className="animate-on-scroll">
-                <TemplateCard
-                  title="Agency Minimal"
-                  description="Clean agency website"
-                  image="https://images.unsplash.com/photo-1483058712412-4245e9b90334?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
-                  author={{
-                    name: "Creative Co.",
-                    avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=48&h=48&q=80"
-                  }}
-                  price="$69"
-                />
-              </div>
-              
-              <div className="animate-on-scroll">
-                <TemplateCard
-                  title="Mobile App Pro"
-                  description="App landing page template"
-                  image="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
-                  author={{
-                    name: "AppLabs",
-                    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=48&h=48&q=80"
-                  }}
-                  price="$89"
-                />
-              </div>
+            <div className="animate-on-scroll relative">
+              <Carousel
+                setApi={setTemplatesApi}
+                opts={{
+                  align: "start",
+                  loop: true,
+                }}
+                className="w-full"
+              >
+                <CarouselContent className="-ml-2 md:-ml-4">
+                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+                    <TemplateCard
+                      title="Portfolio Pro"
+                      description="Template moderno para portfólio"
+                      image="https://images.unsplash.com/photo-1517292987719-0369a794ec0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+                      author={{
+                        name: "Design Studio",
+                        avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=48&h=48&q=80"
+                      }}
+                      price="R$399"
+                    />
+                  </CarouselItem>
+                  
+                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+                    <TemplateCard
+                      title="Ecommerce Black"
+                      description="Experiência premium de compras"
+                      image="https://images.unsplash.com/photo-1481487196290-c152efe083f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+                      author={{
+                        name: "ShopMakers",
+                        avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=48&h=48&q=80"
+                      }}
+                      price="R$499"
+                    />
+                  </CarouselItem>
+                  
+                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+                    <TemplateCard
+                      title="Agency Minimal"
+                      description="Site clean para agências"
+                      image="https://images.unsplash.com/photo-1483058712412-4245e9b90334?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+                      author={{
+                        name: "Creative Co.",
+                        avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=48&h=48&q=80"
+                      }}
+                      price="R$349"
+                    />
+                  </CarouselItem>
+                  
+                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+                    <TemplateCard
+                      title="Mobile App Pro"
+                      description="Landing page para aplicativos"
+                      image="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+                      author={{
+                        name: "AppLabs",
+                        avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=48&h=48&q=80"
+                      }}
+                      price="R$449"
+                    />
+                  </CarouselItem>
+                  
+                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+                    <TemplateCard
+                      title="Startup X"
+                      description="Template moderno para startups"
+                      image="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+                      author={{
+                        name: "Tech Founders",
+                        avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=48&h=48&q=80"
+                      }}
+                      price="R$399"
+                    />
+                  </CarouselItem>
+                  
+                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+                    <TemplateCard
+                      title="Creative Portfolio"
+                      description="Para artistas e designers"
+                      image="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+                      author={{
+                        name: "Art Studio",
+                        avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=48&h=48&q=80"
+                      }}
+                      price="R$349"
+                    />
+                  </CarouselItem>
+                </CarouselContent>
+                <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 lg:-translate-x-0 bg-black/40 hover:bg-black/60 border-none" />
+                <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 lg:translate-x-0 bg-black/40 hover:bg-black/60 border-none" />
+              </Carousel>
+              <CarouselDots api={templatesApi} className="mt-6" />
             </div>
           </div>
         </section>

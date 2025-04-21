@@ -68,10 +68,10 @@ export function Header() {
           ) : (
             <>
               <Link href="/auth" className="text-white/70 hover:text-white transition-colors duration-200">
-                Login
+                Inscrever-se
               </Link>
               <Link href="/auth" className="rounded-full bg-white text-black px-4 py-2 text-sm font-medium hover:bg-gray-200 transition duration-200">
-                Sign Up
+                Entrar
               </Link>
             </>
           )}
@@ -131,7 +131,7 @@ export function Header() {
                       className="block w-full"
                     >
                       <Button variant="outline" className="w-full mb-2">
-                        Login
+                        Inscrever-se
                       </Button>
                     </Link>
                     <Link 
@@ -140,7 +140,7 @@ export function Header() {
                       className="block w-full"
                     >
                       <Button className="w-full">
-                        Sign Up
+                        Entrar
                       </Button>
                     </Link>
                   </>
