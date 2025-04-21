@@ -1,0 +1,155 @@
+import { useState } from "react";
+import { Link, useLocation } from "wouter";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { useAuth } from "@/hooks/use-auth";
+import { Menu } from "lucide-react";
+
+export function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [location] = useLocation();
+  const { user, logoutMutation } = useAuth();
+
+  const handleLogout = () => {
+    logoutMutation.mutate();
+  };
+
+  const isActive = (path: string) => {
+    return location === path;
+  };
+
+  return (
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-black/90 backdrop-blur-sm">
+      <div className="container mx-auto flex items-center justify-between py-4">
+        <Link href="/" className="flex items-center space-x-2">
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary">
+            <span className="text-primary-foreground font-semibold">P</span>
+          </div>
+          <span className="font-semibold text-lg">Portfolio</span>
+        </Link>
+
+        {/* Desktop Navigation */}
+        <nav className="hidden items-center space-x-8 md:flex">
+          <Link 
+            href="/" 
+            className={`transition-colors duration-200 ${isActive("/") ? "text-white" : "text-white/70 hover:text-primary"}`}
+          >
+            Gallery
+          </Link>
+          <Link 
+            href="/projects" 
+            className={`transition-colors duration-200 ${isActive("/projects") ? "text-white" : "text-white/70 hover:text-primary"}`}
+          >
+            Projects
+          </Link>
+          {user && (
+            <Link 
+              href="/dashboard" 
+              className={`transition-colors duration-200 ${isActive("/dashboard") ? "text-white" : "text-white/70 hover:text-primary"}`}
+            >
+              Dashboard
+            </Link>
+          )}
+        </nav>
+
+        {/* Auth buttons */}
+        <div className="hidden items-center space-x-4 md:flex">
+          {user ? (
+            <>
+              <span className="text-white/70">{user.name}</span>
+              <Button 
+                variant="outline" 
+                onClick={handleLogout}
+                className="text-white/70"
+              >
+                Logout
+              </Button>
+            </>
+          ) : (
+            <>
+              <Link href="/auth" className="text-white/70 hover:text-white transition-colors duration-200">
+                Login
+              </Link>
+              <Link href="/auth" className="rounded-full bg-white text-black px-4 py-2 text-sm font-medium hover:bg-gray-200 transition duration-200">
+                Sign Up
+              </Link>
+            </>
+          )}
+        </div>
+
+        {/* Mobile Menu Button */}
+        <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+          <SheetTrigger asChild>
+            <Button variant="ghost" className="p-0 md:hidden" aria-label="Toggle menu">
+              <Menu className="h-6 w-6" />
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="right" className="bg-black border-white/10">
+            <nav className="flex flex-col space-y-4 mt-8">
+              <Link 
+                href="/" 
+                className={`text-lg font-medium ${isActive("/") ? "text-white" : "text-white/70"}`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Gallery
+              </Link>
+              <Link 
+                href="/projects" 
+                className={`text-lg font-medium ${isActive("/projects") ? "text-white" : "text-white/70"}`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Projects
+              </Link>
+              {user && (
+                <Link 
+                  href="/dashboard" 
+                  className={`text-lg font-medium ${isActive("/dashboard") ? "text-white" : "text-white/70"}`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Dashboard
+                </Link>
+              )}
+              <div className="pt-4 border-t border-white/10 mt-4">
+                {user ? (
+                  <>
+                    <div className="mb-2 text-white">{user.name}</div>
+                    <Button 
+                      onClick={() => {
+                        handleLogout();
+                        setIsMenuOpen(false);
+                      }}
+                      className="w-full"
+                    >
+                      Logout
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <Link 
+                      href="/auth" 
+                      onClick={() => setIsMenuOpen(false)}
+                      className="block w-full"
+                    >
+                      <Button variant="outline" className="w-full mb-2">
+                        Login
+                      </Button>
+                    </Link>
+                    <Link 
+                      href="/auth" 
+                      onClick={() => setIsMenuOpen(false)}
+                      className="block w-full"
+                    >
+                      <Button className="w-full">
+                        Sign Up
+                      </Button>
+                    </Link>
+                  </>
+                )}
+              </div>
+            </nav>
+          </SheetContent>
+        </Sheet>
+      </div>
+    </header>
+  );
+}
