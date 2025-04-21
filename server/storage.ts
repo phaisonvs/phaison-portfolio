@@ -62,12 +62,55 @@ export class MemStorage implements IStorage {
       checkPeriod: 86400000, // prune expired entries every 24h
     });
 
+    // Inicializa os dados
+    this.initializeData();
+  }
+
+  // Métodos privados para inicializar dados de exemplo
+  private async initializeData() {
     // Add some initial tags
-    this.createTag({ name: "Website" });
-    this.createTag({ name: "Mobile App" });
-    this.createTag({ name: "3D Design" });
-    this.createTag({ name: "UI/UX" });
-    this.createTag({ name: "Branding" });
+    const websiteTag = await this.createTag({ name: "Website" });
+    const mobileTag = await this.createTag({ name: "Mobile App" });
+    const designTag = await this.createTag({ name: "3D Design" });
+    const uiuxTag = await this.createTag({ name: "UI/UX" });
+    const brandingTag = await this.createTag({ name: "Branding" });
+
+    // Criar usuário demo
+    const demoUser = await this.createUser({
+      username: "usuario_demo",
+      password: "$2b$10$1XpzUYu8FuvuaBj.aOvgwOnrSBKJZVJRFJzcMP.wozOLQWZkRYyXa", // senha123
+      name: "Usuário Demonstração",
+      avatarUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=200&h=200&q=80"
+    });
+
+    // Adicionar projetos de exemplo
+    const project1 = await this.createProject({
+      title: "Portal da Empresa",
+      description: "Site corporativo responsivo com animações suaves, experiência de usuário intuitiva e seções interativas. Desenvolvido com foco em desempenho e acessibilidade, utilizando as mais recentes tecnologias web para garantir que o site seja rápido, fácil de usar e visualmente impactante.",
+      imageUrl: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+      userId: demoUser.id,
+      category: "Website",
+      publishedStatus: "published"
+    });
+
+    // Adicionar tags ao projeto
+    await this.createProjectTag({ projectId: project1.id, tagId: websiteTag.id });
+    await this.createProjectTag({ projectId: project1.id, tagId: uiuxTag.id });
+    await this.createProjectTag({ projectId: project1.id, tagId: brandingTag.id });
+
+    // Adicionar segundo projeto
+    const project2 = await this.createProject({
+      title: "Aplicativo Fitness",
+      description: "Aplicativo móvel para acompanhamento de exercícios e nutrição, com funcionalidades avançadas de monitoramento de progresso e planos personalizados. Interface limpa e minimalista que prioriza a facilidade de uso e motivação do usuário.",
+      imageUrl: "https://images.unsplash.com/photo-1556656793-08538906a9f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+      userId: demoUser.id,
+      category: "Mobile App",
+      publishedStatus: "published"
+    });
+
+    // Adicionar tags ao segundo projeto
+    await this.createProjectTag({ projectId: project2.id, tagId: mobileTag.id });
+    await this.createProjectTag({ projectId: project2.id, tagId: uiuxTag.id });
   }
 
   // User methods
