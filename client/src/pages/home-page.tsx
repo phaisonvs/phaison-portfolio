@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Header } from "@/components/header";
@@ -9,12 +9,27 @@ import { PluginCard } from "@/components/plugin-card";
 import { TemplateCard } from "@/components/template-card";
 import { useQuery } from "@tanstack/react-query";
 import { ProjectWithTags } from "@shared/schema";
-import { Box, SlidersIcon, ImageIcon, LightbulbIcon } from "lucide-react";
+import { Box, SlidersIcon, ImageIcon, LightbulbIcon, ChevronLeft, ChevronRight } from "lucide-react";
+import { 
+  Carousel, 
+  CarouselContent, 
+  CarouselItem, 
+  CarouselNext, 
+  CarouselPrevious, 
+  type CarouselApi 
+} from "@/components/ui/carousel";
+import { CarouselDots } from "@/components/ui/carousel-dots";
 
 export default function HomePage() {
   const { data: projects } = useQuery<ProjectWithTags[]>({
     queryKey: ["/api/projects"],
   });
+
+  // Carousel APIs
+  const [bestApi, setBestApi] = useState<CarouselApi | null>(null);
+  const [categoriesApi, setCategoriesApi] = useState<CarouselApi | null>(null);
+  const [pluginsApi, setPluginsApi] = useState<CarouselApi | null>(null);
+  const [templatesApi, setTemplatesApi] = useState<CarouselApi | null>(null);
 
   // Animation on scroll
   const animatedElements = useRef<HTMLElement[]>([]);
@@ -23,8 +38,13 @@ export default function HomePage() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
+          // Se o elemento está entrando na viewport, adicione a classe visible
           if (entry.isIntersecting) {
             entry.target.classList.add("visible");
+          }
+          // Se o elemento está saindo da viewport, remova a classe visible para resetar a animação
+          else {
+            entry.target.classList.remove("visible");
           }
         });
       },
@@ -81,40 +101,54 @@ export default function HomePage() {
               </Link>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {projects && projects.length > 0 ? (
-                projects.slice(0, 4).map((project) => (
-                  <div key={project.project.id} className="animate-on-scroll">
-                    <ProjectCard project={project} />
-                  </div>
-                ))
-              ) : (
-                // Placeholder cards when no projects exist
-                Array.from({ length: 4 }).map((_, index) => (
-                  <div key={index} className="animate-on-scroll">
-                    <ProjectCard
-                      project={{
-                        project: {
-                          id: index,
-                          title: "Sample Project",
-                          description: "A beautiful sample project",
-                          imageUrl: `https://source.unsplash.com/random/600x800?sig=${index}`,
-                          userId: 1,
-                          category: "Sample",
-                          publishedStatus: "published",
-                          createdAt: new Date().toISOString(),
-                        },
-                        user: {
-                          id: 1,
-                          name: "John Designer",
-                          avatarUrl: null,
-                        },
-                        tags: []
-                      }}
-                    />
-                  </div>
-                ))
-              )}
+            <div className="animate-on-scroll relative">
+              <Carousel
+                setApi={setBestApi}
+                opts={{
+                  align: "start",
+                  loop: true,
+                }}
+                className="w-full"
+              >
+                <CarouselContent className="-ml-2 md:-ml-4">
+                  {projects && projects.length > 0 ? (
+                    projects.slice(0, 6).map((project) => (
+                      <CarouselItem key={project.project.id} className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+                        <ProjectCard project={project} />
+                      </CarouselItem>
+                    ))
+                  ) : (
+                    // Placeholder cards when no projects exist
+                    Array.from({ length: 6 }).map((_, index) => (
+                      <CarouselItem key={index} className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+                        <ProjectCard
+                          project={{
+                            project: {
+                              id: index,
+                              title: "Projeto Exemplo",
+                              description: "Um belo projeto de exemplo",
+                              imageUrl: `https://source.unsplash.com/random/600x800?design,${index}`,
+                              userId: 1,
+                              category: "Exemplo",
+                              publishedStatus: "published",
+                              createdAt: new Date().toISOString(),
+                            },
+                            user: {
+                              id: 1,
+                              name: "João Designer",
+                              avatarUrl: null,
+                            },
+                            tags: [{ id: 1, name: "Website" }]
+                          }}
+                        />
+                      </CarouselItem>
+                    ))
+                  )}
+                </CarouselContent>
+                <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 lg:-translate-x-0 bg-black/40 hover:bg-black/60 border-none" />
+                <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 lg:translate-x-0 bg-black/40 hover:bg-black/60 border-none" />
+              </Carousel>
+              <CarouselDots api={bestApi} className="mt-6" />
             </div>
           </div>
         </section>
@@ -124,42 +158,68 @@ export default function HomePage() {
           <div className="container mx-auto">
             <h2 className="text-2xl md:text-3xl font-semibold mb-10 animate-on-scroll">Categories</h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="animate-on-scroll">
-                <CategoryCard
-                  title="Websites"
-                  description="Beautiful websites for creators, artists and businesses"
-                  images={[
-                    "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
-                    "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
-                    "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
-                  ]}
-                />
-              </div>
-              
-              <div className="animate-on-scroll">
-                <CategoryCard
-                  title="Mobile Apps"
-                  description="Interactive mobile experiences with smooth animations"
-                  images={[
-                    "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
-                    "https://images.unsplash.com/photo-1556656793-08538906a9f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
-                    "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
-                  ]}
-                />
-              </div>
-              
-              <div className="animate-on-scroll">
-                <CategoryCard
-                  title="3D Design"
-                  description="Immersive 3D experiences and visualizations"
-                  images={[
-                    "https://images.unsplash.com/photo-1578632767115-351597cf2477?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
-                    "https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
-                    "https://images.unsplash.com/photo-1638913972776-873fc7af3fdf?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
-                  ]}
-                />
-              </div>
+            <div className="animate-on-scroll relative">
+              <Carousel
+                setApi={setCategoriesApi}
+                opts={{
+                  align: "start",
+                  loop: true,
+                }}
+                className="w-full"
+              >
+                <CarouselContent className="-ml-2 md:-ml-4">
+                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/2 lg:basis-1/3">
+                    <CategoryCard
+                      title="Websites"
+                      description="Belos sites para criadores, artistas e empresas"
+                      images={[
+                        "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
+                        "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
+                        "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
+                      ]}
+                    />
+                  </CarouselItem>
+                  
+                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/2 lg:basis-1/3">
+                    <CategoryCard
+                      title="Aplicativos Móveis"
+                      description="Experiências interativas com animações suaves"
+                      images={[
+                        "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
+                        "https://images.unsplash.com/photo-1556656793-08538906a9f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
+                        "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
+                      ]}
+                    />
+                  </CarouselItem>
+                  
+                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/2 lg:basis-1/3">
+                    <CategoryCard
+                      title="Design 3D"
+                      description="Experiências 3D imersivas e visualizações"
+                      images={[
+                        "https://images.unsplash.com/photo-1578632767115-351597cf2477?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
+                        "https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
+                        "https://images.unsplash.com/photo-1638913972776-873fc7af3fdf?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
+                      ]}
+                    />
+                  </CarouselItem>
+                  
+                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/2 lg:basis-1/3">
+                    <CategoryCard
+                      title="UI/UX Design"
+                      description="Interfaces elegantes e intuitivas"
+                      images={[
+                        "https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
+                        "https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
+                        "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
+                      ]}
+                    />
+                  </CarouselItem>
+                </CarouselContent>
+                <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 lg:-translate-x-0 bg-black/40 hover:bg-black/60 border-none" />
+                <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 lg:translate-x-0 bg-black/40 hover:bg-black/60 border-none" />
+              </Carousel>
+              <CarouselDots api={categoriesApi} className="mt-6" />
             </div>
           </div>
         </section>
