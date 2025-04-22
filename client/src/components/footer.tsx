@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { Separator } from "@/components/ui/separator";
+import logoPhaison from "@assets/logo-phaison.png";
 
 export function Footer() {
   return (
@@ -65,15 +66,15 @@ export function Footer() {
         <Separator className="bg-white/10 my-6" />
         
         <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="flex items-center space-x-2 mb-4 md:mb-0">
-            <div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center">
-              <span className="text-white font-semibold">P</span>
-            </div>
-            <span className="font-semibold text-lg">Portfolio</span>
+          <div className="flex items-center space-x-3 mb-4 md:mb-0">
+            <Link href="/" className="transition-opacity hover:opacity-80">
+              <img src={logoPhaison} alt="Phaison Logo" className="h-10" />
+            </Link>
+            <span className="font-semibold text-lg">Phaison</span>
           </div>
           
           <div className="text-gray-400 text-sm">
-            © {new Date().getFullYear()} Portfolio Inc. All rights reserved.
+            © {new Date().getFullYear()} Phaison Design. All rights reserved.
           </div>
         </div>
       </div>
