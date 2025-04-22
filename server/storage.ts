@@ -111,6 +111,58 @@ export class MemStorage implements IStorage {
     // Adicionar tags ao segundo projeto
     await this.createProjectTag({ projectId: project2.id, tagId: mobileTag.id });
     await this.createProjectTag({ projectId: project2.id, tagId: uiuxTag.id });
+    
+    // Adicionar mais projetos para teste do carrossel (pelo menos 7 no total)
+    const project3 = await this.createProject({
+      title: "Design 3D Interativo",
+      description: "Modelo 3D interativo que permite aos usuários explorar todos os detalhes da experiência. Inclui animações suaves e controles intuitivos para zoom, rotação e visualização de diferentes ângulos e perspectivas.",
+      imageUrl: "https://images.unsplash.com/photo-1617791160536-598cf32026fb?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+      userId: demoUser.id,
+      category: "3D Design",
+      publishedStatus: "published"
+    });
+    await this.createProjectTag({ projectId: project3.id, tagId: designTag.id });
+    
+    const project4 = await this.createProject({
+      title: "Dashboard Analítico",
+      description: "Interface administrativa com painéis de controle interativos, gráficos em tempo real e visualizações de dados complexas. Design minimalista com foco na usabilidade e eficiência operacional.",
+      imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+      userId: demoUser.id,
+      category: "UI/UX",
+      publishedStatus: "published"
+    });
+    await this.createProjectTag({ projectId: project4.id, tagId: uiuxTag.id });
+    
+    const project5 = await this.createProject({
+      title: "Identidade Visual Moderna",
+      description: "Sistema completo de identidade visual com logotipo, paleta de cores, tipografia e aplicações em diversos materiais. Projeto desenvolvido com foco em consistência e reconhecimento de marca.",
+      imageUrl: "https://images.unsplash.com/photo-1561070791-36c11767b26a?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+      userId: demoUser.id,
+      category: "Branding",
+      publishedStatus: "published"
+    });
+    await this.createProjectTag({ projectId: project5.id, tagId: brandingTag.id });
+    
+    const project6 = await this.createProject({
+      title: "E-commerce Premium",
+      description: "Plataforma de comércio eletrônico com experiência de compra refinada, animações sutis e grande atenção aos detalhes. Inclui carrinho de compras, checkout seguro e integração com sistemas de pagamento.",
+      imageUrl: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+      userId: demoUser.id,
+      category: "Website",
+      publishedStatus: "published"
+    });
+    await this.createProjectTag({ projectId: project6.id, tagId: websiteTag.id });
+    await this.createProjectTag({ projectId: project6.id, tagId: uiuxTag.id });
+    
+    const project7 = await this.createProject({
+      title: "App de Fotografia",
+      description: "Aplicativo móvel para edição e compartilhamento de fotos com interface intuitiva e ferramentas avançadas. Inclui filtros personalizáveis, ajustes de imagem profissionais e integração com redes sociais.",
+      imageUrl: "https://images.unsplash.com/photo-1483478550801-ceba5fe50e8e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+      userId: demoUser.id,
+      category: "Mobile App",
+      publishedStatus: "published"
+    });
+    await this.createProjectTag({ projectId: project7.id, tagId: mobileTag.id });
   }
 
   // User methods

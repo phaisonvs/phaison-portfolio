@@ -11,6 +11,7 @@ import DashboardPage from "@/pages/dashboard-page";
 import NotFound from "@/pages/not-found";
 import { ProtectedRoute } from "@/lib/protected-route";
 import { AuthProvider } from "@/hooks/use-auth";
+import { PageTransition } from "@/components/page-transition";
 
 function Router() {
   return (
@@ -34,6 +35,7 @@ function App() {
       <AuthProvider>
         <TooltipProvider>
           <Toaster />
+          <PageTransition />
           <Router />
         </TooltipProvider>
       </AuthProvider>
