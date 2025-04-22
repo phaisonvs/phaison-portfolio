@@ -48,7 +48,7 @@ export default function ProjectDetail() {
             onClick={() => navigate('/projects')}
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
-            Back to Projects
+            Voltar para Projetos
           </Button>
           
           <div className="text-center py-12">
@@ -77,7 +77,7 @@ export default function ProjectDetail() {
           onClick={() => navigate('/projects')}
         >
           <ArrowLeft className="h-4 w-4 mr-2" />
-          Back to Projects
+          Voltar para Projetos
         </Button>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
@@ -116,15 +116,87 @@ export default function ProjectDetail() {
             <div className="prose prose-invert max-w-none">
               <p className="text-lg text-gray-300 whitespace-pre-line">{project.project.description}</p>
             </div>
+            
+            <Separator className="my-8" />
+            
+            {/* Seção de recursos/funcionalidades */}
+            <div className="mt-10">
+              <h2 className="text-2xl font-semibold mb-8">Funcionalidades</h2>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {/* Recurso 1 */}
+                <div className="bg-zinc-900 rounded-xl p-6 border border-zinc-800">
+                  <h3 className="text-xl font-medium mb-3">Pagamentos online</h3>
+                  <p className="text-gray-400 mb-4">
+                    Aceite pagamentos digitais de clientes de forma simples e segura, com confirmações automáticas.
+                  </p>
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {["Cartões", "PIX", "Boleto"].map(method => (
+                      <span key={method} className="inline-flex items-center px-3 py-1 bg-zinc-800 rounded-full text-xs">
+                        {method}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                
+                {/* Recurso 2 */}
+                <div className="bg-zinc-900 rounded-xl p-6 border border-zinc-800">
+                  <h3 className="text-xl font-medium mb-3">Pagamentos presenciais</h3>
+                  <p className="text-gray-400 mb-4">
+                    Configure seu terminal para aceitar pagamentos em qualquer lugar com segurança avançada.
+                  </p>
+                  <div className="mt-4">
+                    <div className="bg-zinc-800 inline-block p-2 rounded-lg">
+                      <div className="bg-black rounded-lg p-3 inline-block">
+                        <div className="text-center text-2xl font-semibold">€500</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Recurso 3 */}
+                <div className="bg-zinc-900 rounded-xl p-6 border border-zinc-800">
+                  <h3 className="text-xl font-medium mb-3">Receba pagamentos rápido</h3>
+                  <p className="text-gray-400 mb-4">
+                    Use links de pagamento para facilitar transações e receber valores de forma simples.
+                  </p>
+                  <div className="mt-4">
+                    <div className="bg-white inline-block p-2 rounded-lg">
+                      <div className="text-center text-2xl font-semibold text-black">€8</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Banner grande */}
+              <div className="mt-8 bg-black rounded-xl overflow-hidden">
+                <div className="p-6">
+                  <h3 className="text-xl font-medium mb-2">Tap to Pay no iPhone</h3>
+                  <p className="text-gray-400 mb-4">
+                    Aceite pagamentos contactless diretamente no seu iPhone, sem hardware adicional.
+                  </p>
+                  <button className="inline-flex items-center px-4 py-2 bg-white text-black rounded-full text-sm font-medium">
+                    Saber mais
+                  </button>
+                </div>
+                <div className="flex justify-end">
+                  <img 
+                    src="https://images.unsplash.com/photo-1556741533-6e6a62bd8b49?ixlib=rb-1.2.1&auto=format&fit=crop&w=450&q=80" 
+                    alt="Pagamento com iPhone" 
+                    className="h-48 w-auto object-cover"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Sidebar */}
           <div className="lg:col-span-4">
             <div className="bg-zinc-900 rounded-xl p-6 sticky top-24">
-              <h3 className="text-xl font-semibold mb-4">Project Details</h3>
+              <h3 className="text-xl font-semibold mb-4">Detalhes do Projeto</h3>
               
               <div className="mb-6">
-                <p className="text-sm text-gray-400 mb-2">Category</p>
+                <p className="text-sm text-gray-400 mb-2">Categoria</p>
                 <p>{project.project.category}</p>
               </div>
 
@@ -143,7 +215,7 @@ export default function ProjectDetail() {
               </div>
 
               <div>
-                <p className="text-sm text-gray-400 mb-2">Share</p>
+                <p className="text-sm text-gray-400 mb-2">Compartilhar</p>
                 <div className="flex space-x-3">
                   <button className="text-gray-400 hover:text-white transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
