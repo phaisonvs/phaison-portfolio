@@ -1,0 +1,86 @@
+Componente fixo da página de projeto:
+
+A borda animada (gradiente neon verde/azul) deve envolver todo o card, e não apenas a área de "Compartilhar".
+
+Galeria estilo Pinterest na página de projeto individual:
+
+A galeria não está sendo exibida. Corrigir o componente para que:
+
+Exiba até 6 imagens.
+
+Use um grid responsivo tipo Pinterest (colunas assimétricas).
+
+Cada imagem tenha título e descrição (sem redirecionamento).
+
+Ao clicar, expanda a imagem com interação suave (lightbox ou zoom-in).
+
+Fluxo de acesso restrito ao Dashboard
+Após o login, o usuário deve ser automaticamente redirecionado para o Dashboard.
+
+O Dashboard não deve estar visível no header (navegação comum).
+
+Acesso exclusivo ao usuário autorizado já definido no sistema.
+
+Garantir segurança para que usuários não autenticados não consigam acessar via URL direta.
+
+Dashboard: criação e edição de projetos
+Botão "New Project":
+Ao clicar, exibir um modal moderno e responsivo com instruções iniciais.
+
+Permitir inserir os seguintes campos:
+
+Título
+
+Descrição
+
+Tags
+
+Link do Figma (opcional)
+
+Vídeo (opcional)
+
+Upload de imagens
+
+Escolher a section onde o projeto será exibido (ex: Best, Top Plugins, Top Templates etc.)
+
+As imagens devem ser redimensionadas automaticamente de acordo com o padrão da section selecionada.
+
+Botão "Editar Projeto":
+Ao lado do botão "New Project".
+
+Ao clicar, exibir a interface de edição com:
+
+Todos os campos já preenchidos (título, descrição, tags, vídeo, imagens, etc.)
+
+Upload adicional de imagens com redimensionamento automático.
+
+Mostrar placeholder com exemplo de tamanho ideal para imagens.
+
+Permitir adicionar, editar ou remover:
+
+Vídeos
+
+Tags
+
+Imagens
+
+Section de exibição
+
+Permitir pré-visualização do projeto no layout de destino.
+
+Permitir alterar status do projeto:
+
+Publicado
+
+Oculto
+
+Inativo
+
+Salvo para editar depois
+
+Controle de visibilidade e segurança
+Ativar/ocultar projetos com um clique (toggle).
+
+Somente o usuário autorizado poderá realizar essas ações.
+
+Garantir segurança e controle de permissão, mesmo em requisições diretas ao backend (se aplicável).

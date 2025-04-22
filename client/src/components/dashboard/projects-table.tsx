@@ -14,11 +14,19 @@ import { formatDate, truncate } from "@/lib/utils";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { apiRequest, queryClient } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
-import { Edit, Trash2, ExternalLink, Loader2 } from "lucide-react";
+import { Edit, Trash2, ExternalLink, Loader2, Eye, EyeOff, RefreshCw } from "lucide-react";
+import { ProjectForm } from "./project-form";
 
-export function ProjectsTable() {
+// Interface para props
+interface ProjectsTableProps {
+  onEdit?: (id: number) => void;
+}
+
+export function ProjectsTable({ onEdit }: ProjectsTableProps) {
   const { toast } = useToast();
   const [projectToDelete, setProjectToDelete] = useState<number | null>(null);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<number | null>(null);
   
   // Fetch projects
   const { data: projects, isLoading } = useQuery({
@@ -130,11 +138,13 @@ export function ProjectsTable() {
                           <span className="sr-only">View</span>
                         </Link>
                       </Button>
-                      <Button variant="ghost" size="sm" asChild>
-                        <Link href={`/dashboard/edit-project/${project.project.id}`}>
-                          <Edit className="h-4 w-4" />
-                          <span className="sr-only">Edit</span>
-                        </Link>
+                      <Button 
+                        variant="ghost" 
+                        size="sm"
+                        onClick={() => onEdit ? onEdit(project.project.id) : null}
+                      >
+                        <Edit className="h-4 w-4" />
+                        <span className="sr-only">Edit</span>
                       </Button>
                       <Button 
                         variant="ghost" 

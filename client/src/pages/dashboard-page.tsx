@@ -7,7 +7,8 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useQuery } from "@tanstack/react-query";
-import { BarChart3, FolderKanban, UserCircle, Clock } from "lucide-react";
+import { BarChart3, FolderKanban, UserCircle, Clock, Eye, EyeOff, Plus, Pencil, Trash, LayoutDashboard } from "lucide-react";
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 export default function DashboardPage() {
   const [location, setLocation] = useLocation();
@@ -39,16 +40,89 @@ export default function DashboardPage() {
   const draftCount = projects?.filter((p: any) => p.project.publishedStatus === "draft").length || 0;
   const totalProjects = projects?.length || 0;
 
+  // Estados para modais 
+  const [showNewProjectModal, setShowNewProjectModal] = useState(false);
+  const [showEditProjectModal, setShowEditProjectModal] = useState(false);
+  const [selectedProjectId, setSelectedProjectId] = useState<number | null>(null);
+
+  // Handlers para modais
+  const handleNewProject = () => {
+    setShowNewProjectModal(true);
+  };
+
+  const handleEditProject = (id: number) => {
+    setSelectedProjectId(id);
+    setShowEditProjectModal(true);
+  };
+
+  const handleCloseModals = () => {
+    setShowNewProjectModal(false);
+    setShowEditProjectModal(false);
+    setSelectedProjectId(null);
+  };
+
   return (
     <DashboardLayout>
+      {/* Modal de Novo Projeto */}
+      <Dialog open={showNewProjectModal} onOpenChange={setShowNewProjectModal}>
+        <DialogContent className="max-w-4xl bg-zinc-900 border-zinc-800">
+          <DialogHeader>
+            <DialogTitle className="text-xl font-semibold">Adicionar Novo Projeto</DialogTitle>
+            <DialogDescription>
+              Preencha os dados do seu novo projeto para publicação
+            </DialogDescription>
+          </DialogHeader>
+          <div className="mt-4">
+            <ProjectForm 
+              onSuccess={() => {
+                handleCloseModals();
+                // Refrescar a lista de projetos
+                setLocation(location);
+              }} 
+            />
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Modal de Edição de Projeto */}
+      <Dialog open={showEditProjectModal} onOpenChange={setShowEditProjectModal}>
+        <DialogContent className="max-w-4xl bg-zinc-900 border-zinc-800">
+          <DialogHeader>
+            <DialogTitle className="text-xl font-semibold">Editar Projeto</DialogTitle>
+            <DialogDescription>
+              Faça as alterações necessárias no seu projeto
+            </DialogDescription>
+          </DialogHeader>
+          <div className="mt-4">
+            {selectedProjectId && (
+              <ProjectForm 
+                projectId={selectedProjectId} 
+                onSuccess={() => {
+                  handleCloseModals();
+                  // Refrescar a lista de projetos
+                  setLocation(location);
+                }} 
+              />
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
+
       {/* Dashboard Overview */}
       {!isProjects && !isNewProject && !isEditProject && (
         <div className="space-y-8">
           <div className="flex justify-between items-center">
-            <h1 className="text-2xl font-semibold">Dashboard</h1>
-            <Button asChild>
-              <a href="/dashboard/new-project">New Project</a>
-            </Button>
+            <h1 className="text-2xl font-semibold">Seu Dashboard</h1>
+            <div className="flex space-x-2">
+              <Button variant="outline" onClick={() => setLocation("/dashboard/projects")}>
+                <Eye className="mr-2 h-4 w-4" />
+                Ver Projetos
+              </Button>
+              <Button onClick={handleNewProject}>
+                <Plus className="mr-2 h-4 w-4" />
+                Novo Projeto
+              </Button>
+            </div>
           </div>
 
           {/* Statistics */}
@@ -110,29 +184,66 @@ export default function DashboardPage() {
       {isProjects && (
         <div className="space-y-6">
           <div className="flex justify-between items-center">
-            <h1 className="text-2xl font-semibold">Projects</h1>
-            <Button asChild>
-              <a href="/dashboard/new-project">New Project</a>
-            </Button>
+            <h1 className="text-2xl font-semibold">Gerenciar Projetos</h1>
+            <div className="flex space-x-2">
+              <Button variant="outline" onClick={() => setLocation("/dashboard")}>
+                <LayoutDashboard className="mr-2 h-4 w-4" />
+                Dashboard
+              </Button>
+              <Button onClick={handleNewProject}>
+                <Plus className="mr-2 h-4 w-4" />
+                Novo Projeto
+              </Button>
+            </div>
           </div>
           
           <Tabs defaultValue="all" className="w-full">
             <TabsList className="mb-6">
-              <TabsTrigger value="all">All Projects</TabsTrigger>
-              <TabsTrigger value="published">Published</TabsTrigger>
-              <TabsTrigger value="drafts">Drafts</TabsTrigger>
+              <TabsTrigger value="all">Todos os Projetos</TabsTrigger>
+              <TabsTrigger value="published">Publicados</TabsTrigger>
+              <TabsTrigger value="drafts">Rascunhos</TabsTrigger>
             </TabsList>
             
             <TabsContent value="all">
-              <ProjectsTable />
+              <Card className="bg-zinc-900 border-none">
+                <CardHeader className="pb-0">
+                  <CardTitle className="text-lg font-medium">Lista de Projetos</CardTitle>
+                  <CardDescription>
+                    Gerencie todos os seus projetos e suas configurações
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="pt-6">
+                  <ProjectsTable />
+                </CardContent>
+              </Card>
             </TabsContent>
             
             <TabsContent value="published">
-              <ProjectsTable />
+              <Card className="bg-zinc-900 border-none">
+                <CardHeader className="pb-0">
+                  <CardTitle className="text-lg font-medium">Projetos Publicados</CardTitle>
+                  <CardDescription>
+                    Projetos atualmente visíveis no seu portfólio
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="pt-6">
+                  <ProjectsTable />
+                </CardContent>
+              </Card>
             </TabsContent>
             
             <TabsContent value="drafts">
-              <ProjectsTable />
+              <Card className="bg-zinc-900 border-none">
+                <CardHeader className="pb-0">
+                  <CardTitle className="text-lg font-medium">Projetos em Rascunho</CardTitle>
+                  <CardDescription>
+                    Projetos em desenvolvimento que não são visíveis publicamente
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="pt-6">
+                  <ProjectsTable />
+                </CardContent>
+              </Card>
             </TabsContent>
           </Tabs>
         </div>
