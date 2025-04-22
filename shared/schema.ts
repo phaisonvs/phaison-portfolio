@@ -1,4 +1,4 @@
-import { pgTable, text, serial, integer, boolean, timestamp } from "drizzle-orm/pg-core";
+import { pgTable, text, serial, integer, boolean, timestamp, json } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -14,7 +14,8 @@ export const projects = pgTable("projects", {
   id: serial("id").primaryKey(),
   title: text("title").notNull(),
   description: text("description").notNull(),
-  imageUrl: text("image_url").notNull(),
+  imageUrl: text("image_url").notNull(), // Mantido para compatibilidade
+  galleryImages: json("gallery_images").$type<string[]>().default([]),
   userId: integer("user_id").notNull().references(() => users.id),
   category: text("category").notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
@@ -44,6 +45,7 @@ export const insertProjectSchema = createInsertSchema(projects).pick({
   title: true,
   description: true,
   imageUrl: true,
+  galleryImages: true,
   userId: true,
   category: true,
   publishedStatus: true,
@@ -78,6 +80,7 @@ export const projectWithTagsSchema = z.object({
     title: z.string(),
     description: z.string(),
     imageUrl: z.string(),
+    galleryImages: z.array(z.string()).optional().default([]),
     userId: z.number(),
     category: z.string(),
     publishedStatus: z.string(),
