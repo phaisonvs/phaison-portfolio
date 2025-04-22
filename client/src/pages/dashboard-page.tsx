@@ -129,53 +129,53 @@ export default function DashboardPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Card className="bg-zinc-900 border-none">
               <CardHeader className="flex flex-row items-center justify-between pb-2">
-                <CardTitle className="text-sm font-medium text-gray-400">Total Projects</CardTitle>
+                <CardTitle className="text-sm font-medium text-gray-400">Total Projetos</CardTitle>
                 <FolderKanban className="h-4 w-4 text-gray-400" />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">{totalProjects}</div>
-                <p className="text-xs text-gray-400 mt-1">All your projects</p>
+                <p className="text-xs text-gray-400 mt-1">Todos os seus projetos</p>
               </CardContent>
             </Card>
             
             <Card className="bg-zinc-900 border-none">
               <CardHeader className="flex flex-row items-center justify-between pb-2">
-                <CardTitle className="text-sm font-medium text-gray-400">Published</CardTitle>
+                <CardTitle className="text-sm font-medium text-gray-400">Publicados</CardTitle>
                 <BarChart3 className="h-4 w-4 text-gray-400" />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">{publishedCount}</div>
-                <p className="text-xs text-gray-400 mt-1">Live projects</p>
+                <p className="text-xs text-gray-400 mt-1">Projetos publicados</p>
               </CardContent>
             </Card>
             
             <Card className="bg-zinc-900 border-none">
               <CardHeader className="flex flex-row items-center justify-between pb-2">
-                <CardTitle className="text-sm font-medium text-gray-400">Drafts</CardTitle>
+                <CardTitle className="text-sm font-medium text-gray-400">Rascunhos</CardTitle>
                 <Clock className="h-4 w-4 text-gray-400" />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">{draftCount}</div>
-                <p className="text-xs text-gray-400 mt-1">Work in progress</p>
+                <p className="text-xs text-gray-400 mt-1">Projetos em andamento</p>
               </CardContent>
             </Card>
             
             <Card className="bg-zinc-900 border-none">
               <CardHeader className="flex flex-row items-center justify-between pb-2">
-                <CardTitle className="text-sm font-medium text-gray-400">User</CardTitle>
+                <CardTitle className="text-sm font-medium text-gray-400">Usuário</CardTitle>
                 <UserCircle className="h-4 w-4 text-gray-400" />
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">{userData?.name || "User"}</div>
-                <p className="text-xs text-gray-400 mt-1">{userData?.username || "username"}</p>
+                <div className="text-2xl font-bold">{userData?.name || "Usuário"}</div>
+                <p className="text-xs text-gray-400 mt-1">@{userData?.username || "username"}</p>
               </CardContent>
             </Card>
           </div>
 
           {/* Recent Projects */}
           <div className="space-y-4">
-            <h2 className="text-xl font-semibold">Recent Projects</h2>
-            <ProjectsTable />
+            <h2 className="text-xl font-semibold">Projetos Recentes</h2>
+            <ProjectsTable onEdit={handleEditProject} />
           </div>
         </div>
       )}
@@ -213,7 +213,7 @@ export default function DashboardPage() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="pt-6">
-                  <ProjectsTable />
+                  <ProjectsTable onEdit={handleEditProject} />
                 </CardContent>
               </Card>
             </TabsContent>
@@ -227,7 +227,7 @@ export default function DashboardPage() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="pt-6">
-                  <ProjectsTable />
+                  <ProjectsTable onEdit={handleEditProject} />
                 </CardContent>
               </Card>
             </TabsContent>
@@ -241,7 +241,7 @@ export default function DashboardPage() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="pt-6">
-                  <ProjectsTable />
+                  <ProjectsTable onEdit={handleEditProject} />
                 </CardContent>
               </Card>
             </TabsContent>
@@ -252,7 +252,7 @@ export default function DashboardPage() {
       {/* New Project Form */}
       {isNewProject && (
         <div className="space-y-6">
-          <h1 className="text-2xl font-semibold">Create New Project</h1>
+          <h1 className="text-2xl font-semibold">Criar Novo Projeto</h1>
           <Card className="bg-zinc-900 border-none">
             <CardContent className="pt-6">
               <ProjectForm onSuccess={handleFormSuccess} />
@@ -264,7 +264,7 @@ export default function DashboardPage() {
       {/* Edit Project Form */}
       {isEditProject && projectId && (
         <div className="space-y-6">
-          <h1 className="text-2xl font-semibold">Edit Project</h1>
+          <h1 className="text-2xl font-semibold">Editar Projeto</h1>
           <Card className="bg-zinc-900 border-none">
             <CardContent className="pt-6">
               <ProjectForm projectId={projectId} onSuccess={handleFormSuccess} />
