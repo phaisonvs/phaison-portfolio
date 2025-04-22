@@ -10,7 +10,7 @@ interface CategoryCardProps {
 export function CategoryCard({ title, description, images }: CategoryCardProps) {
   return (
     <Link href="/projects">
-      <Card className="bg-zinc-900 overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 hover:cursor-pointer">
+      <Card className="bg-zinc-900 overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-1 hover:cursor-pointer">
         <CardContent className="p-6">
           <h3 className="text-lg font-semibold mb-2">{title}</h3>
           <p className="text-gray-400 text-sm mb-6">{description}</p>

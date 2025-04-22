@@ -16,7 +16,7 @@ interface TemplateCardProps {
 
 export function TemplateCard({ title, description, image, author, price }: TemplateCardProps) {
   return (
-    <Card className="group relative overflow-hidden rounded-xl bg-zinc-900 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20">
+    <Card className="group relative overflow-hidden rounded-xl bg-zinc-900 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/20">
       <AspectRatio ratio={16/10} className="bg-zinc-900">
         <img
           src={image}

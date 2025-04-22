@@ -11,7 +11,7 @@ interface PluginCardProps {
 
 export function PluginCard({ title, description, icon: Icon, iconBgColor }: PluginCardProps) {
   return (
-    <Card className="bg-zinc-900 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300">
+    <Card className="bg-zinc-900 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-1 transition-all duration-300">
       <CardContent className="p-4">
         <div className="flex items-center mb-4">
           <div className={`h-10 w-10 rounded-xl ${iconBgColor} flex items-center justify-center mr-3`}>
