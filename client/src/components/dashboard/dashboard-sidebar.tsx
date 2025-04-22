@@ -10,7 +10,9 @@ import {
   Box,
   SquareCode,
   HelpCircle,
-  LogOut
+  LogOut,
+  BriefcaseIcon,
+  LayoutTemplate
 } from "lucide-react";
 
 // Categorized menu items for better organization
@@ -49,6 +51,22 @@ const projectStatusItems = [
     title: "Rascunhos",
     icon: SquareCode,
     href: "/dashboard/projects/drafts",
+  },
+];
+
+const contentItems = [
+  {
+    title: "Experiências de Trabalho",
+    icon: BriefcaseIcon,
+    href: "/dashboard/experiences",
+  },
+];
+
+const sectionsItems = [
+  {
+    title: "Seções",
+    icon: LayoutTemplate,
+    href: "/dashboard/sections",
   },
 ];
 
@@ -134,8 +152,52 @@ export function DashboardSidebar() {
         </nav>
       </div>
 
+      {/* Content Menu */}
+      <div className="px-4 py-2 mt-4">
+        <h3 className="text-xs uppercase tracking-wider text-gray-500 font-semibold mb-2">Conteúdo</h3>
+        <nav className="space-y-1">
+          {contentItems.map((item) => (
+            <Link 
+              key={item.href} 
+              href={item.href}
+              className={cn(
+                "flex items-center space-x-3 px-3 py-2 rounded-lg text-sm transition-colors",
+                isActive(item.href) 
+                  ? "bg-zinc-800 text-white" 
+                  : "text-gray-400 hover:bg-zinc-900 hover:text-white"
+              )}
+            >
+              <item.icon className="h-4 w-4" />
+              <span>{item.title}</span>
+            </Link>
+          ))}
+        </nav>
+      </div>
+
+      {/* Sections Menu */}
+      <div className="px-4 py-2 mt-4">
+        <h3 className="text-xs uppercase tracking-wider text-gray-500 font-semibold mb-2">Seções</h3>
+        <nav className="space-y-1">
+          {sectionsItems.map((item) => (
+            <Link 
+              key={item.href} 
+              href={item.href}
+              className={cn(
+                "flex items-center space-x-3 px-3 py-2 rounded-lg text-sm transition-colors",
+                isActive(item.href) 
+                  ? "bg-zinc-800 text-white" 
+                  : "text-gray-400 hover:bg-zinc-900 hover:text-white"
+              )}
+            >
+              <item.icon className="h-4 w-4" />
+              <span>{item.title}</span>
+            </Link>
+          ))}
+        </nav>
+      </div>
+
       {/* Settings Menu */}
-      <div className="px-4 py-2 mt-2">
+      <div className="px-4 py-2 mt-4">
         <h3 className="text-xs uppercase tracking-wider text-gray-500 font-semibold mb-2">Configurações</h3>
         <nav className="space-y-1">
           {settingsItems.map((item) => (

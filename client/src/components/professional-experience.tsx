@@ -17,8 +17,8 @@ export function ProfessionalExperience({ experiences }: ProfessionalExperiencePr
   return (
     <div className="space-y-8">
       <div className="flex items-center gap-4 mb-8">
-        <div className="bg-green-500/20 rounded-lg p-3">
-          <BriefcaseIcon className="h-6 w-6 text-green-500" />
+        <div className="bg-blue-900/20 rounded-lg p-3">
+          <BriefcaseIcon className="h-6 w-6 text-blue-900" />
         </div>
         <h2 className="text-2xl sm:text-3xl font-semibold">Experiência</h2>
       </div>
@@ -30,12 +30,12 @@ export function ProfessionalExperience({ experiences }: ProfessionalExperiencePr
             className="relative pl-8 border-l-2 border-zinc-800 animate-on-scroll"
             style={{ animationDelay: `${index * 150}ms` }}
           >
-            {/* Green dot on timeline */}
-            <div className="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-green-500" />
+            {/* Blue dot on timeline */}
+            <div className="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-blue-800" />
             
             <div className="mb-2">
               <h3 className="text-xl font-medium text-white">
-                {exp.title} <span className="text-green-500">@ {exp.company}</span>
+                {exp.title} <span className="text-blue-800">@ {exp.company}</span>
               </h3>
               <p className="text-gray-400 text-sm mt-1">
                 {exp.period}

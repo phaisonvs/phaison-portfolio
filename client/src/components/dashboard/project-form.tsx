@@ -286,35 +286,6 @@ export function ProjectForm({ projectId, onSuccess }: ProjectFormProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <FormField
             control={form.control}
-            name="category"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Categoria</FormLabel>
-                <Select
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                  value={field.value}
-                >
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Selecione uma categoria" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    <SelectItem value="Website">Website</SelectItem>
-                    <SelectItem value="Mobile App">Aplicativo Móvel</SelectItem>
-                    <SelectItem value="3D Design">Design 3D</SelectItem>
-                    <SelectItem value="UI/UX">UI/UX</SelectItem>
-                    <SelectItem value="Branding">Branding</SelectItem>
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          
-          <FormField
-            control={form.control}
             name="publishedStatus"
             render={({ field }) => (
               <FormItem>
@@ -333,6 +304,34 @@ export function ProjectForm({ projectId, onSuccess }: ProjectFormProps) {
                     <SelectItem value="draft">Rascunho</SelectItem>
                     <SelectItem value="published">Publicado</SelectItem>
                     <SelectItem value="hidden">Oculto</SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          
+          <FormField
+            control={form.control}
+            name="sectionDisplay"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Seção de exibição</FormLabel>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                  value={field.value}
+                >
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Selecione onde exibir o projeto" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value="general">Geral</SelectItem>
+                    <SelectItem value="featured">Destaque</SelectItem>
+                    <SelectItem value="best">Melhores</SelectItem>
+                    <SelectItem value="top">Top Templates</SelectItem>
                   </SelectContent>
                 </Select>
                 <FormMessage />
@@ -416,34 +415,7 @@ export function ProjectForm({ projectId, onSuccess }: ProjectFormProps) {
           />
         </div>
 
-        {/* Section Display */}
-        <FormField
-          control={form.control}
-          name="sectionDisplay"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Seção de exibição</FormLabel>
-              <Select
-                onValueChange={field.onChange}
-                defaultValue={field.value}
-                value={field.value}
-              >
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Selecione onde exibir o projeto" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  <SelectItem value="general">Geral</SelectItem>
-                  <SelectItem value="featured">Destaque</SelectItem>
-                  <SelectItem value="best">Melhores</SelectItem>
-                  <SelectItem value="top">Top Templates</SelectItem>
-                </SelectContent>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+
 
         {/* Gallery Images */}
         <FormField
