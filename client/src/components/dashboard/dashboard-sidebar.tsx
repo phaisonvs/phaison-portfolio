@@ -1,18 +1,14 @@
 import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/hooks/use-auth";
-import logoPhaison from "@assets/logo-phaison.png";
 import { 
   LayoutDashboard, 
   FolderKanban, 
   PlusCircle,
   Settings, 
-  BarChart3,
   Home,
   Box,
   SquareCode,
-  Users,
-  BookOpen,
   HelpCircle,
   LogOut
 } from "lucide-react";
@@ -31,11 +27,6 @@ const mainMenuItems = [
     href: "/dashboard/new-project",
   },
   {
-    title: "Projetos",
-    icon: FolderKanban,
-    href: "/dashboard/projects",
-  },
-  {
     title: "Home",
     icon: Home,
     href: "/",
@@ -43,29 +34,29 @@ const mainMenuItems = [
   },
 ];
 
-const resourcesItems = [
+const projectStatusItems = [
   {
-    title: "Projetos",
-    icon: Box,
-    href: "/dashboard/projects",
+    title: "Projetos Publicados",
+    icon: FolderKanban,
+    href: "/dashboard/projects/published",
   },
   {
-    title: "Templates",
+    title: "Projetos Ocultos",
+    icon: Box,
+    href: "/dashboard/projects/hidden",
+  },
+  {
+    title: "Rascunhos",
     icon: SquareCode,
-    href: "/dashboard/templates",
+    href: "/dashboard/projects/drafts",
   },
 ];
 
-const connectItems = [
+const settingsItems = [
   {
-    title: "Contato",
-    icon: Users,
-    href: "/dashboard/contacts",
-  },
-  {
-    title: "Feed",
-    icon: BookOpen,
-    href: "/dashboard/feed",
+    title: "Configurações",
+    icon: Settings,
+    href: "/dashboard/settings",
   },
 ];
 
@@ -86,16 +77,6 @@ export function DashboardSidebar() {
 
   return (
     <div className="h-full py-4 flex flex-col bg-black">
-      {/* Header with logo */}
-      <div className="px-4 mb-6">
-        <Link href="/dashboard" className="flex items-center space-x-2">
-          <img src={logoPhaison} alt="Phaison Logo" className="h-8" />
-          <div>
-            <span className="font-semibold text-sm text-white">Phaison Design</span>
-          </div>
-        </Link>
-      </div>
-
       {/* User Profile */}
       <div className="px-4 my-4">
         <div className="flex items-center space-x-3">
@@ -131,11 +112,11 @@ export function DashboardSidebar() {
         </nav>
       </div>
 
-      {/* Resources Section */}
+      {/* Project Status Menu */}
       <div className="px-4 py-2 mt-4">
-        <h3 className="text-xs uppercase tracking-wider text-gray-500 font-semibold mb-2">Recursos</h3>
+        <h3 className="text-xs uppercase tracking-wider text-gray-500 font-semibold mb-2">Projetos</h3>
         <nav className="space-y-1">
-          {resourcesItems.map((item) => (
+          {projectStatusItems.map((item) => (
             <Link 
               key={item.href} 
               href={item.href}
@@ -153,11 +134,11 @@ export function DashboardSidebar() {
         </nav>
       </div>
 
-      {/* Connect Section */}
+      {/* Settings Menu */}
       <div className="px-4 py-2 mt-2">
-        <h3 className="text-xs uppercase tracking-wider text-gray-500 font-semibold mb-2">Conectar</h3>
+        <h3 className="text-xs uppercase tracking-wider text-gray-500 font-semibold mb-2">Configurações</h3>
         <nav className="space-y-1">
-          {connectItems.map((item) => (
+          {settingsItems.map((item) => (
             <Link 
               key={item.href} 
               href={item.href}
@@ -179,19 +160,6 @@ export function DashboardSidebar() {
       <div className="mt-auto">
         <div className="px-4 py-2">
           <nav className="space-y-1">
-            <Link 
-              href="/dashboard/settings"
-              className={cn(
-                "flex items-center space-x-3 px-3 py-2 rounded-lg text-sm transition-colors",
-                isActive('/dashboard/settings') 
-                  ? "bg-zinc-800 text-white" 
-                  : "text-gray-400 hover:bg-zinc-900 hover:text-white"
-              )}
-            >
-              <Settings className="h-4 w-4" />
-              <span>Configurações</span>
-            </Link>
-            
             <Link 
               href="/dashboard/help"
               className="flex items-center space-x-3 px-3 py-2 rounded-lg text-sm text-gray-400 hover:bg-zinc-900 hover:text-white transition-colors"

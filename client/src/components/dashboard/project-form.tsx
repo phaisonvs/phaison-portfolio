@@ -315,10 +315,10 @@ export function ProjectForm({ projectId, onSuccess }: ProjectFormProps) {
           name="tags"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Tags (comma separated)</FormLabel>
+              <FormLabel>Tags (separadas por vírgula)</FormLabel>
               <FormControl>
                 <Input 
-                  placeholder="e.g. React, UI Design, 3D"
+                  placeholder="ex: React, UI Design, 3D"
                   {...field} 
                 />
               </FormControl>
@@ -327,7 +327,7 @@ export function ProjectForm({ projectId, onSuccess }: ProjectFormProps) {
               {/* Show existing tags as suggestions */}
               {allTags && allTags.length > 0 && (
                 <div className="mt-2">
-                  <p className="text-xs text-gray-400 mb-1">Suggested tags:</p>
+                  <p className="text-xs text-gray-400 mb-1">Tags sugeridas:</p>
                   <div className="flex flex-wrap gap-1">
                     {allTags.map((tag: { id: number, name: string }) => (
                       <Button
@@ -444,7 +444,7 @@ export function ProjectForm({ projectId, onSuccess }: ProjectFormProps) {
             variant="outline"
             onClick={onSuccess}
           >
-            Cancel
+            Cancelar
           </Button>
           
           <Button 
@@ -454,10 +454,10 @@ export function ProjectForm({ projectId, onSuccess }: ProjectFormProps) {
             {isSubmitting ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                {projectId ? "Updating..." : "Creating..."}
+                {projectId ? "Atualizando..." : "Criando..."}
               </>
             ) : (
-              projectId ? "Update Project" : "Create Project"
+              projectId ? "Atualizar Projeto" : "Criar Projeto"
             )}
           </Button>
         </div>
