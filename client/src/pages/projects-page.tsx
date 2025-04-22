@@ -9,6 +9,7 @@ import { ProjectWithTags } from "@shared/schema";
 import { Loader2, ArrowLeft, Home } from "lucide-react";
 
 export default function ProjectsPage() {
+  const [, navigate] = useLocation();
   const { data: projects, isLoading } = useQuery<ProjectWithTags[]>({
     queryKey: ["/api/projects"],
   });
@@ -39,9 +40,20 @@ export default function ProjectsPage() {
       <Header />
 
       <main className="flex-grow container mx-auto px-4 py-12">
+        <div className="flex justify-between items-center mb-6">
+          <h1 className="text-4xl font-semibold">Projects</h1>
+          <Button 
+            variant="outline" 
+            className="rounded-full"
+            onClick={() => navigate('/')}
+          >
+            <Home className="h-4 w-4 mr-2" />
+            Voltar para Homepage
+          </Button>
+        </div>
+      
         <section>
           <div className="mb-10">
-            <h1 className="text-4xl font-semibold mb-6">Projects</h1>
             <p className="text-gray-400 mb-8 max-w-2xl">
               Explore our collection of creative projects. Filter by category to find exactly what you're looking for.
             </p>

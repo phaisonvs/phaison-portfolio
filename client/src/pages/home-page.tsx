@@ -7,6 +7,7 @@ import { ProjectCard } from "@/components/project-card";
 import { CategoryCard } from "@/components/category-card";
 import { PluginCard } from "@/components/plugin-card";
 import { TemplateCard } from "@/components/template-card";
+import { ProfessionalExperience } from "@/components/professional-experience";
 import { useQuery } from "@tanstack/react-query";
 import { ProjectWithTags } from "@shared/schema";
 import { Box, SlidersIcon, ImageIcon, LightbulbIcon, ChevronLeft, ChevronRight } from "lucide-react";
@@ -446,6 +447,37 @@ export default function HomePage() {
                 </Link>
               </Button>
             </div>
+          </div>
+        </section>
+
+        {/* Professional Experience */}
+        <section className="py-16 px-4">
+          <div className="container mx-auto animate-on-scroll">
+            <ProfessionalExperience 
+              experiences={[
+                {
+                  title: "Frontend Developer",
+                  company: "Edgmonics Log",
+                  period: "Novembro 2023 - Atual",
+                  description: "Leveraged HTML5, CSS3, JavaScript (Vue.js), and TypeScript for tasks ranging from maintenance to new feature development and bug fixing. Integrated tools for Android compilation, with notable contributions including Google Maps API integration.",
+                  skills: ["HTML5", "CSS3", "JavaScript", "Vue.js", "TypeScript", "Google Maps API"]
+                },
+                {
+                  title: "Full Stack Developer",
+                  company: "CreateApps LLC",
+                  period: "Abril 2023 - Julho 2023",
+                  description: "Achieved system optimization and scalability through meticulous maintenance and improvement, employing React hooks and TypeScript with Next.js. Also pioneered the development of new applications, implementing tools for reusable components, ensuring uniform and scalable interfaces.",
+                  skills: ["React", "TypeScript", "Next.js", "UI/UX", "Responsive Design"]
+                },
+                {
+                  title: "Frontend Developer",
+                  company: "IvaLabs",
+                  period: "Fevereiro 2022 - Junho 2023",
+                  description: "Led UI/UX design initiatives for websites focused on feature delivery and engagement with high-performing websites and systems. Enhanced SEO visibility through a 30% increase in organic traffic while maintaining uncompromised speed through dynamic SEO strategies.",
+                  skills: ["HTML", "CSS", "JavaScript", "SEO", "UI/UX", "Performance Optimization"]
+                }
+              ]}
+            />
           </div>
         </section>
       </main>
