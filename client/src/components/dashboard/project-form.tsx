@@ -302,6 +302,7 @@ export function ProjectForm({ projectId, onSuccess }: ProjectFormProps) {
                   <SelectContent>
                     <SelectItem value="draft">Rascunho</SelectItem>
                     <SelectItem value="published">Publicado</SelectItem>
+                    <SelectItem value="hidden">Oculto</SelectItem>
                   </SelectContent>
                 </Select>
                 <FormMessage />
