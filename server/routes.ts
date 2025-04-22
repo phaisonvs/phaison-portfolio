@@ -167,6 +167,53 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Update project status endpoint
+  app.patch("/api/projects/:id/status", async (req, res) => {
+    if (!req.isAuthenticated()) {
+      return res.status(401).json({ message: "Não autorizado" });
+    }
+
+    try {
+      const id = parseInt(req.params.id);
+      if (isNaN(id)) {
+        return res.status(400).json({ message: "ID de projeto inválido" });
+      }
+
+      const project = await storage.getProjectById(id);
+      if (!project) {
+        return res.status(404).json({ message: "Projeto não encontrado" });
+      }
+
+      if (project.project.userId !== req.user.id) {
+        return res.status(403).json({ message: "Proibido: Você não é dono deste projeto" });
+      }
+
+      // Validate status
+      const statusSchema = z.object({
+        publishedStatus: z.enum(['published', 'draft', 'hidden'])
+      });
+
+      const validationResult = statusSchema.safeParse(req.body);
+      if (!validationResult.success) {
+        return res.status(400).json({ 
+          message: "Status de publicação inválido", 
+          errors: validationResult.error.format() 
+        });
+      }
+
+      // Update project status
+      await storage.updateProject(id, {
+        ...project.project,
+        publishedStatus: validationResult.data.publishedStatus
+      });
+      
+      const updatedProject = await storage.getProjectById(id);
+      res.json(updatedProject);
+    } catch (error) {
+      res.status(500).json({ message: "Falha ao atualizar o status do projeto" });
+    }
+  });
+
   // Tags endpoints
   app.get("/api/tags", async (req, res) => {
     try {
