@@ -128,6 +128,7 @@ export default function HomePage() {
                               title: "Projeto Exemplo",
                               description: "Um belo projeto de exemplo",
                               imageUrl: `https://source.unsplash.com/random/600x800?design,${index}`,
+                              galleryImages: [],
                               userId: 1,
                               category: "Exemplo",
                               publishedStatus: "published",

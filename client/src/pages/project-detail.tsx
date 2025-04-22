@@ -125,70 +125,179 @@ export default function ProjectDetail() {
             
             {/* Seção de recursos/funcionalidades */}
             <div className="mt-10">
-              <h2 className="text-2xl font-semibold mb-8">Funcionalidades</h2>
+              <h2 className="text-2xl font-semibold mb-8">Características do Projeto</h2>
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {/* Recurso 1 */}
-                <div className="bg-zinc-900 rounded-xl p-6 border border-zinc-800">
-                  <h3 className="text-xl font-medium mb-3">Pagamentos online</h3>
-                  <p className="text-gray-400 mb-4">
-                    Aceite pagamentos digitais de clientes de forma simples e segura, com confirmações automáticas.
-                  </p>
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    {["Cartões", "PIX", "Boleto"].map(method => (
-                      <span key={method} className="inline-flex items-center px-3 py-1 bg-zinc-800 rounded-full text-xs">
-                        {method}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                
-                {/* Recurso 2 */}
-                <div className="bg-zinc-900 rounded-xl p-6 border border-zinc-800">
-                  <h3 className="text-xl font-medium mb-3">Pagamentos presenciais</h3>
-                  <p className="text-gray-400 mb-4">
-                    Configure seu terminal para aceitar pagamentos em qualquer lugar com segurança avançada.
-                  </p>
-                  <div className="mt-4">
-                    <div className="bg-zinc-800 inline-block p-2 rounded-lg">
-                      <div className="bg-black rounded-lg p-3 inline-block">
-                        <div className="text-center text-2xl font-semibold">€500</div>
+                {/* Recursos com base na categoria do projeto */}
+                {project.project.category === "Website" && (
+                  <>
+                    <div className="bg-zinc-900 rounded-xl p-6 border border-zinc-800">
+                      <h3 className="text-xl font-medium mb-3">Design Responsivo</h3>
+                      <p className="text-gray-400 mb-4">
+                        Experiência perfeita em todos os dispositivos, de desktops a smartphones.
+                      </p>
+                      <div className="flex flex-wrap gap-2 mt-4">
+                        {["Mobile", "Tablet", "Desktop"].map(device => (
+                          <span key={device} className="inline-flex items-center px-3 py-1 bg-zinc-800 rounded-full text-xs">
+                            {device}
+                          </span>
+                        ))}
                       </div>
                     </div>
-                  </div>
-                </div>
-                
-                {/* Recurso 3 */}
-                <div className="bg-zinc-900 rounded-xl p-6 border border-zinc-800">
-                  <h3 className="text-xl font-medium mb-3">Receba pagamentos rápido</h3>
-                  <p className="text-gray-400 mb-4">
-                    Use links de pagamento para facilitar transações e receber valores de forma simples.
-                  </p>
-                  <div className="mt-4">
-                    <div className="bg-white inline-block p-2 rounded-lg">
-                      <div className="text-center text-2xl font-semibold text-black">€8</div>
+                    
+                    <div className="bg-zinc-900 rounded-xl p-6 border border-zinc-800">
+                      <h3 className="text-xl font-medium mb-3">Performance Otimizada</h3>
+                      <p className="text-gray-400 mb-4">
+                        Carregamento rápido e experiência fluida, com SEO aprimorado para melhor visibilidade.
+                      </p>
+                      <div className="mt-4">
+                        <div className="bg-green-500/20 inline-block px-3 py-1 rounded-full">
+                          <span className="text-green-500 text-sm font-medium">Performance Score: 96</span>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
+                    
+                    <div className="bg-zinc-900 rounded-xl p-6 border border-zinc-800">
+                      <h3 className="text-xl font-medium mb-3">Gestão de Conteúdo</h3>
+                      <p className="text-gray-400 mb-4">
+                        Painel administrativo intuitivo para gerenciar todos os aspectos do site.
+                      </p>
+                      <div className="mt-4">
+                        <div className="bg-zinc-800 px-3 py-1 rounded-full inline-block">
+                          <span className="text-white/80 text-sm">CMS Integrado</span>
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                )}
+
+                {project.project.category === "Mobile App" && (
+                  <>
+                    <div className="bg-zinc-900 rounded-xl p-6 border border-zinc-800">
+                      <h3 className="text-xl font-medium mb-3">Experiência Nativa</h3>
+                      <p className="text-gray-400 mb-4">
+                        Desenvolvido para iOS e Android utilizando as melhores práticas de cada plataforma.
+                      </p>
+                      <div className="flex flex-wrap gap-2 mt-4">
+                        {["iOS", "Android", "Cross-platform"].map(platform => (
+                          <span key={platform} className="inline-flex items-center px-3 py-1 bg-zinc-800 rounded-full text-xs">
+                            {platform}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    <div className="bg-zinc-900 rounded-xl p-6 border border-zinc-800">
+                      <h3 className="text-xl font-medium mb-3">Funcionamento Offline</h3>
+                      <p className="text-gray-400 mb-4">
+                        Acesso às funcionalidades principais mesmo sem conexão com internet.
+                      </p>
+                      <div className="mt-4">
+                        <div className="bg-blue-500/20 inline-block px-3 py-1 rounded-full">
+                          <span className="text-blue-500 text-sm font-medium">Sincronização Inteligente</span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-zinc-900 rounded-xl p-6 border border-zinc-800">
+                      <h3 className="text-xl font-medium mb-3">Notificações Push</h3>
+                      <p className="text-gray-400 mb-4">
+                        Sistema de engajamento com notificações personalizadas baseadas no perfil do usuário.
+                      </p>
+                      <div className="mt-4">
+                        <div className="bg-zinc-800 px-3 py-1 rounded-full inline-block">
+                          <span className="text-white/80 text-sm">Engajamento +45%</span>
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                )}
+
+                {/* Recursos genéricos para outras categorias */}
+                {(project.project.category !== "Website" && project.project.category !== "Mobile App") && (
+                  <>
+                    <div className="bg-zinc-900 rounded-xl p-6 border border-zinc-800">
+                      <h3 className="text-xl font-medium mb-3">Design Intuitivo</h3>
+                      <p className="text-gray-400 mb-4">
+                        Interface pensada para facilitar a interação e proporcionar a melhor experiência de usuário.
+                      </p>
+                      <div className="flex flex-wrap gap-2 mt-4">
+                        {["UX", "UI", "Acessibilidade"].map(feature => (
+                          <span key={feature} className="inline-flex items-center px-3 py-1 bg-zinc-800 rounded-full text-xs">
+                            {feature}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    <div className="bg-zinc-900 rounded-xl p-6 border border-zinc-800">
+                      <h3 className="text-xl font-medium mb-3">Personalização</h3>
+                      <p className="text-gray-400 mb-4">
+                        Múltiplas opções de customização para atender às necessidades específicas de cada cliente.
+                      </p>
+                      <div className="mt-4">
+                        <div className="bg-purple-500/20 inline-block px-3 py-1 rounded-full">
+                          <span className="text-purple-500 text-sm font-medium">100% Adaptável</span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-zinc-900 rounded-xl p-6 border border-zinc-800">
+                      <h3 className="text-xl font-medium mb-3">Suporte Premium</h3>
+                      <p className="text-gray-400 mb-4">
+                        Equipe especializada disponível para garantir o sucesso do projeto em todas as etapas.
+                      </p>
+                      <div className="mt-4">
+                        <div className="bg-zinc-800 px-3 py-1 rounded-full inline-block">
+                          <span className="text-white/80 text-sm">24/7 Disponível</span>
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                )}
               </div>
               
-              {/* Banner grande */}
-              <div className="mt-8 bg-black rounded-xl overflow-hidden">
-                <div className="p-6">
-                  <h3 className="text-xl font-medium mb-2">Tap to Pay no iPhone</h3>
-                  <p className="text-gray-400 mb-4">
-                    Aceite pagamentos contactless diretamente no seu iPhone, sem hardware adicional.
-                  </p>
-                  <button className="inline-flex items-center px-4 py-2 bg-white text-black rounded-full text-sm font-medium">
-                    Saber mais
-                  </button>
-                </div>
-                <div className="flex justify-end">
-                  <img 
-                    src="https://images.unsplash.com/photo-1556741533-6e6a62bd8b49?ixlib=rb-1.2.1&auto=format&fit=crop&w=450&q=80" 
-                    alt="Pagamento com iPhone" 
-                    className="h-48 w-auto object-cover"
-                  />
+              {/* Banner específico baseado na categoria */}
+              <div className="mt-8 bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800">
+                <div className="grid grid-cols-1 md:grid-cols-2">
+                  <div className="p-6 flex flex-col justify-center">
+                    {project.project.category === "Website" && (
+                      <>
+                        <h3 className="text-xl font-medium mb-2">Integração com APIs</h3>
+                        <p className="text-gray-400 mb-4">
+                          Conecte seu site a sistemas externos facilmente através de APIs RESTful e GraphQL.
+                        </p>
+                      </>
+                    )}
+                    {project.project.category === "Mobile App" && (
+                      <>
+                        <h3 className="text-xl font-medium mb-2">Biometria e Segurança</h3>
+                        <p className="text-gray-400 mb-4">
+                          Autenticação avançada com reconhecimento facial e digital para maior segurança.
+                        </p>
+                      </>
+                    )}
+                    {(project.project.category !== "Website" && project.project.category !== "Mobile App") && (
+                      <>
+                        <h3 className="text-xl font-medium mb-2">Análise de Dados</h3>
+                        <p className="text-gray-400 mb-4">
+                          Visualizações interativas e relatórios detalhados para tomada de decisões inteligentes.
+                        </p>
+                      </>
+                    )}
+                    <button className="inline-flex items-center px-4 py-2 bg-white text-black rounded-full text-sm font-medium self-start">
+                      Saiba mais
+                    </button>
+                  </div>
+                  <div className="flex justify-center items-center p-6 bg-gradient-to-br from-zinc-900 to-black">
+                    <img 
+                      src={(project.project.galleryImages && project.project.galleryImages.length > 0) 
+                        ? project.project.galleryImages[0] 
+                        : project.project.imageUrl} 
+                      alt={project.project.title} 
+                      className="max-h-48 w-auto object-contain rounded-md"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
