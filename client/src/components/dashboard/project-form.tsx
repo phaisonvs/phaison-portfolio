@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -28,12 +28,16 @@ import { Loader2 } from "lucide-react";
 
 // Form schema
 const projectFormSchema = z.object({
-  title: z.string().min(3, "Title must be at least 3 characters"),
-  description: z.string().min(10, "Description must be at least 10 characters"),
-  imageUrl: z.string().url("Please enter a valid URL"),
-  category: z.string().min(1, "Please select a category"),
+  title: z.string().min(3, "O título deve ter pelo menos 3 caracteres"),
+  description: z.string().min(10, "A descrição deve ter pelo menos 10 caracteres"),
+  imageUrl: z.string().url("Por favor, insira uma URL válida para a imagem principal"),
+  category: z.string().min(1, "Por favor, selecione uma categoria"),
   publishedStatus: z.string(),
   tags: z.string().optional(),
+  figmaUrl: z.string().url("Por favor, insira uma URL válida do Figma").or(z.string().length(0)).optional(),
+  videoUrl: z.string().url("Por favor, insira uma URL válida do vídeo").or(z.string().length(0)).optional(),
+  sectionDisplay: z.string().optional(),
+  galleryImages: z.array(z.string()).optional().default([]),
 });
 
 type ProjectFormValues = z.infer<typeof projectFormSchema>;
@@ -136,6 +140,10 @@ export function ProjectForm({ projectId, onSuccess }: ProjectFormProps) {
     category: "",
     publishedStatus: "draft",
     tags: "",
+    figmaUrl: "",
+    videoUrl: "",
+    sectionDisplay: "general",
+    galleryImages: [],
   };
 
   // If editing, set form values from existing project
@@ -149,12 +157,16 @@ export function ProjectForm({ projectId, onSuccess }: ProjectFormProps) {
           category: existingProject.project.category,
           publishedStatus: existingProject.project.publishedStatus,
           tags: existingProject.tags.map((tag: any) => tag.name).join(", "),
+          figmaUrl: existingProject.project.figmaUrl || "",
+          videoUrl: existingProject.project.videoUrl || "",
+          sectionDisplay: existingProject.project.sectionDisplay || "general",
+          galleryImages: existingProject.project.galleryImages || [],
         } 
       : defaultValues,
   });
 
   // Update form values when existing project data is loaded
-  React.useEffect(() => {
+  useEffect(() => {
     if (existingProject && !form.formState.isDirty) {
       form.reset({
         title: existingProject.project.title,
@@ -163,6 +175,10 @@ export function ProjectForm({ projectId, onSuccess }: ProjectFormProps) {
         category: existingProject.project.category,
         publishedStatus: existingProject.project.publishedStatus,
         tags: existingProject.tags.map((tag: any) => tag.name).join(", "),
+        figmaUrl: existingProject.project.figmaUrl || "",
+        videoUrl: existingProject.project.videoUrl || "",
+        sectionDisplay: existingProject.project.sectionDisplay || "general",
+        galleryImages: existingProject.project.galleryImages || [],
       });
     }
   }, [existingProject, form]);
@@ -196,9 +212,9 @@ export function ProjectForm({ projectId, onSuccess }: ProjectFormProps) {
           name="title"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Project Title</FormLabel>
+              <FormLabel>Título do Projeto</FormLabel>
               <FormControl>
-                <Input placeholder="Enter project title" {...field} />
+                <Input placeholder="Digite o título do projeto" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -210,10 +226,10 @@ export function ProjectForm({ projectId, onSuccess }: ProjectFormProps) {
           name="description"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Description</FormLabel>
+              <FormLabel>Descrição</FormLabel>
               <FormControl>
                 <Textarea 
-                  placeholder="Describe your project"
+                  placeholder="Descreva seu projeto"
                   className="min-h-[120px]"
                   {...field} 
                 />
@@ -228,7 +244,7 @@ export function ProjectForm({ projectId, onSuccess }: ProjectFormProps) {
           name="imageUrl"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Image URL</FormLabel>
+              <FormLabel>URL da Imagem Principal</FormLabel>
               <FormControl>
                 <Input placeholder="https://example.com/image.jpg" {...field} />
               </FormControl>
@@ -243,7 +259,7 @@ export function ProjectForm({ projectId, onSuccess }: ProjectFormProps) {
             name="category"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Category</FormLabel>
+                <FormLabel>Categoria</FormLabel>
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={field.value}
@@ -251,13 +267,13 @@ export function ProjectForm({ projectId, onSuccess }: ProjectFormProps) {
                 >
                   <FormControl>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select a category" />
+                      <SelectValue placeholder="Selecione uma categoria" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
                     <SelectItem value="Website">Website</SelectItem>
-                    <SelectItem value="Mobile App">Mobile App</SelectItem>
-                    <SelectItem value="3D Design">3D Design</SelectItem>
+                    <SelectItem value="Mobile App">Aplicativo Móvel</SelectItem>
+                    <SelectItem value="3D Design">Design 3D</SelectItem>
                     <SelectItem value="UI/UX">UI/UX</SelectItem>
                     <SelectItem value="Branding">Branding</SelectItem>
                   </SelectContent>
@@ -280,12 +296,12 @@ export function ProjectForm({ projectId, onSuccess }: ProjectFormProps) {
                 >
                   <FormControl>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select status" />
+                      <SelectValue placeholder="Selecione o status" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="draft">Draft</SelectItem>
-                    <SelectItem value="published">Published</SelectItem>
+                    <SelectItem value="draft">Rascunho</SelectItem>
+                    <SelectItem value="published">Publicado</SelectItem>
                   </SelectContent>
                 </Select>
                 <FormMessage />
@@ -334,6 +350,90 @@ export function ProjectForm({ projectId, onSuccess }: ProjectFormProps) {
                   </div>
                 </div>
               )}
+            </FormItem>
+          )}
+        />
+        
+        {/* Figma and Video URLs */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <FormField
+            control={form.control}
+            name="figmaUrl"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Link do Figma (opcional)</FormLabel>
+                <FormControl>
+                  <Input placeholder="https://www.figma.com/file/..." {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          
+          <FormField
+            control={form.control}
+            name="videoUrl"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Link do vídeo (opcional)</FormLabel>
+                <FormControl>
+                  <Input placeholder="https://www.youtube.com/watch?v=..." {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+
+        {/* Section Display */}
+        <FormField
+          control={form.control}
+          name="sectionDisplay"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Seção de exibição</FormLabel>
+              <Select
+                onValueChange={field.onChange}
+                defaultValue={field.value}
+                value={field.value}
+              >
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Selecione onde exibir o projeto" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="general">Geral</SelectItem>
+                  <SelectItem value="featured">Destaque</SelectItem>
+                  <SelectItem value="best">Melhores</SelectItem>
+                  <SelectItem value="top">Top Templates</SelectItem>
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        {/* Gallery Images */}
+        <FormField
+          control={form.control}
+          name="galleryImages"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Imagens da galeria (URLs separadas por linha)</FormLabel>
+              <FormControl>
+                <Textarea 
+                  placeholder="https://example.com/image1.jpg&#10;https://example.com/image2.jpg"
+                  className="min-h-[100px]"
+                  onChange={(e) => {
+                    const urls = e.target.value.split('\n').filter(url => url.trim());
+                    field.onChange(urls);
+                  }}
+                  value={Array.isArray(field.value) ? field.value.join('\n') : ''}
+                />
+              </FormControl>
+              <p className="text-xs text-gray-400 mt-1">Máximo 6 imagens. Adicione uma URL por linha.</p>
+              <FormMessage />
             </FormItem>
           )}
         />
