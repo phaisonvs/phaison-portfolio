@@ -14,10 +14,10 @@ export function PageTransition() {
       // Armazenar a nova localização
       setPrevLocation(location);
       
-      // Atraso de 2 segundos para mostrar a tela de loading
+      // Atraso de 1.5 segundos para mostrar a tela de loading
       const timer = setTimeout(() => {
         setIsLoading(false);
-      }, 2000);
+      }, 1500);
       
       return () => clearTimeout(timer);
     }

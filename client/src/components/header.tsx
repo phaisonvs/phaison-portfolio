@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useAuth } from "@/hooks/use-auth";
 import { Menu } from "lucide-react";
+import logoPath from "../assets/logo-phaison.png";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,10 +23,7 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-white/10 bg-black/90 backdrop-blur-sm">
       <div className="container mx-auto flex items-center justify-between py-4">
         <Link href="/" className="flex items-center space-x-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary">
-            <span className="text-primary-foreground font-semibold">P</span>
-          </div>
-          <span className="font-semibold text-lg">Portfolio</span>
+          <img src={logoPath} alt="Phaison Logo" className="h-8" />
         </Link>
 
         {/* Desktop Navigation */}
@@ -67,9 +65,6 @@ export function Header() {
             </>
           ) : (
             <>
-              <Link href="/auth" className="text-white/70 hover:text-white transition-colors duration-200">
-                Inscrever-se
-              </Link>
               <Link href="/auth" className="rounded-full bg-white text-black px-4 py-2 text-sm font-medium hover:bg-gray-200 transition duration-200">
                 Entrar
               </Link>
@@ -125,15 +120,6 @@ export function Header() {
                   </>
                 ) : (
                   <>
-                    <Link 
-                      href="/auth" 
-                      onClick={() => setIsMenuOpen(false)}
-                      className="block w-full"
-                    >
-                      <Button variant="outline" className="w-full mb-2">
-                        Inscrever-se
-                      </Button>
-                    </Link>
                     <Link 
                       href="/auth" 
                       onClick={() => setIsMenuOpen(false)}

@@ -13,13 +13,15 @@ export function ProjectCard({ project }: ProjectCardProps) {
   return (
     <Link href={`/projects/${project.project.id}`}>
       <Card className="group relative overflow-hidden rounded-xl bg-zinc-900 transition-all duration-300 hover:cursor-pointer hover:shadow-lg hover:shadow-primary/20">
-        <AspectRatio ratio={3/4} className="bg-zinc-900">
-          <img
-            src={project.project.imageUrl}
-            alt={project.project.title}
-            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-          />
-        </AspectRatio>
+        <div className="overflow-hidden">
+          <AspectRatio ratio={3/4} className="bg-zinc-900">
+            <img
+              src={project.project.imageUrl}
+              alt={project.project.title}
+              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+          </AspectRatio>
+        </div>
         <div className="p-4">
           <div className="flex items-center mb-2">
             <Avatar className="h-6 w-6 mr-2">
