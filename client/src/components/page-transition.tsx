@@ -28,11 +28,11 @@ export function PageTransition() {
       // Armazenar a nova localização
       setPrevLocation(location);
       
-      // Atraso de 1.5 segundos para a transição de página
+      // Atraso de 1 segundo para a transição de página
       transitionTimeoutRef.current = window.setTimeout(() => {
         setIsLoading(false);
         transitionTimeoutRef.current = null;
-      }, 1500);
+      }, 1000);
       
       // Timeout de segurança para garantir que o loading nunca fique preso (caso ocorra algum erro)
       safetyTimeoutRef.current = window.setTimeout(() => {

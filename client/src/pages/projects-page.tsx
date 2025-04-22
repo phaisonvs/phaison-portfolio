@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "wouter";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ProjectCard } from "@/components/project-card";
 import { Button } from "@/components/ui/button";
 import { useQuery } from "@tanstack/react-query";
 import { ProjectWithTags } from "@shared/schema";
-import { Loader2 } from "lucide-react";
+import { Loader2, ArrowLeft, Home } from "lucide-react";
 
 export default function ProjectsPage() {
   const { data: projects, isLoading } = useQuery<ProjectWithTags[]>({

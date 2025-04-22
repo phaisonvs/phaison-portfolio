@@ -11,6 +11,7 @@ import { ProjectWithTags } from "@shared/schema";
 import { getInitials } from "@/lib/utils";
 import { ArrowLeft, Loader2 } from "lucide-react";
 import { ImageGallery } from "@/components/image-gallery";
+import { PinterestGallery } from "@/components/pinterest-gallery";
 
 export default function ProjectDetail() {
   const { id } = useParams<{ id: string }>();
@@ -346,6 +347,56 @@ export default function ProjectDetail() {
                     </svg>
                   </button>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Pinterest Gallery Section */}
+        {project.project.galleryImages && project.project.galleryImages.length > 0 && (
+          <div className="mt-16">
+            <div className="animate-on-scroll">
+              <PinterestGallery 
+                images={project.project.galleryImages.map((img, index) => ({
+                  src: img,
+                  alt: `${project.project.title} - Image ${index + 1}`,
+                  title: `${project.project.title} - Detalhe ${index + 1}`,
+                  description: index === 0 ? "Vista principal do projeto" : 
+                              index === 1 ? "Detalhes de implementação" : 
+                              index === 2 ? "Resultado final" : 
+                              "Detalhe do projeto"
+                }))}
+              />
+            </div>
+          </div>
+        )}
+        
+        {/* Figma Prototype Section */}
+        <div className="mt-20 animate-on-scroll">
+          <h2 className="text-2xl font-semibold mb-8">Protótipo Figma</h2>
+          <div className="bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
+              <div className="flex flex-col justify-center">
+                <h3 className="text-xl font-medium mb-4">Processo de Design</h3>
+                <p className="text-gray-300 mb-6">
+                  Veja o protótipo interativo desenvolvido no Figma que serviu como base para este projeto. 
+                  Explore as telas, interações e o fluxo de usuário completo.
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  <Button className="rounded-full">
+                    Ver no Figma
+                  </Button>
+                  <Button variant="outline" className="rounded-full">
+                    Ver vídeo de demonstração
+                  </Button>
+                </div>
+              </div>
+              <div className="bg-black rounded-lg p-4 flex items-center justify-center">
+                <img 
+                  src="https://cdn.dribbble.com/users/2146089/screenshots/16367774/media/91f29afb7d1cd840bb4e13cdf0695dcf.png?compress=1&resize=1200x900&vertical=top" 
+                  alt="Figma Prototype Preview" 
+                  className="max-h-60 w-auto object-contain rounded-md" 
+                />
               </div>
             </div>
           </div>
