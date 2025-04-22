@@ -297,10 +297,12 @@ export default function HomePage() {
                     />
                   </CarouselItem>
                 </CarouselContent>
-                <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 lg:-translate-x-0 bg-black/40 hover:bg-black/60 border-none" />
-                <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 lg:translate-x-0 bg-black/40 hover:bg-black/60 border-none" />
+                <div className="flex justify-center items-center mt-4">
+                  <CarouselPrevious className="bg-black/40 hover:bg-black/60 border-none" />
+                  <CarouselNext className="bg-black/40 hover:bg-black/60 border-none" />
+                </div>
               </Carousel>
-              <CarouselDots api={pluginsApi} className="mt-6" />
+              <CarouselDots api={pluginsApi} className="mt-4" />
             </div>
           </div>
         </section>
@@ -398,10 +400,12 @@ export default function HomePage() {
                     />
                   </CarouselItem>
                 </CarouselContent>
-                <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 lg:-translate-x-0 bg-black/40 hover:bg-black/60 border-none" />
-                <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 lg:translate-x-0 bg-black/40 hover:bg-black/60 border-none" />
+                <div className="flex justify-center items-center mt-4">
+                  <CarouselPrevious className="bg-black/40 hover:bg-black/60 border-none" />
+                  <CarouselNext className="bg-black/40 hover:bg-black/60 border-none" />
+                </div>
               </Carousel>
-              <CarouselDots api={templatesApi} className="mt-6" />
+              <CarouselDots api={templatesApi} className="mt-4" />
             </div>
           </div>
         </section>
