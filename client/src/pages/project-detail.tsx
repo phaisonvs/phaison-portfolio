@@ -10,6 +10,7 @@ import { useQuery } from "@tanstack/react-query";
 import { ProjectWithTags } from "@shared/schema";
 import { getInitials } from "@/lib/utils";
 import { ArrowLeft, Loader2 } from "lucide-react";
+import { ImageGallery } from "@/components/image-gallery";
 
 export default function ProjectDetail() {
   const { id } = useParams<{ id: string }>();
@@ -81,13 +82,16 @@ export default function ProjectDetail() {
         </Button>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-          {/* Main image and details */}
+          {/* Gallery and details */}
           <div className="lg:col-span-8">
-            <div className="rounded-xl overflow-hidden mb-8">
-              <img
-                src={project.project.imageUrl}
-                alt={project.project.title}
-                className="w-full h-auto object-cover"
+            <div className="mb-8">
+              {/* Convertemos as imagens da galeria para o formato esperado pelo componente ImageGallery */}
+              <ImageGallery 
+                images={(project.project.galleryImages || []).map(image => ({
+                  src: image,
+                  alt: `${project.project.title} - Gallery image`
+                }))}
+                mainImage={project.project.imageUrl}
               />
             </div>
 

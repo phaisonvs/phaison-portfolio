@@ -15,7 +15,7 @@ export const projects = pgTable("projects", {
   title: text("title").notNull(),
   description: text("description").notNull(),
   imageUrl: text("image_url").notNull(), // Mantido para compatibilidade
-  galleryImages: json("gallery_images").$type<string[]>().default([]),
+  galleryImages: json("gallery_images").$type<string[]>().default([]).notNull(),
   userId: integer("user_id").notNull().references(() => users.id),
   category: text("category").notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
@@ -80,7 +80,7 @@ export const projectWithTagsSchema = z.object({
     title: z.string(),
     description: z.string(),
     imageUrl: z.string(),
-    galleryImages: z.array(z.string()).optional().default([]),
+    galleryImages: z.array(z.string()).default([]),
     userId: z.number(),
     category: z.string(),
     publishedStatus: z.string(),

@@ -88,6 +88,11 @@ export class MemStorage implements IStorage {
       title: "Portal da Empresa",
       description: "Site corporativo responsivo com animações suaves, experiência de usuário intuitiva e seções interativas. Desenvolvido com foco em desempenho e acessibilidade, utilizando as mais recentes tecnologias web para garantir que o site seja rápido, fácil de usar e visualmente impactante.",
       imageUrl: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+      galleryImages: [
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+      ],
       userId: demoUser.id,
       category: "Website",
       publishedStatus: "published"
@@ -103,6 +108,11 @@ export class MemStorage implements IStorage {
       title: "Aplicativo Fitness",
       description: "Aplicativo móvel para acompanhamento de exercícios e nutrição, com funcionalidades avançadas de monitoramento de progresso e planos personalizados. Interface limpa e minimalista que prioriza a facilidade de uso e motivação do usuário.",
       imageUrl: "https://images.unsplash.com/photo-1556656793-08538906a9f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+      galleryImages: [
+        "https://images.unsplash.com/photo-1605296867304-46d5465a13f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1532384748853-8f54a8f476e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1556817411-31ae72fa3ea0?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+      ],
       userId: demoUser.id,
       category: "Mobile App",
       publishedStatus: "published"
