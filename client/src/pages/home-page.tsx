@@ -69,7 +69,7 @@ export default function HomePage() {
       <main className="flex-grow">
         {/* Hero section */}
         <section className="py-16 md:py-24 px-4">
-          <div className="container mx-auto text-center max-w-4xl">
+          <div className="max-w-[1200px] mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-semibold leading-tight mb-6 animate-on-scroll">
               Modern portfolio design<br />for creative professionals
             </h1>
@@ -94,7 +94,7 @@ export default function HomePage() {
 
         {/* Project Highlights */}
         <section className="py-12 px-4">
-          <div className="container mx-auto">
+          <div className="max-w-[1200px] mx-auto">
             <div className="flex justify-between items-center mb-10">
               <h2 className="text-2xl md:text-3xl font-semibold animate-on-scroll">Best</h2>
               <Link href="/projects" className="text-primary hover:underline transition-all duration-200">

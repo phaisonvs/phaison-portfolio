@@ -21,7 +21,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-black/90 backdrop-blur-sm">
-      <div className="container mx-auto flex items-center justify-between py-4">
+      <div className="max-w-[1200px] mx-auto flex items-center justify-between py-4 px-4">
         <Link href="/" className="flex items-center space-x-2">
           <img src={logoPath} alt="Phaison Logo" className="h-8" />
         </Link>
