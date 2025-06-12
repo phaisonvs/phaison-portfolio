@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useAuth } from "@/hooks/use-auth";
 import { Menu } from "lucide-react";
-import logoPath from "../assets/logo-phaison.png";
+import logoPath from "@assets/logo-phaison_1749771969526.png";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -23,7 +23,7 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-white/10 bg-black/90 backdrop-blur-sm">
       <div className="max-w-[1200px] mx-auto flex items-center justify-between py-4 px-4">
         <Link href="/" className="flex items-center space-x-2">
-          <img src={logoPath} alt="Phaison Logo" className="h-8" />
+          <img src={logoPath} alt="Phaison Logo" className="h-[18px]" />
         </Link>
 
         {/* Desktop Navigation */}

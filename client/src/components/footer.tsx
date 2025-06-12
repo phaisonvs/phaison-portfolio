@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import logoPhaison from "@assets/logo-phaison.png";
+import logoPhaison from "@assets/logo-phaison_1749771969526.png";
 import { FaTwitter, FaInstagram, FaLinkedin, FaDribbble, FaBehance } from "react-icons/fa";
 
 export function Footer() {
@@ -10,7 +10,7 @@ export function Footer() {
           {/* Logo and Copyright */}
           <div className="flex items-center mb-6 md:mb-0">
             <Link href="/" className="transition-opacity hover:opacity-80">
-              <img src={logoPhaison} alt="Phaison Logo" className="h-8" />
+              <img src={logoPhaison} alt="Phaison Logo" className="h-[18px]" />
             </Link>
             <span className="ml-3 font-medium text-white">Phaison</span>
           </div>

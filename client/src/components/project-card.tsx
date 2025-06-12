@@ -12,7 +12,7 @@ interface ProjectCardProps {
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
     <Link href={`/projects/${project.project.id}`}>
-      <Card className="group relative overflow-hidden rounded-xl bg-zinc-900 transition-all duration-300 hover:cursor-pointer hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/20">
+      <Card className="group relative overflow-hidden rounded-xl bg-zinc-900 transition-all duration-300 hover:cursor-pointer hover:shadow-lg hover:shadow-primary/20">
         <div className="overflow-hidden">
           <AspectRatio ratio={3/4} className="bg-zinc-900">
             <img
