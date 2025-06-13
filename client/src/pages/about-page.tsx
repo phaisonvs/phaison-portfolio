@@ -89,15 +89,15 @@ export default function AboutPage() {
         <section className="py-16 px-4">
           <div className="max-w-[1200px] mx-auto">
             <div className="grid md:grid-cols-3 gap-8 animate-on-scroll">
-              <div className="text-center p-6 rounded-xl bg-zinc-900/50">
+              <div className="text-center p-6 rounded-xl bg-zinc-900/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300">
                 <div className="text-3xl font-bold text-primary mb-2">3+</div>
                 <div className="text-gray-400">Anos de Experiência</div>
               </div>
-              <div className="text-center p-6 rounded-xl bg-zinc-900/50">
+              <div className="text-center p-6 rounded-xl bg-zinc-900/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300">
                 <div className="text-3xl font-bold text-primary mb-2">50+</div>
                 <div className="text-gray-400">Projetos Realizados</div>
               </div>
-              <div className="text-center p-6 rounded-xl bg-zinc-900/50">
+              <div className="text-center p-6 rounded-xl bg-zinc-900/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300">
                 <div className="text-3xl font-bold text-primary mb-2">100%</div>
                 <div className="text-gray-400">Dedicação</div>
               </div>
@@ -171,15 +171,15 @@ export default function AboutPage() {
                 </p>
               </div>
               <div className="space-y-4">
-                <div className="p-4 border-l-4 border-primary bg-zinc-900/30">
+                <div className="p-4 border-l-4 border-primary bg-zinc-900/30 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 rounded-r-lg">
                   <h3 className="font-medium mb-2">Código Limpo</h3>
                   <p className="text-sm text-gray-400">Escrevo código pensando em quem vai mantê-lo amanhã</p>
                 </div>
-                <div className="p-4 border-l-4 border-primary bg-zinc-900/30">
+                <div className="p-4 border-l-4 border-primary bg-zinc-900/30 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 rounded-r-lg">
                   <h3 className="font-medium mb-2">Design Centrado no Usuário</h3>
                   <p className="text-sm text-gray-400">Cada decisão é tomada pensando na experiência final</p>
                 </div>
-                <div className="p-4 border-l-4 border-primary bg-zinc-900/30">
+                <div className="p-4 border-l-4 border-primary bg-zinc-900/30 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 rounded-r-lg">
                   <h3 className="font-medium mb-2">Aprendizado Contínuo</h3>
                   <p className="text-sm text-gray-400">Tecnologia evolui rápido, e eu evoluo junto</p>
                 </div>
