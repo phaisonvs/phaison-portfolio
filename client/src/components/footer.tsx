@@ -1,6 +1,6 @@
 import { Link } from "wouter";
-import logoPhaison from "@assets/logo-phaison_1749771969526.png";
-import { FaTwitter, FaInstagram, FaLinkedin, FaDribbble, FaBehance } from "react-icons/fa";
+import logoPhaison from "@assets/logo-phaison_1749772164016.png";
+import { FaInstagram, FaLinkedin } from "react-icons/fa";
 
 export function Footer() {
   return (
@@ -10,7 +10,7 @@ export function Footer() {
           {/* Logo and Copyright */}
           <div className="flex items-center mb-6 md:mb-0">
             <Link href="/" className="transition-opacity hover:opacity-80">
-              <img src={logoPhaison} alt="Phaison Logo" className="h-[18px]" />
+              <img src={logoPhaison} alt="Phaison Logo" className="h-[24px]" />
             </Link>
             <span className="ml-3 font-medium text-white">Phaison</span>
           </div>
@@ -18,38 +18,29 @@ export function Footer() {
           {/* Quick Links */}
           <div className="flex flex-wrap justify-center gap-6 md:gap-8 mb-6 md:mb-0">
             <Link href="/projects" className="text-gray-400 hover:text-white text-sm transition-colors">
-              Projects
+              Projetos
             </Link>
             <Link href="/templates" className="text-gray-400 hover:text-white text-sm transition-colors">
               Templates
             </Link>
             <Link href="/about" className="text-gray-400 hover:text-white text-sm transition-colors">
-              About
+              Sobre mim
             </Link>
             <Link href="/contact" className="text-gray-400 hover:text-white text-sm transition-colors">
-              Contact
+              Contato
             </Link>
             <Link href="/privacy" className="text-gray-400 hover:text-white text-sm transition-colors">
-              Privacy
+              Privacidade
             </Link>
           </div>
           
           {/* Social Icons */}
           <div className="flex space-x-4">
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-              <FaTwitter size={18} />
-            </a>
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
               <FaInstagram size={18} />
             </a>
             <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
               <FaLinkedin size={18} />
-            </a>
-            <a href="https://dribbble.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-              <FaDribbble size={18} />
-            </a>
-            <a href="https://behance.net" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-              <FaBehance size={18} />
             </a>
           </div>
         </div>

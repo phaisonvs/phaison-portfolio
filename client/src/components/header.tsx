@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useAuth } from "@/hooks/use-auth";
 import { Menu } from "lucide-react";
-import logoPath from "@assets/logo-phaison_1749771969526.png";
+import logoPath from "@assets/logo-phaison_1749772164016.png";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -23,7 +23,7 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-white/10 bg-black/90 backdrop-blur-sm">
       <div className="max-w-[1200px] mx-auto flex items-center justify-between py-4 px-4">
         <Link href="/" className="flex items-center space-x-2">
-          <img src={logoPath} alt="Phaison Logo" className="h-[18px]" />
+          <img src={logoPath} alt="Phaison Logo" className="h-[24px]" />
         </Link>
 
         {/* Desktop Navigation */}
@@ -32,13 +32,19 @@ export function Header() {
             href="/" 
             className={`transition-colors duration-200 ${isActive("/") ? "text-white" : "text-white/70 hover:text-primary"}`}
           >
-            Gallery
+            Galeria
           </Link>
           <Link 
             href="/projects" 
             className={`transition-colors duration-200 ${isActive("/projects") ? "text-white" : "text-white/70 hover:text-primary"}`}
           >
-            Projects
+            Projetos
+          </Link>
+          <Link 
+            href="/about" 
+            className={`transition-colors duration-200 ${isActive("/about") ? "text-white" : "text-white/70 hover:text-primary"}`}
+          >
+            Sobre mim
           </Link>
           {user && (
             <Link 
@@ -86,14 +92,21 @@ export function Header() {
                 className={`text-lg font-medium ${isActive("/") ? "text-white" : "text-white/70"}`}
                 onClick={() => setIsMenuOpen(false)}
               >
-                Gallery
+                Galeria
               </Link>
               <Link 
                 href="/projects" 
                 className={`text-lg font-medium ${isActive("/projects") ? "text-white" : "text-white/70"}`}
                 onClick={() => setIsMenuOpen(false)}
               >
-                Projects
+                Projetos
+              </Link>
+              <Link 
+                href="/about" 
+                className={`text-lg font-medium ${isActive("/about") ? "text-white" : "text-white/70"}`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Sobre mim
               </Link>
               {user && (
                 <Link 
