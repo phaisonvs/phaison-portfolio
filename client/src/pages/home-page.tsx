@@ -10,7 +10,8 @@ import { TemplateCard } from "@/components/template-card";
 
 import { useQuery } from "@tanstack/react-query";
 import { ProjectWithTags } from "@shared/schema";
-import { Box, SlidersIcon, ImageIcon, LightbulbIcon, ChevronLeft, ChevronRight } from "lucide-react";
+import { Box, SlidersIcon, ImageIcon, LightbulbIcon, ChevronLeft, ChevronRight, Download } from "lucide-react";
+import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 import { 
   Carousel, 
   CarouselContent, 
@@ -430,27 +431,83 @@ export default function HomePage() {
             </div>
             
             <h2 className="text-3xl md:text-5xl font-semibold mb-6 animate-on-scroll">
-              Become a creator today
+              Pronto para o próximo projeto?
             </h2>
             <p className="text-gray-400 text-lg md:text-xl mb-10 animate-on-scroll">
-              Join thousands of designers and developers who create and share amazing projects. 
-              Get started with your portfolio now.
+              Vamos conversar sobre suas ideias e criar algo incrível juntos. 
+              Entre em contato e vamos dar vida ao seu projeto.
             </p>
             <div className="flex justify-center gap-4 flex-wrap animate-on-scroll">
-              <Button asChild size="lg">
-                <Link href="/auth">
-                  Get Started Now
-                </Link>
+              <Button 
+                size="lg"
+                onClick={() => {
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Contact me
               </Button>
               <Button variant="outline" size="lg">
                 <Link href="/projects">
-                  Learn More
+                  Ver projetos
                 </Link>
               </Button>
             </div>
           </div>
         </section>
 
+        {/* Contact Section */}
+        <section id="contact" className="py-16 px-4 bg-zinc-900/30">
+          <div className="max-w-[1200px] mx-auto text-center">
+            <div className="animate-on-scroll">
+              <h2 className="text-3xl md:text-4xl font-semibold mb-4">
+                Vamos trabalhar juntos
+              </h2>
+              <p className="text-gray-400 text-lg mb-10 max-w-2xl mx-auto">
+                Interessado em colaborar ou tem um projeto em mente? 
+                Entre em contato e vamos criar algo incrível juntos.
+              </p>
+              
+              {/* Social Links */}
+              <div className="flex justify-center space-x-6 mb-8">
+                <a 
+                  href="https://instagram.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center space-x-2 bg-zinc-800 hover:bg-zinc-700 px-4 py-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
+                >
+                  <FaInstagram size={20} />
+                  <span>Instagram</span>
+                </a>
+                <a 
+                  href="https://linkedin.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center space-x-2 bg-zinc-800 hover:bg-zinc-700 px-4 py-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
+                >
+                  <FaLinkedin size={20} />
+                  <span>LinkedIn</span>
+                </a>
+                <a 
+                  href="https://github.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center space-x-2 bg-zinc-800 hover:bg-zinc-700 px-4 py-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
+                >
+                  <FaGithub size={20} />
+                  <span>GitHub</span>
+                </a>
+              </div>
+              
+              {/* Download CV Button */}
+              <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
+                <a href="/curriculum.pdf" download="Curriculum-Phaison.pdf">
+                  <Download className="mr-2 h-4 w-4" />
+                  Baixar currículo
+                </a>
+              </Button>
+            </div>
+          </div>
+        </section>
 
       </main>
 

@@ -35,6 +35,7 @@ const projectFormSchema = z.object({
   publishedStatus: z.string(),
   tags: z.string().optional(),
   figmaUrl: z.string().url("Por favor, insira uma URL válida do Figma").or(z.string().length(0)).optional(),
+  githubUrl: z.string().url("Por favor, insira uma URL válida do GitHub").or(z.string().length(0)).optional(),
   videoUrl: z.string().url("Por favor, insira uma URL válida do vídeo").or(z.string().length(0)).optional(),
   sectionDisplay: z.string().optional(),
   galleryImages: z.array(z.string()).optional().default([]),
@@ -158,6 +159,7 @@ export function ProjectForm({ projectId, onSuccess }: ProjectFormProps) {
           publishedStatus: existingProject.project.publishedStatus,
           tags: existingProject.tags.map((tag: any) => tag.name).join(", "),
           figmaUrl: existingProject.project.figmaUrl || "",
+          githubUrl: existingProject.project.githubUrl || "",
           videoUrl: existingProject.project.videoUrl || "",
           sectionDisplay: existingProject.project.sectionDisplay || "general",
           galleryImages: existingProject.project.galleryImages || [],
@@ -176,6 +178,7 @@ export function ProjectForm({ projectId, onSuccess }: ProjectFormProps) {
         publishedStatus: existingProject.project.publishedStatus,
         tags: existingProject.tags.map((tag: any) => tag.name).join(", "),
         figmaUrl: existingProject.project.figmaUrl || "",
+        githubUrl: existingProject.project.githubUrl || "",
         videoUrl: existingProject.project.videoUrl || "",
         sectionDisplay: existingProject.project.sectionDisplay || "general",
         galleryImages: existingProject.project.galleryImages || [],
@@ -384,8 +387,8 @@ export function ProjectForm({ projectId, onSuccess }: ProjectFormProps) {
           )}
         />
         
-        {/* Figma and Video URLs */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* External Links */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <FormField
             control={form.control}
             name="figmaUrl"
@@ -394,6 +397,20 @@ export function ProjectForm({ projectId, onSuccess }: ProjectFormProps) {
                 <FormLabel>Link do Figma (opcional)</FormLabel>
                 <FormControl>
                   <Input placeholder="https://www.figma.com/file/..." {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          
+          <FormField
+            control={form.control}
+            name="githubUrl"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Link do GitHub (opcional)</FormLabel>
+                <FormControl>
+                  <Input placeholder="https://github.com/username/repository" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>

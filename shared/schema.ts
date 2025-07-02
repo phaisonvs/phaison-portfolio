@@ -17,6 +17,7 @@ export const projects = pgTable("projects", {
   imageUrl: text("image_url").notNull(), // Mantido para compatibilidade
   galleryImages: json("gallery_images").$type<string[]>().default([]).notNull(),
   figmaUrl: text("figma_url"),
+  githubUrl: text("github_url"),
   videoUrl: text("video_url"),
   sectionDisplay: text("section_display").default("general"),
   userId: integer("user_id").notNull().references(() => users.id),
@@ -50,6 +51,7 @@ export const insertProjectSchema = createInsertSchema(projects).pick({
   imageUrl: true,
   galleryImages: true,
   figmaUrl: true,
+  githubUrl: true,
   videoUrl: true,
   sectionDisplay: true,
   userId: true,

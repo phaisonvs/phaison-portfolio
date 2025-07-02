@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import logoPhaison from "@assets/logo-phaison_1749772164016.png";
-import { FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 
 export function Footer() {
   return (
@@ -41,6 +41,9 @@ export function Footer() {
             </a>
             <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
               <FaLinkedin size={18} />
+            </a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+              <FaGithub size={18} />
             </a>
           </div>
         </div>

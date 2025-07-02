@@ -46,6 +46,18 @@ export function Header() {
           >
             Sobre mim
           </Link>
+          <button 
+            onClick={() => {
+              if (window.location.pathname === '/') {
+                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+              } else {
+                window.location.href = '/#contact';
+              }
+            }}
+            className="transition-colors duration-200 text-white/70 hover:text-primary"
+          >
+            Contatos
+          </button>
           {user && (
             <Link 
               href="/dashboard" 
