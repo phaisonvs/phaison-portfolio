@@ -68,9 +68,9 @@ export function Header() {
           )}
         </nav>
 
-        {/* Auth buttons */}
+        {/* Auth buttons - only show logout for authenticated users */}
         <div className="hidden items-center space-x-4 md:flex">
-          {user ? (
+          {user && (
             <>
               <span className="text-white/70">{user.name}</span>
               <Button 
@@ -80,12 +80,6 @@ export function Header() {
               >
                 Logout
               </Button>
-            </>
-          ) : (
-            <>
-              <Link href="/auth" className="rounded-full bg-white text-black px-4 py-2 text-sm font-medium hover:bg-gray-200 transition duration-200">
-                Entrar
-              </Link>
             </>
           )}
         </div>
@@ -129,34 +123,20 @@ export function Header() {
                   Dashboard
                 </Link>
               )}
-              <div className="pt-4 border-t border-white/10 mt-4">
-                {user ? (
-                  <>
-                    <div className="mb-2 text-white">{user.name}</div>
-                    <Button 
-                      onClick={() => {
-                        handleLogout();
-                        setIsMenuOpen(false);
-                      }}
-                      className="w-full"
-                    >
-                      Logout
-                    </Button>
-                  </>
-                ) : (
-                  <>
-                    <Link 
-                      href="/auth" 
-                      onClick={() => setIsMenuOpen(false)}
-                      className="block w-full"
-                    >
-                      <Button className="w-full">
-                        Entrar
-                      </Button>
-                    </Link>
-                  </>
-                )}
-              </div>
+              {user && (
+                <div className="pt-4 border-t border-white/10 mt-4">
+                  <div className="mb-2 text-white">{user.name}</div>
+                  <Button 
+                    onClick={() => {
+                      handleLogout();
+                      setIsMenuOpen(false);
+                    }}
+                    className="w-full"
+                  >
+                    Logout
+                  </Button>
+                </div>
+              )}
             </nav>
           </SheetContent>
         </Sheet>

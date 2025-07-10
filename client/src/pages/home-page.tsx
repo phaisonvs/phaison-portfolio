@@ -468,33 +468,30 @@ export default function HomePage() {
               </p>
               
               {/* Social Links */}
-              <div className="flex justify-center space-x-6 mb-8">
+              <div className="flex justify-center space-x-8 mb-8">
                 <a 
                   href="https://instagram.com" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="flex items-center space-x-2 bg-zinc-800 hover:bg-zinc-700 px-4 py-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
+                  className="text-white/70 hover:text-white transition-colors duration-200"
                 >
-                  <FaInstagram size={20} />
-                  <span>Instagram</span>
+                  <FaInstagram size={24} />
                 </a>
                 <a 
                   href="https://linkedin.com" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="flex items-center space-x-2 bg-zinc-800 hover:bg-zinc-700 px-4 py-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
+                  className="text-white/70 hover:text-white transition-colors duration-200"
                 >
-                  <FaLinkedin size={20} />
-                  <span>LinkedIn</span>
+                  <FaLinkedin size={24} />
                 </a>
                 <a 
                   href="https://github.com" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="flex items-center space-x-2 bg-zinc-800 hover:bg-zinc-700 px-4 py-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
+                  className="text-white/70 hover:text-white transition-colors duration-200"
                 >
-                  <FaGithub size={20} />
-                  <span>GitHub</span>
+                  <FaGithub size={24} />
                 </a>
               </div>
               
