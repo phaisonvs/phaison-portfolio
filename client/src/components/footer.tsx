@@ -50,10 +50,10 @@ export function Footer() {
         
         {/* Copyright */}
         <div className="text-center text-gray-500 text-xs pt-6 border-t border-white/5">
-          <div className="flex justify-center items-center space-x-4">
+          <div className="flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-4">
             <span>© {new Date().getFullYear()} Phaison Design. All rights reserved.</span>
-            <Link href="/auth" className="text-gray-600 hover:text-gray-400 transition-colors">
-              Admin
+            <Link href="/auth" className="text-gray-500 hover:text-gray-300 transition-colors text-xs underline">
+              Acesso administrativo
             </Link>
           </div>
         </div>
