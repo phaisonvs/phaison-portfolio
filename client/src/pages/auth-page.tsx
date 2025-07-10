@@ -120,27 +120,9 @@ export default function AuthPage() {
             </Form>
           </div>
 
-          {/* Right side - Hero content */}
-          <div className="text-center lg:text-left">
-            <h2 className="text-4xl md:text-5xl font-semibold mb-6 leading-tight">
-              Gerencie seu portfólio com facilidade
-            </h2>
-            <p className="text-gray-400 text-lg mb-8 leading-relaxed">
-              Área restrita para administração do portfólio. Aqui você pode 
-              gerenciar projetos, atualizar informações e controlar o que 
-              será exibido no site.
-            </p>
-            
-            <div className="grid grid-cols-2 gap-6 max-w-sm mx-auto lg:mx-0">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-primary mb-1">Projetos</div>
-                <div className="text-sm text-gray-400">Gerenciar portfólio</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-primary mb-1">Conteúdo</div>
-                <div className="text-sm text-gray-400">Atualizar informações</div>
-              </div>
-            </div>
+          {/* Right side - Empty space for balance */}
+          <div className="hidden lg:block">
+            {/* Empty space to maintain layout balance */}
           </div>
         </div>
       </main>
