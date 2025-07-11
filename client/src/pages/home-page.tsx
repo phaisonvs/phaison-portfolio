@@ -415,7 +415,7 @@ export default function HomePage() {
         </section>
 
         {/* Call to Action */}
-        <section className="py-20 px-4 relative overflow-hidden">
+        <section id="contact" className="py-20 px-4 relative overflow-hidden">
           <div className="absolute inset-0 cta-gradient z-0"></div>
           <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black to-transparent z-10"></div>
           
@@ -437,38 +437,9 @@ export default function HomePage() {
               Vamos conversar sobre suas ideias e criar algo incrível juntos. 
               Entre em contato e vamos dar vida ao seu projeto.
             </p>
-            <div className="flex justify-center gap-4 flex-wrap animate-on-scroll">
-              <Button 
-                size="lg"
-                onClick={() => {
-                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
-                Contact me
-              </Button>
-              <Button variant="outline" size="lg">
-                <Link href="/projects">
-                  Ver projetos
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </section>
-
-        {/* Contact Section */}
-        <section id="contact" className="py-16 px-4 bg-zinc-900/30">
-          <div className="max-w-[1200px] mx-auto text-center">
-            <div className="animate-on-scroll">
-              <h2 className="text-3xl md:text-4xl font-semibold mb-4">
-                Vamos trabalhar juntos
-              </h2>
-              <p className="text-gray-400 text-lg mb-10 max-w-2xl mx-auto">
-                Interessado em colaborar ou tem um projeto em mente? 
-                Entre em contato e vamos criar algo incrível juntos.
-              </p>
-              
+            <div className="space-y-8 animate-on-scroll">
               {/* Social Links */}
-              <div className="flex justify-center space-x-8 mb-8">
+              <div className="flex justify-center space-x-8">
                 <a 
                   href="https://instagram.com" 
                   target="_blank" 
@@ -495,16 +466,25 @@ export default function HomePage() {
                 </a>
               </div>
               
-              {/* Download CV Button */}
-              <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
-                <a href="/curriculum.pdf" download="Curriculum-Phaison.pdf">
-                  <Download className="mr-2 h-4 w-4" />
-                  Baixar currículo
-                </a>
-              </Button>
+              {/* Buttons */}
+              <div className="flex justify-center gap-4 flex-wrap">
+                <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
+                  <a href="/curriculum.pdf" download="Curriculum-Phaison.pdf">
+                    <Download className="mr-2 h-4 w-4" />
+                    Baixar currículo
+                  </a>
+                </Button>
+                <Button variant="outline" size="lg">
+                  <Link href="/projects">
+                    Ver projetos
+                  </Link>
+                </Button>
+              </div>
             </div>
           </div>
         </section>
+
+
 
       </main>
 
