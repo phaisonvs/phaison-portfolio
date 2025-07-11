@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -8,7 +8,7 @@ import logoPath from "@assets/logo-phaison_1749772164016.png";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [location] = useLocation();
+  const [location, navigate] = useLocation();
   const { user, logoutMutation } = useAuth();
 
   const handleLogout = () => {
@@ -17,6 +17,19 @@ export function Header() {
 
   const isActive = (path: string) => {
     return location === path;
+  };
+
+  const handleContactClick = () => {
+    if (location === '/') {
+      // Já estamos na home, só fazer scroll
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // Navegue para home e adicione parâmetro na URL para fazer scroll
+      navigate('/?scrollTo=contact');
+    }
   };
 
   return (
@@ -47,17 +60,7 @@ export function Header() {
             Sobre mim
           </Link>
           <button 
-            onClick={() => {
-              if (location === '/') {
-                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-              } else {
-                // Navegue para a home e então faça o scroll
-                window.location.href = '/';
-                setTimeout(() => {
-                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                }, 100);
-              }
-            }}
+            onClick={handleContactClick}
             className="transition-colors duration-200 text-white/70 hover:text-primary"
           >
             Contatos
