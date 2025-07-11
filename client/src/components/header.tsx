@@ -48,10 +48,14 @@ export function Header() {
           </Link>
           <button 
             onClick={() => {
-              if (window.location.pathname === '/') {
+              if (location === '/') {
                 document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
               } else {
-                window.location.href = '/#contact';
+                // Navegue para a home e então faça o scroll
+                window.location.href = '/';
+                setTimeout(() => {
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
               }
             }}
             className="transition-colors duration-200 text-white/70 hover:text-primary"
