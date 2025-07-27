@@ -56,13 +56,13 @@ export function Header() {
         <nav className="hidden items-center space-x-8 md:flex">
           <Link 
             href="/" 
-            className={`transition-colors duration-200 ${isActive("/") || isActive("/inicio") ? "text-white" : "text-white/70 hover:text-primary"}`}
+            className={`transition-colors duration-200 ${isActive("/") ? "text-white" : "text-white/70 hover:text-primary"}`}
           >
-            Início
+            Galeria
           </Link>
           <Link 
-            href="/projetos" 
-            className={`transition-colors duration-200 ${isActive("/projetos") ? "text-white" : "text-white/70 hover:text-primary"}`}
+            href="/projects" 
+            className={`transition-colors duration-200 ${isActive("/projects") ? "text-white" : "text-white/70 hover:text-primary"}`}
           >
             Projetos
           </Link>
@@ -118,7 +118,7 @@ export function Header() {
                 className={`text-lg font-medium ${isActive("/") ? "text-white" : "text-white/70"}`}
                 onClick={() => setIsMenuOpen(false)}
               >
-                Início
+                Galeria
               </Link>
               <Link 
                 href="/projects" 

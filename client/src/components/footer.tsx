@@ -42,9 +42,9 @@ export function Footer() {
           {/* Quick Links */}
           <div className="flex flex-wrap justify-center gap-6 md:gap-8 mb-6 md:mb-0">
             <Link href="/" className="text-gray-400 hover:text-white text-sm transition-colors">
-              Início
+              Galeria
             </Link>
-            <Link href="/projetos" className="text-gray-400 hover:text-white text-sm transition-colors">
+            <Link href="/projects" className="text-gray-400 hover:text-white text-sm transition-colors">
               Projetos
             </Link>
             <button 

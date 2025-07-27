@@ -114,7 +114,7 @@ export default function DashboardPage() {
           <div className="flex justify-between items-center">
             <h1 className="text-2xl font-semibold">Seu Dashboard</h1>
             <div className="flex space-x-2">
-              <Button variant="outline" onClick={() => setLocation("/painel/projetos")}>
+              <Button variant="outline" onClick={() => setLocation("/dashboard/projects")}>
                 <Eye className="mr-2 h-4 w-4" />
                 Ver Projetos
               </Button>
