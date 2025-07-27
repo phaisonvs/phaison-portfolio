@@ -10,8 +10,9 @@ import { TemplateCard } from "@/components/template-card";
 
 import { useQuery } from "@tanstack/react-query";
 import { ProjectWithTags } from "@shared/schema";
-import { Box, SlidersIcon, ImageIcon, LightbulbIcon, ChevronLeft, ChevronRight, Download } from "lucide-react";
-import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
+import { Box, SlidersIcon, ImageIcon, LightbulbIcon, ChevronLeft, ChevronRight, Download, Figma, Github, Code, Palette, Layers, Zap } from "lucide-react";
+import { FaInstagram, FaLinkedin, FaGithub, FaFigma, FaHtml5, FaCss3Alt, FaJs } from "react-icons/fa";
+import { SiAdobe, SiAdobeaftereffects, SiAdobeillustrator, SiAdobephotoshop } from "react-icons/si";
 import { 
   Carousel, 
   CarouselContent, 
@@ -41,12 +42,12 @@ export default function HomePage() {
     const urlParams = new URLSearchParams(window.location.search);
     const scrollTo = urlParams.get('scrollTo');
     
-    if (scrollTo === 'contact') {
+    if (scrollTo) {
       // Wait for page to load completely before scrolling
       setTimeout(() => {
-        const contactSection = document.getElementById('contact');
-        if (contactSection) {
-          contactSection.scrollIntoView({ behavior: 'smooth' });
+        const section = document.getElementById(scrollTo);
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth' });
         }
         // Clean up URL
         window.history.replaceState({}, '', '/');
@@ -87,7 +88,7 @@ export default function HomePage() {
 
       <main className="flex-grow">
         {/* Hero section */}
-        <section className="py-16 md:py-24 px-4">
+        <section id="hero" className="py-16 md:py-24 px-4">
           <div className="max-w-[1200px] mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-semibold leading-tight mb-6 animate-on-scroll">
               Modern portfolio design<br />for creative professionals
@@ -102,10 +103,17 @@ export default function HomePage() {
                   View Projects
                 </Link>
               </Button>
-              <Button variant="outline" size="lg">
-                <Link href="/auth">
-                  Contact Me
-                </Link>
+              <Button 
+                variant="outline" 
+                size="lg"
+                onClick={() => {
+                  const contactSection = document.getElementById('contact');
+                  if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+              >
+                Contato
               </Button>
             </div>
           </div>
@@ -253,7 +261,7 @@ export default function HomePage() {
         {/* Top Plugins */}
         <section className="py-12 px-4">
           <div className="max-w-[1200px] mx-auto">
-            <h2 className="text-2xl md:text-3xl font-semibold mb-10 animate-on-scroll">Top Plugins</h2>
+            <h2 className="text-2xl md:text-3xl font-semibold mb-10 animate-on-scroll">Minhas Ferramentas de Trabalho</h2>
 
             <div className="animate-on-scroll relative">
               <Carousel
@@ -267,55 +275,73 @@ export default function HomePage() {
                 <CarouselContent className="-ml-2 md:-ml-4">
                   <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
                     <PluginCard
-                      title="Rotacionador 3D"
-                      description="Adicione rotações 3D impressionantes"
-                      icon={Box}
-                      iconBgColor="bg-blue-500"
-                    />
-                  </CarouselItem>
-                  
-                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
-                    <PluginCard
-                      title="Controles Inteligentes"
-                      description="Controles interativos com animações"
-                      icon={SlidersIcon}
-                      iconBgColor="bg-orange-500"
-                    />
-                  </CarouselItem>
-                  
-                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
-                    <PluginCard
-                      title="Efeitos de Imagem"
-                      description="Filtros e efeitos de imagem profissionais"
-                      icon={ImageIcon}
-                      iconBgColor="bg-green-500"
-                    />
-                  </CarouselItem>
-                  
-                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
-                    <PluginCard
-                      title="Movimento Inteligente"
-                      description="Crie animações realistas facilmente"
-                      icon={LightbulbIcon}
-                      iconBgColor="bg-yellow-500"
-                    />
-                  </CarouselItem>
-                  
-                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
-                    <PluginCard
-                      title="Parallax Avançado"
-                      description="Efeitos parallax com profundidade incrível"
-                      icon={Box}
+                      title="Figma"
+                      description="Design de interfaces e prototipagem"
+                      icon={FaFigma}
                       iconBgColor="bg-purple-500"
                     />
                   </CarouselItem>
                   
                   <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
                     <PluginCard
-                      title="Suavizador de Vídeo"
-                      description="Integração de vídeo perfeita e responsiva"
-                      icon={SlidersIcon}
-                      iconBgColor="bg-pink-500"
+                      title="GitHub"
+                      description="Controle de versão e colaboração"
+                      icon={FaGithub}
+                      iconBgColor="bg-gray-700"
+                    />
+                  </CarouselItem>
+                  
+                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+                    <PluginCard
+                      title="HTML"
+                      description="Estruturação de conteúdo web"
+                      icon={FaHtml5}
+                      iconBgColor="bg-orange-500"
+                    />
+                  </CarouselItem>
+                  
+                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+                    <PluginCard
+                      title="CSS"
+                      description="Estilização e layout responsivo"
+                      icon={FaCss3Alt}
+                      iconBgColor="bg-blue-500"
+                    />
+                  </CarouselItem>
+                  
+                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+                    <PluginCard
+                      title="JavaScript"
+                      description="Interatividade e funcionalidades"
+                      icon={FaJs}
+                      iconBgColor="bg-yellow-500"
+                    />
+                  </CarouselItem>
+                  
+                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+                    <PluginCard
+                      title="Photoshop"
+                      description="Edição e manipulação de imagens"
+                      icon={SiAdobephotoshop}
+                      iconBgColor="bg-blue-600"
+                    />
+                  </CarouselItem>
+                  
+                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+                    <PluginCard
+                      title="Illustrator"
+                      description="Criação de gráficos vetoriais"
+                      icon={SiAdobeillustrator}
+                      iconBgColor="bg-orange-600"
+                    />
+                  </CarouselItem>
+                  
+                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+                    <PluginCard
+                      title="After Effects"
+                      description="Animações e motion graphics"
+                      icon={SiAdobeaftereffects}
+                      iconBgColor="bg-purple-600"
                     />
                   </CarouselItem>
                 </CarouselContent>
@@ -428,6 +454,102 @@ export default function HomePage() {
                 </div>
               </Carousel>
               <CarouselDots api={templatesApi} className="mt-4" />
+            </div>
+          </div>
+        </section>
+
+        {/* About Section */}
+        <section id="about" className="py-16 md:py-24 px-4">
+          <div className="max-w-[1200px] mx-auto">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              {/* Text Content */}
+              <div className="animate-on-scroll">
+                <h2 className="text-3xl md:text-4xl font-semibold leading-tight mb-6">
+                  Olá, sou desenvolvedor apaixonado por criar experiências digitais incríveis
+                </h2>
+                <p className="text-lg text-gray-400 mb-8 leading-relaxed">
+                  Com mais de 3 anos de experiência em desenvolvimento frontend e fullstack, 
+                  especializo-me em criar interfaces elegantes e funcionais que conectam 
+                  pessoas e tecnologia de forma natural.
+                </p>
+                <p className="text-base text-gray-500 mb-8 leading-relaxed">
+                  Minha jornada começou com curiosidade sobre como as coisas funcionam na web, 
+                  e hoje trabalho com empresas ao redor do mundo criando soluções que fazem 
+                  a diferença no dia a dia das pessoas.
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  <span className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">React</span>
+                  <span className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">TypeScript</span>
+                  <span className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">Vue.js</span>
+                  <span className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">Next.js</span>
+                  <span className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">UI/UX Design</span>
+                </div>
+              </div>
+
+              {/* Image/Avatar Section */}
+              <div className="animate-on-scroll flex justify-center md:justify-end">
+                <div className="relative">
+                  <div className="w-80 h-80 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
+                    <div className="w-72 h-72 rounded-xl bg-zinc-900 flex items-center justify-center overflow-hidden">
+                      <img
+                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="Profile"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </div>
+                  <div className="absolute -bottom-4 -right-4 w-20 h-20 bg-primary rounded-full flex items-center justify-center">
+                    <span className="text-black font-bold text-xl">👋</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Stats Section */}
+            <div className="grid md:grid-cols-3 gap-8 animate-on-scroll mt-16">
+              <div className="text-center p-6 rounded-xl bg-zinc-900/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300">
+                <div className="text-3xl font-bold text-primary mb-2">3+</div>
+                <div className="text-gray-400">Anos de Experiência</div>
+              </div>
+              <div className="text-center p-6 rounded-xl bg-zinc-900/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300">
+                <div className="text-3xl font-bold text-primary mb-2">50+</div>
+                <div className="text-gray-400">Projetos Realizados</div>
+              </div>
+              <div className="text-center p-6 rounded-xl bg-zinc-900/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300">
+                <div className="text-3xl font-bold text-primary mb-2">100%</div>
+                <div className="text-gray-400">Dedicação</div>
+              </div>
+            </div>
+
+            {/* Philosophy Section */}
+            <div className="grid md:grid-cols-2 gap-12 items-center animate-on-scroll mt-16">
+              <div>
+                <h3 className="text-2xl font-semibold mb-6">Minha Filosofia</h3>
+                <p className="text-gray-400 mb-4 leading-relaxed">
+                  Acredito que a tecnologia deve ser invisible - funcionar de forma tão natural 
+                  que as pessoas nem percebam sua complexidade. Cada linha de código que escrevo 
+                  tem o objetivo de criar experiências mais humanas e acessíveis.
+                </p>
+                <p className="text-gray-400 leading-relaxed">
+                  Busco sempre equilibrar inovação técnica com usabilidade prática, 
+                  criando produtos que não apenas impressionam, mas que realmente 
+                  resolvem problemas reais das pessoas.
+                </p>
+              </div>
+              <div className="space-y-4">
+                <div className="p-4 border-l-4 border-primary bg-zinc-900/30 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 rounded-r-lg">
+                  <h4 className="font-medium mb-2">Código Limpo</h4>
+                  <p className="text-sm text-gray-400">Escrevo código pensando em quem vai mantê-lo amanhã</p>
+                </div>
+                <div className="p-4 border-l-4 border-primary bg-zinc-900/30 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 rounded-r-lg">
+                  <h4 className="font-medium mb-2">Design Centrado no Usuário</h4>
+                  <p className="text-sm text-gray-400">Cada decisão é tomada pensando na experiência final</p>
+                </div>
+                <div className="p-4 border-l-4 border-primary bg-zinc-900/30 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 rounded-r-lg">
+                  <h4 className="font-medium mb-2">Aprendizado Contínuo</h4>
+                  <p className="text-sm text-gray-400">Tecnologia evolui rápido, e eu evoluo junto</p>
+                </div>
+              </div>
             </div>
           </div>
         </section>

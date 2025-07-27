@@ -1,11 +1,12 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { IconType } from "react-icons";
 import { LucideIcon } from "lucide-react";
+import React from "react";
 
 interface PluginCardProps {
   title: string;
   description: string;
-  icon: LucideIcon;
+  icon: LucideIcon | IconType | React.ComponentType<any>;
   iconBgColor: string;
 }
 
@@ -15,7 +16,7 @@ export function PluginCard({ title, description, icon: Icon, iconBgColor }: Plug
       <CardContent className="p-4">
         <div className="flex items-center mb-4">
           <div className={`h-10 w-10 rounded-xl ${iconBgColor} flex items-center justify-center mr-3`}>
-            <Icon className="h-6 w-6 text-white" />
+            <Icon className="h-6 w-6 text-white" size={24} />
           </div>
           <h3 className="font-medium">{title}</h3>
         </div>

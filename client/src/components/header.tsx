@@ -19,16 +19,16 @@ export function Header() {
     return location === path;
   };
 
-  const handleContactClick = () => {
+  const handleScrollClick = (sectionId: string) => {
     if (location === '/') {
       // Já estamos na home, só fazer scroll
-      const contactSection = document.getElementById('contact');
-      if (contactSection) {
-        contactSection.scrollIntoView({ behavior: 'smooth' });
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
       }
     } else {
       // Navegue para home e adicione parâmetro na URL para fazer scroll
-      navigate('/?scrollTo=contact');
+      navigate(`/?scrollTo=${sectionId}`);
     }
   };
 
@@ -41,55 +41,33 @@ export function Header() {
 
         {/* Desktop Navigation */}
         <nav className="hidden items-center space-x-8 md:flex">
-          <Link 
-            href="/" 
-            className={`transition-colors duration-200 ${isActive("/") ? "text-white" : "text-white/70 hover:text-primary"}`}
+          <button 
+            onClick={() => handleScrollClick('hero')}
+            className={`transition-colors duration-200 ${location === "/" ? "text-white" : "text-white/70 hover:text-primary"}`}
           >
-            Galeria
-          </Link>
+            Home
+          </button>
           <Link 
             href="/projects" 
             className={`transition-colors duration-200 ${isActive("/projects") ? "text-white" : "text-white/70 hover:text-primary"}`}
           >
             Projetos
           </Link>
-          <Link 
-            href="/about" 
-            className={`transition-colors duration-200 ${isActive("/about") ? "text-white" : "text-white/70 hover:text-primary"}`}
-          >
-            Sobre mim
-          </Link>
           <button 
-            onClick={handleContactClick}
+            onClick={() => handleScrollClick('about')}
             className="transition-colors duration-200 text-white/70 hover:text-primary"
           >
-            Contatos
+            Sobre Mim
           </button>
-          {user && (
-            <Link 
-              href="/dashboard" 
-              className={`transition-colors duration-200 ${isActive("/dashboard") ? "text-white" : "text-white/70 hover:text-primary"}`}
-            >
-              Dashboard
-            </Link>
-          )}
+          <button 
+            onClick={() => handleScrollClick('contact')}
+            className="transition-colors duration-200 text-white/70 hover:text-primary"
+          >
+            Contato
+          </button>
         </nav>
 
-        {/* Auth buttons - only show logout for authenticated users */}
-        <div className="hidden items-center space-x-4 md:flex">
-          {user && (
-            <>
-              <span className="text-white/70">{user.name}</span>
-              <Button 
-                variant="outline" 
-                onClick={handleLogout}
-                className="text-white/70"
-              >
-                Logout
-              </Button>
-            </>
-          )}
-        </div>
+        {/* No admin area in header - completely hidden */}
 
         {/* Mobile Menu Button */}
         <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
@@ -100,13 +78,15 @@ export function Header() {
           </SheetTrigger>
           <SheetContent side="right" className="bg-black border-white/10">
             <nav className="flex flex-col space-y-4 mt-8">
-              <Link 
-                href="/" 
-                className={`text-lg font-medium ${isActive("/") ? "text-white" : "text-white/70"}`}
-                onClick={() => setIsMenuOpen(false)}
+              <button 
+                onClick={() => {
+                  handleScrollClick('hero');
+                  setIsMenuOpen(false);
+                }}
+                className={`text-lg font-medium text-left ${location === "/" ? "text-white" : "text-white/70"}`}
               >
-                Galeria
-              </Link>
+                Home
+              </button>
               <Link 
                 href="/projects" 
                 className={`text-lg font-medium ${isActive("/projects") ? "text-white" : "text-white/70"}`}
@@ -114,36 +94,24 @@ export function Header() {
               >
                 Projetos
               </Link>
-              <Link 
-                href="/about" 
-                className={`text-lg font-medium ${isActive("/about") ? "text-white" : "text-white/70"}`}
-                onClick={() => setIsMenuOpen(false)}
+              <button 
+                onClick={() => {
+                  handleScrollClick('about');
+                  setIsMenuOpen(false);
+                }}
+                className="text-lg font-medium text-left text-white/70"
               >
-                Sobre mim
-              </Link>
-              {user && (
-                <Link 
-                  href="/dashboard" 
-                  className={`text-lg font-medium ${isActive("/dashboard") ? "text-white" : "text-white/70"}`}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Dashboard
-                </Link>
-              )}
-              {user && (
-                <div className="pt-4 border-t border-white/10 mt-4">
-                  <div className="mb-2 text-white">{user.name}</div>
-                  <Button 
-                    onClick={() => {
-                      handleLogout();
-                      setIsMenuOpen(false);
-                    }}
-                    className="w-full"
-                  >
-                    Logout
-                  </Button>
-                </div>
-              )}
+                Sobre Mim
+              </button>
+              <button 
+                onClick={() => {
+                  handleScrollClick('contact');
+                  setIsMenuOpen(false);
+                }}
+                className="text-lg font-medium text-left text-white/70"
+              >
+                Contato
+              </button>
             </nav>
           </SheetContent>
         </Sheet>
