@@ -1,32 +1,8 @@
-import { Link, useLocation } from "wouter";
+import { Link } from "wouter";
 import logoPhaison from "@assets/logo-phaison_1749772164016.png";
 import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 
 export function Footer() {
-  const [location, navigate] = useLocation();
-
-  const handleAboutClick = () => {
-    if (location === '/') {
-      const aboutSection = document.getElementById('about');
-      if (aboutSection) {
-        aboutSection.scrollIntoView({ behavior: 'smooth' });
-      }
-    } else {
-      navigate('/?scrollTo=about');
-    }
-  };
-
-  const handleContactClick = () => {
-    if (location === '/') {
-      const contactSection = document.getElementById('contact');
-      if (contactSection) {
-        contactSection.scrollIntoView({ behavior: 'smooth' });
-      }
-    } else {
-      navigate('/?scrollTo=contact');
-    }
-  };
-
   return (
     <footer className="bg-black border-t border-white/10 px-4 py-10">
       <div className="max-w-[1200px] mx-auto">
@@ -41,24 +17,21 @@ export function Footer() {
           
           {/* Quick Links */}
           <div className="flex flex-wrap justify-center gap-6 md:gap-8 mb-6 md:mb-0">
-            <Link href="/" className="text-gray-400 hover:text-white text-sm transition-colors">
-              Galeria
-            </Link>
             <Link href="/projects" className="text-gray-400 hover:text-white text-sm transition-colors">
               Projetos
             </Link>
-            <button 
-              onClick={handleAboutClick}
-              className="text-gray-400 hover:text-white text-sm transition-colors"
-            >
+            <Link href="/templates" className="text-gray-400 hover:text-white text-sm transition-colors">
+              Templates
+            </Link>
+            <Link href="/about" className="text-gray-400 hover:text-white text-sm transition-colors">
               Sobre mim
-            </button>
-            <button 
-              onClick={handleContactClick}
-              className="text-gray-400 hover:text-white text-sm transition-colors"
-            >
-              Contatos
-            </button>
+            </Link>
+            <Link href="/contact" className="text-gray-400 hover:text-white text-sm transition-colors">
+              Contato
+            </Link>
+            <Link href="/privacy" className="text-gray-400 hover:text-white text-sm transition-colors">
+              Privacidade
+            </Link>
           </div>
           
           {/* Social Icons */}
