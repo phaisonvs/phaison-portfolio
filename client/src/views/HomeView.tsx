@@ -1,11 +1,13 @@
-import { useEffect, useRef, useState } from "react";
-import { Link } from "wouter";
-import { Button } from "@/components/ui/button";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ProjectCard } from "@/components/project-card";
-import { useQuery } from "@tanstack/react-query";
-import { ProjectWithTags } from "@shared/schema";
+import { CategoryCard } from "@/components/category-card";
+import { PluginCard } from "@/components/plugin-card";
+import { TemplateCard } from "@/components/template-card";
+import { ProfessionalExperience } from "@/components/professional-experience";
+import { Button } from "@/components/ui/button";
+import { Link } from "wouter";
+import { Box, SlidersIcon, ImageIcon, LightbulbIcon } from "lucide-react";
 import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 import { 
   Carousel, 
@@ -16,45 +18,32 @@ import {
   type CarouselApi 
 } from "@/components/ui/carousel";
 import { CarouselDots } from "@/components/ui/carousel-dots";
+import { ProjectWithTags } from "@shared/schema";
 
-export default function HomePage() {
-  const { data: projects } = useQuery<ProjectWithTags[]>({
-    queryKey: ["/api/projects"],
-  });
+interface HomeViewProps {
+  projects: ProjectWithTags[] | undefined;
+  bestApi: CarouselApi | null;
+  setBestApi: (api: CarouselApi | null) => void;
+  categoriesApi: CarouselApi | null;
+  setCategoriesApi: (api: CarouselApi | null) => void;
+  pluginsApi: CarouselApi | null;
+  setPluginsApi: (api: CarouselApi | null) => void;
+  templatesApi: CarouselApi | null;
+  setTemplatesApi: (api: CarouselApi | null) => void;
+  animatedElements: React.MutableRefObject<HTMLElement[]>;
+}
 
-  // Carousel APIs
-  const [bestApi, setBestApi] = useState<CarouselApi | null>(null);
-  const [categoriesApi, setCategoriesApi] = useState<CarouselApi | null>(null);
-  const [pluginsApi, setPluginsApi] = useState<CarouselApi | null>(null);
-  const [templatesApi, setTemplatesApi] = useState<CarouselApi | null>(null);
-
-  // Reference for animated elements
-  const animatedElements = useRef<HTMLElement[]>([]);
-
-  // Scroll animations
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("opacity-100", "translate-y-0");
-            entry.target.classList.remove("opacity-0", "translate-y-4");
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    document.querySelectorAll(".animate-on-scroll").forEach((el) => {
-      animatedElements.current.push(el as HTMLElement);
-      observer.observe(el);
-    });
-
-    return () => {
-      animatedElements.current.forEach((el) => observer.unobserve(el));
-    };
-  }, []);
-
+export function HomeView({
+  projects,
+  bestApi,
+  setBestApi,
+  categoriesApi,
+  setCategoriesApi,
+  pluginsApi,
+  setPluginsApi,
+  templatesApi,
+  setTemplatesApi,
+}: HomeViewProps) {
   return (
     <div className="min-h-screen flex flex-col bg-black text-white">
       <Header />
@@ -87,6 +76,7 @@ export default function HomePage() {
                       </CarouselItem>
                     ))
                   ) : (
+                    // Placeholder cards when no projects exist
                     Array.from({ length: 6 }).map((_, index) => (
                       <CarouselItem key={index} className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
                         <ProjectCard
@@ -125,10 +115,84 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* Categories */}
+        <section className="py-12 px-4">
+          <div className="max-w-[1200px] mx-auto">
+            <h2 className="text-2xl md:text-3xl font-semibold mb-10 animate-on-scroll">Categorias</h2>
+
+            <div className="animate-on-scroll relative">
+              <Carousel
+                setApi={setCategoriesApi}
+                opts={{
+                  align: "start",
+                  loop: true,
+                }}
+                className="w-full"
+              >
+                <CarouselContent className="-ml-2 md:-ml-4">
+                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/2 lg:basis-1/3">
+                    <CategoryCard
+                      title="Websites"
+                      description="Belos sites para criadores, artistas e empresas"
+                      images={[
+                        "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
+                        "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
+                        "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
+                      ]}
+                    />
+                  </CarouselItem>
+                  
+                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/2 lg:basis-1/3">
+                    <CategoryCard
+                      title="Aplicativos Móveis"
+                      description="Experiências interativas com animações suaves"
+                      images={[
+                        "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
+                        "https://images.unsplash.com/photo-1556656793-08538906a9f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
+                        "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
+                      ]}
+                    />
+                  </CarouselItem>
+                  
+                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/2 lg:basis-1/3">
+                    <CategoryCard
+                      title="Design 3D"
+                      description="Experiências 3D imersivas e visualizações"
+                      images={[
+                        "https://images.unsplash.com/photo-1578632767115-351597cf2477?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
+                        "https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
+                        "https://images.unsplash.com/photo-1638913972776-873fc7af3fdf?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
+                      ]}
+                    />
+                  </CarouselItem>
+                  
+                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/2 lg:basis-1/3">
+                    <CategoryCard
+                      title="UI/UX Design"
+                      description="Interfaces elegantes e intuitivas"
+                      images={[
+                        "https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
+                        "https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
+                        "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
+                      ]}
+                    />
+                  </CarouselItem>
+                </CarouselContent>
+                <div className="flex justify-center items-center mt-4">
+                  <CarouselPrevious className="bg-black/40 hover:bg-black/60 border-none" />
+                  <CarouselNext className="bg-black/40 hover:bg-black/60 border-none" />
+                </div>
+              </Carousel>
+              <CarouselDots api={categoriesApi} className="mt-4" />
+            </div>
+          </div>
+        </section>
+
         {/* About Me Section */}
         <section id="about" className="py-16 md:py-24 px-4">
           <div className="max-w-[1200px] mx-auto">
             <div className="grid md:grid-cols-2 gap-12 items-center">
+              {/* Text Content */}
               <div className="animate-on-scroll">
                 <h2 className="text-4xl md:text-5xl font-semibold leading-tight mb-6">
                   Olá, sou desenvolvedor apaixonado por criar experiências digitais incríveis
@@ -138,6 +202,11 @@ export default function HomePage() {
                   especializo-me em criar interfaces elegantes e funcionais que conectam 
                   pessoas e tecnologia de forma natural.
                 </p>
+                <p className="text-base text-gray-500 mb-8 leading-relaxed">
+                  Minha jornada começou com curiosidade sobre como as coisas funcionam na web, 
+                  e hoje trabalho com empresas ao redor do mundo criando soluções que fazem 
+                  a diferença no dia a dia das pessoas.
+                </p>
                 <div className="flex flex-wrap gap-3">
                   <span className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">React</span>
                   <span className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">TypeScript</span>
@@ -146,6 +215,8 @@ export default function HomePage() {
                   <span className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">UI/UX</span>
                 </div>
               </div>
+              
+              {/* Visual Content */}
               <div className="space-y-6 animate-on-scroll">
                 <div className="relative group">
                   <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-blue-500/20 rounded-2xl transform rotate-1 group-hover:rotate-2 transition-transform duration-300"></div>
@@ -155,6 +226,37 @@ export default function HomePage() {
                     className="relative rounded-2xl w-full h-80 object-cover shadow-2xl"
                   />
                 </div>
+                
+                <div className="grid grid-cols-3 gap-4 text-center">
+                  <div className="p-4 bg-zinc-900/50 rounded-xl hover:shadow-lg hover:shadow-primary/20 transition-all duration-300">
+                    <div className="text-2xl font-bold text-primary mb-1">3+</div>
+                    <div className="text-xs text-gray-400">Anos Exp.</div>
+                  </div>
+                  <div className="p-4 bg-zinc-900/50 rounded-xl hover:shadow-lg hover:shadow-primary/20 transition-all duration-300">
+                    <div className="text-2xl font-bold text-primary mb-1">50+</div>
+                    <div className="text-xs text-gray-400">Projetos</div>
+                  </div>
+                  <div className="p-4 bg-zinc-900/50 rounded-xl hover:shadow-lg hover:shadow-primary/20 transition-all duration-300">
+                    <div className="text-2xl font-bold text-primary mb-1">100%</div>
+                    <div className="text-xs text-gray-400">Dedicação</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Stats section after the main content */}
+            <div className="grid md:grid-cols-3 gap-8 animate-on-scroll mt-16">
+              <div className="text-center p-6 rounded-xl bg-zinc-900/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300">
+                <div className="text-3xl font-bold text-primary mb-2">3+</div>
+                <div className="text-gray-400">Anos de Experiência</div>
+              </div>
+              <div className="text-center p-6 rounded-xl bg-zinc-900/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300">
+                <div className="text-3xl font-bold text-primary mb-2">50+</div>
+                <div className="text-gray-400">Projetos Realizados</div>
+              </div>
+              <div className="text-center p-6 rounded-xl bg-zinc-900/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300">
+                <div className="text-3xl font-bold text-primary mb-2">100%</div>
+                <div className="text-gray-400">Dedicação</div>
               </div>
             </div>
           </div>

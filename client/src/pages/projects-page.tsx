@@ -42,21 +42,21 @@ export default function ProjectsPage() {
       <main className="flex-grow px-4 py-12">
         <div className="max-w-[1200px] mx-auto">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-4xl font-semibold">Projects</h1>
+          <h1 className="text-4xl font-semibold">Projetos</h1>
           <Button 
             variant="outline" 
             className="rounded-full"
             onClick={() => navigate('/')}
           >
             <Home className="h-4 w-4 mr-2" />
-            Voltar para Homepage
+            Voltar para Início
           </Button>
         </div>
       
         <section>
           <div className="mb-10">
             <p className="text-gray-400 mb-8 max-w-2xl">
-              Explore our collection of creative projects. Filter by category to find exactly what you're looking for.
+              Explore nossa coleção de projetos criativos. Filtre por categoria para encontrar exatamente o que você procura.
             </p>
             
             {/* Tags filter */}
@@ -67,7 +67,7 @@ export default function ProjectsPage() {
                 className="rounded-full"
                 size="sm"
               >
-                All
+                Todos
               </Button>
               
               {allTags && allTags.map((tag: { id: number, name: string }) => (
@@ -96,11 +96,11 @@ export default function ProjectsPage() {
             </div>
           ) : (
             <div className="text-center py-12">
-              <h3 className="text-xl font-medium mb-2">No projects found</h3>
+              <h3 className="text-xl font-medium mb-2">Nenhum projeto encontrado</h3>
               <p className="text-gray-400">
                 {selectedTag 
-                  ? `No projects with the tag "${selectedTag}" were found.` 
-                  : "There are no projects to display yet."}
+                  ? `Nenhum projeto com a tag "${selectedTag}" foi encontrado.` 
+                  : "Ainda não há projetos para exibir."}
               </p>
             </div>
           )}

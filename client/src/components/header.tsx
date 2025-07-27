@@ -58,7 +58,7 @@ export function Header() {
             href="/" 
             className={`transition-colors duration-200 ${isActive("/") ? "text-white" : "text-white/70 hover:text-primary"}`}
           >
-            Galeria
+            Início
           </Link>
           <Link 
             href="/projects" 
@@ -118,7 +118,7 @@ export function Header() {
                 className={`text-lg font-medium ${isActive("/") ? "text-white" : "text-white/70"}`}
                 onClick={() => setIsMenuOpen(false)}
               >
-                Galeria
+                Início
               </Link>
               <Link 
                 href="/projects" 

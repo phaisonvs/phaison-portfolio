@@ -8,11 +8,13 @@ This is a full-stack portfolio application built with React (TypeScript), Expres
 
 ### Frontend Architecture
 - **Framework**: React 18 with TypeScript
+- **Architecture Pattern**: MVC (Model-View-Controller)
 - **Styling**: Tailwind CSS with shadcn/ui components
 - **State Management**: TanStack Query for server state
-- **Routing**: Wouter for client-side routing
+- **Routing**: Wouter for client-side routing  
 - **Theme**: Dark theme with neon blue/green accents
 - **Build Tool**: Vite for development and production builds
+- **Language**: Portuguese Brazilian (complete localization)
 
 ### Backend Architecture
 - **Runtime**: Node.js with Express.js
@@ -100,6 +102,11 @@ This is a full-stack portfolio application built with React (TypeScript), Expres
 
 ### File Structure
 - `client/`: React frontend application
+  - `src/models/`: Data models and business logic
+  - `src/views/`: Presentational components (UI layer)
+  - `src/controllers/`: Data handling and business logic controllers
+  - `src/pages/`: Page components using MVC pattern
+  - `src/components/`: Reusable UI components
 - `server/`: Express backend with API routes
 - `shared/`: Common TypeScript types and schemas
 - `components.json`: shadcn/ui configuration
@@ -109,6 +116,7 @@ This is a full-stack portfolio application built with React (TypeScript), Expres
 
 ```
 Changelog:
+- July 27, 2025. Major refactoring: Implemented MVC architecture pattern with Models, Views, and Controllers. Complete Portuguese translation. Renamed "Galeria" to "Início" across interface. Updated footer navigation order.
 - July 27, 2025. Migrated About page content to homepage and removed separate About page
 - July 04, 2025. Initial setup
 ```
