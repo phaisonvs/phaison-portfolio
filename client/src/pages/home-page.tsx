@@ -42,12 +42,12 @@ export default function HomePage() {
     const urlParams = new URLSearchParams(window.location.search);
     const scrollTo = urlParams.get('scrollTo');
     
-    if (scrollTo === 'contact') {
+    if (scrollTo === 'contact' || scrollTo === 'about') {
       // Wait for page to load completely before scrolling
       setTimeout(() => {
-        const contactSection = document.getElementById('contact');
-        if (contactSection) {
-          contactSection.scrollIntoView({ behavior: 'smooth' });
+        const section = document.getElementById(scrollTo);
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth' });
         }
         // Clean up URL
         window.history.replaceState({}, '', '/');
@@ -481,7 +481,7 @@ export default function HomePage() {
         </section>
 
         {/* About Me Section */}
-        <section className="py-16 md:py-24 px-4">
+        <section id="about" className="py-16 md:py-24 px-4">
           <div className="max-w-[1200px] mx-auto">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               {/* Text Content */}

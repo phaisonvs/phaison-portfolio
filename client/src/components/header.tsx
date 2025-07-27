@@ -32,6 +32,19 @@ export function Header() {
     }
   };
 
+  const handleAboutClick = () => {
+    if (location === '/') {
+      // Já estamos na home, só fazer scroll
+      const aboutSection = document.getElementById('about');
+      if (aboutSection) {
+        aboutSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // Navegue para home e adicione parâmetro na URL para fazer scroll
+      navigate('/?scrollTo=about');
+    }
+  };
+
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-black/90 backdrop-blur-sm">
       <div className="max-w-[1200px] mx-auto flex items-center justify-between py-4 px-4">
@@ -53,6 +66,12 @@ export function Header() {
           >
             Projetos
           </Link>
+          <button 
+            onClick={handleAboutClick}
+            className="transition-colors duration-200 text-white/70 hover:text-primary"
+          >
+            Sobre mim
+          </button>
           <button 
             onClick={handleContactClick}
             className="transition-colors duration-200 text-white/70 hover:text-primary"
@@ -108,6 +127,24 @@ export function Header() {
               >
                 Projetos
               </Link>
+              <button 
+                onClick={() => {
+                  handleAboutClick();
+                  setIsMenuOpen(false);
+                }}
+                className="text-lg font-medium text-white/70 text-left"
+              >
+                Sobre mim
+              </button>
+              <button 
+                onClick={() => {
+                  handleContactClick();
+                  setIsMenuOpen(false);
+                }}
+                className="text-lg font-medium text-white/70 text-left"
+              >
+                Contatos
+              </button>
               {user && (
                 <Link 
                   href="/dashboard" 
