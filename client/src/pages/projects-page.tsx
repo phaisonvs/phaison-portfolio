@@ -14,7 +14,7 @@ export default function ProjectsPage() {
     queryKey: ["/api/projects"],
   });
   
-  const { data: allTags } = useQuery({
+  const { data: allTags } = useQuery<{ id: number, name: string }[]>({
     queryKey: ["/api/tags"],
   });
 
@@ -39,7 +39,8 @@ export default function ProjectsPage() {
     <div className="min-h-screen flex flex-col bg-black text-white">
       <Header />
 
-      <main className="flex-grow container mx-auto px-4 py-12">
+      <main className="flex-grow px-4 py-12">
+        <div className="max-w-[1200px] mx-auto">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-4xl font-semibold">Projects</h1>
           <Button 
@@ -104,6 +105,7 @@ export default function ProjectsPage() {
             </div>
           )}
         </section>
+        </div>
       </main>
 
       <Footer />
