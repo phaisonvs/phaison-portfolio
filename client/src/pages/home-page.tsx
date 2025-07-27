@@ -31,28 +31,12 @@ export default function HomePage() {
   // Reference for animated elements
   const animatedElements = useRef<HTMLElement[]>([]);
 
-  // Scroll animations
+  // Ensure all content is visible
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("opacity-100", "translate-y-0");
-            entry.target.classList.remove("opacity-0", "translate-y-4");
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    document.querySelectorAll(".animate-on-scroll").forEach((el) => {
-      animatedElements.current.push(el as HTMLElement);
-      observer.observe(el);
+    const elements = document.querySelectorAll(".animate-on-scroll");
+    elements.forEach((el) => {
+      el.classList.add("visible");
     });
-
-    return () => {
-      animatedElements.current.forEach((el) => observer.unobserve(el));
-    };
   }, []);
 
   return (
