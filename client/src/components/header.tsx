@@ -53,12 +53,6 @@ export function Header() {
           >
             Projetos
           </Link>
-          <Link 
-            href="/about" 
-            className={`transition-colors duration-200 ${isActive("/about") ? "text-white" : "text-white/70 hover:text-primary"}`}
-          >
-            Sobre mim
-          </Link>
           <button 
             onClick={handleContactClick}
             className="transition-colors duration-200 text-white/70 hover:text-primary"
@@ -113,13 +107,6 @@ export function Header() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Projetos
-              </Link>
-              <Link 
-                href="/about" 
-                className={`text-lg font-medium ${isActive("/about") ? "text-white" : "text-white/70"}`}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Sobre mim
               </Link>
               {user && (
                 <Link 

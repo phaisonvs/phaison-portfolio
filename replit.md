@@ -109,6 +109,7 @@ This is a full-stack portfolio application built with React (TypeScript), Expres
 
 ```
 Changelog:
+- July 27, 2025. Migrated About page content to homepage and removed separate About page
 - July 04, 2025. Initial setup
 ```
 
