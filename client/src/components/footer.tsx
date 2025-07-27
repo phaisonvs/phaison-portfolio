@@ -44,7 +44,7 @@ export function Footer() {
             <Link href="/" className="text-gray-400 hover:text-white text-sm transition-colors">
               Início
             </Link>
-            <Link href="/projects" className="text-gray-400 hover:text-white text-sm transition-colors">
+            <Link href="/projetos" className="text-gray-400 hover:text-white text-sm transition-colors">
               Projetos
             </Link>
             <button 

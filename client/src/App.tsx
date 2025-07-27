@@ -17,14 +17,14 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={HomePage} />
-      <Route path="/projects" component={ProjectsPage} />
-      <Route path="/projects/:id" component={ProjectDetail} />
-
-      <Route path="/auth" component={AuthPage} />
-      <ProtectedRoute path="/dashboard" component={DashboardPage} />
-      <ProtectedRoute path="/dashboard/projects" component={DashboardPage} />
-      <ProtectedRoute path="/dashboard/new-project" component={DashboardPage} />
-      <ProtectedRoute path="/dashboard/edit-project/:id" component={DashboardPage} />
+      <Route path="/inicio" component={HomePage} />
+      <Route path="/projetos" component={ProjectsPage} />
+      <Route path="/projetos/:id" component={ProjectDetail} />
+      <Route path="/acesso" component={AuthPage} />
+      <ProtectedRoute path="/painel" component={DashboardPage} />
+      <ProtectedRoute path="/painel/projetos" component={DashboardPage} />
+      <ProtectedRoute path="/painel/novo-projeto" component={DashboardPage} />
+      <ProtectedRoute path="/painel/editar-projeto/:id" component={DashboardPage} />
       <Route component={NotFound} />
     </Switch>
   );

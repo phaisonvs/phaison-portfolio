@@ -56,13 +56,13 @@ export function Header() {
         <nav className="hidden items-center space-x-8 md:flex">
           <Link 
             href="/" 
-            className={`transition-colors duration-200 ${isActive("/") ? "text-white" : "text-white/70 hover:text-primary"}`}
+            className={`transition-colors duration-200 ${isActive("/") || isActive("/inicio") ? "text-white" : "text-white/70 hover:text-primary"}`}
           >
             Início
           </Link>
           <Link 
-            href="/projects" 
-            className={`transition-colors duration-200 ${isActive("/projects") ? "text-white" : "text-white/70 hover:text-primary"}`}
+            href="/projetos" 
+            className={`transition-colors duration-200 ${isActive("/projetos") ? "text-white" : "text-white/70 hover:text-primary"}`}
           >
             Projetos
           </Link>

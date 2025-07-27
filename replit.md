@@ -116,6 +116,7 @@ This is a full-stack portfolio application built with React (TypeScript), Expres
 
 ```
 Changelog:
+- July 27, 2025. Final MVC implementation: Complete structure with Models, Views, Controllers, Services. Portuguese routes implemented (/projetos, /painel, /acesso). Removed "Principais templates" sections. Admin access protected while keeping functionality. Portuguese translation complete.
 - July 27, 2025. Major refactoring: Implemented MVC architecture pattern with Models, Views, and Controllers. Complete Portuguese translation. Renamed "Galeria" to "Início" across interface. Updated footer navigation order.
 - July 27, 2025. Migrated About page content to homepage and removed separate About page
 - July 04, 2025. Initial setup

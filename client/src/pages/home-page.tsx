@@ -65,7 +65,7 @@ export default function HomePage() {
           <div className="max-w-[1200px] mx-auto">
             <div className="flex justify-between items-center mb-10">
               <h2 className="text-2xl md:text-3xl font-semibold animate-on-scroll">Destaques</h2>
-              <Link href="/projects" className="text-primary hover:underline transition-all duration-200">
+              <Link href="/projetos" className="text-primary hover:underline transition-all duration-200">
                 Ver todos os projetos
               </Link>
             </div>
@@ -156,6 +156,25 @@ export default function HomePage() {
                   />
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Experience Section */}
+        <section className="py-16 px-4">
+          <div className="max-w-[1200px] mx-auto">
+            <div className="text-center mb-12 animate-on-scroll">
+              <div className="flex justify-center mb-6">
+                <img
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=40&h=40&q=80"
+                  alt="Profile"
+                  className="w-10 h-10 rounded-full object-cover"
+                />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-semibold mb-4">Experiência Profissional</h2>
+              <p className="text-gray-400 max-w-2xl mx-auto">
+                Minha trajetória profissional construindo produtos digitais em empresas de diferentes portes e segmentos.
+              </p>
             </div>
           </div>
         </section>
