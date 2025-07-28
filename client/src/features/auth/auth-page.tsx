@@ -3,8 +3,8 @@ import { useLocation } from "wouter";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
+import { Header } from "@/features/shared/header";
+import { Footer } from "@/features/shared/footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {

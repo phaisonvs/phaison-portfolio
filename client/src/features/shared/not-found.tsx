@@ -1,5 +1,5 @@
-import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
+import { Header } from "./header";
+import { Footer } from "./footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { AlertCircle, Home, ArrowLeft } from "lucide-react";

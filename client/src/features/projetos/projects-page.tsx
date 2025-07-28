@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
-import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
-import { ProjectCard } from "@/components/project-card";
+import { Header } from "@/features/shared/header";
+import { Footer } from "@/features/shared/footer";
+import { ProjectCard } from "./project-card";
 import { Button } from "@/components/ui/button";
 import { useQuery } from "@tanstack/react-query";
 import { ProjectWithTags } from "@shared/schema";

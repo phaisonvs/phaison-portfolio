@@ -40,12 +40,12 @@ export function Header() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden items-center space-x-8 md:flex">
+        <nav className="hidden items-center space-x-8 md:flex flex-1 justify-center">
           <button 
             onClick={() => handleScrollClick('hero')}
             className={`transition-colors duration-200 ${location === "/" ? "text-white" : "text-white/70 hover:text-primary"}`}
           >
-            Home
+            Início
           </button>
           <Link 
             href="/projects" 
@@ -85,7 +85,7 @@ export function Header() {
                 }}
                 className={`text-lg font-medium text-left ${location === "/" ? "text-white" : "text-white/70"}`}
               >
-                Home
+                Início
               </button>
               <Link 
                 href="/projects" 

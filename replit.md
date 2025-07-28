@@ -100,6 +100,16 @@ This is a full-stack portfolio application built with React (TypeScript), Expres
 
 ### File Structure
 - `client/`: React frontend application
+  - `src/features/`: Feature-based organization
+    - `home/`: Homepage and about page components
+    - `projetos/`: Projects listing, detail, and related components
+    - `contato/`: Contact-related functionality  
+    - `auth/`: Authentication pages and components
+    - `dashboard/`: Administrative dashboard (hidden from public)
+    - `shared/`: Shared components (header, footer, cards, etc.)
+  - `src/components/ui/`: shadcn/ui components
+  - `src/lib/`: Utility functions and configurations
+  - `src/hooks/`: Custom React hooks
 - `server/`: Express backend with API routes
 - `shared/`: Common TypeScript types and schemas
 - `components.json`: shadcn/ui configuration
@@ -109,6 +119,15 @@ This is a full-stack portfolio application built with React (TypeScript), Expres
 
 ```
 Changelog:
+- July 28, 2025. Major restructuring update:
+  * Reorganized file structure to feature-based architecture
+  * Updated header navigation: "Home" → "Início", centered menu
+  * Updated footer links: removed Templates/Privacidade, added Início, reordered
+  * Moved About page content to homepage as new section
+  * Implemented smooth scroll navigation for single-page architecture
+  * Renamed tools section to "Minhas Ferramentas de Trabalho"
+  * Updated tools for UX/UI Designer profile (Figma, GitHub, HTML, CSS, JavaScript, Photoshop, Illustrator, After Effects)
+  * Completely hidden administrative access from public view
 - July 04, 2025. Initial setup
 ```
 

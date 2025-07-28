@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useLocation, useParams } from "wouter";
-import { DashboardLayout } from "@/components/dashboard/dashboard-layout";
-import { ProjectsTable } from "@/components/dashboard/projects-table";
-import { ProjectForm } from "@/components/dashboard/project-form";
+import { DashboardLayout } from "./components/dashboard/dashboard-layout";
+import { ProjectsTable } from "./components/dashboard/projects-table";
+import { ProjectForm } from "./components/dashboard/project-form";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";

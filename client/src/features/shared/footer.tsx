@@ -17,21 +17,36 @@ export function Footer() {
           
           {/* Quick Links */}
           <div className="flex flex-wrap justify-center gap-6 md:gap-8 mb-6 md:mb-0">
+            <Link href="/" className="text-gray-400 hover:text-white text-sm transition-colors">
+              Início
+            </Link>
             <Link href="/projects" className="text-gray-400 hover:text-white text-sm transition-colors">
               Projetos
             </Link>
-            <Link href="/templates" className="text-gray-400 hover:text-white text-sm transition-colors">
-              Templates
-            </Link>
-            <Link href="/about" className="text-gray-400 hover:text-white text-sm transition-colors">
+            <button 
+              onClick={() => {
+                if (window.location.pathname === '/') {
+                  document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                  window.location.href = '/?scrollTo=about';
+                }
+              }}
+              className="text-gray-400 hover:text-white text-sm transition-colors"
+            >
               Sobre mim
-            </Link>
-            <Link href="/contact" className="text-gray-400 hover:text-white text-sm transition-colors">
+            </button>
+            <button 
+              onClick={() => {
+                if (window.location.pathname === '/') {
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                  window.location.href = '/?scrollTo=contact';
+                }
+              }}
+              className="text-gray-400 hover:text-white text-sm transition-colors"
+            >
               Contato
-            </Link>
-            <Link href="/privacy" className="text-gray-400 hover:text-white text-sm transition-colors">
-              Privacidade
-            </Link>
+            </button>
           </div>
           
           {/* Social Icons */}
