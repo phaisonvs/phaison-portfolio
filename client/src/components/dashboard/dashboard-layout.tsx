@@ -3,8 +3,8 @@ import { DashboardSidebar } from "./dashboard-sidebar";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
-import { Header } from "@/features/shared/header";
-import { Footer } from "@/features/shared/footer";
+import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
 import { useAuth } from "@/hooks/use-auth";
 
 interface DashboardLayoutProps {

@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { useLocation, useParams } from "wouter";
-import { DashboardLayout } from "./components/dashboard/dashboard-layout";
-import { ProjectsTable } from "./components/dashboard/projects-table";
-import { ProjectForm } from "./components/dashboard/project-form";
+import { DashboardLayout } from "@/components/dashboard/dashboard-layout";
+import { ProjectsTable } from "@/components/dashboard/projects-table";
+import { ProjectForm } from "@/components/dashboard/project-form";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useQuery } from "@tanstack/react-query";
 import { BarChart3, FolderKanban, UserCircle, Clock, Eye, EyeOff, Plus, Pencil, Trash, LayoutDashboard } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { User, ProjectWithTags } from "@shared/schema";
 
 export default function DashboardPage() {
   const [location, setLocation] = useLocation();
@@ -21,12 +22,12 @@ export default function DashboardPage() {
   const projectId = isEditProject ? parseInt(params.id || "") : undefined;
   
   // Fetch user data
-  const { data: userData } = useQuery({
+  const { data: userData } = useQuery<User | null>({
     queryKey: ['/api/user'],
   });
 
   // Fetch projects for stats
-  const { data: projects } = useQuery({
+  const { data: projects } = useQuery<ProjectWithTags[]>({
     queryKey: ['/api/projects'],
   });
 
@@ -36,8 +37,8 @@ export default function DashboardPage() {
   };
 
   // Project count statistics
-  const publishedCount = projects?.filter((p: any) => p.project.publishedStatus === "published").length || 0;
-  const draftCount = projects?.filter((p: any) => p.project.publishedStatus === "draft").length || 0;
+  const publishedCount = projects?.filter((p) => p.project.publishedStatus === "published").length || 0;
+  const draftCount = projects?.filter((p) => p.project.publishedStatus === "draft").length || 0;
   const totalProjects = projects?.length || 0;
 
   // Estados para modais 
