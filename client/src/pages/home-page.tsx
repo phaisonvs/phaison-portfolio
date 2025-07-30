@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Header } from "@/features/shared/header";
-import { Footer } from "@/features/shared/footer";
-import { ProjectCard } from "@/features/projetos/project-card";
-import { CategoryCard } from "@/features/shared/category-card";
-import { PluginCard } from "@/features/shared/plugin-card";
-import { TemplateCard } from "@/features/shared/template-card";
+import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
+import { ProjectCard } from "@/components/projects/project-card";
+import { CategoryCard } from "@/components/common/category-card";
+import { PluginCard } from "@/components/common/plugin-card";
+import { TemplateCard } from "@/components/common/template-card";
 
 import { useQuery } from "@tanstack/react-query";
 import { ProjectWithTags } from "@shared/schema";

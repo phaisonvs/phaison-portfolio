@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useParams, useLocation } from "wouter";
-import { Header } from "@/features/shared/header";
-import { Footer } from "@/features/shared/footer";
+import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -10,8 +10,8 @@ import { useQuery } from "@tanstack/react-query";
 import { ProjectWithTags } from "@shared/schema";
 import { getInitials } from "@/lib/utils";
 import { ArrowLeft, Loader2 } from "lucide-react";
-import { ImageGallery } from "./image-gallery";
-import { PinterestGallery } from "./pinterest-gallery";
+import { ImageGallery } from "@/components/projects/image-gallery";
+import { PinterestGallery } from "@/components/projects/pinterest-gallery";
 
 export default function ProjectDetail() {
   const { id } = useParams<{ id: string }>();

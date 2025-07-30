@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
-import { Header } from "@/features/shared/header";
-import { Footer } from "@/features/shared/footer";
-import { ProfessionalExperience } from "./professional-experience";
+import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
+import { ProfessionalExperience } from "@/components/common/professional-experience";
 
 export default function AboutPage() {
   // Animation on scroll

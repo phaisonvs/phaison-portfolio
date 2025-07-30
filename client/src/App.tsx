@@ -3,16 +3,16 @@ import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import HomePage from "@/features/home/home-page";
-import ProjectsPage from "@/features/projetos/projects-page";
-import ProjectDetail from "@/features/projetos/project-detail";
-import AboutPage from "@/features/home/about-page";
-import AuthPage from "@/features/auth/auth-page";
-import DashboardPage from "@/features/dashboard/dashboard-page";
-import NotFound from "@/features/shared/not-found";
+import HomePage from "@/pages/home-page";
+import ProjectsPage from "@/pages/projects-page";
+import ProjectDetail from "@/pages/project-detail";
+import AboutPage from "@/pages/about-page";
+import AuthPage from "@/pages/auth-page";
+import DashboardPage from "@/pages/dashboard-page";
+import NotFound from "@/components/layout/not-found";
 import { ProtectedRoute } from "@/lib/protected-route";
 import { AuthProvider } from "@/hooks/use-auth";
-import { PageTransition } from "@/features/shared/page-transition";
+import { PageTransition } from "@/components/layout/page-transition";
 
 function Router() {
   return (
