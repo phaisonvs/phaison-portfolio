@@ -123,7 +123,7 @@ export default function HomePage() {
               um desenvolvedor criativo.
             </h1>
             <p className="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto animate-on-scroll">
-              Agrego valor a projetos digitais unindo experiência em UI, UX e
+              Eu Agrego valor a projetos digitais unindo experiência em UI, UX e
               front-end com criatividade e estética.
             </p>
             <div className="flex justify-center gap-4 flex-wrap animate-on-scroll">
