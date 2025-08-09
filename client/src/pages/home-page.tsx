@@ -118,11 +118,12 @@ export default function HomePage() {
         <section id="hero" className="py-16 md:py-24 px-4">
           <div className="max-w-[1200px] mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-semibold leading-tight mb-6 animate-on-scroll">
-              Oi, eu sou Phaison,<br />
+              Oi, eu sou Phaison,
+              <br />
               um desenvolvedor criativo.
             </h1>
             <p className="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto animate-on-scroll">
-              Eu agrego valor a projetos digitais unindo experiência em UI, UX e
+              Agrego valor a projetos digitais unindo experiência em UI, UX e
               front-end com criatividade e estética.
             </p>
             <div className="flex justify-center gap-4 flex-wrap animate-on-scroll">
