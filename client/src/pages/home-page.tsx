@@ -10,16 +10,43 @@ import { TemplateCard } from "@/components/common/template-card";
 
 import { useQuery } from "@tanstack/react-query";
 import { ProjectWithTags } from "@shared/schema";
-import { Box, SlidersIcon, ImageIcon, LightbulbIcon, ChevronLeft, ChevronRight, Download, Figma, Github, Code, Palette, Layers, Zap } from "lucide-react";
-import { FaInstagram, FaLinkedin, FaGithub, FaFigma, FaHtml5, FaCss3Alt, FaJs } from "react-icons/fa";
-import { SiAdobe, SiAdobeaftereffects, SiAdobeillustrator, SiAdobephotoshop } from "react-icons/si";
-import { 
-  Carousel, 
-  CarouselContent, 
-  CarouselItem, 
-  CarouselNext, 
-  CarouselPrevious, 
-  type CarouselApi 
+import {
+  Box,
+  SlidersIcon,
+  ImageIcon,
+  LightbulbIcon,
+  ChevronLeft,
+  ChevronRight,
+  Download,
+  Figma,
+  Github,
+  Code,
+  Palette,
+  Layers,
+  Zap,
+} from "lucide-react";
+import {
+  FaInstagram,
+  FaLinkedin,
+  FaGithub,
+  FaFigma,
+  FaHtml5,
+  FaCss3Alt,
+  FaJs,
+} from "react-icons/fa";
+import {
+  SiAdobe,
+  SiAdobeaftereffects,
+  SiAdobeillustrator,
+  SiAdobephotoshop,
+} from "react-icons/si";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi,
 } from "@/components/ui/carousel";
 import { CarouselDots } from "@/components/ui/carousel-dots";
 
@@ -40,17 +67,17 @@ export default function HomePage() {
   // Check for scroll parameter in URL
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
-    const scrollTo = urlParams.get('scrollTo');
-    
+    const scrollTo = urlParams.get("scrollTo");
+
     if (scrollTo) {
       // Wait for page to load completely before scrolling
       setTimeout(() => {
         const section = document.getElementById(scrollTo);
         if (section) {
-          section.scrollIntoView({ behavior: 'smooth' });
+          section.scrollIntoView({ behavior: "smooth" });
         }
         // Clean up URL
-        window.history.replaceState({}, '', '/');
+        window.history.replaceState({}, "", "/");
       }, 500);
     }
   }, []);
@@ -69,7 +96,7 @@ export default function HomePage() {
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     document.querySelectorAll(".animate-on-scroll").forEach((el) => {
@@ -91,25 +118,24 @@ export default function HomePage() {
         <section id="hero" className="py-16 md:py-24 px-4">
           <div className="max-w-[1200px] mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-semibold leading-tight mb-6 animate-on-scroll">
-              Modern portfolio design<br />for creative professionals
+              Oi, eu sou Phaison, um <br />
+              desenvolvedor criativo.
             </h1>
             <p className="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto animate-on-scroll">
-              Showcase your work with a premium, minimalist design that puts your projects
-              first while creating an engaging experience
+              Eu agrego valor a projetos digitais unindo experiência em UI, UX e
+              front-end com criatividade e estética.
             </p>
             <div className="flex justify-center gap-4 flex-wrap animate-on-scroll">
               <Button asChild size="lg">
-                <Link href="/projects">
-                  View Projects
-                </Link>
+                <Link href="/projects">View Projects</Link>
               </Button>
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 size="lg"
                 onClick={() => {
-                  const contactSection = document.getElementById('contact');
+                  const contactSection = document.getElementById("contact");
                   if (contactSection) {
-                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                    contactSection.scrollIntoView({ behavior: "smooth" });
                   }
                 }}
               >
@@ -123,8 +149,13 @@ export default function HomePage() {
         <section className="py-12 px-4">
           <div className="max-w-[1200px] mx-auto">
             <div className="flex justify-between items-center mb-10">
-              <h2 className="text-2xl md:text-3xl font-semibold animate-on-scroll">Best</h2>
-              <Link href="/projects" className="text-primary hover:underline transition-all duration-200">
+              <h2 className="text-2xl md:text-3xl font-semibold animate-on-scroll">
+                Best
+              </h2>
+              <Link
+                href="/projects"
+                className="text-primary hover:underline transition-all duration-200"
+              >
                 View all projects
               </Link>
             </div>
@@ -139,41 +170,45 @@ export default function HomePage() {
                 className="w-full"
               >
                 <CarouselContent className="-ml-2 md:-ml-4">
-                  {projects && projects.length > 0 ? (
-                    projects.slice(0, 6).map((project) => (
-                      <CarouselItem key={project.project.id} className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
-                        <ProjectCard project={project} />
-                      </CarouselItem>
-                    ))
-                  ) : (
-                    // Placeholder cards when no projects exist
-                    Array.from({ length: 6 }).map((_, index) => (
-                      <CarouselItem key={index} className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
-                        <ProjectCard
-                          project={{
-                            project: {
-                              id: index,
-                              title: "Projeto Exemplo",
-                              description: "Um belo projeto de exemplo",
-                              imageUrl: `https://source.unsplash.com/random/600x800?design,${index}`,
-                              galleryImages: [],
-                              sectionDisplay: "general",
-                              userId: 1,
-                              category: "Exemplo",
-                              publishedStatus: "published",
-                              createdAt: new Date().toISOString(),
-                            },
-                            user: {
-                              id: 1,
-                              name: "João Designer",
-                              avatarUrl: null,
-                            },
-                            tags: [{ id: 1, name: "Website" }]
-                          }}
-                        />
-                      </CarouselItem>
-                    ))
-                  )}
+                  {projects && projects.length > 0
+                    ? projects.slice(0, 6).map((project) => (
+                        <CarouselItem
+                          key={project.project.id}
+                          className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4"
+                        >
+                          <ProjectCard project={project} />
+                        </CarouselItem>
+                      ))
+                    : // Placeholder cards when no projects exist
+                      Array.from({ length: 6 }).map((_, index) => (
+                        <CarouselItem
+                          key={index}
+                          className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4"
+                        >
+                          <ProjectCard
+                            project={{
+                              project: {
+                                id: index,
+                                title: "Projeto Exemplo",
+                                description: "Um belo projeto de exemplo",
+                                imageUrl: `https://source.unsplash.com/random/600x800?design,${index}`,
+                                galleryImages: [],
+                                sectionDisplay: "general",
+                                userId: 1,
+                                category: "Exemplo",
+                                publishedStatus: "published",
+                                createdAt: new Date().toISOString(),
+                              },
+                              user: {
+                                id: 1,
+                                name: "João Designer",
+                                avatarUrl: null,
+                              },
+                              tags: [{ id: 1, name: "Website" }],
+                            }}
+                          />
+                        </CarouselItem>
+                      ))}
                 </CarouselContent>
                 <div className="flex justify-center items-center mt-4">
                   <CarouselPrevious className="bg-black/40 hover:bg-black/60 border-none" />
@@ -188,7 +223,9 @@ export default function HomePage() {
         {/* Categories */}
         <section className="py-12 px-4">
           <div className="max-w-[1200px] mx-auto">
-            <h2 className="text-2xl md:text-3xl font-semibold mb-10 animate-on-scroll">Categories</h2>
+            <h2 className="text-2xl md:text-3xl font-semibold mb-10 animate-on-scroll">
+              Categories
+            </h2>
 
             <div className="animate-on-scroll relative">
               <Carousel
@@ -207,11 +244,11 @@ export default function HomePage() {
                       images={[
                         "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
                         "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
-                        "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
+                        "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
                       ]}
                     />
                   </CarouselItem>
-                  
+
                   <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/2 lg:basis-1/3">
                     <CategoryCard
                       title="Aplicativos Móveis"
@@ -219,11 +256,11 @@ export default function HomePage() {
                       images={[
                         "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
                         "https://images.unsplash.com/photo-1556656793-08538906a9f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
-                        "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
+                        "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
                       ]}
                     />
                   </CarouselItem>
-                  
+
                   <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/2 lg:basis-1/3">
                     <CategoryCard
                       title="Design 3D"
@@ -231,11 +268,11 @@ export default function HomePage() {
                       images={[
                         "https://images.unsplash.com/photo-1578632767115-351597cf2477?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
                         "https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
-                        "https://images.unsplash.com/photo-1638913972776-873fc7af3fdf?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
+                        "https://images.unsplash.com/photo-1638913972776-873fc7af3fdf?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
                       ]}
                     />
                   </CarouselItem>
-                  
+
                   <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/2 lg:basis-1/3">
                     <CategoryCard
                       title="UI/UX Design"
@@ -243,7 +280,7 @@ export default function HomePage() {
                       images={[
                         "https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
                         "https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
-                        "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
+                        "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
                       ]}
                     />
                   </CarouselItem>
@@ -261,7 +298,9 @@ export default function HomePage() {
         {/* Top Plugins */}
         <section className="py-12 px-4">
           <div className="max-w-[1200px] mx-auto">
-            <h2 className="text-2xl md:text-3xl font-semibold mb-10 animate-on-scroll">Minhas Ferramentas de Trabalho</h2>
+            <h2 className="text-2xl md:text-3xl font-semibold mb-10 animate-on-scroll">
+              Minhas Ferramentas de Trabalho
+            </h2>
 
             <div className="animate-on-scroll relative">
               <Carousel
@@ -281,7 +320,7 @@ export default function HomePage() {
                       iconBgColor="bg-purple-500"
                     />
                   </CarouselItem>
-                  
+
                   <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
                     <PluginCard
                       title="GitHub"
@@ -290,7 +329,7 @@ export default function HomePage() {
                       iconBgColor="bg-gray-700"
                     />
                   </CarouselItem>
-                  
+
                   <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
                     <PluginCard
                       title="HTML"
@@ -299,7 +338,7 @@ export default function HomePage() {
                       iconBgColor="bg-orange-500"
                     />
                   </CarouselItem>
-                  
+
                   <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
                     <PluginCard
                       title="CSS"
@@ -308,7 +347,7 @@ export default function HomePage() {
                       iconBgColor="bg-blue-500"
                     />
                   </CarouselItem>
-                  
+
                   <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
                     <PluginCard
                       title="JavaScript"
@@ -317,7 +356,7 @@ export default function HomePage() {
                       iconBgColor="bg-yellow-500"
                     />
                   </CarouselItem>
-                  
+
                   <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
                     <PluginCard
                       title="Photoshop"
@@ -326,7 +365,7 @@ export default function HomePage() {
                       iconBgColor="bg-blue-600"
                     />
                   </CarouselItem>
-                  
+
                   <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
                     <PluginCard
                       title="Illustrator"
@@ -335,7 +374,7 @@ export default function HomePage() {
                       iconBgColor="bg-orange-600"
                     />
                   </CarouselItem>
-                  
+
                   <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
                     <PluginCard
                       title="After Effects"
@@ -358,8 +397,10 @@ export default function HomePage() {
         {/* Top Templates */}
         <section className="py-12 px-4">
           <div className="max-w-[1200px] mx-auto">
-            <h2 className="text-2xl md:text-3xl font-semibold mb-10 animate-on-scroll">Top Templates</h2>
-          
+            <h2 className="text-2xl md:text-3xl font-semibold mb-10 animate-on-scroll">
+              Top Templates
+            </h2>
+
             <div className="animate-on-scroll relative">
               <Carousel
                 setApi={setTemplatesApi}
@@ -377,12 +418,13 @@ export default function HomePage() {
                       image="https://images.unsplash.com/photo-1517292987719-0369a794ec0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
                       author={{
                         name: "Design Studio",
-                        avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=48&h=48&q=80"
+                        avatar:
+                          "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=48&h=48&q=80",
                       }}
                       price="R$399"
                     />
                   </CarouselItem>
-                  
+
                   <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
                     <TemplateCard
                       title="Ecommerce Black"
@@ -390,12 +432,13 @@ export default function HomePage() {
                       image="https://images.unsplash.com/photo-1481487196290-c152efe083f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
                       author={{
                         name: "ShopMakers",
-                        avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=48&h=48&q=80"
+                        avatar:
+                          "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=48&h=48&q=80",
                       }}
                       price="R$499"
                     />
                   </CarouselItem>
-                  
+
                   <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
                     <TemplateCard
                       title="Agency Minimal"
@@ -403,12 +446,13 @@ export default function HomePage() {
                       image="https://images.unsplash.com/photo-1483058712412-4245e9b90334?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
                       author={{
                         name: "Creative Co.",
-                        avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=48&h=48&q=80"
+                        avatar:
+                          "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=48&h=48&q=80",
                       }}
                       price="R$349"
                     />
                   </CarouselItem>
-                  
+
                   <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
                     <TemplateCard
                       title="Mobile App Pro"
@@ -416,12 +460,13 @@ export default function HomePage() {
                       image="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
                       author={{
                         name: "AppLabs",
-                        avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=48&h=48&q=80"
+                        avatar:
+                          "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=48&h=48&q=80",
                       }}
                       price="R$449"
                     />
                   </CarouselItem>
-                  
+
                   <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
                     <TemplateCard
                       title="Startup X"
@@ -429,12 +474,13 @@ export default function HomePage() {
                       image="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
                       author={{
                         name: "Tech Founders",
-                        avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=48&h=48&q=80"
+                        avatar:
+                          "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=48&h=48&q=80",
                       }}
                       price="R$399"
                     />
                   </CarouselItem>
-                  
+
                   <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
                     <TemplateCard
                       title="Creative Portfolio"
@@ -442,7 +488,8 @@ export default function HomePage() {
                       image="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
                       author={{
                         name: "Art Studio",
-                        avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=48&h=48&q=80"
+                        avatar:
+                          "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=48&h=48&q=80",
                       }}
                       price="R$349"
                     />
@@ -465,24 +512,36 @@ export default function HomePage() {
               {/* Text Content */}
               <div className="animate-on-scroll">
                 <h2 className="text-3xl md:text-4xl font-semibold leading-tight mb-6">
-                  Olá, sou desenvolvedor apaixonado por criar experiências digitais incríveis
+                  Olá, sou desenvolvedor apaixonado por criar experiências
+                  digitais incríveis
                 </h2>
                 <p className="text-lg text-gray-400 mb-8 leading-relaxed">
-                  Com mais de 3 anos de experiência em desenvolvimento frontend e fullstack, 
-                  especializo-me em criar interfaces elegantes e funcionais que conectam 
-                  pessoas e tecnologia de forma natural.
+                  Com mais de 3 anos de experiência em desenvolvimento frontend
+                  e fullstack, especializo-me em criar interfaces elegantes e
+                  funcionais que conectam pessoas e tecnologia de forma natural.
                 </p>
                 <p className="text-base text-gray-500 mb-8 leading-relaxed">
-                  Minha jornada começou com curiosidade sobre como as coisas funcionam na web, 
-                  e hoje trabalho com empresas ao redor do mundo criando soluções que fazem 
-                  a diferença no dia a dia das pessoas.
+                  Minha jornada começou com curiosidade sobre como as coisas
+                  funcionam na web, e hoje trabalho com empresas ao redor do
+                  mundo criando soluções que fazem a diferença no dia a dia das
+                  pessoas.
                 </p>
                 <div className="flex flex-wrap gap-3">
-                  <span className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">React</span>
-                  <span className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">TypeScript</span>
-                  <span className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">Vue.js</span>
-                  <span className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">Next.js</span>
-                  <span className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">UI/UX Design</span>
+                  <span className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">
+                    React
+                  </span>
+                  <span className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">
+                    TypeScript
+                  </span>
+                  <span className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">
+                    Vue.js
+                  </span>
+                  <span className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">
+                    Next.js
+                  </span>
+                  <span className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">
+                    UI/UX Design
+                  </span>
                 </div>
               </div>
 
@@ -526,28 +585,37 @@ export default function HomePage() {
               <div>
                 <h3 className="text-2xl font-semibold mb-6">Minha Filosofia</h3>
                 <p className="text-gray-400 mb-4 leading-relaxed">
-                  Acredito que a tecnologia deve ser invisible - funcionar de forma tão natural 
-                  que as pessoas nem percebam sua complexidade. Cada linha de código que escrevo 
-                  tem o objetivo de criar experiências mais humanas e acessíveis.
+                  Acredito que a tecnologia deve ser invisible - funcionar de
+                  forma tão natural que as pessoas nem percebam sua
+                  complexidade. Cada linha de código que escrevo tem o objetivo
+                  de criar experiências mais humanas e acessíveis.
                 </p>
                 <p className="text-gray-400 leading-relaxed">
-                  Busco sempre equilibrar inovação técnica com usabilidade prática, 
-                  criando produtos que não apenas impressionam, mas que realmente 
-                  resolvem problemas reais das pessoas.
+                  Busco sempre equilibrar inovação técnica com usabilidade
+                  prática, criando produtos que não apenas impressionam, mas que
+                  realmente resolvem problemas reais das pessoas.
                 </p>
               </div>
               <div className="space-y-4">
                 <div className="p-4 border-l-4 border-primary bg-zinc-900/30 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 rounded-r-lg">
                   <h4 className="font-medium mb-2">Código Limpo</h4>
-                  <p className="text-sm text-gray-400">Escrevo código pensando em quem vai mantê-lo amanhã</p>
+                  <p className="text-sm text-gray-400">
+                    Escrevo código pensando em quem vai mantê-lo amanhã
+                  </p>
                 </div>
                 <div className="p-4 border-l-4 border-primary bg-zinc-900/30 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 rounded-r-lg">
-                  <h4 className="font-medium mb-2">Design Centrado no Usuário</h4>
-                  <p className="text-sm text-gray-400">Cada decisão é tomada pensando na experiência final</p>
+                  <h4 className="font-medium mb-2">
+                    Design Centrado no Usuário
+                  </h4>
+                  <p className="text-sm text-gray-400">
+                    Cada decisão é tomada pensando na experiência final
+                  </p>
                 </div>
                 <div className="p-4 border-l-4 border-primary bg-zinc-900/30 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 rounded-r-lg">
                   <h4 className="font-medium mb-2">Aprendizado Contínuo</h4>
-                  <p className="text-sm text-gray-400">Tecnologia evolui rápido, e eu evoluo junto</p>
+                  <p className="text-sm text-gray-400">
+                    Tecnologia evolui rápido, e eu evoluo junto
+                  </p>
                 </div>
               </div>
             </div>
@@ -558,74 +626,84 @@ export default function HomePage() {
         <section id="contact" className="py-20 px-4 relative overflow-hidden">
           <div className="absolute inset-0 cta-gradient z-0"></div>
           <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black to-transparent z-10"></div>
-          
+
           <div className="relative z-20 max-w-[1200px] mx-auto text-center">
             <div className="mb-10 inline-block animate-on-scroll">
               <div className="h-20 w-20 rounded-full bg-primary/20 blue-glow flex items-center justify-center mx-auto mb-6">
                 <div className="h-12 w-12 rounded-lg bg-primary flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-8 w-8 text-white"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                    />
                   </svg>
                 </div>
               </div>
             </div>
-            
+
             <h2 className="text-3xl md:text-5xl font-semibold mb-6 animate-on-scroll">
               Pronto para o próximo projeto?
             </h2>
             <p className="text-gray-400 text-lg md:text-xl mb-10 animate-on-scroll">
-              Vamos conversar sobre suas ideias e criar algo incrível juntos. 
+              Vamos conversar sobre suas ideias e criar algo incrível juntos.
               Entre em contato e vamos dar vida ao seu projeto.
             </p>
             <div className="space-y-8 animate-on-scroll">
               {/* Social Links */}
               <div className="flex justify-center space-x-8">
-                <a 
-                  href="https://instagram.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-white/70 hover:text-white transition-colors duration-200"
                 >
                   <FaInstagram size={24} />
                 </a>
-                <a 
-                  href="https://linkedin.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-white/70 hover:text-white transition-colors duration-200"
                 >
                   <FaLinkedin size={24} />
                 </a>
-                <a 
-                  href="https://github.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href="https://github.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-white/70 hover:text-white transition-colors duration-200"
                 >
                   <FaGithub size={24} />
                 </a>
               </div>
-              
+
               {/* Buttons */}
               <div className="flex justify-center gap-4 flex-wrap">
-                <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-primary hover:bg-primary/90"
+                >
                   <a href="/curriculum.pdf" download="Curriculum-Phaison.pdf">
                     <Download className="mr-2 h-4 w-4" />
                     Baixar currículo
                   </a>
                 </Button>
                 <Button variant="outline" size="lg">
-                  <Link href="/projects">
-                    Ver projetos
-                  </Link>
+                  <Link href="/projects">Ver projetos</Link>
                 </Button>
               </div>
             </div>
           </div>
         </section>
-
-
-
       </main>
 
       <Footer />
