@@ -285,97 +285,89 @@
   opacity: 1;
 }
 
-/* CTA Ellipses - Based on .cta-gradient */
+/* CTA Ellipses - Modern floating gradients */
 .cta-ellipses-container {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
-  z-index: -10;
+  z-index: 0;
+  overflow: hidden;
 }
 
 .cta-ellipse {
   position: absolute;
+  background: radial-gradient(
+    ellipse at center, 
+    rgba(0, 102, 255, 0.25) 0%, 
+    rgba(0, 102, 255, 0.15) 35%, 
+    rgba(0, 102, 255, 0.08) 65%, 
+    transparent 100%
+  );
   border-radius: 50%;
-  background: radial-gradient(ellipse at center, 
-    rgba(0, 102, 255, 0.9) 0%, 
-    rgba(0, 102, 255, 0.7) 25%, 
-    rgba(0, 102, 255, 0.4) 50%, 
-    rgba(0, 102, 255, 0.2) 75%, 
-    transparent 100%);
-  filter: blur(80px);
+  filter: blur(60px);
+  will-change: transform, opacity;
   pointer-events: none;
-  will-change: transform;
-  opacity: 1;
 }
 
 .cta-ellipse-left {
-  left: -15%;
-  top: 50%;
-  width: 40vw;
-  height: 60vh;
-  max-width: 500px;
-  max-height: 600px;
-  animation: ctaEllipseFloatLeft 25s infinite ease-in-out;
-  transform-origin: center;
+  left: -200px;
+  top: 20%;
+  width: 400px;
+  height: 600px;
+  animation: floatLeft 20s ease-in-out infinite;
 }
 
 .cta-ellipse-right {
-  right: -15%;
-  top: 50%;
-  width: 40vw;
-  height: 60vh;
-  max-width: 500px;
-  max-height: 600px;
-  animation: ctaEllipseFloatRight 30s infinite ease-in-out;
-  transform-origin: center;
+  right: -200px;
+  top: 60%;
+  width: 400px;
+  height: 600px;
+  animation: floatRight 25s ease-in-out infinite reverse;
 }
 
-@keyframes ctaEllipseFloatLeft {
+@keyframes floatLeft {
   0%, 100% {
-    transform: translateY(-50%) scale(1) rotate(0deg);
-  }
-  25% {
-    transform: translateY(-40%) scale(1.1) rotate(5deg);
+    transform: translateY(0px) scale(1);
+    opacity: 0.8;
   }
   50% {
-    transform: translateY(-60%) scale(0.9) rotate(-3deg);
-  }
-  75% {
-    transform: translateY(-45%) scale(1.05) rotate(2deg);
+    transform: translateY(-30px) scale(1.05);
+    opacity: 0.6;
   }
 }
 
-@keyframes ctaEllipseFloatRight {
+@keyframes floatRight {
   0%, 100% {
-    transform: translateY(-50%) scale(1) rotate(0deg);
+    transform: translateY(0px) scale(1);
+    opacity: 0.7;
   }
-  30% {
-    transform: translateY(-35%) scale(1.15) rotate(-4deg);
-  }
-  60% {
-    transform: translateY(-65%) scale(0.85) rotate(6deg);
-  }
-  90% {
-    transform: translateY(-55%) scale(1.08) rotate(-2deg);
+  50% {
+    transform: translateY(40px) scale(0.95);
+    opacity: 0.9;
   }
 }
 
-/* Responsive adjustments for CTA ellipses */
+/* Ensure content stays above ellipses */
+.content-layer {
+  position: relative;
+  z-index: 10;
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  .cta-ellipse-left,
-  .cta-ellipse-right {
-    width: 70vw;
-    height: 25vh;
-    max-width: 400px;
-    max-height: 250px;
-  }
-  
   .cta-ellipse-left {
-    left: -35%;
+    left: -150px;
+    width: 300px;
+    height: 400px;
   }
   
   .cta-ellipse-right {
-    right: -35%;
+    right: -150px;
+    width: 300px;
+    height: 400px;
   }
 }
 
