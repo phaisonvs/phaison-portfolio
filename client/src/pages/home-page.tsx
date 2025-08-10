@@ -396,7 +396,7 @@ export default function HomePage() {
         </section>
 
         {/* Top Templates */}
-        <section className="py-12 px-4">
+        {/*<section className="py-12 px-4">
           <div className="max-w-[1200px] mx-auto">
             <h2 className="text-2xl md:text-3xl font-semibold mb-10 animate-on-scroll">
               Top Templates
@@ -504,7 +504,7 @@ export default function HomePage() {
               <CarouselDots api={templatesApi} className="mt-4" />
             </div>
           </div>
-        </section>
+        </section>*/}
 
         {/* About Section */}
         <section id="about" className="py-16 md:py-24 px-4">
