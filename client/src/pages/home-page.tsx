@@ -504,7 +504,7 @@ export default function HomePage() {
               <CarouselDots api={templatesApi} className="mt-4" />
             </div>
           </div>
-        </section>*/}
+        </section>
 
         {/* About Section */}
         <section id="about" className="py-16 md:py-24 px-4">
