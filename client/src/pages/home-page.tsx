@@ -63,6 +63,15 @@ export default function HomePage() {
 
   // Animation on scroll
   const animatedElements = useRef<HTMLElement[]>([]);
+  const spotlightRefs = useRef<{
+    top: HTMLElement | null;
+    bottom: HTMLElement | null;
+    middle: HTMLElement | null;
+  }>({
+    top: null,
+    bottom: null,
+    middle: null,
+  });
 
   // Check for scroll parameter in URL
   useEffect(() => {
@@ -80,6 +89,48 @@ export default function HomePage() {
         window.history.replaceState({}, "", "/");
       }, 500);
     }
+  }, []);
+
+  // Spotlight scroll animation
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const scrollProgress = scrollY / (document.body.scrollHeight - windowHeight);
+
+      // Update spotlight positions based on scroll
+      if (spotlightRefs.current.top) {
+        const translateX = Math.sin(scrollProgress * 4) * 30;
+        const translateY = Math.cos(scrollProgress * 3) * 20;
+        const scale = 1 + Math.sin(scrollProgress * 2) * 0.2;
+        spotlightRefs.current.top.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+      }
+
+      if (spotlightRefs.current.bottom) {
+        const translateX = Math.cos(scrollProgress * 5) * 40;
+        const translateY = Math.sin(scrollProgress * 4) * 25;
+        const scale = 1 + Math.cos(scrollProgress * 3) * 0.15;
+        spotlightRefs.current.bottom.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+      }
+
+      if (spotlightRefs.current.middle) {
+        const translateX = Math.sin(scrollProgress * 6) * 35;
+        const translateY = Math.cos(scrollProgress * 5) * 30;
+        const opacity = 0.2 + Math.sin(scrollProgress * 4) * 0.2;
+        spotlightRefs.current.middle.style.transform = `translate(${translateX}px, ${translateY}px)`;
+        spotlightRefs.current.middle.style.opacity = opacity.toString();
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Set spotlight refs
+  useEffect(() => {
+    spotlightRefs.current.top = document.querySelector('.spotlight-top');
+    spotlightRefs.current.bottom = document.querySelector('.spotlight-bottom');
+    spotlightRefs.current.middle = document.querySelector('.spotlight-middle');
   }, []);
 
   useEffect(() => {
@@ -110,7 +161,14 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-black text-white">
+    <div className="min-h-screen flex flex-col bg-black text-white relative overflow-hidden">
+      {/* Dynamic gradient spotlights */}
+      <div className="spotlight-container">
+        <div className="spotlight-element spotlight-top"></div>
+        <div className="spotlight-element spotlight-bottom"></div>
+        <div className="spotlight-element spotlight-middle"></div>
+      </div>
+      
       <Header />
 
       <main className="flex-grow">
@@ -569,15 +627,15 @@ export default function HomePage() {
 
             {/* Stats Section */}
             <div className="grid md:grid-cols-3 gap-8 animate-on-scroll mt-16">
-              <div className="text-center p-6 rounded-xl bg-zinc-900/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300">
+              <div className="text-center p-6 rounded-xl bg-zinc-900/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 dynamic-glow">
                 <div className="text-3xl font-bold text-primary mb-2">3+</div>
                 <div className="text-gray-400">Anos de Experiência</div>
               </div>
-              <div className="text-center p-6 rounded-xl bg-zinc-900/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300">
+              <div className="text-center p-6 rounded-xl bg-zinc-900/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 dynamic-glow">
                 <div className="text-3xl font-bold text-primary mb-2">50+</div>
                 <div className="text-gray-400">Projetos Realizados</div>
               </div>
-              <div className="text-center p-6 rounded-xl bg-zinc-900/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300">
+              <div className="text-center p-6 rounded-xl bg-zinc-900/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 dynamic-glow">
                 <div className="text-3xl font-bold text-primary mb-2">100%</div>
                 <div className="text-gray-400">Dedicação</div>
               </div>
@@ -600,13 +658,13 @@ export default function HomePage() {
                 </p>
               </div>
               <div className="space-y-4">
-                <div className="p-4 border-l-4 border-primary bg-zinc-900/30 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 rounded-r-lg">
+                <div className="p-4 border-l-4 border-primary bg-zinc-900/30 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 rounded-r-lg dynamic-glow">
                   <h4 className="font-medium mb-2">Código Limpo</h4>
                   <p className="text-sm text-gray-400">
                     Escrevo código pensando em quem vai mantê-lo amanhã
                   </p>
                 </div>
-                <div className="p-4 border-l-4 border-primary bg-zinc-900/30 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 rounded-r-lg">
+                <div className="p-4 border-l-4 border-primary bg-zinc-900/30 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 rounded-r-lg dynamic-glow">
                   <h4 className="font-medium mb-2">
                     Design Centrado no Usuário
                   </h4>
@@ -614,7 +672,7 @@ export default function HomePage() {
                     Cada decisão é tomada pensando na experiência final
                   </p>
                 </div>
-                <div className="p-4 border-l-4 border-primary bg-zinc-900/30 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 rounded-r-lg">
+                <div className="p-4 border-l-4 border-primary bg-zinc-900/30 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 rounded-r-lg dynamic-glow">
                   <h4 className="font-medium mb-2">Aprendizado Contínuo</h4>
                   <p className="text-sm text-gray-400">
                     Tecnologia evolui rápido, e eu evoluo junto
