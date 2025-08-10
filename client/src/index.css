@@ -357,6 +357,41 @@
   z-index: 10;
 }
 
+/* Slide-in animations for project cards */
+.animate-slide-in-left {
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+
+.animate-slide-in-left.delay-100 {
+  animation-delay: 0.1s;
+}
+
+.animate-slide-in-left.delay-200 {
+  animation-delay: 0.2s;
+}
+
+.animate-slide-in-left.delay-300 {
+  animation-delay: 0.3s;
+}
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Hover animation for project cards */
+.group:hover .animate-slide-in-left {
+  animation: slideInLeft 0.4s ease-out forwards;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .cta-ellipse-left {

@@ -189,7 +189,7 @@ export default function HomePage() {
                     ? projects.slice(0, 6).map((project) => (
                         <CarouselItem
                           key={project.project.id}
-                          className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4"
+                          className="pl-2 md:pl-4 basis-[85%] sm:basis-1/2 md:basis-1/3 lg:basis-1/4"
                         >
                           <ProjectCard project={project} />
                         </CarouselItem>
@@ -198,7 +198,7 @@ export default function HomePage() {
                       Array.from({ length: 6 }).map((_, index) => (
                         <CarouselItem
                           key={index}
-                          className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4"
+                          className="pl-2 md:pl-4 basis-[85%] sm:basis-1/2 md:basis-1/3 lg:basis-1/4"
                         >
                           <ProjectCard
                             project={{
