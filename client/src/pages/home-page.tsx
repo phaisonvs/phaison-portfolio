@@ -118,6 +118,12 @@ export default function HomePage() {
         <div className="spotlight-element spotlight-middle"></div>
         <div className="spotlight-element spotlight-accent"></div>
       </div>
+
+      {/* CTA-based animated ellipses */}
+      <div className="cta-ellipses-container" aria-hidden="true">
+        <div className="cta-ellipse cta-ellipse-left"></div>
+        <div className="cta-ellipse cta-ellipse-right"></div>
+      </div>
       
       <Header />
 
