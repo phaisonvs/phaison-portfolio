@@ -189,7 +189,7 @@ export default function HomePage() {
                     ? projects.slice(0, 6).map((project) => (
                         <CarouselItem
                           key={project.project.id}
-                          className="pl-2 md:pl-4 basis-[calc(100%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(50%-0.5rem)] lg:basis-[calc(50%-0.5rem)]"
+                          className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(50%-0.5rem)] lg:basis-[calc(50%-0.5rem)]"
                         >
                           <ProjectCard project={project} />
                         </CarouselItem>
@@ -198,7 +198,7 @@ export default function HomePage() {
                       Array.from({ length: 6 }).map((_, index) => (
                         <CarouselItem
                           key={index}
-                          className="pl-2 md:pl-4 basis-[calc(100%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(50%-0.5rem)] lg:basis-[calc(50%-0.5rem)]"
+                          className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(50%-0.5rem)] lg:basis-[calc(50%-0.5rem)]"
                         >
                           <ProjectCard
                             project={{
