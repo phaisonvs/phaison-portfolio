@@ -294,7 +294,8 @@ export default function HomePage() {
               <CarouselDots api={categoriesApi} className="mt-4" />
             </div>
           </div>
-        </section>*/}
+        </section>
+        */}
 
         {/* Top Plugins */}
         <section className="py-12 px-4">
@@ -504,7 +505,8 @@ export default function HomePage() {
               <CarouselDots api={templatesApi} className="mt-4" />
             </div>
           </div>
-        </section>*/}
+        </section>
+        */}
 
         {/* About Section */}
         <section id="about" className="py-16 md:py-24 px-4">
