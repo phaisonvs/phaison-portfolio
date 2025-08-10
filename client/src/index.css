@@ -301,9 +301,10 @@
   position: absolute;
   background: radial-gradient(
     ellipse at center, 
-    rgba(0, 102, 255, 0.25) 0%, 
-    rgba(0, 102, 255, 0.15) 35%, 
-    rgba(0, 102, 255, 0.08) 65%, 
+    rgba(0, 102, 255, 0.6) 0%, 
+    rgba(0, 102, 255, 0.4) 25%, 
+    rgba(0, 102, 255, 0.25) 45%, 
+    rgba(0, 102, 255, 0.1) 70%, 
     transparent 100%
   );
   border-radius: 50%;
@@ -331,22 +332,22 @@
 @keyframes floatLeft {
   0%, 100% {
     transform: translateY(0px) scale(1);
-    opacity: 0.8;
+    opacity: 1;
   }
   50% {
     transform: translateY(-30px) scale(1.05);
-    opacity: 0.6;
+    opacity: 0.8;
   }
 }
 
 @keyframes floatRight {
   0%, 100% {
     transform: translateY(0px) scale(1);
-    opacity: 0.7;
+    opacity: 0.9;
   }
   50% {
     transform: translateY(40px) scale(0.95);
-    opacity: 0.9;
+    opacity: 1;
   }
 }
 
