@@ -151,13 +151,13 @@ export default function HomePage() {
           <div className="max-w-[1200px] mx-auto">
             <div className="flex justify-between items-center mb-10">
               <h2 className="text-2xl md:text-3xl font-semibold animate-on-scroll">
-                Best
+                Projetos em Destaque
               </h2>
               <Link
                 href="/projects"
                 className="text-primary hover:underline transition-all duration-200"
               >
-                View all projects
+                Ver todos
               </Link>
             </div>
 
@@ -225,7 +225,7 @@ export default function HomePage() {
         <section className="py-12 px-4">
           <div className="max-w-[1200px] mx-auto">
             <h2 className="text-2xl md:text-3xl font-semibold mb-10 animate-on-scroll">
-              Categories
+              Categorias
             </h2>
 
             <div className="animate-on-scroll relative">
@@ -300,7 +300,7 @@ export default function HomePage() {
         <section className="py-12 px-4">
           <div className="max-w-[1200px] mx-auto">
             <h2 className="text-2xl md:text-3xl font-semibold mb-10 animate-on-scroll">
-              Minhas Ferramentas de Trabalho
+              Softwares e Habilidades
             </h2>
 
             <div className="animate-on-scroll relative">
