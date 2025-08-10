@@ -99,7 +99,7 @@ export default function HomePage() {
       { threshold: 0.1 },
     );
 
-    document.querySelectorAll(".animate-on-scroll").forEach((el) => {
+    document.querySelectorAll(".animate-on-scroll, .animate-slide-left").forEach((el) => {
       animatedElements.current.push(el as HTMLElement);
       observer.observe(el);
     });
@@ -161,10 +161,10 @@ export default function HomePage() {
         </section>
 
         {/* Project Highlights */}
-        <section className="py-12 px-4">
+        <section className="py-20 px-4">
           <div className="max-w-[1200px] mx-auto">
-            <div className="flex justify-between items-center mb-10">
-              <h2 className="text-2xl md:text-3xl font-semibold animate-on-scroll">
+            <div className="flex justify-between items-center mb-16">
+              <h2 className="text-2xl md:text-3xl font-semibold animate-slide-left">
                 Projetos em Destaque
               </h2>
               <Link
@@ -184,12 +184,12 @@ export default function HomePage() {
                 }}
                 className="w-full"
               >
-                <CarouselContent className="-ml-2 md:-ml-4">
+                <CarouselContent className="-ml-2 md:-ml-4 gap-4">
                   {projects && projects.length > 0
                     ? projects.slice(0, 6).map((project) => (
                         <CarouselItem
                           key={project.project.id}
-                          className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4"
+                          className="pl-2 md:pl-4 basis-[calc(100%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(50%-0.5rem)] lg:basis-[calc(50%-0.5rem)]"
                         >
                           <ProjectCard project={project} />
                         </CarouselItem>
@@ -198,7 +198,7 @@ export default function HomePage() {
                       Array.from({ length: 6 }).map((_, index) => (
                         <CarouselItem
                           key={index}
-                          className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4"
+                          className="pl-2 md:pl-4 basis-[calc(100%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(50%-0.5rem)] lg:basis-[calc(50%-0.5rem)]"
                         >
                           <ProjectCard
                             project={{
