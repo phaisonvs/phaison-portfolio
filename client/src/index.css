@@ -290,38 +290,42 @@
   position: fixed;
   inset: 0;
   pointer-events: none;
-  overflow: hidden;
-  z-index: -1;
+  z-index: 1;
 }
 
 .cta-ellipse {
   position: absolute;
   border-radius: 50%;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 102, 255, 0.3));
-  filter: blur(60px);
+  background: radial-gradient(ellipse at center, 
+    rgba(0, 102, 255, 0.9) 0%, 
+    rgba(0, 102, 255, 0.7) 25%, 
+    rgba(0, 102, 255, 0.4) 50%, 
+    rgba(0, 102, 255, 0.2) 75%, 
+    transparent 100%);
+  filter: blur(80px);
   pointer-events: none;
   will-change: transform;
-  opacity: 0.8;
+  opacity: 1;
 }
 
 .cta-ellipse-left {
-  left: -30%;
+  left: -15%;
   top: 50%;
-  width: 60vw;
-  height: 40vh;
-  max-width: 800px;
-  max-height: 500px;
+  width: 40vw;
+  height: 60vh;
+  max-width: 500px;
+  max-height: 600px;
   animation: ctaEllipseFloatLeft 25s infinite ease-in-out;
   transform-origin: center;
 }
 
 .cta-ellipse-right {
-  right: -30%;
+  right: -15%;
   top: 50%;
-  width: 60vw;
-  height: 40vh;
-  max-width: 800px;
-  max-height: 500px;
+  width: 40vw;
+  height: 60vh;
+  max-width: 500px;
+  max-height: 600px;
   animation: ctaEllipseFloatRight 30s infinite ease-in-out;
   transform-origin: center;
 }
@@ -360,18 +364,18 @@
 @media (max-width: 768px) {
   .cta-ellipse-left,
   .cta-ellipse-right {
-    width: 80vw;
-    height: 30vh;
-    max-width: 600px;
-    max-height: 300px;
+    width: 70vw;
+    height: 25vh;
+    max-width: 400px;
+    max-height: 250px;
   }
   
   .cta-ellipse-left {
-    left: -40%;
+    left: -35%;
   }
   
   .cta-ellipse-right {
-    right: -40%;
+    right: -35%;
   }
 }
 
