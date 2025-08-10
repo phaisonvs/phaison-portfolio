@@ -127,7 +127,7 @@ export default function HomePage() {
       
       <Header />
 
-      <main className="flex-grow">
+      <main className="flex-grow relative z-10">
         {/* Hero section */}
         <section id="hero" className="py-16 md:py-24 px-4">
           <div className="max-w-[1200px] mx-auto text-center">
