@@ -63,8 +63,9 @@ export default function HomePage() {
 
   // Animation on scroll
   const animatedElements = useRef<HTMLElement[]>([]);
+  const [showProjectsSection, setShowProjectsSection] = useState(false);
 
-  // Check for scroll parameter in URL
+  // Check for scroll parameter in URL and handle scroll visibility
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const scrollTo = urlParams.get("scrollTo");
@@ -80,6 +81,19 @@ export default function HomePage() {
         window.history.replaceState({}, "", "/");
       }, 500);
     }
+
+    // Show projects section after scroll starts
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      if (scrollY > 100) {
+        setShowProjectsSection(true);
+      } else {
+        setShowProjectsSection(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
@@ -129,7 +143,7 @@ export default function HomePage() {
 
       <main className="flex-grow content-layer">
         {/* Hero section */}
-        <section id="hero" className="py-16 md:py-24 px-4">
+        <section id="hero" className="min-h-screen flex items-center justify-center py-16 md:py-24 px-4">
           <div className="max-w-[1200px] mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-semibold leading-tight mb-6 animate-on-scroll">
               Oi, eu sou Phaison,
@@ -137,7 +151,7 @@ export default function HomePage() {
               um desenvolvedor criativo.
             </h1>
             <p className="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto animate-on-scroll">
-              Eu agrego valor a projetos digitais unindo experiência em<br /> UI, UX e
+              Eu agrego valor a projetos digitais unindo experiência em<br className="hidden md:block" /> UI, UX e
               Front-end com criatividade.
             </p>
             <div className="flex justify-center gap-4 flex-wrap animate-on-scroll">
@@ -160,7 +174,8 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Project Highlights */}
+        {/* Project Highlights - Show only after scroll */}
+        {showProjectsSection && (
         <section className="py-12 px-4">
           <div className="max-w-[1200px] mx-auto">
             <div className="flex justify-between items-center mb-10">
@@ -234,6 +249,7 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+        )}
 
         {/* Categories */}
         {/*<section className="py-12 px-4">
