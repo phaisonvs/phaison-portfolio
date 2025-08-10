@@ -63,15 +63,6 @@ export default function HomePage() {
 
   // Animation on scroll
   const animatedElements = useRef<HTMLElement[]>([]);
-  const spotlightRefs = useRef<{
-    top: HTMLElement | null;
-    bottom: HTMLElement | null;
-    middle: HTMLElement | null;
-  }>({
-    top: null,
-    bottom: null,
-    middle: null,
-  });
 
   // Check for scroll parameter in URL
   useEffect(() => {
@@ -89,48 +80,6 @@ export default function HomePage() {
         window.history.replaceState({}, "", "/");
       }, 500);
     }
-  }, []);
-
-  // Spotlight scroll animation
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const scrollProgress = scrollY / (document.body.scrollHeight - windowHeight);
-
-      // Update spotlight positions based on scroll
-      if (spotlightRefs.current.top) {
-        const translateX = Math.sin(scrollProgress * 4) * 30;
-        const translateY = Math.cos(scrollProgress * 3) * 20;
-        const scale = 1 + Math.sin(scrollProgress * 2) * 0.2;
-        spotlightRefs.current.top.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
-      }
-
-      if (spotlightRefs.current.bottom) {
-        const translateX = Math.cos(scrollProgress * 5) * 40;
-        const translateY = Math.sin(scrollProgress * 4) * 25;
-        const scale = 1 + Math.cos(scrollProgress * 3) * 0.15;
-        spotlightRefs.current.bottom.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
-      }
-
-      if (spotlightRefs.current.middle) {
-        const translateX = Math.sin(scrollProgress * 6) * 35;
-        const translateY = Math.cos(scrollProgress * 5) * 30;
-        const opacity = 0.2 + Math.sin(scrollProgress * 4) * 0.2;
-        spotlightRefs.current.middle.style.transform = `translate(${translateX}px, ${translateY}px)`;
-        spotlightRefs.current.middle.style.opacity = opacity.toString();
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Set spotlight refs
-  useEffect(() => {
-    spotlightRefs.current.top = document.querySelector('.spotlight-top');
-    spotlightRefs.current.bottom = document.querySelector('.spotlight-bottom');
-    spotlightRefs.current.middle = document.querySelector('.spotlight-middle');
   }, []);
 
   useEffect(() => {
@@ -167,6 +116,7 @@ export default function HomePage() {
         <div className="spotlight-element spotlight-top"></div>
         <div className="spotlight-element spotlight-bottom"></div>
         <div className="spotlight-element spotlight-middle"></div>
+        <div className="spotlight-element spotlight-accent"></div>
       </div>
       
       <Header />

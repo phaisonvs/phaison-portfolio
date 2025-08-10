@@ -97,74 +97,145 @@
 
 /* Dynamic gradient spotlights - Inspired by Stefano Bartoletti */
 .spotlight-container {
-  position: absolute;
+  position: fixed;
   inset: 0;
   pointer-events: none;
   overflow: hidden;
+  z-index: -1;
 }
 
 .spotlight-element {
-  position: fixed;
+  position: absolute;
   border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.4;
-  transition: all 1000ms ease-linear;
+  filter: blur(80px);
   pointer-events: none;
 }
 
 .spotlight-top {
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, rgba(59, 130, 246, 0.15) 40%, transparent 70%);
-  top: -20%;
-  right: -10%;
-  width: 60vw;
-  height: 60vw;
-  animation: spotlightFloat 20s infinite ease-in-out;
-  z-index: 1;
+  background: radial-gradient(ellipse at center, 
+    rgba(0, 102, 255, 0.8) 0%, 
+    rgba(0, 102, 255, 0.5) 20%, 
+    rgba(0, 102, 255, 0.3) 40%, 
+    rgba(0, 102, 255, 0.1) 60%, 
+    transparent 100%);
+  top: -40%;
+  right: -30%;
+  width: 120vw;
+  height: 80vw;
+  max-width: 1200px;
+  max-height: 800px;
+  animation: spotlightFloat1 25s infinite ease-in-out;
+  opacity: 0.7;
 }
 
 .spotlight-bottom {
-  background: radial-gradient(circle, rgba(37, 99, 235, 0.35) 0%, rgba(59, 130, 246, 0.12) 50%, transparent 80%);
-  bottom: -30%;
-  left: -20%;
-  width: 80vw;
-  height: 80vw;
-  animation: spotlightFloat 25s infinite ease-in-out reverse;
-  z-index: 1;
+  background: radial-gradient(ellipse at center, 
+    rgba(37, 99, 235, 0.9) 0%, 
+    rgba(37, 99, 235, 0.6) 15%, 
+    rgba(37, 99, 235, 0.4) 35%, 
+    rgba(37, 99, 235, 0.15) 55%, 
+    transparent 100%);
+  bottom: -60%;
+  left: -50%;
+  width: 140vw;
+  height: 100vw;
+  max-width: 1400px;
+  max-height: 1000px;
+  animation: spotlightFloat2 30s infinite ease-in-out;
+  opacity: 0.6;
 }
 
 .spotlight-middle {
-  background: radial-gradient(circle, rgba(96, 165, 250, 0.3) 0%, rgba(59, 130, 246, 0.08) 60%, transparent 90%);
-  top: 50%;
-  right: -30%;
-  width: 70vw;
-  height: 70vw;
-  animation: spotlightPulse 15s infinite ease-in-out;
-  z-index: 1;
+  background: radial-gradient(ellipse at center, 
+    rgba(59, 130, 246, 0.7) 0%, 
+    rgba(59, 130, 246, 0.5) 25%, 
+    rgba(59, 130, 246, 0.25) 45%, 
+    rgba(59, 130, 246, 0.1) 65%, 
+    transparent 100%);
+  top: 30%;
+  right: -60%;
+  width: 110vw;
+  height: 90vw;
+  max-width: 1100px;
+  max-height: 900px;
+  animation: spotlightFloat3 20s infinite ease-in-out;
+  opacity: 0.5;
 }
 
-@keyframes spotlightFloat {
+.spotlight-accent {
+  background: radial-gradient(ellipse at center, 
+    rgba(96, 165, 250, 0.6) 0%, 
+    rgba(96, 165, 250, 0.4) 30%, 
+    rgba(96, 165, 250, 0.2) 50%, 
+    rgba(96, 165, 250, 0.08) 70%, 
+    transparent 100%);
+  top: 80%;
+  left: -30%;
+  width: 100vw;
+  height: 70vw;
+  max-width: 1000px;
+  max-height: 700px;
+  animation: spotlightFloat4 35s infinite ease-in-out;
+  opacity: 0.4;
+}
+
+@keyframes spotlightFloat1 {
   0%, 100% {
-    transform: translate(0, 0) scale(1);
+    transform: translate(0, 0) scale(1) rotate(0deg);
   }
   25% {
-    transform: translate(-10px, -20px) scale(1.1);
+    transform: translate(-30px, -40px) scale(1.1) rotate(90deg);
   }
   50% {
-    transform: translate(15px, -10px) scale(0.9);
+    transform: translate(20px, -20px) scale(0.9) rotate(180deg);
   }
   75% {
-    transform: translate(-5px, 15px) scale(1.05);
+    transform: translate(-10px, 30px) scale(1.05) rotate(270deg);
   }
 }
 
-@keyframes spotlightPulse {
+@keyframes spotlightFloat2 {
   0%, 100% {
-    transform: translate(0, 0) scale(1);
-    opacity: 0.2;
+    transform: translate(0, 0) scale(1) rotate(0deg);
   }
-  50% {
-    transform: translate(20px, -30px) scale(1.2);
-    opacity: 0.4;
+  33% {
+    transform: translate(40px, -30px) scale(1.15) rotate(120deg);
+  }
+  66% {
+    transform: translate(-20px, 40px) scale(0.85) rotate(240deg);
+  }
+}
+
+@keyframes spotlightFloat3 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  30% {
+    transform: translate(-50px, 20px) scale(1.2) rotate(108deg);
+  }
+  60% {
+    transform: translate(30px, -40px) scale(0.8) rotate(216deg);
+  }
+  90% {
+    transform: translate(10px, 25px) scale(1.1) rotate(324deg);
+  }
+}
+
+@keyframes spotlightFloat4 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  20% {
+    transform: translate(25px, -35px) scale(1.05) rotate(72deg);
+  }
+  40% {
+    transform: translate(-35px, -10px) scale(1.2) rotate(144deg);
+  }
+  60% {
+    transform: translate(-10px, 35px) scale(0.9) rotate(216deg);
+  }
+  80% {
+    transform: translate(40px, 15px) scale(1.1) rotate(288deg);
   }
 }
 
