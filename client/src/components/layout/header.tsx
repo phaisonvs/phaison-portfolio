@@ -10,10 +10,52 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [location, navigate] = useLocation();
   const { user, logoutMutation } = useAuth();
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   const handleLogout = () => {
     logoutMutation.mutate();
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Se está no topo, sempre mostrar o header
+      if (currentScrollY < 10) {
+        setIsHeaderVisible(true);
+      } else {
+        // Se rolou para baixo, esconder header
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+          setIsHeaderVisible(false);
+        }
+        // Se rolou para cima, mostrar header
+        else if (currentScrollY < lastScrollY) {
+          setIsHeaderVisible(true);
+        }
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    // Throttle scroll events for better performance
+    let ticking = false;
+    const scrollListener = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', scrollListener, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', scrollListener);
+    };
+  }, [lastScrollY]);
 
   const isActive = (path: string) => {
     return location === path;
@@ -33,7 +75,11 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-black/90 backdrop-blur-sm">
+    <header 
+      className={`fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-black/90 backdrop-blur-sm transition-transform duration-300 ease-in-out ${
+        isHeaderVisible ? 'translate-y-0' : '-translate-y-full'
+      }`}
+    >
       <div className="max-w-[1200px] mx-auto flex items-center justify-between py-4 px-4">
         <Link href="/" className="flex items-center space-x-2">
           <img src={logoPath} alt="Phaison Logo" className="h-[24px]" />

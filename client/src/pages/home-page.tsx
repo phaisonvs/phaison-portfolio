@@ -127,7 +127,7 @@ export default function HomePage() {
       
       <Header />
 
-      <main className="flex-grow content-layer">
+      <main className="flex-grow content-layer pt-[73px]">
         {/* Hero section */}
         <section id="hero" className="py-16 md:py-24 px-4 min-h-screen md:min-h-0 flex items-center justify-center md:block">
           <div className="max-w-[1200px] mx-auto text-center">
