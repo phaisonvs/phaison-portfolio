@@ -6,41 +6,20 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { ProjectWithTags } from "@shared/schema";
 import { getInitials } from "@/lib/utils";
-import { ArrowLeft, Loader2, Heart } from "lucide-react";
-import { apiRequest } from "@/lib/queryClient";
+import { ArrowLeft, Loader2 } from "lucide-react";
 import { ImageGallery } from "@/components/projects/image-gallery";
 import { PinterestGallery } from "@/components/projects/pinterest-gallery";
 
 export default function ProjectDetail() {
   const { id } = useParams<{ id: string }>();
   const [, navigate] = useLocation();
-  const queryClient = useQueryClient();
 
   const { data: project, isLoading, error } = useQuery<ProjectWithTags>({
     queryKey: [`/api/projects/${id}`],
     enabled: !!id,
-  });
-
-  const { data: likeStatus } = useQuery({
-    queryKey: [`/api/projects/${id}/like-status`],
-    enabled: !!id,
-  });
-
-  const likeMutation = useMutation({
-    mutationFn: async () => {
-      if ((likeStatus as any)?.liked) {
-        return fetch(`/api/projects/${id}/like`, { method: 'DELETE' }).then(res => res.json());
-      } else {
-        return fetch(`/api/projects/${id}/like`, { method: 'POST' }).then(res => res.json());
-      }
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [`/api/projects/${id}/like-status`] });
-      queryClient.invalidateQueries({ queryKey: [`/api/projects/${id}`] });
-    },
   });
 
   useEffect(() => {
@@ -145,53 +124,233 @@ export default function ProjectDetail() {
             
             <Separator className="my-8" />
             
+            {/* Métricas e Resultados */}
+            <div className="mt-10">
+              <h2 className="text-2xl font-semibold mb-8">Resultados e Métricas</h2>
+              
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+                <div className="text-center p-4 bg-zinc-900/50 rounded-xl border border-zinc-800">
+                  <div className="text-3xl font-bold text-green-400 mb-2">96%</div>
+                  <div className="text-sm text-gray-400">Performance Score</div>
+                </div>
+                <div className="text-center p-4 bg-zinc-900/50 rounded-xl border border-zinc-800">
+                  <div className="text-3xl font-bold text-blue-400 mb-2">45%</div>
+                  <div className="text-sm text-gray-400">Aumento no Engajamento</div>
+                </div>
+                <div className="text-center p-4 bg-zinc-900/50 rounded-xl border border-zinc-800">
+                  <div className="text-3xl font-bold text-purple-400 mb-2">2.3s</div>
+                  <div className="text-sm text-gray-400">Tempo de Carregamento</div>
+                </div>
+                <div className="text-center p-4 bg-zinc-900/50 rounded-xl border border-zinc-800">
+                  <div className="text-3xl font-bold text-yellow-400 mb-2">98%</div>
+                  <div className="text-sm text-gray-400">Satisfação do Cliente</div>
+                </div>
+              </div>
+            </div>
+            
+            <Separator className="my-8" />
+            
+            {/* Processo de Desenvolvimento */}
+            <div className="mt-10">
+              <h2 className="text-2xl font-semibold mb-8">Processo de Desenvolvimento</h2>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <div className="space-y-6">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-white text-sm font-semibold">1</span>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold mb-2">Descoberta e Pesquisa</h3>
+                      <p className="text-gray-400 text-sm">Análise aprofundada dos requisitos, público-alvo e concorrência para definir a estratégia do projeto.</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start space-x-4">
+                    <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-white text-sm font-semibold">2</span>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold mb-2">Design e Prototipagem</h3>
+                      <p className="text-gray-400 text-sm">Criação de wireframes, protótipos interativos e design system completo no Figma.</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start space-x-4">
+                    <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-white text-sm font-semibold">3</span>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold mb-2">Desenvolvimento</h3>
+                      <p className="text-gray-400 text-sm">Implementação técnica seguindo as melhores práticas de código e metodologia ágil.</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="space-y-6">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-white text-sm font-semibold">4</span>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold mb-2">Testes e Otimização</h3>
+                      <p className="text-gray-400 text-sm">Testes de usabilidade, performance e correções baseadas no feedback dos usuários.</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start space-x-4">
+                    <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-white text-sm font-semibold">5</span>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold mb-2">Lançamento</h3>
+                      <p className="text-gray-400 text-sm">Deploy em produção com monitoramento contínuo e suporte pós-lançamento.</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start space-x-4">
+                    <div className="w-8 h-8 bg-indigo-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-white text-sm font-semibold">6</span>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold mb-2">Manutenção</h3>
+                      <p className="text-gray-400 text-sm">Atualizações regulares, melhorias baseadas em dados e suporte técnico contínuo.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <Separator className="my-8" />
+            
+            {/* Desafios e Soluções */}
+            <div className="mt-10">
+              <h2 className="text-2xl font-semibold mb-8">Desafios e Soluções</h2>
+              
+              <div className="space-y-6 mb-12">
+                <div className="bg-zinc-900/50 rounded-xl p-6 border border-zinc-800">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <h3 className="text-lg font-semibold mb-3 text-red-400">🚫 Desafio Principal</h3>
+                      <p className="text-gray-300 mb-4">
+                        Integração complexa com múltiplos sistemas legados e necessidade de manter alta performance durante picos de acesso.
+                      </p>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold mb-3 text-green-400">✅ Solução Implementada</h3>
+                      <p className="text-gray-300">
+                        Arquitetura de microserviços com cache distribuído e CDN global, resultando em 40% de melhoria na velocidade de resposta.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="bg-zinc-900/50 rounded-xl p-6 border border-zinc-800">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <h3 className="text-lg font-semibold mb-3 text-red-400">🚫 Desafio Técnico</h3>
+                      <p className="text-gray-300 mb-4">
+                        Compatibilidade com navegadores mais antigos e dispositivos com baixa conectividade.
+                      </p>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold mb-3 text-green-400">✅ Solução Aplicada</h3>
+                      <p className="text-gray-300">
+                        Progressive Web App (PWA) com fallbacks inteligentes e otimização de imagens adaptativa por contexto.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <Separator className="my-8" />
+            
+            {/* Tecnologias Utilizadas */}
+            <div className="mt-10">
+              <h2 className="text-2xl font-semibold mb-8">Stack Tecnológico</h2>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div className="bg-zinc-900/50 rounded-xl p-6 border border-zinc-800">
+                  <h3 className="text-lg font-semibold mb-4 text-blue-400">Frontend</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {["React", "TypeScript", "Tailwind CSS", "Framer Motion"].map(tech => (
+                      <span key={tech} className="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                
+                <div className="bg-zinc-900/50 rounded-xl p-6 border border-zinc-800">
+                  <h3 className="text-lg font-semibold mb-4 text-green-400">Backend</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {["Node.js", "Express", "PostgreSQL", "Redis"].map(tech => (
+                      <span key={tech} className="px-3 py-1 bg-green-500/20 text-green-300 rounded-full text-sm">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                
+                <div className="bg-zinc-900/50 rounded-xl p-6 border border-zinc-800">
+                  <h3 className="text-lg font-semibold mb-4 text-purple-400">Ferramentas</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {["Figma", "Docker", "AWS", "GitHub Actions"].map(tool => (
+                      <span key={tool} className="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm">
+                        {tool}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <Separator className="my-8" />
+            
             {/* Seção de recursos/funcionalidades */}
             <div className="mt-10">
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl font-semibold">Características do Projeto</h2>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => likeMutation.mutate()}
-                  disabled={likeMutation.isPending}
-                  className={`flex items-center gap-2 transition-colors ${
-                    (likeStatus as any)?.liked 
-                      ? 'bg-red-500/20 border-red-500/50 text-red-400 hover:bg-red-500/30' 
-                      : 'hover:bg-zinc-800'
-                  }`}
-                >
-                  <Heart 
-                    className={`h-4 w-4 ${(likeStatus as any)?.liked ? 'fill-current' : ''}`} 
-                  />
-                  {(likeStatus as any)?.likesCount || 0}
-                </Button>
-              </div>
+              <h2 className="text-2xl font-semibold mb-8">Características do Projeto</h2>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {/* Recursos com base na categoria do projeto */}
                 {project.project.category === "Website" && (
                   <>
-                    <div className="bg-zinc-900/50 rounded-lg p-4 border border-zinc-800/50">
-                      <h3 className="text-lg font-medium mb-2">Design Responsivo</h3>
-                      <p className="text-gray-400 text-sm mb-3">
-                        Experiência perfeita em todos os dispositivos.
+                    <div className="bg-zinc-900 rounded-xl p-6 border border-zinc-800">
+                      <h3 className="text-xl font-medium mb-3">Design Responsivo</h3>
+                      <p className="text-gray-400 mb-4">
+                        Experiência perfeita em todos os dispositivos, de desktops a smartphones.
                       </p>
-                      <div className="flex flex-wrap gap-1">
+                      <div className="flex flex-wrap gap-2 mt-4">
                         {["Mobile", "Tablet", "Desktop"].map(device => (
-                          <span key={device} className="px-2 py-1 bg-zinc-800 rounded text-xs">
+                          <span key={device} className="inline-flex items-center px-3 py-1 bg-zinc-800 rounded-full text-xs">
                             {device}
                           </span>
                         ))}
                       </div>
                     </div>
                     
-                    <div className="bg-zinc-900/50 rounded-lg p-4 border border-zinc-800/50">
-                      <h3 className="text-lg font-medium mb-2">Performance Otimizada</h3>
-                      <p className="text-gray-400 text-sm mb-3">
-                        Carregamento rápido com SEO aprimorado.
+                    <div className="bg-zinc-900 rounded-xl p-6 border border-zinc-800">
+                      <h3 className="text-xl font-medium mb-3">Performance Otimizada</h3>
+                      <p className="text-gray-400 mb-4">
+                        Carregamento rápido e experiência fluida, com SEO aprimorado para melhor visibilidade.
                       </p>
-                      <div className="bg-green-500/20 inline-block px-2 py-1 rounded">
-                        <span className="text-green-500 text-xs font-medium">Score: 96</span>
+                      <div className="mt-4">
+                        <div className="bg-green-500/20 inline-block px-3 py-1 rounded-full">
+                          <span className="text-green-500 text-sm font-medium">Performance Score: 96</span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-zinc-900 rounded-xl p-6 border border-zinc-800">
+                      <h3 className="text-xl font-medium mb-3">Gestão de Conteúdo</h3>
+                      <p className="text-gray-400 mb-4">
+                        Painel administrativo intuitivo para gerenciar todos os aspectos do site.
+                      </p>
+                      <div className="mt-4">
+                        <div className="bg-zinc-800 px-3 py-1 rounded-full inline-block">
+                          <span className="text-white/80 text-sm">CMS Integrado</span>
+                        </div>
                       </div>
                     </div>
                   </>
@@ -325,36 +484,53 @@ export default function ProjectDetail() {
                 </div>
               </div>
             </div>
-
-            {/* Seção de Galeria Vertical (Estilo Behance) */}
+            
+            {/* Feedback do Cliente */}
             <div className="mt-16">
-              <h2 className="text-2xl font-semibold mb-8">Galeria do Projeto</h2>
-              <div className="space-y-4">
-                {/* Placeholder para imagens Behance - não será exibido até ter imagens */}
-                {project.project.behanceImages && project.project.behanceImages.length > 0 ? (
-                  project.project.behanceImages.map((image, index) => (
-                    <div key={index} className="w-full">
-                      <img 
-                        src={image} 
-                        alt={`${project.project.title} - Image ${index + 1}`}
-                        className="w-full h-auto rounded-lg shadow-lg"
-                      />
-                    </div>
-                  ))
-                ) : (
-                  <div className="bg-zinc-900/30 border-2 border-dashed border-zinc-700 rounded-lg p-12 text-center">
-                    <div className="text-zinc-500">
-                      <svg className="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                      </svg>
-                      <p className="text-lg font-medium mb-2">Galeria Vertical</p>
-                      <p className="text-sm">
-                        Esta seção será preenchida com imagens em formato vertical,<br />
-                        similar ao estilo de apresentação do Behance.
-                      </p>
+              <h2 className="text-2xl font-semibold mb-8">Feedback do Cliente</h2>
+              
+              <div className="bg-gradient-to-r from-zinc-900 to-zinc-800 rounded-xl p-8 border border-zinc-700">
+                <div className="flex items-start space-x-4">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-white text-xl font-bold">JD</span>
+                  </div>
+                  <div className="flex-1">
+                    <blockquote className="text-lg text-gray-200 italic mb-4">
+                      "O resultado superou nossas expectativas. A equipe demonstrou profundo entendimento do nosso negócio e entregou uma solução que realmente faz a diferença no dia a dia dos nossos usuários."
+                    </blockquote>
+                    <div>
+                      <p className="font-semibold text-white">João Silva</p>
+                      <p className="text-sm text-gray-400">Diretor de Tecnologia • Empresa Demo</p>
                     </div>
                   </div>
-                )}
+                </div>
+              </div>
+            </div>
+            
+            {/* Próximos Passos */}
+            <div className="mt-16">
+              <h2 className="text-2xl font-semibold mb-8">Próximos Passos</h2>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="bg-zinc-900/50 rounded-xl p-6 border border-zinc-800">
+                  <h3 className="text-lg font-semibold mb-3">Fase 2 - Expansão</h3>
+                  <p className="text-gray-400 mb-4">
+                    Implementação de funcionalidades avançadas baseadas no feedback dos usuários e dados de analytics.
+                  </p>
+                  <div className="text-sm text-gray-500">
+                    Previsto: Q2 2025
+                  </div>
+                </div>
+                
+                <div className="bg-zinc-900/50 rounded-xl p-6 border border-zinc-800">
+                  <h3 className="text-lg font-semibold mb-3">Otimizações Contínuas</h3>
+                  <p className="text-gray-400 mb-4">
+                    Monitoramento de performance e implementação de melhorias baseadas em dados reais de uso.
+                  </p>
+                  <div className="text-sm text-gray-500">
+                    Em andamento
+                  </div>
+                </div>
               </div>
             </div>
           </div>

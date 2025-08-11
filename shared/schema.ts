@@ -16,14 +16,12 @@ export const projects = pgTable("projects", {
   description: text("description").notNull(),
   imageUrl: text("image_url").notNull(), // Mantido para compatibilidade
   galleryImages: json("gallery_images").$type<string[]>().default([]).notNull(),
-  behanceImages: json("behance_images").$type<string[]>().default([]).notNull(),
   figmaUrl: text("figma_url"),
   githubUrl: text("github_url"),
   videoUrl: text("video_url"),
   sectionDisplay: text("section_display").default("general"),
   userId: integer("user_id").notNull().references(() => users.id),
   category: text("category").notNull(),
-  likes: integer("likes").default(0).notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   publishedStatus: text("published_status").default("draft").notNull(),
 });
@@ -39,13 +37,6 @@ export const projectTags = pgTable("project_tags", {
   tagId: integer("tag_id").notNull().references(() => tags.id),
 });
 
-export const projectLikes = pgTable("project_likes", {
-  id: serial("id").primaryKey(),
-  projectId: integer("project_id").notNull().references(() => projects.id),
-  userFingerprint: text("user_fingerprint").notNull(),
-  createdAt: timestamp("created_at").defaultNow().notNull(),
-});
-
 // Insert schemas
 export const insertUserSchema = createInsertSchema(users).pick({
   username: true,
@@ -59,7 +50,6 @@ export const insertProjectSchema = createInsertSchema(projects).pick({
   description: true,
   imageUrl: true,
   galleryImages: true,
-  behanceImages: true,
   figmaUrl: true,
   githubUrl: true,
   videoUrl: true,
@@ -78,11 +68,6 @@ export const insertProjectTagSchema = createInsertSchema(projectTags).pick({
   tagId: true,
 });
 
-export const insertProjectLikeSchema = createInsertSchema(projectLikes).pick({
-  projectId: true,
-  userFingerprint: true,
-});
-
 // Types
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type User = typeof users.$inferSelect;
@@ -96,9 +81,6 @@ export type Tag = typeof tags.$inferSelect;
 export type InsertProjectTag = z.infer<typeof insertProjectTagSchema>;
 export type ProjectTag = typeof projectTags.$inferSelect;
 
-export type InsertProjectLike = z.infer<typeof insertProjectLikeSchema>;
-export type ProjectLike = typeof projectLikes.$inferSelect;
-
 // Extended schemas
 export const projectWithTagsSchema = z.object({
   project: z.object({
@@ -107,13 +89,11 @@ export const projectWithTagsSchema = z.object({
     description: z.string(),
     imageUrl: z.string(),
     galleryImages: z.array(z.string()).default([]),
-    behanceImages: z.array(z.string()).default([]),
     figmaUrl: z.string().nullable().optional(),
     videoUrl: z.string().nullable().optional(),
     sectionDisplay: z.string().default("general"),
     userId: z.number(),
     category: z.string(),
-    likes: z.number().default(0),
     publishedStatus: z.string(),
     createdAt: z.string().or(z.date()),
   }),
