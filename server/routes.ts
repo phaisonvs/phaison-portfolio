@@ -224,6 +224,90 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Like endpoints
+  app.post("/api/projects/:id/like", async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      if (isNaN(id)) {
+        return res.status(400).json({ message: "Invalid project ID" });
+      }
+
+      const project = await storage.getProjectById(id);
+      if (!project) {
+        return res.status(404).json({ message: "Project not found" });
+      }
+
+      // Generate user fingerprint from IP and User-Agent
+      const userFingerprint = req.ip + "|" + (req.get('User-Agent') || 'unknown');
+      
+      const liked = await storage.likeProject(id, userFingerprint);
+      const likesCount = await storage.getProjectLikes(id);
+      
+      res.json({ 
+        success: liked, 
+        liked: true,
+        likesCount 
+      });
+    } catch (error) {
+      res.status(500).json({ message: "Failed to like project" });
+    }
+  });
+
+  app.delete("/api/projects/:id/like", async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      if (isNaN(id)) {
+        return res.status(400).json({ message: "Invalid project ID" });
+      }
+
+      const project = await storage.getProjectById(id);
+      if (!project) {
+        return res.status(404).json({ message: "Project not found" });
+      }
+
+      // Generate user fingerprint from IP and User-Agent
+      const userFingerprint = req.ip + "|" + (req.get('User-Agent') || 'unknown');
+      
+      const unliked = await storage.unlikeProject(id, userFingerprint);
+      const likesCount = await storage.getProjectLikes(id);
+      
+      res.json({ 
+        success: unliked, 
+        liked: false,
+        likesCount 
+      });
+    } catch (error) {
+      res.status(500).json({ message: "Failed to unlike project" });
+    }
+  });
+
+  app.get("/api/projects/:id/like-status", async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      if (isNaN(id)) {
+        return res.status(400).json({ message: "Invalid project ID" });
+      }
+
+      const project = await storage.getProjectById(id);
+      if (!project) {
+        return res.status(404).json({ message: "Project not found" });
+      }
+
+      // Generate user fingerprint from IP and User-Agent
+      const userFingerprint = req.ip + "|" + (req.get('User-Agent') || 'unknown');
+      
+      const isLiked = await storage.isProjectLiked(id, userFingerprint);
+      const likesCount = await storage.getProjectLikes(id);
+      
+      res.json({ 
+        liked: isLiked,
+        likesCount 
+      });
+    } catch (error) {
+      res.status(500).json({ message: "Failed to get like status" });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }

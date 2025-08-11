@@ -2,6 +2,7 @@ import { users, type User, type InsertUser,
          projects, type Project, type InsertProject,
          tags, type Tag, type InsertTag,
          projectTags, type ProjectTag, type InsertProjectTag,
+         projectLikes, type ProjectLike, type InsertProjectLike,
          type ProjectWithTags } from "@shared/schema";
 import session from "express-session";
 import createMemoryStore from "memorystore";
@@ -34,6 +35,12 @@ export interface IStorage {
   createProjectTag(projectTag: InsertProjectTag): Promise<ProjectTag>;
   removeProjectTags(projectId: number): Promise<void>;
   
+  // ProjectLike methods
+  likeProject(projectId: number, userFingerprint: string): Promise<boolean>;
+  unlikeProject(projectId: number, userFingerprint: string): Promise<boolean>;
+  isProjectLiked(projectId: number, userFingerprint: string): Promise<boolean>;
+  getProjectLikes(projectId: number): Promise<number>;
+  
   // Session store
   sessionStore: session.SessionStore;
 }
@@ -43,10 +50,12 @@ export class MemStorage implements IStorage {
   private projects: Map<number, Project>;
   private tags: Map<number, Tag>;
   private projectTags: Map<number, ProjectTag>;
+  private projectLikes: Map<string, ProjectLike>; // Using userFingerprint_projectId as key
   private userIdCounter: number;
   private projectIdCounter: number;
   private tagIdCounter: number;
   private projectTagIdCounter: number;
+  private likeIdCounter: number;
   sessionStore: session.SessionStore;
 
   constructor() {
@@ -54,10 +63,12 @@ export class MemStorage implements IStorage {
     this.projects = new Map();
     this.tags = new Map();
     this.projectTags = new Map();
+    this.projectLikes = new Map();
     this.userIdCounter = 1;
     this.projectIdCounter = 1;
     this.tagIdCounter = 1;
     this.projectTagIdCounter = 1;
+    this.likeIdCounter = 1;
     this.sessionStore = new MemoryStore({
       checkPeriod: 86400000, // prune expired entries every 24h
     });
@@ -348,6 +359,67 @@ export class MemStorage implements IStorage {
     Array.from(this.projectTags.entries())
       .filter(([_, pt]) => pt.projectId === projectId)
       .forEach(([key, _]) => this.projectTags.delete(key));
+  }
+
+  // ProjectLike methods
+  async likeProject(projectId: number, userFingerprint: string): Promise<boolean> {
+    const key = `${userFingerprint}_${projectId}`;
+    
+    // Check if already liked
+    if (this.projectLikes.has(key)) {
+      return false; // Already liked
+    }
+    
+    // Create like
+    const id = this.likeIdCounter++;
+    const like: ProjectLike = {
+      id,
+      projectId,
+      userFingerprint,
+      createdAt: new Date()
+    };
+    
+    this.projectLikes.set(key, like);
+    
+    // Update project likes count
+    const project = this.projects.get(projectId);
+    if (project) {
+      project.likes = (project.likes || 0) + 1;
+      this.projects.set(projectId, project);
+    }
+    
+    return true;
+  }
+
+  async unlikeProject(projectId: number, userFingerprint: string): Promise<boolean> {
+    const key = `${userFingerprint}_${projectId}`;
+    
+    // Check if liked
+    if (!this.projectLikes.has(key)) {
+      return false; // Not liked
+    }
+    
+    // Remove like
+    this.projectLikes.delete(key);
+    
+    // Update project likes count
+    const project = this.projects.get(projectId);
+    if (project) {
+      project.likes = Math.max((project.likes || 0) - 1, 0);
+      this.projects.set(projectId, project);
+    }
+    
+    return true;
+  }
+
+  async isProjectLiked(projectId: number, userFingerprint: string): Promise<boolean> {
+    const key = `${userFingerprint}_${projectId}`;
+    return this.projectLikes.has(key);
+  }
+
+  async getProjectLikes(projectId: number): Promise<number> {
+    const project = this.projects.get(projectId);
+    return project?.likes || 0;
   }
 }
 

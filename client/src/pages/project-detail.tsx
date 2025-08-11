@@ -6,20 +6,41 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { ProjectWithTags } from "@shared/schema";
 import { getInitials } from "@/lib/utils";
-import { ArrowLeft, Loader2 } from "lucide-react";
+import { ArrowLeft, Loader2, Heart } from "lucide-react";
+import { apiRequest } from "@/lib/queryClient";
 import { ImageGallery } from "@/components/projects/image-gallery";
 import { PinterestGallery } from "@/components/projects/pinterest-gallery";
 
 export default function ProjectDetail() {
   const { id } = useParams<{ id: string }>();
   const [, navigate] = useLocation();
+  const queryClient = useQueryClient();
 
   const { data: project, isLoading, error } = useQuery<ProjectWithTags>({
     queryKey: [`/api/projects/${id}`],
     enabled: !!id,
+  });
+
+  const { data: likeStatus } = useQuery({
+    queryKey: [`/api/projects/${id}/like-status`],
+    enabled: !!id,
+  });
+
+  const likeMutation = useMutation({
+    mutationFn: async () => {
+      if ((likeStatus as any)?.liked) {
+        return fetch(`/api/projects/${id}/like`, { method: 'DELETE' }).then(res => res.json());
+      } else {
+        return fetch(`/api/projects/${id}/like`, { method: 'POST' }).then(res => res.json());
+      }
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: [`/api/projects/${id}/like-status`] });
+      queryClient.invalidateQueries({ queryKey: [`/api/projects/${id}`] });
+    },
   });
 
   useEffect(() => {
@@ -126,47 +147,51 @@ export default function ProjectDetail() {
             
             {/* Seção de recursos/funcionalidades */}
             <div className="mt-10">
-              <h2 className="text-2xl font-semibold mb-8">Características do Projeto</h2>
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-2xl font-semibold">Características do Projeto</h2>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => likeMutation.mutate()}
+                  disabled={likeMutation.isPending}
+                  className={`flex items-center gap-2 transition-colors ${
+                    (likeStatus as any)?.liked 
+                      ? 'bg-red-500/20 border-red-500/50 text-red-400 hover:bg-red-500/30' 
+                      : 'hover:bg-zinc-800'
+                  }`}
+                >
+                  <Heart 
+                    className={`h-4 w-4 ${(likeStatus as any)?.liked ? 'fill-current' : ''}`} 
+                  />
+                  {(likeStatus as any)?.likesCount || 0}
+                </Button>
+              </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* Recursos com base na categoria do projeto */}
                 {project.project.category === "Website" && (
                   <>
-                    <div className="bg-zinc-900 rounded-xl p-6 border border-zinc-800">
-                      <h3 className="text-xl font-medium mb-3">Design Responsivo</h3>
-                      <p className="text-gray-400 mb-4">
-                        Experiência perfeita em todos os dispositivos, de desktops a smartphones.
+                    <div className="bg-zinc-900/50 rounded-lg p-4 border border-zinc-800/50">
+                      <h3 className="text-lg font-medium mb-2">Design Responsivo</h3>
+                      <p className="text-gray-400 text-sm mb-3">
+                        Experiência perfeita em todos os dispositivos.
                       </p>
-                      <div className="flex flex-wrap gap-2 mt-4">
+                      <div className="flex flex-wrap gap-1">
                         {["Mobile", "Tablet", "Desktop"].map(device => (
-                          <span key={device} className="inline-flex items-center px-3 py-1 bg-zinc-800 rounded-full text-xs">
+                          <span key={device} className="px-2 py-1 bg-zinc-800 rounded text-xs">
                             {device}
                           </span>
                         ))}
                       </div>
                     </div>
                     
-                    <div className="bg-zinc-900 rounded-xl p-6 border border-zinc-800">
-                      <h3 className="text-xl font-medium mb-3">Performance Otimizada</h3>
-                      <p className="text-gray-400 mb-4">
-                        Carregamento rápido e experiência fluida, com SEO aprimorado para melhor visibilidade.
+                    <div className="bg-zinc-900/50 rounded-lg p-4 border border-zinc-800/50">
+                      <h3 className="text-lg font-medium mb-2">Performance Otimizada</h3>
+                      <p className="text-gray-400 text-sm mb-3">
+                        Carregamento rápido com SEO aprimorado.
                       </p>
-                      <div className="mt-4">
-                        <div className="bg-green-500/20 inline-block px-3 py-1 rounded-full">
-                          <span className="text-green-500 text-sm font-medium">Performance Score: 96</span>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="bg-zinc-900 rounded-xl p-6 border border-zinc-800">
-                      <h3 className="text-xl font-medium mb-3">Gestão de Conteúdo</h3>
-                      <p className="text-gray-400 mb-4">
-                        Painel administrativo intuitivo para gerenciar todos os aspectos do site.
-                      </p>
-                      <div className="mt-4">
-                        <div className="bg-zinc-800 px-3 py-1 rounded-full inline-block">
-                          <span className="text-white/80 text-sm">CMS Integrado</span>
-                        </div>
+                      <div className="bg-green-500/20 inline-block px-2 py-1 rounded">
+                        <span className="text-green-500 text-xs font-medium">Score: 96</span>
                       </div>
                     </div>
                   </>
@@ -298,6 +323,38 @@ export default function ProjectDetail() {
                     />
                   </div>
                 </div>
+              </div>
+            </div>
+
+            {/* Seção de Galeria Vertical (Estilo Behance) */}
+            <div className="mt-16">
+              <h2 className="text-2xl font-semibold mb-8">Galeria do Projeto</h2>
+              <div className="space-y-4">
+                {/* Placeholder para imagens Behance - não será exibido até ter imagens */}
+                {project.project.behanceImages && project.project.behanceImages.length > 0 ? (
+                  project.project.behanceImages.map((image, index) => (
+                    <div key={index} className="w-full">
+                      <img 
+                        src={image} 
+                        alt={`${project.project.title} - Image ${index + 1}`}
+                        className="w-full h-auto rounded-lg shadow-lg"
+                      />
+                    </div>
+                  ))
+                ) : (
+                  <div className="bg-zinc-900/30 border-2 border-dashed border-zinc-700 rounded-lg p-12 text-center">
+                    <div className="text-zinc-500">
+                      <svg className="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                      <p className="text-lg font-medium mb-2">Galeria Vertical</p>
+                      <p className="text-sm">
+                        Esta seção será preenchida com imagens em formato vertical,<br />
+                        similar ao estilo de apresentação do Behance.
+                      </p>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
