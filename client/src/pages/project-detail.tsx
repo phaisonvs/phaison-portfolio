@@ -72,7 +72,7 @@ export default function ProjectDetail() {
     <div className="min-h-screen flex flex-col bg-black text-white">
       <Header />
 
-      <main className="flex-grow container mx-auto px-4 py-12">
+      <main className="flex-grow container mx-auto px-4 py-12 pt-20 md:pt-12">
         <Button 
           variant="outline" 
           className="mb-6"
@@ -286,9 +286,7 @@ export default function ProjectDetail() {
                         </p>
                       </>
                     )}
-                    <button className="inline-flex items-center px-4 py-2 bg-white text-black rounded-full text-sm font-medium self-start">
-                      Saiba mais
-                    </button>
+
                   </div>
                   <div className="flex justify-center items-center p-6 bg-gradient-to-br from-zinc-900 to-black">
                     <img 
