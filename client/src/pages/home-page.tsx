@@ -312,9 +312,9 @@ export default function HomePage() {
         */}
 
         {/* Top Plugins */}
-        <section className="py-12 px-4">
+        <section className="py-20 px-4">
           <div className="max-w-[1200px] mx-auto">
-            <h2 className="text-2xl md:text-3xl font-semibold mb-10 animate-on-scroll">
+            <h2 className="text-2xl md:text-3xl font-semibold mb-16 animate-slide-left">
               Softwares e Habilidades
             </h2>
 
@@ -327,8 +327,8 @@ export default function HomePage() {
                 }}
                 className="w-full"
               >
-                <CarouselContent className="-ml-2 md:-ml-4">
-                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+                <CarouselContent className="-ml-2 md:-ml-4 gap-4">
+                  <CarouselItem className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]">
                     <PluginCard
                       title="Figma"
                       description="Design de interfaces e prototipagem"
@@ -337,7 +337,7 @@ export default function HomePage() {
                     />
                   </CarouselItem>
 
-                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+                  <CarouselItem className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]">
                     <PluginCard
                       title="GitHub"
                       description="Controle de versão e colaboração"
@@ -346,7 +346,7 @@ export default function HomePage() {
                     />
                   </CarouselItem>
 
-                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+                  <CarouselItem className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]">
                     <PluginCard
                       title="HTML"
                       description="Estruturação de conteúdo web"
@@ -355,7 +355,7 @@ export default function HomePage() {
                     />
                   </CarouselItem>
 
-                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+                  <CarouselItem className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]">
                     <PluginCard
                       title="CSS"
                       description="Estilização e layout responsivo"
@@ -364,7 +364,7 @@ export default function HomePage() {
                     />
                   </CarouselItem>
 
-                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+                  <CarouselItem className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]">
                     <PluginCard
                       title="JavaScript"
                       description="Interatividade e funcionalidades"
@@ -373,7 +373,7 @@ export default function HomePage() {
                     />
                   </CarouselItem>
 
-                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+                  <CarouselItem className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]">
                     <PluginCard
                       title="Photoshop"
                       description="Edição e manipulação de imagens"
@@ -382,7 +382,7 @@ export default function HomePage() {
                     />
                   </CarouselItem>
 
-                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+                  <CarouselItem className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]">
                     <PluginCard
                       title="Illustrator"
                       description="Criação de gráficos vetoriais"
@@ -391,7 +391,7 @@ export default function HomePage() {
                     />
                   </CarouselItem>
 
-                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+                  <CarouselItem className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]">
                     <PluginCard
                       title="After Effects"
                       description="Animações e motion graphics"
