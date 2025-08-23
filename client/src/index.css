@@ -429,13 +429,21 @@
 /* Mobile-specific font sizes */
 @media (max-width: 768px) {
   .grainient-heading {
-    font-size: 32px;
+    font-size: 35px; /* +3px from 32px */
+  }
+  
+  .grainient-text {
+    font-size: 16px; /* -2px for mobile paragraph */
   }
 }
 
 @media (max-width: 480px) {
   .grainient-heading {
-    font-size: 28px;
+    font-size: 31px; /* +3px from 28px */
+  }
+  
+  .grainient-text {
+    font-size: 14px; /* -2px for small mobile paragraph */
   }
 }
 
@@ -454,8 +462,8 @@
 
 /* New Phaison background with responsive object-fit */
 .phaison-bg {
-  background-image: url('@assets/bg-port-phaison_1755956917482.png');
-  background-size: cover;
+  background-image: url('@assets/bg-port-phaison_1755957306907.png');
+  background-size: auto 100%; /* Height fills hero section on desktop */
   background-position: center;
   background-repeat: no-repeat;
   opacity: 0.7; /* Controllable opacity */
