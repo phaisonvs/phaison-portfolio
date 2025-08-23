@@ -72,18 +72,14 @@ export default function HomePage() {
   // Animation on scroll
   const animatedElements = useRef<HTMLElement[]>([]);
 
-  // Parallax effect with custom slow scroll control
+  // Simple parallax effect for background image
   useEffect(() => {
-    let targetY = 0;
-    let currentY = 0;
-    let isAnimating = false;
-    
     const handleScroll = () => {
       const scrolled = window.pageYOffset;
       const phaisonBg = document.querySelector(".phaison-bg") as HTMLElement;
 
       if (phaisonBg) {
-        // Parallax scale effect - CONTROLE DE CRESCIMENTO DA IMAGEM
+        // Parallax scale effect
         const scaleValue = 1 + scrolled * 0.002;
         phaisonBg.style.transform = `scale(${scaleValue})`;
       }
@@ -102,42 +98,12 @@ export default function HomePage() {
       }
     };
 
-    // Smooth scroll animation natural
-    const animateScroll = () => {
-      if (Math.abs(targetY - currentY) > 1) {
-        // VELOCIDADE NATURAL: responsivo mas suave
-        currentY += (targetY - currentY) * 0.60;
-        window.scrollTo(0, currentY);
-        requestAnimationFrame(animateScroll);
-      } else {
-        isAnimating = false;
-      }
-    };
-
-    // Handle wheel events for controlled scrolling
-    const handleWheel = (e: WheelEvent) => {
-      e.preventDefault();
-      
-      // SCROLL CONTROLADO: menos avanço por movimento, mas responsivo
-      targetY += e.deltaY * 0.5;
-      targetY = Math.max(0, Math.min(targetY, document.body.scrollHeight - window.innerHeight));
-      
-      if (!isAnimating) {
-        isAnimating = true;
-        animateScroll();
-      }
-    };
-
-    // Initial setup
     handleScroll();
-
     window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("wheel", handleWheel, { passive: false });
     window.addEventListener("resize", handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("wheel", handleWheel);
       window.removeEventListener("resize", handleScroll);
     };
   }, []);
@@ -857,7 +823,7 @@ export default function HomePage() {
 
           <div className="relative z-20 max-w-[1200px] mx-auto text-center">
             <div className="mb-10 inline-block animate-on-scroll">
-              <div className="h-20 w-20 rounded-full bg-primary/20 blue-glow flex items-center justify-center mx-auto mb-6">
+              <div className="h-20 w-20 rounded-full bg-primary/20 purple-glow flex items-center justify-center mx-auto mb-6">
                 <div className="h-12 w-12 rounded-lg bg-primary flex items-center justify-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
