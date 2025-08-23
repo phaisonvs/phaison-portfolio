@@ -59,11 +59,16 @@
     /* SCROLL SPEED CONTROL - CHANGE THESE VALUES */
     scroll-behavior: smooth;
     scroll-padding-top: 73px;
+    /* Controle de velocidade do scroll mais lento */
+    scroll-timeline: none;
   }
 
   body {
     @apply antialiased bg-background text-foreground;
     font-family: "Geist Medium", "Geist Medium Placeholder", sans-serif;
+    /* Scroll mais suave e controlado */
+    overflow-x: hidden;
+    scroll-behavior: smooth;
   }
 
   /* Slower scroll effect - ADJUST THIS FOR DIFFERENT SPEEDS */
