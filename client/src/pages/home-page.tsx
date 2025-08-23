@@ -93,7 +93,7 @@ export default function HomePage() {
     const animateScroll = () => {
       if (Math.abs(targetY - currentY) > 1) {
         // VELOCIDADE NATURAL: responsivo mas suave
-        currentY += (targetY - currentY) * 0.40;
+        currentY += (targetY - currentY) * 0.60;
         window.scrollTo(0, currentY);
         requestAnimationFrame(animateScroll);
       } else {
