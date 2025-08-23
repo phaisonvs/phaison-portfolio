@@ -172,7 +172,7 @@ export default function HomePage() {
 
       <Header />
 
-      <main className="flex-grow content-layer pt-[73px]">
+      <main className="flex-grow content-layer">
         {/* Hero section */}
         <section
           id="hero"
@@ -707,6 +707,8 @@ export default function HomePage() {
 
         {/* Call to Action */}
         <section id="contact" className="py-20 px-4 relative overflow-hidden bg-black">
+          {/* Bottom gradient section with #2E2689 */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#2E2689]/20 via-transparent to-transparent opacity-60"></div>
           <div className="absolute inset-0 cta-gradient z-0"></div>
           <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black to-transparent z-10"></div>
 

@@ -328,10 +328,10 @@
   position: absolute;
   background: radial-gradient(
     ellipse at center, 
-    rgba(0, 102, 255, 0.6) 0%, 
-    rgba(0, 102, 255, 0.4) 25%, 
-    rgba(0, 102, 255, 0.25) 45%, 
-    rgba(0, 102, 255, 0.1) 70%, 
+    rgba(46, 38, 137, 0.6) 0%, 
+    rgba(46, 38, 137, 0.4) 25%, 
+    rgba(46, 38, 137, 0.25) 45%, 
+    rgba(46, 38, 137, 0.1) 70%, 
     transparent 100%
   );
   border-radius: 50%;
@@ -426,17 +426,44 @@
   font-family: "Geist Medium", "Geist Medium Placeholder", sans-serif;
 }
 
+/* Mobile-specific font sizes */
+@media (max-width: 768px) {
+  .grainient-heading {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .grainient-heading {
+    font-size: 28px;
+  }
+}
+
 .grainient-text {
   letter-spacing: 0.01em;
   font-family: "Geist Medium", "Geist Medium Placeholder", sans-serif;
 }
 
-/* Moon background with gradient blend */
+/* Moon background with gradient blend - Responsive sizes */
 .moon-bg {
   background-image: url('@assets/Moon2011_1755954950723.png');
-  background-size: cover;
+  background-size: 150%;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+/* Tablet size */
+@media (max-width: 1024px) {
+  .moon-bg {
+    background-size: 130%;
+  }
+}
+
+/* Mobile size */
+@media (max-width: 768px) {
+  .moon-bg {
+    background-size: 120%;
+  }
 }
 
 .moon-gradient-blend {
@@ -463,11 +490,11 @@ p, .text-base, .text-lg, .text-xl {
 /* Moon-11 gradient effect */
 .moon-gradient {
   background: linear-gradient(135deg, 
-    rgba(88, 28, 135, 0.4) 0%,
-    rgba(67, 56, 202, 0.3) 25%,
-    rgba(79, 70, 229, 0.4) 50%,
-    rgba(55, 48, 163, 0.3) 75%,
-    rgba(30, 27, 75, 0.5) 100%
+    rgba(46, 38, 137, 0.4) 0%,
+    rgba(46, 38, 137, 0.3) 25%,
+    rgba(46, 38, 137, 0.4) 50%,
+    rgba(46, 38, 137, 0.3) 75%,
+    rgba(46, 38, 137, 0.5) 100%
   );
   background-size: 400% 400%;
   animation: moonShift 20s ease-in-out infinite;
@@ -492,17 +519,9 @@ p, .text-base, .text-lg, .text-xl {
     background: linear-gradient(90deg, transparent 0%, transparent 100%);
     box-shadow: none;
   }
-  25% {
-    background: linear-gradient(90deg, transparent 0%, hsl(207 90% 54% / 0.8) 50%, transparent 100%);
-    box-shadow: 0 0 20px hsl(207 90% 54% / 0.4);
-  }
   50% {
-    background: linear-gradient(90deg, transparent 0%, transparent 100%);
-    box-shadow: none;
-  }
-  75% {
-    background: linear-gradient(270deg, transparent 0%, hsl(207 90% 54% / 0.8) 50%, transparent 100%);
-    box-shadow: 0 0 20px hsl(207 90% 54% / 0.4);
+    background: linear-gradient(90deg, transparent 0%, rgba(46, 38, 137, 0.8) 50%, transparent 100%);
+    box-shadow: 0 0 20px rgba(46, 38, 137, 0.6);
   }
   100% {
     background: linear-gradient(90deg, transparent 0%, transparent 100%);
