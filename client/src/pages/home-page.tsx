@@ -176,15 +176,20 @@ export default function HomePage() {
         {/* Hero section */}
         <section
           id="hero"
-          className="py-16 md:py-24 px-4 min-h-[calc(100vh-73px)] md:min-h-0 flex items-center justify-center md:block"
+          className="py-16 md:py-24 px-4 min-h-[calc(100vh-73px)] md:min-h-0 flex items-center justify-center md:block relative overflow-hidden"
         >
-          <div className="max-w-[1200px] mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl font-semibold leading-tight mb-6 animate-on-scroll">
+          {/* Moon-11 Gradient Background */}
+          <div className="absolute inset-0 opacity-20">
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-900/40 via-blue-800/30 via-indigo-700/40 to-slate-900/50 moon-gradient"></div>
+          </div>
+          
+          <div className="max-w-[1200px] mx-auto text-center relative z-10">
+            <h1 className="text-4xl md:text-6xl font-semibold leading-tight mb-6 animate-on-scroll grainient-heading">
               Oi, eu sou Phaison,
               <br />
               um desenvolvedor criativo.
             </h1>
-            <p className="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto animate-on-scroll">
+            <p className="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto animate-on-scroll grainient-text">
               Eu agrego valor a projetos digitais unindo experiência em
               <br className="hidden md:block" /> Front-end, CRO, UI, UX com
               criatividade grandes resultados.

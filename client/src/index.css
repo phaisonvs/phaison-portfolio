@@ -417,6 +417,47 @@
   background: hsl(var(--muted-foreground));
 }
 
+/* Grainient-inspired typography */
+.grainient-heading {
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+.grainient-text {
+  letter-spacing: 0.01em;
+}
+
+/* Global typography improvements */
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.01em;
+}
+
+p, .text-base, .text-lg, .text-xl {
+  letter-spacing: 0.005em;
+}
+
+/* Moon-11 gradient effect */
+.moon-gradient {
+  background: linear-gradient(135deg, 
+    rgba(88, 28, 135, 0.4) 0%,
+    rgba(67, 56, 202, 0.3) 25%,
+    rgba(79, 70, 229, 0.4) 50%,
+    rgba(55, 48, 163, 0.3) 75%,
+    rgba(30, 27, 75, 0.5) 100%
+  );
+  background-size: 400% 400%;
+  animation: moonShift 20s ease-in-out infinite;
+}
+
+@keyframes moonShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
 /* Neon light animation for header */
 .neon-light-animate {
   animation: neonSweep 4s ease-in-out infinite;
