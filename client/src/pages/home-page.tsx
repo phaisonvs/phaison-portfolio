@@ -269,7 +269,7 @@ export default function HomePage() {
         {/* Hero section */}
         <section
           id="hero"
-          className="py-16 md:py-0 px-4 min-h-[calc(100vh-73px)] md:min-h-screen flex items-center justify-center relative overflow-hidden bg-black"
+          className="py-16 md:py-0 px-4 min-h-[calc(100vh-73px)] md:min-h-screen flex items-center justify-center relative overflow-hidden"
         >
           {/* Phaison Background Image */}
           <div className="absolute inset-0 phaison-bg"></div>
@@ -334,7 +334,7 @@ export default function HomePage() {
         </section>
 
         {/* Project Highlights */}
-        <section className="py-20 px-4 bg-black">
+        <section className="py-20 px-4">
           <div className="max-w-[1200px] mx-auto">
             <div className="flex justify-between items-center mb-16">
               <h2 className="text-2xl md:text-3xl font-semibold animate-slide-left">
@@ -491,7 +491,7 @@ export default function HomePage() {
         */}
 
         {/* Top Plugins */}
-        <section className="py-20 px-4 bg-black">
+        <section className="py-20 px-4">
           <div className="max-w-[1200px] mx-auto">
             <h2 className="text-2xl md:text-3xl font-semibold mb-16 animate-slide-left">
               Softwares e Habilidades
@@ -708,7 +708,7 @@ export default function HomePage() {
         */}
 
         {/* About Section */}
-        <section id="about" className="py-16 md:py-24 px-4 bg-black">
+        <section id="about" className="py-16 md:py-24 px-4">
           <div className="max-w-[1200px] mx-auto">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               {/* Text Content */}
@@ -827,7 +827,7 @@ export default function HomePage() {
         {/* Call to Action */}
         <section
           id="contact"
-          className="py-20 px-4 relative overflow-hidden bg-black"
+          className="py-20 px-4 relative overflow-hidden"
         >
           {/* Bottom gradient section with #2E2689 */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#2E2689]/20 via-transparent to-transparent opacity-60"></div>
