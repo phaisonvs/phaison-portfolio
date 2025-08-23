@@ -13,7 +13,7 @@
   --card-foreground: 20 14.3% 4.1%;
   --border: 20 5.9% 90%;
   --input: 20 5.9% 90%;
-  --primary: 245 54% 54%;
+  --primary: 245 84% 69%;
   --primary-foreground: 245 100% 99%;
   --secondary: 60 4.8% 95.9%;
   --secondary-foreground: 24 9.8% 10%;
@@ -37,8 +37,8 @@
   --card-foreground: 0 0% 98%;
   --border: 240 3.7% 15.9%;
   --input: 240 3.7% 15.9%;
-  --primary: 245 54% 54%;
-  /* Brand purple #5349C8 */
+  --primary: 245 84% 69%;
+  /* Brand purple #836DF1 */
   --primary-foreground: 245 100% 99%;
   --secondary: 240 3.7% 15.9%;
   --secondary-foreground: 0 0% 98%;
@@ -159,7 +159,7 @@ html {
 
 /* Call to action gradient */
 .cta-gradient {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(83, 73, 200, 0.3));
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(131, 109, 241, 0.3));
 }
 
 /* Dynamic gradient spotlights - Inspired by Stefano Bartoletti */
