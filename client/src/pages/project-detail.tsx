@@ -237,8 +237,8 @@ export default function ProjectDetail() {
                         Múltiplas opções de customização para atender às necessidades específicas de cada cliente.
                       </p>
                       <div className="mt-4">
-                        <div className="bg-purple-500/20 inline-block px-3 py-1 rounded-full">
-                          <span className="text-purple-500 text-sm font-medium">100% Adaptável</span>
+                        <div className="bg-[#5349C8]/20 inline-block px-3 py-1 rounded-full">
+                          <span className="text-[#5349C8] text-sm font-medium">100% Adaptável</span>
                         </div>
                       </div>
                     </div>

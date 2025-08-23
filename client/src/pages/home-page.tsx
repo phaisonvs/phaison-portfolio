@@ -501,7 +501,7 @@ export default function HomePage() {
                         title="Figma"
                         description="Design de interfaces e prototipagem"
                         icon={FaFigma}
-                        iconBgColor="bg-purple-500"
+                        iconBgColor="bg-[#5349C8]"
                       />
                     </CarouselItem>
 
@@ -564,7 +564,7 @@ export default function HomePage() {
                         title="After Effects"
                         description="Animações e motion graphics"
                         icon={SiAdobeaftereffects}
-                        iconBgColor="bg-purple-600"
+                        iconBgColor="bg-[#5349C8]"
                       />
                     </CarouselItem>
                   </CarouselContent>
