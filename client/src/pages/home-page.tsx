@@ -89,8 +89,8 @@ export default function HomePage() {
     // Smooth scroll animation
     const animateScroll = () => {
       if (Math.abs(targetY - currentY) > 1) {
-        // CONTROLE DE VELOCIDADE: mude o 0.08 para ajustar (0.05 = lento, 0.15 = rápido)
-        currentY += (targetY - currentY) * 0.08;
+        // SCROLL MAIS FLUIDO: velocidade ajustada para ser mais natural
+        currentY += (targetY - currentY) * 0.12;
         window.scrollTo(0, currentY);
         requestAnimationFrame(animateScroll);
       } else {
@@ -102,8 +102,8 @@ export default function HomePage() {
     const handleWheel = (e: WheelEvent) => {
       e.preventDefault();
       
-      // VELOCIDADE DO SCROLL: ajuste o 60 para controlar (30 = lento, 100 = rápido)
-      targetY += e.deltaY * 0.8;
+      // VELOCIDADE NATURAL: scroll moderado e fluido
+      targetY += e.deltaY * 1.2;
       targetY = Math.max(0, Math.min(targetY, document.body.scrollHeight - window.innerHeight));
       
       if (!isAnimating) {
