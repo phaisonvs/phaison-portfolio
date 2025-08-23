@@ -61,7 +61,9 @@ export default function HomePage() {
   const [pluginsApi, setPluginsApi] = useState<CarouselApi | null>(null);
   const [templatesApi, setTemplatesApi] = useState<CarouselApi | null>(null);
 
-  // Scroll interaction for plugins carousel
+  // Scroll interaction for carousels
+  const bestCarouselRef = useRef<HTMLDivElement>(null);
+  const [isMouseOverBestCarousel, setIsMouseOverBestCarousel] = useState(false);
   const pluginsCarouselRef = useRef<HTMLDivElement>(null);
   const [isMouseOverPluginsCarousel, setIsMouseOverPluginsCarousel] =
     useState(false);
@@ -135,6 +137,44 @@ export default function HomePage() {
       animatedElements.current.forEach((el) => observer.unobserve(el));
     };
   }, []);
+
+  // Best projects carousel scroll interaction
+  useEffect(() => {
+    const carousel = bestCarouselRef.current;
+    if (!carousel || !bestApi) return;
+
+    const handleMouseEnter = () => {
+      setIsMouseOverBestCarousel(true);
+    };
+
+    const handleMouseLeave = () => {
+      setIsMouseOverBestCarousel(false);
+    };
+
+    const handleWheel = (e: WheelEvent) => {
+      if (isMouseOverBestCarousel) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        // Scroll to the right on wheel down, left on wheel up
+        if (e.deltaY > 0) {
+          bestApi.scrollNext();
+        } else {
+          bestApi.scrollPrev();
+        }
+      }
+    };
+
+    carousel.addEventListener("mouseenter", handleMouseEnter);
+    carousel.addEventListener("mouseleave", handleMouseLeave);
+    carousel.addEventListener("wheel", handleWheel, { passive: false });
+
+    return () => {
+      carousel.removeEventListener("mouseenter", handleMouseEnter);
+      carousel.removeEventListener("mouseleave", handleMouseLeave);
+      carousel.removeEventListener("wheel", handleWheel);
+    };
+  }, [bestApi, isMouseOverBestCarousel]);
 
   // Plugins carousel scroll interaction
   useEffect(() => {
@@ -251,6 +291,7 @@ export default function HomePage() {
 
             <div className="animate-on-scroll relative">
               <Carousel
+                ref={bestCarouselRef}
                 setApi={setBestApi}
                 opts={{
                   align: "start",
