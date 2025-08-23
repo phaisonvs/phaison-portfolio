@@ -329,7 +329,7 @@ export default function HomePage() {
                 className="w-full"
               >
                 <div className="relative overflow-hidden">
-                  <CarouselContent className="-ml-1 flex gap-2">
+                  <CarouselContent className="-ml-1 flex gap-2" data-carousel-content>
                     {projects && projects.length > 0
                       ? projects.slice(0, 6).map((project) => (
                           <CarouselItem
@@ -484,7 +484,7 @@ export default function HomePage() {
                 className="w-full"
               >
                 <div className="relative overflow-hidden">
-                  <CarouselContent className="-ml-1 flex gap-2">
+                  <CarouselContent className="-ml-1 flex gap-2" data-carousel-content>
                     <CarouselItem className="pl-1 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
                       <PluginCard
                         title="Figma"

@@ -162,6 +162,16 @@ html {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(131, 109, 241, 0.3));
 }
 
+/* Carousel first item spacing for loop consistency */
+.carousel-first-item {
+  margin-left: 0.5rem;
+}
+
+/* Alternative approach using CSS selector */
+[data-carousel-content] > [data-carousel-item]:first-child {
+  margin-left: 0.5rem;
+}
+
 /* Dynamic gradient spotlights - Inspired by Stefano Bartoletti */
 .spotlight-container {
   position: fixed;
