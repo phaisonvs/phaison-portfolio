@@ -176,15 +176,16 @@ export default function HomePage() {
         {/* Hero section */}
         <section
           id="hero"
-          className="py-16 md:py-24 px-4 min-h-[calc(100vh-73px)] md:min-h-0 flex items-center justify-center md:block relative overflow-hidden"
+          className="py-16 md:py-24 px-4 min-h-[calc(100vh-73px)] md:min-h-0 flex items-center justify-center md:block relative overflow-hidden bg-black"
         >
-          {/* Moon-11 Gradient Background */}
-          <div className="absolute inset-0 opacity-20">
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-900/40 via-blue-800/30 via-indigo-700/40 to-slate-900/50 moon-gradient"></div>
-          </div>
+          {/* Moon2011 Background Image */}
+          <div className="absolute inset-0 moon-bg opacity-60"></div>
+          
+          {/* Gradient blend overlay */}
+          <div className="absolute inset-0 moon-gradient-blend"></div>
           
           <div className="max-w-[1200px] mx-auto text-center relative z-10">
-            <h1 className="text-4xl md:text-6xl font-semibold leading-tight mb-6 animate-on-scroll grainient-heading">
+            <h1 className="leading-tight mb-6 animate-on-scroll grainient-heading">
               Oi, eu sou Phaison,
               <br />
               um desenvolvedor criativo.
@@ -215,7 +216,7 @@ export default function HomePage() {
         </section>
 
         {/* Project Highlights */}
-        <section className="py-20 px-4">
+        <section className="py-20 px-4 bg-black">
           <div className="max-w-[1200px] mx-auto">
             <div className="flex justify-between items-center mb-16">
               <h2 className="text-2xl md:text-3xl font-semibold animate-slide-left">
@@ -371,7 +372,7 @@ export default function HomePage() {
         */}
 
         {/* Top Plugins */}
-        <section className="py-20 px-4">
+        <section className="py-20 px-4 bg-black">
           <div className="max-w-[1200px] mx-auto">
             <h2 className="text-2xl md:text-3xl font-semibold mb-16 animate-slide-left">
               Softwares e Habilidades
@@ -588,7 +589,7 @@ export default function HomePage() {
         */}
 
         {/* About Section */}
-        <section id="about" className="py-16 md:py-24 px-4">
+        <section id="about" className="py-16 md:py-24 px-4 bg-black">
           <div className="max-w-[1200px] mx-auto">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               {/* Text Content */}
@@ -705,7 +706,7 @@ export default function HomePage() {
         </section>
 
         {/* Call to Action */}
-        <section id="contact" className="py-20 px-4 relative overflow-hidden">
+        <section id="contact" className="py-20 px-4 relative overflow-hidden bg-black">
           <div className="absolute inset-0 cta-gradient z-0"></div>
           <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black to-transparent z-10"></div>
 
