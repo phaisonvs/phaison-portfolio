@@ -69,23 +69,50 @@ export default function HomePage() {
   // Animation on scroll
   const animatedElements = useRef<HTMLElement[]>([]);
 
-  // Parallax scroll effect for phaison background
+  // Scroll speed control and parallax effect
   useEffect(() => {
+    let isScrolling = false;
+    
     const handleScroll = () => {
       const scrolled = window.pageYOffset;
       const phaisonBg = document.querySelector('.phaison-bg') as HTMLElement;
       
       if (phaisonBg) {
-        // Calculate scale based on scroll position
-        const scaleValue = 1 + scrolled * 0.0005; // Adjust multiplier as needed
+        // Calculate scale based on scroll position - SLOWER SCALE EFFECT
+        const scaleValue = 1 + scrolled * 0.0003; // Reduced from 0.0005 for slower effect
         phaisonBg.style.transform = `scale(${scaleValue})`;
       }
     };
 
+    // Smooth scroll with wheel event control
+    const handleWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      
+      if (!isScrolling) {
+        isScrolling = true;
+        
+        // SCROLL SPEED CONTROL - ADJUST THIS VALUE (0.1 = very slow, 1 = normal)
+        const scrollSpeed = 0.6; // Current setting: slower than normal
+        const scrollAmount = e.deltaY * scrollSpeed;
+        
+        window.scrollBy({
+          top: scrollAmount,
+          behavior: 'auto'
+        });
+        
+        // Reset scrolling flag
+        setTimeout(() => {
+          isScrolling = false;
+        }, 16); // ~60fps
+      }
+    };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('wheel', handleWheel, { passive: false });
     
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('wheel', handleWheel);
     };
   }, []);
 
@@ -211,9 +238,8 @@ export default function HomePage() {
               um desenvolvedor criativo.
             </h1>
             <p className="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto animate-on-scroll grainient-text">
-              Eu agrego valor a projetos digitais unindo experiência em
-              <br className="hidden md:block" /> Front-end, CRO, UI, UX com
-              criatividade grandes resultados.
+              Integro AI, CRO, Front-end, UI e UX em estratégias digitais para entregar
+              <br className="hidden md:block" /> soluções criativas com foco em conversão, escala e lucratividade.
             </p>
             <div className="flex justify-center gap-4 flex-wrap animate-on-scroll">
               <Button asChild size="lg">

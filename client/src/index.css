@@ -53,10 +53,42 @@
     @apply border-border;
   }
 
+  html {
+    /* SCROLL SPEED CONTROL - CHANGE THESE VALUES */
+    scroll-behavior: smooth;
+    scroll-padding-top: 73px;
+  }
+
   body {
     @apply antialiased bg-background text-foreground;
     font-family: "Geist Medium", "Geist Medium Placeholder", sans-serif;
   }
+
+  /* Slower scroll effect - ADJUST THIS FOR DIFFERENT SPEEDS */
+  * {
+    scroll-behavior: smooth;
+  }
+}
+
+/* SCROLL SPEED CONTROL VARIABLES */
+:root {
+  --scroll-duration: 1.5s; /* Change this value: 0.5s = fast, 2s = slow */
+}
+
+/* Smooth scroll with custom duration */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scroll timing for smooth elements */
+.smooth-scroll {
+  scroll-behavior: smooth;
+}
+
+/* Slower scroll for specific elements */
+.slow-scroll {
+  scroll-behavior: smooth;
+  transition: scroll-top var(--scroll-duration) ease-in-out;
 }
 
 /* Custom styles for Framer-like design */
@@ -463,14 +495,15 @@
 /* New Phaison background with parallax effect */
 .phaison-bg {
   background-image: url('@assets/bg-port-phaison_1755957306907.png');
-  background-size: auto 100%; /* Height fills hero section on desktop */
-  background-position: center;
+  background-size: auto 160%; /* Height fills hero section on desktop */
+  background-position: center 20%;
   background-repeat: no-repeat;
   background-attachment: fixed; /* Parallax effect */
-  opacity: 0.7; /* Controllable opacity */
+  opacity: .6; /* Controllable opacity */
   transform-origin: center;
-  transition: transform 0.1s ease-out;
+  transition: transform 0.4s ease-out;
   will-change: transform;
+  filter: blur(0px);
 }
 
 /* Tablet size - different object fit */
