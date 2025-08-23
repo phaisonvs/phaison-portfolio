@@ -69,41 +69,46 @@ export default function HomePage() {
   // Animation on scroll
   const animatedElements = useRef<HTMLElement[]>([]);
 
-  // Scroll speed control and parallax effect
+  // Smooth scroll control and parallax effect
   useEffect(() => {
-    let isScrolling = false;
+    let targetY = 0;
+    let currentY = 0;
+    let isAnimating = false;
     
     const handleScroll = () => {
       const scrolled = window.pageYOffset;
       const phaisonBg = document.querySelector('.phaison-bg') as HTMLElement;
       
       if (phaisonBg) {
-        // Calculate scale based on scroll position - SLOWER SCALE EFFECT
-        const scaleValue = 1 + scrolled * 0.0003; // Reduced from 0.0005 for slower effect
+        // Parallax scale effect
+        const scaleValue = 1 + scrolled * 0.0003;
         phaisonBg.style.transform = `scale(${scaleValue})`;
       }
     };
 
-    // Smooth scroll with wheel event control
+    // Smooth scroll animation
+    const animateScroll = () => {
+      if (Math.abs(targetY - currentY) > 1) {
+        // CONTROLE DE VELOCIDADE: mude o 0.08 para ajustar (0.05 = lento, 0.15 = rápido)
+        currentY += (targetY - currentY) * 0.08;
+        window.scrollTo(0, currentY);
+        requestAnimationFrame(animateScroll);
+      } else {
+        isAnimating = false;
+      }
+    };
+
+    // Handle wheel events for smooth scrolling
     const handleWheel = (e: WheelEvent) => {
       e.preventDefault();
       
-      if (!isScrolling) {
-        isScrolling = true;
-        
-        // SCROLL SPEED CONTROL - ADJUST THIS VALUE (0.1 = very slow, 1 = normal)
-        const scrollSpeed = 0.6; // Current setting: slower than normal
-        const scrollAmount = e.deltaY * scrollSpeed;
-        
-        window.scrollBy({
-          top: scrollAmount,
-          behavior: 'auto'
-        });
-        
-        // Reset scrolling flag
-        setTimeout(() => {
-          isScrolling = false;
-        }, 16); // ~60fps
+      // VELOCIDADE DO SCROLL: ajuste o 60 para controlar (30 = lento, 100 = rápido)
+      targetY += e.deltaY * 0.8;
+      targetY = Math.max(0, Math.min(targetY, document.body.scrollHeight - window.innerHeight));
+      
+      if (!isAnimating) {
+        isAnimating = true;
+        animateScroll();
       }
     };
 
