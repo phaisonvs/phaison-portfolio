@@ -64,10 +64,7 @@ export default function HomePage() {
 
   // Scroll interaction for carousels
   const bestCarouselRef = useRef<HTMLDivElement>(null);
-  const [isMouseOverBestCarousel, setIsMouseOverBestCarousel] = useState(false);
   const pluginsCarouselRef = useRef<HTMLDivElement>(null);
-  const [isMouseOverPluginsCarousel, setIsMouseOverPluginsCarousel] =
-    useState(false);
 
   // Animation on scroll
   const animatedElements = useRef<HTMLElement[]>([]);
@@ -160,16 +157,10 @@ export default function HomePage() {
     const carousel = bestCarouselRef.current;
     if (!carousel || !bestApi) return;
 
-    const handleMouseEnter = () => {
-      setIsMouseOverBestCarousel(true);
-    };
-
-    const handleMouseLeave = () => {
-      setIsMouseOverBestCarousel(false);
-    };
-
     const handleWheel = (e: WheelEvent) => {
-      if (isMouseOverBestCarousel) {
+      // Verifica se o elemento alvo está dentro do carrossel
+      const target = e.target as Element;
+      if (carousel.contains(target)) {
         e.preventDefault();
         e.stopPropagation();
 
@@ -182,32 +173,22 @@ export default function HomePage() {
       }
     };
 
-    carousel.addEventListener("mouseenter", handleMouseEnter);
-    carousel.addEventListener("mouseleave", handleMouseLeave);
     carousel.addEventListener("wheel", handleWheel, { passive: false });
 
     return () => {
-      carousel.removeEventListener("mouseenter", handleMouseEnter);
-      carousel.removeEventListener("mouseleave", handleMouseLeave);
       carousel.removeEventListener("wheel", handleWheel);
     };
-  }, [bestApi, isMouseOverBestCarousel]);
+  }, [bestApi]);
 
   // Plugins carousel scroll interaction
   useEffect(() => {
     const carousel = pluginsCarouselRef.current;
     if (!carousel || !pluginsApi) return;
 
-    const handleMouseEnter = () => {
-      setIsMouseOverPluginsCarousel(true);
-    };
-
-    const handleMouseLeave = () => {
-      setIsMouseOverPluginsCarousel(false);
-    };
-
     const handleWheel = (e: WheelEvent) => {
-      if (isMouseOverPluginsCarousel) {
+      // Verifica se o elemento alvo está dentro do carrossel
+      const target = e.target as Element;
+      if (carousel.contains(target)) {
         e.preventDefault();
         e.stopPropagation();
 
@@ -220,16 +201,12 @@ export default function HomePage() {
       }
     };
 
-    carousel.addEventListener("mouseenter", handleMouseEnter);
-    carousel.addEventListener("mouseleave", handleMouseLeave);
     carousel.addEventListener("wheel", handleWheel, { passive: false });
 
     return () => {
-      carousel.removeEventListener("mouseenter", handleMouseEnter);
-      carousel.removeEventListener("mouseleave", handleMouseLeave);
       carousel.removeEventListener("wheel", handleWheel);
     };
-  }, [pluginsApi, isMouseOverPluginsCarousel]);
+  }, [pluginsApi]);
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-matte text-white relative overflow-hidden">
