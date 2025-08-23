@@ -207,7 +207,7 @@ export default function HomePage() {
   }, [pluginsApi, isMouseOverPluginsCarousel]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-black text-white relative overflow-hidden">
+    <div className="min-h-screen flex flex-col bg-gradient-matte text-white relative overflow-hidden">
       {/* Dynamic gradient spotlights */}
       <div className="spotlight-container">
         <div className="spotlight-element spotlight-top"></div>
