@@ -17,6 +17,7 @@ import {
   LightbulbIcon,
   ChevronLeft,
   ChevronRight,
+  ChevronDown,
   Download,
   Figma,
   Github,
@@ -236,7 +237,7 @@ export default function HomePage() {
         {/* Hero section */}
         <section
           id="hero"
-          className="py-16 md:py-24 px-4 min-h-[calc(100vh-73px)] md:min-h-0 flex items-center justify-center md:block relative overflow-hidden bg-black"
+          className="py-16 md:py-0 px-4 min-h-[calc(100vh-73px)] md:min-h-screen flex items-center justify-center relative overflow-hidden bg-black"
         >
           {/* Phaison Background Image */}
           <div className="absolute inset-0 phaison-bg"></div>
@@ -244,33 +245,58 @@ export default function HomePage() {
           {/* Gradient blend overlay */}
           <div className="absolute inset-0 moon-gradient-blend"></div>
 
-          <div className="max-w-[1200px] mx-auto text-center relative z-10">
-            <h1 className="leading-tight mb-6 animate-on-scroll grainient-heading">
-              Oi, eu sou Phaison, Lead de UX/UI,
-              <br />
-              especialista em soluções digitais.
-            </h1>
-            <p className="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto animate-on-scroll grainient-text">
-              Integro design estratégico e CRO para experiências
-              <br className="hidden md:block" /> digitais testadas e de alta
-              conversão.
-            </p>
-            <div className="flex justify-center gap-4 flex-wrap animate-on-scroll">
-              <Button asChild size="lg">
-                <Link href="/projects">Veja meus projetos</Link>
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                onClick={() => {
-                  const contactSection = document.getElementById("contact");
-                  if (contactSection) {
-                    contactSection.scrollIntoView({ behavior: "smooth" });
-                  }
-                }}
-              >
-                Contato
-              </Button>
+          <div className="max-w-[1200px] mx-auto text-center relative z-10 flex flex-col items-center justify-center h-full">
+            <div className="space-y-6 md:space-y-8">
+              <h1 className="leading-tight animate-on-scroll grainient-heading">
+                Oi, eu sou Phaison, Lead de UX/UI,
+                <br />
+                especialista em soluções digitais.
+              </h1>
+              <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto animate-on-scroll grainient-text">
+                Integro design estratégico e CRO para experiências
+                <br className="hidden md:block" /> digitais testadas e de alta
+                conversão.
+              </p>
+              <div className="flex justify-center gap-4 flex-wrap animate-on-scroll">
+                <Button asChild size="lg">
+                  <Link href="/projects">Veja meus projetos</Link>
+                </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  onClick={() => {
+                    const contactSection = document.getElementById("contact");
+                    if (contactSection) {
+                      contactSection.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }}
+                >
+                  Contato
+                </Button>
+              </div>
+              
+              {/* Scroll indicator - only visible on tablet/desktop */}
+              <div className="hidden md:flex justify-center mt-16">
+                <div className="animate-bounce">
+                  <button
+                    onClick={() => {
+                      const nextSection = document.querySelector('section:nth-of-type(2)');
+                      if (nextSection) {
+                        nextSection.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                    className="group flex flex-col items-center gap-2 text-gray-400 hover:text-primary transition-colors duration-300 cursor-pointer"
+                    aria-label="Scroll para baixo"
+                  >
+                    <span className="text-sm opacity-75 group-hover:opacity-100 transition-opacity">
+                      Explore
+                    </span>
+                    <div className="w-8 h-8 border-2 border-current rounded-full flex items-center justify-center group-hover:border-primary transition-colors">
+                      <ChevronDown className="w-4 h-4" />
+                    </div>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </section>
