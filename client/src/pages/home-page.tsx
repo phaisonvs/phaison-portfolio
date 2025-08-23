@@ -184,47 +184,52 @@ export default function HomePage() {
                 }}
                 className="w-full"
               >
-                <CarouselContent className="-ml-2 md:-ml-4 gap-4">
-                  {projects && projects.length > 0
-                    ? projects.slice(0, 6).map((project) => (
-                        <CarouselItem
-                          key={project.project.id}
-                          className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(50%-0.5rem)] lg:basis-[calc(50%-0.5rem)]"
-                        >
-                          <ProjectCard project={project} />
-                        </CarouselItem>
-                      ))
-                    : // Placeholder cards when no projects exist
-                      Array.from({ length: 6 }).map((_, index) => (
-                        <CarouselItem
-                          key={index}
-                          className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(50%-0.5rem)] lg:basis-[calc(50%-0.5rem)]"
-                        >
-                          <ProjectCard
-                            project={{
-                              project: {
-                                id: index,
-                                title: "Projeto Exemplo",
-                                description: "Um belo projeto de exemplo",
-                                imageUrl: `https://source.unsplash.com/random/600x800?design,${index}`,
-                                galleryImages: [],
-                                sectionDisplay: "general",
-                                userId: 1,
-                                category: "Exemplo",
-                                publishedStatus: "published",
-                                createdAt: new Date().toISOString(),
-                              },
-                              user: {
-                                id: 1,
-                                name: "João Designer",
-                                avatarUrl: null,
-                              },
-                              tags: [{ id: 1, name: "Website" }],
-                            }}
-                          />
-                        </CarouselItem>
-                      ))}
-                </CarouselContent>
+                <div className="relative overflow-hidden">
+                  <CarouselContent className="-ml-2 md:-ml-4 gap-4">
+                    {projects && projects.length > 0
+                      ? projects.slice(0, 6).map((project) => (
+                          <CarouselItem
+                            key={project.project.id}
+                            className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(50%-0.5rem)] lg:basis-[calc(22.22%-0.5rem)]"
+                          >
+                            <ProjectCard project={project} />
+                          </CarouselItem>
+                        ))
+                      : // Placeholder cards when no projects exist
+                        Array.from({ length: 6 }).map((_, index) => (
+                          <CarouselItem
+                            key={index}
+                            className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(50%-0.5rem)] lg:basis-[calc(22.22%-0.5rem)]"
+                          >
+                            <ProjectCard
+                              project={{
+                                project: {
+                                  id: index,
+                                  title: "Projeto Exemplo",
+                                  description: "Um belo projeto de exemplo",
+                                  imageUrl: `https://source.unsplash.com/random/600x800?design,${index}`,
+                                  galleryImages: [],
+                                  sectionDisplay: "general",
+                                  userId: 1,
+                                  category: "Exemplo",
+                                  publishedStatus: "published",
+                                  createdAt: new Date().toISOString(),
+                                },
+                                user: {
+                                  id: 1,
+                                  name: "João Designer",
+                                  avatarUrl: null,
+                                },
+                                tags: [{ id: 1, name: "Website" }],
+                              }}
+                            />
+                          </CarouselItem>
+                        ))}
+                  </CarouselContent>
+                  
+                  {/* Gradient fade effect for desktop continuity */}
+                  <div className="hidden lg:block absolute top-0 right-0 bottom-0 w-20 bg-gradient-to-l from-black via-black/80 to-transparent pointer-events-none z-10"></div>
+                </div>
                 <div className="flex justify-center items-center mt-4">
                   <CarouselPrevious className="bg-black/40 hover:bg-black/60 border-none" />
                   <CarouselNext className="bg-black/40 hover:bg-black/60 border-none" />
