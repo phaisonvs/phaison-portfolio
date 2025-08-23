@@ -276,6 +276,9 @@ export default function HomePage() {
 
           {/* Gradient blend overlay */}
           <div className="absolute inset-0 moon-gradient-blend"></div>
+          
+          {/* Hero fade bottom effect */}
+          <div className="hero-fade-bottom"></div>
 
           <div className="max-w-[1200px] mx-auto text-center relative z-10 flex flex-col items-center justify-center h-full">
             <div className="space-y-6 md:space-y-8">
