@@ -61,6 +61,10 @@ export default function HomePage() {
   const [pluginsApi, setPluginsApi] = useState<CarouselApi | null>(null);
   const [templatesApi, setTemplatesApi] = useState<CarouselApi | null>(null);
 
+  // Scroll interaction for plugins carousel
+  const pluginsCarouselRef = useRef<HTMLDivElement>(null);
+  const [isMouseOverPluginsCarousel, setIsMouseOverPluginsCarousel] = useState(false);
+
   // Animation on scroll
   const animatedElements = useRef<HTMLElement[]>([]);
 
@@ -108,6 +112,44 @@ export default function HomePage() {
       animatedElements.current.forEach((el) => observer.unobserve(el));
     };
   }, []);
+
+  // Plugins carousel scroll interaction
+  useEffect(() => {
+    const carousel = pluginsCarouselRef.current;
+    if (!carousel || !pluginsApi) return;
+
+    const handleMouseEnter = () => {
+      setIsMouseOverPluginsCarousel(true);
+    };
+
+    const handleMouseLeave = () => {
+      setIsMouseOverPluginsCarousel(false);
+    };
+
+    const handleWheel = (e: WheelEvent) => {
+      if (isMouseOverPluginsCarousel) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Scroll to the right on wheel down, left on wheel up
+        if (e.deltaY > 0) {
+          pluginsApi.scrollNext();
+        } else {
+          pluginsApi.scrollPrev();
+        }
+      }
+    };
+
+    carousel.addEventListener('mouseenter', handleMouseEnter);
+    carousel.addEventListener('mouseleave', handleMouseLeave);
+    carousel.addEventListener('wheel', handleWheel, { passive: false });
+
+    return () => {
+      carousel.removeEventListener('mouseenter', handleMouseEnter);
+      carousel.removeEventListener('mouseleave', handleMouseLeave);
+      carousel.removeEventListener('wheel', handleWheel);
+    };
+  }, [pluginsApi, isMouseOverPluginsCarousel]);
 
   return (
     <div className="min-h-screen flex flex-col bg-black text-white relative overflow-hidden">
@@ -325,6 +367,7 @@ export default function HomePage() {
 
             <div className="animate-on-scroll relative">
               <Carousel
+                ref={pluginsCarouselRef}
                 setApi={setPluginsApi}
                 opts={{
                   align: "start",
