@@ -416,3 +416,31 @@
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--muted-foreground));
 }
+
+/* Neon light animation for header */
+.neon-light-animate {
+  animation: neonSweep 4s ease-in-out infinite;
+}
+
+@keyframes neonSweep {
+  0% {
+    background: linear-gradient(90deg, transparent 0%, transparent 100%);
+    box-shadow: none;
+  }
+  25% {
+    background: linear-gradient(90deg, transparent 0%, hsl(207 90% 54% / 0.8) 50%, transparent 100%);
+    box-shadow: 0 0 20px hsl(207 90% 54% / 0.4);
+  }
+  50% {
+    background: linear-gradient(90deg, transparent 0%, transparent 100%);
+    box-shadow: none;
+  }
+  75% {
+    background: linear-gradient(270deg, transparent 0%, hsl(207 90% 54% / 0.8) 50%, transparent 100%);
+    box-shadow: 0 0 20px hsl(207 90% 54% / 0.4);
+  }
+  100% {
+    background: linear-gradient(90deg, transparent 0%, transparent 100%);
+    box-shadow: none;
+  }
+}

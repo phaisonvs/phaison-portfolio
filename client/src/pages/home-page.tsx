@@ -63,7 +63,8 @@ export default function HomePage() {
 
   // Scroll interaction for plugins carousel
   const pluginsCarouselRef = useRef<HTMLDivElement>(null);
-  const [isMouseOverPluginsCarousel, setIsMouseOverPluginsCarousel] = useState(false);
+  const [isMouseOverPluginsCarousel, setIsMouseOverPluginsCarousel] =
+    useState(false);
 
   // Animation on scroll
   const animatedElements = useRef<HTMLElement[]>([]);
@@ -103,10 +104,12 @@ export default function HomePage() {
       { threshold: 0.1 },
     );
 
-    document.querySelectorAll(".animate-on-scroll, .animate-slide-left").forEach((el) => {
-      animatedElements.current.push(el as HTMLElement);
-      observer.observe(el);
-    });
+    document
+      .querySelectorAll(".animate-on-scroll, .animate-slide-left")
+      .forEach((el) => {
+        animatedElements.current.push(el as HTMLElement);
+        observer.observe(el);
+      });
 
     return () => {
       animatedElements.current.forEach((el) => observer.unobserve(el));
@@ -130,7 +133,7 @@ export default function HomePage() {
       if (isMouseOverPluginsCarousel) {
         e.preventDefault();
         e.stopPropagation();
-        
+
         // Scroll to the right on wheel down, left on wheel up
         if (e.deltaY > 0) {
           pluginsApi.scrollNext();
@@ -140,14 +143,14 @@ export default function HomePage() {
       }
     };
 
-    carousel.addEventListener('mouseenter', handleMouseEnter);
-    carousel.addEventListener('mouseleave', handleMouseLeave);
-    carousel.addEventListener('wheel', handleWheel, { passive: false });
+    carousel.addEventListener("mouseenter", handleMouseEnter);
+    carousel.addEventListener("mouseleave", handleMouseLeave);
+    carousel.addEventListener("wheel", handleWheel, { passive: false });
 
     return () => {
-      carousel.removeEventListener('mouseenter', handleMouseEnter);
-      carousel.removeEventListener('mouseleave', handleMouseLeave);
-      carousel.removeEventListener('wheel', handleWheel);
+      carousel.removeEventListener("mouseenter", handleMouseEnter);
+      carousel.removeEventListener("mouseleave", handleMouseLeave);
+      carousel.removeEventListener("wheel", handleWheel);
     };
   }, [pluginsApi, isMouseOverPluginsCarousel]);
 
@@ -166,12 +169,15 @@ export default function HomePage() {
         <div className="cta-ellipse cta-ellipse-left"></div>
         <div className="cta-ellipse cta-ellipse-right"></div>
       </div>
-      
+
       <Header />
 
       <main className="flex-grow content-layer pt-[73px]">
         {/* Hero section */}
-        <section id="hero" className="py-16 md:py-24 px-4 min-h-screen md:min-h-0 flex items-center justify-center md:block">
+        <section
+          id="hero"
+          className="py-16 md:py-24 px-4 min-h-[calc(100vh-73px)] md:min-h-0 flex items-center justify-center md:block"
+        >
           <div className="max-w-[1200px] mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-semibold leading-tight mb-6 animate-on-scroll">
               Oi, eu sou Phaison,
@@ -179,8 +185,9 @@ export default function HomePage() {
               um desenvolvedor criativo.
             </h1>
             <p className="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto animate-on-scroll">
-              Eu agrego valor a projetos digitais unindo experiência em<br className="hidden md:block" /> UI, UX e
-              Front-end com criatividade.
+              Eu agrego valor a projetos digitais unindo experiência em
+              <br className="hidden md:block" /> Front-end, CRO, UI, UX com
+              criatividade grandes resultados.
             </p>
             <div className="flex justify-center gap-4 flex-wrap animate-on-scroll">
               <Button asChild size="lg">
@@ -268,7 +275,7 @@ export default function HomePage() {
                           </CarouselItem>
                         ))}
                   </CarouselContent>
-                  
+
                   {/* Gradient fade effect for desktop continuity */}
                   <div className="hidden lg:block absolute top-0 right-0 bottom-0 w-20 bg-gradient-to-l from-black via-black/80 to-transparent pointer-events-none z-10"></div>
                 </div>
@@ -375,7 +382,8 @@ export default function HomePage() {
                 }}
                 className="w-full"
               >
-                <CarouselContent className="-ml-2 md:-ml-4 gap-4">
+                <div className="relative overflow-hidden">
+                  <CarouselContent className="-ml-2 md:-ml-4 gap-4">
                   <CarouselItem className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]">
                     <PluginCard
                       title="Figma"
@@ -447,7 +455,11 @@ export default function HomePage() {
                       iconBgColor="bg-purple-600"
                     />
                   </CarouselItem>
-                </CarouselContent>
+                  </CarouselContent>
+                  
+                  {/* Gradient fade effect for continuity */}
+                  <div className="hidden lg:block absolute top-0 right-0 bottom-0 w-20 bg-gradient-to-l from-black via-black/80 to-transparent pointer-events-none z-10"></div>
+                </div>
                 <div className="flex justify-center items-center mt-4">
                   <CarouselPrevious className="bg-black/40 hover:bg-black/60 border-none" />
                   <CarouselNext className="bg-black/40 hover:bg-black/60 border-none" />
