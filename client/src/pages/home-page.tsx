@@ -89,11 +89,11 @@ export default function HomePage() {
       }
     };
 
-    // Smooth scroll animation mais lenta
+    // Smooth scroll animation natural
     const animateScroll = () => {
       if (Math.abs(targetY - currentY) > 1) {
-        // VELOCIDADE MAIS LENTA: scroll muito mais controlado
-        currentY += (targetY - currentY) * 0.06;
+        // VELOCIDADE NATURAL: responsivo mas suave
+        currentY += (targetY - currentY) * 0.15;
         window.scrollTo(0, currentY);
         requestAnimationFrame(animateScroll);
       } else {
@@ -101,12 +101,12 @@ export default function HomePage() {
       }
     };
 
-    // Handle wheel events for much slower scrolling
+    // Handle wheel events for controlled scrolling
     const handleWheel = (e: WheelEvent) => {
       e.preventDefault();
       
-      // SCROLL MUITO MAIS LENTO: reduzir drasticamente a velocidade
-      targetY += e.deltaY * 0.4;
+      // SCROLL CONTROLADO: menos avanço por movimento, mas responsivo
+      targetY += e.deltaY * 0.7;
       targetY = Math.max(0, Math.min(targetY, document.body.scrollHeight - window.innerHeight));
       
       if (!isAnimating) {
