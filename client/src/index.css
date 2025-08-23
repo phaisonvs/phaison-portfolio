@@ -460,13 +460,17 @@
   background-repeat: no-repeat;
 } */
 
-/* New Phaison background with responsive object-fit */
+/* New Phaison background with parallax effect */
 .phaison-bg {
   background-image: url('@assets/bg-port-phaison_1755957306907.png');
   background-size: auto 100%; /* Height fills hero section on desktop */
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed; /* Parallax effect */
   opacity: 0.7; /* Controllable opacity */
+  transform-origin: center;
+  transition: transform 0.1s ease-out;
+  will-change: transform;
 }
 
 /* Tablet size - different object fit */

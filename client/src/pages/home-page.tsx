@@ -69,6 +69,26 @@ export default function HomePage() {
   // Animation on scroll
   const animatedElements = useRef<HTMLElement[]>([]);
 
+  // Parallax scroll effect for phaison background
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrolled = window.pageYOffset;
+      const phaisonBg = document.querySelector('.phaison-bg') as HTMLElement;
+      
+      if (phaisonBg) {
+        // Calculate scale based on scroll position
+        const scaleValue = 1 + scrolled * 0.0005; // Adjust multiplier as needed
+        phaisonBg.style.transform = `scale(${scaleValue})`;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   // Check for scroll parameter in URL
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
