@@ -75,19 +75,19 @@ export default function HomePage() {
   useEffect(() => {
     const handleScroll = () => {
       const scrolled = window.pageYOffset;
-      const phaisonBg = document.querySelector('.phaison-bg') as HTMLElement;
-      
+      const phaisonBg = document.querySelector(".phaison-bg") as HTMLElement;
+
       if (phaisonBg) {
-        // Parallax scale effect
-        const scaleValue = 1 + scrolled * 0.0003;
+        // Parallax scale effect - CONTROLE DE CRESCIMENTO DA IMAGEM
+        const scaleValue = 1 + scrolled * 0.002;
         phaisonBg.style.transform = `scale(${scaleValue})`;
       }
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -240,23 +240,24 @@ export default function HomePage() {
         >
           {/* Phaison Background Image */}
           <div className="absolute inset-0 phaison-bg"></div>
-          
+
           {/* Gradient blend overlay */}
           <div className="absolute inset-0 moon-gradient-blend"></div>
-          
+
           <div className="max-w-[1200px] mx-auto text-center relative z-10">
             <h1 className="leading-tight mb-6 animate-on-scroll grainient-heading">
-              Oi, eu sou Phaison,
+              Oi, eu sou Phaison, Lead de UX/UI,
               <br />
-              um desenvolvedor criativo.
+              especialista em soluções digitais.
             </h1>
             <p className="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto animate-on-scroll grainient-text">
-              Integro AI, CRO, Front-end, UI e UX em estratégias digitais para entregar
-              <br className="hidden md:block" /> soluções criativas com foco em conversão, escala e lucratividade.
+              Integro design estratégico e CRO para experiências
+              <br className="hidden md:block" /> digitais testadas e de alta
+              conversão.
             </p>
             <div className="flex justify-center gap-4 flex-wrap animate-on-scroll">
               <Button asChild size="lg">
-                <Link href="/projects">View Projects</Link>
+                <Link href="/projects">Veja meus projetos</Link>
               </Button>
               <Button
                 variant="outline"
@@ -450,79 +451,79 @@ export default function HomePage() {
               >
                 <div className="relative overflow-hidden">
                   <CarouselContent className="-ml-2 md:-ml-4 gap-4">
-                  <CarouselItem className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]">
-                    <PluginCard
-                      title="Figma"
-                      description="Design de interfaces e prototipagem"
-                      icon={FaFigma}
-                      iconBgColor="bg-purple-500"
-                    />
-                  </CarouselItem>
+                    <CarouselItem className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]">
+                      <PluginCard
+                        title="Figma"
+                        description="Design de interfaces e prototipagem"
+                        icon={FaFigma}
+                        iconBgColor="bg-purple-500"
+                      />
+                    </CarouselItem>
 
-                  <CarouselItem className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]">
-                    <PluginCard
-                      title="GitHub"
-                      description="Controle de versão e colaboração"
-                      icon={FaGithub}
-                      iconBgColor="bg-gray-700"
-                    />
-                  </CarouselItem>
+                    <CarouselItem className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]">
+                      <PluginCard
+                        title="GitHub"
+                        description="Controle de versão e colaboração"
+                        icon={FaGithub}
+                        iconBgColor="bg-gray-700"
+                      />
+                    </CarouselItem>
 
-                  <CarouselItem className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]">
-                    <PluginCard
-                      title="HTML"
-                      description="Estruturação de conteúdo web"
-                      icon={FaHtml5}
-                      iconBgColor="bg-orange-500"
-                    />
-                  </CarouselItem>
+                    <CarouselItem className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]">
+                      <PluginCard
+                        title="HTML"
+                        description="Estruturação de conteúdo web"
+                        icon={FaHtml5}
+                        iconBgColor="bg-orange-500"
+                      />
+                    </CarouselItem>
 
-                  <CarouselItem className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]">
-                    <PluginCard
-                      title="CSS"
-                      description="Estilização e layout responsivo"
-                      icon={FaCss3Alt}
-                      iconBgColor="bg-blue-500"
-                    />
-                  </CarouselItem>
+                    <CarouselItem className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]">
+                      <PluginCard
+                        title="CSS"
+                        description="Estilização e layout responsivo"
+                        icon={FaCss3Alt}
+                        iconBgColor="bg-blue-500"
+                      />
+                    </CarouselItem>
 
-                  <CarouselItem className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]">
-                    <PluginCard
-                      title="JavaScript"
-                      description="Interatividade e funcionalidades"
-                      icon={FaJs}
-                      iconBgColor="bg-yellow-500"
-                    />
-                  </CarouselItem>
+                    <CarouselItem className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]">
+                      <PluginCard
+                        title="JavaScript"
+                        description="Interatividade e funcionalidades"
+                        icon={FaJs}
+                        iconBgColor="bg-yellow-500"
+                      />
+                    </CarouselItem>
 
-                  <CarouselItem className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]">
-                    <PluginCard
-                      title="Photoshop"
-                      description="Edição e manipulação de imagens"
-                      icon={SiAdobephotoshop}
-                      iconBgColor="bg-blue-600"
-                    />
-                  </CarouselItem>
+                    <CarouselItem className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]">
+                      <PluginCard
+                        title="Photoshop"
+                        description="Edição e manipulação de imagens"
+                        icon={SiAdobephotoshop}
+                        iconBgColor="bg-blue-600"
+                      />
+                    </CarouselItem>
 
-                  <CarouselItem className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]">
-                    <PluginCard
-                      title="Illustrator"
-                      description="Criação de gráficos vetoriais"
-                      icon={SiAdobeillustrator}
-                      iconBgColor="bg-orange-600"
-                    />
-                  </CarouselItem>
+                    <CarouselItem className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]">
+                      <PluginCard
+                        title="Illustrator"
+                        description="Criação de gráficos vetoriais"
+                        icon={SiAdobeillustrator}
+                        iconBgColor="bg-orange-600"
+                      />
+                    </CarouselItem>
 
-                  <CarouselItem className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]">
-                    <PluginCard
-                      title="After Effects"
-                      description="Animações e motion graphics"
-                      icon={SiAdobeaftereffects}
-                      iconBgColor="bg-purple-600"
-                    />
-                  </CarouselItem>
+                    <CarouselItem className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]">
+                      <PluginCard
+                        title="After Effects"
+                        description="Animações e motion graphics"
+                        icon={SiAdobeaftereffects}
+                        iconBgColor="bg-purple-600"
+                      />
+                    </CarouselItem>
                   </CarouselContent>
-                  
+
                   {/* Gradient fade effect for continuity */}
                   <div className="hidden lg:block absolute top-0 right-0 bottom-0 w-20 bg-gradient-to-l from-black via-black/80 to-transparent pointer-events-none z-10"></div>
                 </div>
@@ -766,7 +767,10 @@ export default function HomePage() {
         </section>
 
         {/* Call to Action */}
-        <section id="contact" className="py-20 px-4 relative overflow-hidden bg-black">
+        <section
+          id="contact"
+          className="py-20 px-4 relative overflow-hidden bg-black"
+        >
           {/* Bottom gradient section with #2E2689 */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#2E2689]/20 via-transparent to-transparent opacity-60"></div>
           <div className="absolute inset-0 cta-gradient z-0"></div>

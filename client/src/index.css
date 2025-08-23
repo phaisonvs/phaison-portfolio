@@ -629,11 +629,3 @@ p,
     box-shadow: none;
   }
 }
-
-/* Custom override for md:py-24 */
-@media (min-width: 768px) {
-  .md\:py-24 {
-    padding-top: 6rem;
-    padding-bottom: 20rem;
-  }
-}
