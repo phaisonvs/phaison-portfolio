@@ -444,25 +444,38 @@
   font-family: "Geist Medium", "Geist Medium Placeholder", sans-serif;
 }
 
-/* Moon background with gradient blend - Responsive sizes */
-.moon-bg {
+/* Moon background - COMMENTED OUT */
+/* .moon-bg {
   background-image: url('@assets/Moon2011_1755954950723.png');
   background-size: 150%;
   background-position: center;
   background-repeat: no-repeat;
+} */
+
+/* New Phaison background with responsive object-fit */
+.phaison-bg {
+  background-image: url('@assets/bg-port-phaison_1755956917482.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.7; /* Controllable opacity */
 }
 
-/* Tablet size */
+/* Tablet size - different object fit */
 @media (max-width: 1024px) {
-  .moon-bg {
-    background-size: 130%;
+  .phaison-bg {
+    background-size: contain;
+    background-position: center;
+    opacity: 0.6;
   }
 }
 
-/* Mobile size */
+/* Mobile size - different object fit */
 @media (max-width: 768px) {
-  .moon-bg {
-    background-size: 120%;
+  .phaison-bg {
+    background-size: cover;
+    background-position: center top;
+    opacity: 0.5;
   }
 }
 

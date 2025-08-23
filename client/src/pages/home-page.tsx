@@ -178,8 +178,8 @@ export default function HomePage() {
           id="hero"
           className="py-16 md:py-24 px-4 min-h-[calc(100vh-73px)] md:min-h-0 flex items-center justify-center md:block relative overflow-hidden bg-black"
         >
-          {/* Moon2011 Background Image */}
-          <div className="absolute inset-0 moon-bg opacity-60"></div>
+          {/* Phaison Background Image */}
+          <div className="absolute inset-0 phaison-bg"></div>
           
           {/* Gradient blend overlay */}
           <div className="absolute inset-0 moon-gradient-blend"></div>
