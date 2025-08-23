@@ -323,16 +323,18 @@ export default function HomePage() {
                 opts={{
                   align: "start",
                   loop: true,
+                  containScroll: "trimSnaps",
+                  skipSnaps: false,
                 }}
                 className="w-full"
               >
                 <div className="relative overflow-hidden">
-                  <CarouselContent className="-ml-2 md:-ml-4 gap-4">
+                  <CarouselContent className="-ml-1 flex gap-2">
                     {projects && projects.length > 0
                       ? projects.slice(0, 6).map((project) => (
                           <CarouselItem
                             key={project.project.id}
-                            className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(50%-0.5rem)] lg:basis-[calc(22.22%-0.5rem)]"
+                            className="pl-1 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(50%-0.5rem)] lg:basis-[calc(22.22%-0.5rem)]"
                             data-carousel-item
                           >
                             <ProjectCard project={project} />
@@ -342,7 +344,7 @@ export default function HomePage() {
                         Array.from({ length: 6 }).map((_, index) => (
                           <CarouselItem
                             key={index}
-                            className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(50%-0.5rem)] lg:basis-[calc(22.22%-0.5rem)]"
+                            className="pl-1 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(50%-0.5rem)] lg:basis-[calc(22.22%-0.5rem)]"
                             data-carousel-item
                           >
                             <ProjectCard
@@ -397,11 +399,13 @@ export default function HomePage() {
                 opts={{
                   align: "start",
                   loop: true,
+                  containScroll: "trimSnaps",
+                  skipSnaps: false,
                 }}
                 className="w-full"
               >
                 <CarouselContent className="-ml-2 md:-ml-4">
-                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/2 lg:basis-1/3" data-carousel-item>
+                  <CarouselItem className="pl-1 sm:basis-1/2 md:basis-1/2 lg:basis-1/3" data-carousel-item>
                     <CategoryCard
                       title="Websites"
                       description="Belos sites para criadores, artistas e empresas"
@@ -413,7 +417,7 @@ export default function HomePage() {
                     />
                   </CarouselItem>
 
-                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/2 lg:basis-1/3" data-carousel-item>
+                  <CarouselItem className="pl-1 sm:basis-1/2 md:basis-1/2 lg:basis-1/3" data-carousel-item>
                     <CategoryCard
                       title="Aplicativos Móveis"
                       description="Experiências interativas com animações suaves"
@@ -425,7 +429,7 @@ export default function HomePage() {
                     />
                   </CarouselItem>
 
-                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/2 lg:basis-1/3" data-carousel-item>
+                  <CarouselItem className="pl-1 sm:basis-1/2 md:basis-1/2 lg:basis-1/3" data-carousel-item>
                     <CategoryCard
                       title="Design 3D"
                       description="Experiências 3D imersivas e visualizações"
@@ -437,7 +441,7 @@ export default function HomePage() {
                     />
                   </CarouselItem>
 
-                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/2 lg:basis-1/3" data-carousel-item>
+                  <CarouselItem className="pl-1 sm:basis-1/2 md:basis-1/2 lg:basis-1/3" data-carousel-item>
                     <CategoryCard
                       title="UI/UX Design"
                       description="Interfaces elegantes e intuitivas"
@@ -474,12 +478,14 @@ export default function HomePage() {
                 opts={{
                   align: "start",
                   loop: true,
+                  containScroll: "trimSnaps",
+                  skipSnaps: false,
                 }}
                 className="w-full"
               >
                 <div className="relative overflow-hidden">
-                  <CarouselContent className="-ml-2 md:-ml-4 gap-4">
-                    <CarouselItem className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
+                  <CarouselContent className="-ml-1 flex gap-2">
+                    <CarouselItem className="pl-1 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
                       <PluginCard
                         title="Figma"
                         description="Design de interfaces e prototipagem"
@@ -488,7 +494,7 @@ export default function HomePage() {
                       />
                     </CarouselItem>
 
-                    <CarouselItem className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
+                    <CarouselItem className="pl-1 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
                       <PluginCard
                         title="GitHub"
                         description="Controle de versão e colaboração"
@@ -497,7 +503,7 @@ export default function HomePage() {
                       />
                     </CarouselItem>
 
-                    <CarouselItem className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
+                    <CarouselItem className="pl-1 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
                       <PluginCard
                         title="HTML"
                         description="Estruturação de conteúdo web"
@@ -506,7 +512,7 @@ export default function HomePage() {
                       />
                     </CarouselItem>
 
-                    <CarouselItem className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
+                    <CarouselItem className="pl-1 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
                       <PluginCard
                         title="CSS"
                         description="Estilização e layout responsivo"
@@ -515,7 +521,7 @@ export default function HomePage() {
                       />
                     </CarouselItem>
 
-                    <CarouselItem className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
+                    <CarouselItem className="pl-1 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
                       <PluginCard
                         title="JavaScript"
                         description="Interatividade e funcionalidades"
@@ -524,7 +530,7 @@ export default function HomePage() {
                       />
                     </CarouselItem>
 
-                    <CarouselItem className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
+                    <CarouselItem className="pl-1 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
                       <PluginCard
                         title="Photoshop"
                         description="Edição e manipulação de imagens"
@@ -533,7 +539,7 @@ export default function HomePage() {
                       />
                     </CarouselItem>
 
-                    <CarouselItem className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
+                    <CarouselItem className="pl-1 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
                       <PluginCard
                         title="Illustrator"
                         description="Criação de gráficos vetoriais"
@@ -542,7 +548,7 @@ export default function HomePage() {
                       />
                     </CarouselItem>
 
-                    <CarouselItem className="pl-2 md:pl-4 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
+                    <CarouselItem className="pl-1 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
                       <PluginCard
                         title="After Effects"
                         description="Animações e motion graphics"
@@ -578,11 +584,13 @@ export default function HomePage() {
                 opts={{
                   align: "start",
                   loop: true,
+                  containScroll: "trimSnaps",
+                  skipSnaps: false,
                 }}
                 className="w-full"
               >
                 <CarouselContent className="-ml-2 md:-ml-4">
-                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4" data-carousel-item>
+                  <CarouselItem className="pl-1 sm:basis-1/2 md:basis-1/3 lg:basis-1/4" data-carousel-item>
                     <TemplateCard
                       title="Portfolio Pro"
                       description="Template moderno para portfólio"
@@ -596,7 +604,7 @@ export default function HomePage() {
                     />
                   </CarouselItem>
 
-                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4" data-carousel-item>
+                  <CarouselItem className="pl-1 sm:basis-1/2 md:basis-1/3 lg:basis-1/4" data-carousel-item>
                     <TemplateCard
                       title="Ecommerce Black"
                       description="Experiência premium de compras"
@@ -610,7 +618,7 @@ export default function HomePage() {
                     />
                   </CarouselItem>
 
-                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4" data-carousel-item>
+                  <CarouselItem className="pl-1 sm:basis-1/2 md:basis-1/3 lg:basis-1/4" data-carousel-item>
                     <TemplateCard
                       title="Agency Minimal"
                       description="Site clean para agências"
@@ -624,7 +632,7 @@ export default function HomePage() {
                     />
                   </CarouselItem>
 
-                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4" data-carousel-item>
+                  <CarouselItem className="pl-1 sm:basis-1/2 md:basis-1/3 lg:basis-1/4" data-carousel-item>
                     <TemplateCard
                       title="Mobile App Pro"
                       description="Landing page para aplicativos"
@@ -638,7 +646,7 @@ export default function HomePage() {
                     />
                   </CarouselItem>
 
-                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4" data-carousel-item>
+                  <CarouselItem className="pl-1 sm:basis-1/2 md:basis-1/3 lg:basis-1/4" data-carousel-item>
                     <TemplateCard
                       title="Startup X"
                       description="Template moderno para startups"
@@ -652,7 +660,7 @@ export default function HomePage() {
                     />
                   </CarouselItem>
 
-                  <CarouselItem className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4" data-carousel-item>
+                  <CarouselItem className="pl-1 sm:basis-1/2 md:basis-1/3 lg:basis-1/4" data-carousel-item>
                     <TemplateCard
                       title="Creative Portfolio"
                       description="Para artistas e designers"
