@@ -72,8 +72,12 @@ export default function HomePage() {
   // Animation on scroll
   const animatedElements = useRef<HTMLElement[]>([]);
 
-  // Parallax effect with natural scroll
+  // Parallax effect with custom slow scroll control
   useEffect(() => {
+    let targetY = 0;
+    let currentY = 0;
+    let isAnimating = false;
+    
     const handleScroll = () => {
       const scrolled = window.pageYOffset;
       const phaisonBg = document.querySelector(".phaison-bg") as HTMLElement;
@@ -85,13 +89,30 @@ export default function HomePage() {
       }
     };
 
-    // Simple wheel control - apenas reduz a velocidade, sem animação
+    // Smooth scroll animation natural
+    const animateScroll = () => {
+      if (Math.abs(targetY - currentY) > 1) {
+        // VELOCIDADE NATURAL: responsivo mas suave
+        currentY += (targetY - currentY) * 0.40;
+        window.scrollTo(0, currentY);
+        requestAnimationFrame(animateScroll);
+      } else {
+        isAnimating = false;
+      }
+    };
+
+    // Handle wheel events for controlled scrolling
     const handleWheel = (e: WheelEvent) => {
       e.preventDefault();
       
-      // SCROLL NATURAL E FLUIDO: apenas reduz a distância
-      const scrollAmount = e.deltaY * 0.6;
-      window.scrollBy(0, scrollAmount);
+      // SCROLL CONTROLADO: menos avanço por movimento, mas responsivo
+      targetY += e.deltaY * 0.5;
+      targetY = Math.max(0, Math.min(targetY, document.body.scrollHeight - window.innerHeight));
+      
+      if (!isAnimating) {
+        isAnimating = true;
+        animateScroll();
+      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
