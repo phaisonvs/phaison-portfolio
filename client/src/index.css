@@ -165,7 +165,10 @@ html {
 /* Dynamic gradient spotlights - Inspired by Stefano Bartoletti */
 .spotlight-container {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh; /* Será controlado dinamicamente pelo JS */
   pointer-events: none;
   overflow: hidden;
   z-index: 15;
@@ -395,7 +398,7 @@ html {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh; /* Será controlado dinamicamente pelo JS */
   pointer-events: none;
   z-index: 16;
   overflow: hidden;

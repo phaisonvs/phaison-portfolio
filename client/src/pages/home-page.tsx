@@ -87,6 +87,19 @@ export default function HomePage() {
         const scaleValue = 1 + scrolled * 0.002;
         phaisonBg.style.transform = `scale(${scaleValue})`;
       }
+
+      // Controle das elipses - para na seção "Pronto para o próximo projeto"
+      const contactSection = document.getElementById("contact");
+      const spotlightContainer = document.querySelector(".spotlight-container") as HTMLElement;
+      const ellipsesContainer = document.querySelector(".cta-ellipses-container") as HTMLElement;
+      
+      if (contactSection && spotlightContainer && ellipsesContainer) {
+        const contactTop = contactSection.offsetTop;
+        const maxHeight = contactTop + "px";
+        
+        spotlightContainer.style.height = maxHeight;
+        ellipsesContainer.style.height = maxHeight;
+      }
     };
 
     // Smooth scroll animation natural
@@ -115,12 +128,17 @@ export default function HomePage() {
       }
     };
 
+    // Initial setup
+    handleScroll();
+
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("wheel", handleWheel, { passive: false });
+    window.addEventListener("resize", handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("wheel", handleWheel);
+      window.removeEventListener("resize", handleScroll);
     };
   }, []);
 
@@ -337,7 +355,7 @@ export default function HomePage() {
         </section>
 
         {/* Project Highlights */}
-        <section className="py-20 px-4">
+        <section className="py-20 px-4 relative z-20">
           <div className="max-w-[1200px] mx-auto">
             <div className="flex justify-between items-center mb-16">
               <h2 className="text-2xl md:text-3xl font-semibold animate-slide-left">
@@ -494,7 +512,7 @@ export default function HomePage() {
         */}
 
         {/* Top Plugins */}
-        <section className="py-20 px-4">
+        <section className="py-20 px-4 relative z-20">
           <div className="max-w-[1200px] mx-auto">
             <h2 className="text-2xl md:text-3xl font-semibold mb-16 animate-slide-left">
               Softwares e Habilidades
@@ -711,7 +729,7 @@ export default function HomePage() {
         */}
 
         {/* About Section */}
-        <section id="about" className="py-16 md:py-24 px-4">
+        <section id="about" className="py-16 md:py-24 px-4 relative z-20">
           <div className="max-w-[1200px] mx-auto">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               {/* Text Content */}
@@ -830,7 +848,7 @@ export default function HomePage() {
         {/* Call to Action */}
         <section
           id="contact"
-          className="py-20 px-4 relative overflow-hidden"
+          className="py-20 px-4 relative overflow-hidden z-20"
         >
           {/* Bottom gradient section with #2E2689 */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#2E2689]/20 via-transparent to-transparent opacity-60"></div>
