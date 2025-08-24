@@ -701,41 +701,41 @@ export default function HomePage() {
                 </div>
 
                 {/* Skills Grid */}
-                <div className="space-y-6">
+                <div className="space-y-6 animate-on-scroll">
                   <h3 className="text-xl font-semibold text-white">Skills</h3>
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-3">
+                    <div className="space-y-3 animate-on-scroll">
                       <h4 className="text-sm font-medium text-primary">Design</h4>
                       <div className="flex flex-wrap gap-2">
-                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50">UX/UI Design</span>
-                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50">Prototyping</span>
-                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50">Wireframing</span>
-                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50">Design Systems</span>
+                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">UX/UI Design</span>
+                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">Prototyping</span>
+                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">Wireframing</span>
+                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">Design Systems</span>
                       </div>
                     </div>
-                    <div className="space-y-3">
+                    <div className="space-y-3 animate-on-scroll">
                       <h4 className="text-sm font-medium text-primary">Tools</h4>
                       <div className="flex flex-wrap gap-2">
-                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50">Figma</span>
-                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50">Adobe XD</span>
-                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50">Photoshop</span>
-                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50">After Effects</span>
+                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">Figma</span>
+                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">Adobe XD</span>
+                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">Photoshop</span>
+                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">After Effects</span>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 {/* Stats */}
-                <div className="grid grid-cols-3 gap-6">
-                  <div className="text-center">
+                <div className="grid grid-cols-3 gap-6 animate-on-scroll">
+                  <div className="text-center animate-on-scroll">
                     <div className="text-2xl font-bold text-primary mb-1">3+</div>
                     <div className="text-xs text-gray-400">Anos</div>
                   </div>
-                  <div className="text-center">
+                  <div className="text-center animate-on-scroll">
                     <div className="text-2xl font-bold text-primary mb-1">50+</div>
                     <div className="text-xs text-gray-400">Projetos</div>
                   </div>
-                  <div className="text-center">
+                  <div className="text-center animate-on-scroll">
                     <div className="text-2xl font-bold text-primary mb-1">100%</div>
                     <div className="text-xs text-gray-400">Dedicação</div>
                   </div>
@@ -766,22 +766,22 @@ export default function HomePage() {
 
             {/* Experience & Education */}
             <div className="mt-20 animate-on-scroll">
-              <h3 className="text-2xl font-semibold mb-8 text-white">Experiência & Formação</h3>
+              <h3 className="text-2xl font-semibold mb-8 text-white animate-on-scroll">Experiência & Formação</h3>
               
               <div className="space-y-6">
                 {/* Experience Item 1 */}
-                <div className="relative p-6 bg-zinc-900/30 rounded-xl border border-zinc-700/30 hover:border-primary/20 transition-all duration-300 dynamic-glow">
+                <div className="relative p-6 bg-zinc-900/30 rounded-xl border border-zinc-700/30 hover:border-primary/20 transition-all duration-300 dynamic-glow animate-on-scroll">
                   <div className="absolute left-6 top-6 w-2 h-2 bg-primary rounded-full"></div>
                   <div className="pl-6 space-y-3">
-                    <h4 className="text-lg font-semibold">
+                    <h4 className="text-lg font-semibold animate-on-scroll">
                       <span className="text-white">Lead UX/UI Designer</span>
                       <span className="text-primary"> @ Design Agency</span>
                     </h4>
-                    <p className="text-sm text-gray-400">2022 - Presente</p>
-                    <p className="text-gray-300 leading-relaxed">
+                    <p className="text-sm text-gray-400 animate-on-scroll">2022 - Presente</p>
+                    <p className="text-gray-300 leading-relaxed animate-on-scroll">
                       Liderando projetos de design para clientes enterprise, criando sistemas abrangentes e soluções centradas no usuário com metodologias ágeis.
                     </p>
-                    <div className="flex flex-wrap gap-2 mt-4">
+                    <div className="flex flex-wrap gap-2 mt-4 animate-on-scroll">
                       <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Figma</span>
                       <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Design Systems</span>
                       <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">User Research</span>
@@ -791,18 +791,18 @@ export default function HomePage() {
                 </div>
 
                 {/* Experience Item 2 */}
-                <div className="relative p-6 bg-zinc-900/30 rounded-xl border border-zinc-700/30 hover:border-primary/20 transition-all duration-300 dynamic-glow">
+                <div className="relative p-6 bg-zinc-900/30 rounded-xl border border-zinc-700/30 hover:border-primary/20 transition-all duration-300 dynamic-glow animate-on-scroll">
                   <div className="absolute left-6 top-6 w-2 h-2 bg-primary rounded-full"></div>
                   <div className="pl-6 space-y-3">
-                    <h4 className="text-lg font-semibold">
+                    <h4 className="text-lg font-semibold animate-on-scroll">
                       <span className="text-white">UX Designer</span>
                       <span className="text-primary"> @ Tech Startup</span>
                     </h4>
-                    <p className="text-sm text-gray-400">2020 - 2022</p>
-                    <p className="text-gray-300 leading-relaxed">
+                    <p className="text-sm text-gray-400 animate-on-scroll">2020 - 2022</p>
+                    <p className="text-gray-300 leading-relaxed animate-on-scroll">
                       Responsável pela pesquisa de usuário, wireframing e prototipagem para aplicações mobile e web, focando em experiências otimizadas.
                     </p>
-                    <div className="flex flex-wrap gap-2 mt-4">
+                    <div className="flex flex-wrap gap-2 mt-4 animate-on-scroll">
                       <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">React</span>
                       <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">TypeScript</span>
                       <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Prototyping</span>
@@ -812,18 +812,18 @@ export default function HomePage() {
                 </div>
 
                 {/* Education Item */}
-                <div className="relative p-6 bg-zinc-900/30 rounded-xl border border-zinc-700/30 hover:border-primary/20 transition-all duration-300 dynamic-glow">
+                <div className="relative p-6 bg-zinc-900/30 rounded-xl border border-zinc-700/30 hover:border-primary/20 transition-all duration-300 dynamic-glow animate-on-scroll">
                   <div className="absolute left-6 top-6 w-2 h-2 bg-primary rounded-full"></div>
                   <div className="pl-6 space-y-3">
-                    <h4 className="text-lg font-semibold">
+                    <h4 className="text-lg font-semibold animate-on-scroll">
                       <span className="text-white">Bacharelado em Design</span>
                       <span className="text-primary"> @ Universidade Federal</span>
                     </h4>
-                    <p className="text-sm text-gray-400">2017 - 2021</p>
-                    <p className="text-gray-300 leading-relaxed">
+                    <p className="text-sm text-gray-400 animate-on-scroll">2017 - 2021</p>
+                    <p className="text-gray-300 leading-relaxed animate-on-scroll">
                       Formação em Design com especialização em experiência do usuário, metodologias de pesquisa e design de interação.
                     </p>
-                    <div className="flex flex-wrap gap-2 mt-4">
+                    <div className="flex flex-wrap gap-2 mt-4 animate-on-scroll">
                       <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Design Thinking</span>
                       <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">User Research</span>
                       <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Visual Design</span>
