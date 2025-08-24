@@ -742,139 +742,91 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Right Side - Photo with Seamless Background Blend */}
+              {/* Right Side - Photo with Internal Blur Blend */}
               <div className="animate-on-scroll flex justify-center lg:justify-end">
                 <div className="relative">
-                  {/* Background blur effects for seamless blend */}
-                  <div className="absolute -inset-8">
-                    <div className="w-full h-full bg-gradient-radial from-primary/10 via-primary/5 to-transparent blur-3xl"></div>
-                  </div>
-                  <div className="absolute -inset-12">
-                    <div className="w-full h-full bg-gradient-radial from-blue-500/8 via-purple-500/8 to-transparent blur-2xl"></div>
+                  {/* Atmospheric background glow */}
+                  <div className="absolute -inset-16 opacity-30">
+                    <div className="w-full h-full bg-gradient-radial from-primary/20 to-transparent blur-3xl"></div>
                   </div>
                   
-                  {/* Photo Container with seamless edges */}
-                  <div className="relative z-10">
-                    <div className="w-80 h-96 rounded-3xl overflow-hidden relative group">
-                      {/* Main image */}
+                  {/* Photo with internal blur mask */}
+                  <div className="relative w-80 h-96">
+                    <div className="photo-container-blur">
                       <img
                         src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
                         alt="Profile"
                         className="w-full h-full object-cover"
                       />
-                      
-                      {/* Multiple gradient overlays for seamless edge blend */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
-                      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-transparent opacity-40"></div>
-                      <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20 opacity-50"></div>
-                      
-                      {/* Radial fade effect on edges */}
-                      <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-black/60 opacity-70"></div>
-                      
-                      {/* Primary color blend */}
-                      <div className="absolute inset-0 bg-gradient-to-tr from-primary/15 via-transparent to-transparent opacity-80"></div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Experience Section - Vertical List Style */}
+            {/* Experience & Education */}
             <div className="mt-20 animate-on-scroll">
-              <div className="flex items-center gap-3 mb-8">
-                <div className="w-8 h-8 bg-emerald-500/20 rounded-lg flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20 6h-2V4c0-1.11-.89-2-2-2H8c-1.11 0-2 .89-2 2v2H4c-1.11 0-2 .89-2 2v11c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zM8 4h8v2H8V4z"/>
-                  </svg>
-                </div>
-                <h3 className="text-2xl font-semibold text-white">Experiência</h3>
-              </div>
+              <h3 className="text-2xl font-semibold mb-8 text-white">Experiência & Formação</h3>
               
-              <div className="space-y-8">
+              <div className="space-y-6">
                 {/* Experience Item 1 */}
-                <div className="border-l-2 border-emerald-500/30 pl-6 pb-8 relative">
-                  <div className="absolute -left-2 top-0 w-3 h-3 bg-emerald-500 rounded-full"></div>
-                  <div className="space-y-3">
+                <div className="relative p-6 bg-zinc-900/30 rounded-xl border border-zinc-700/30 hover:border-primary/20 transition-all duration-300 dynamic-glow">
+                  <div className="absolute left-6 top-6 w-2 h-2 bg-primary rounded-full"></div>
+                  <div className="pl-6 space-y-3">
                     <h4 className="text-lg font-semibold">
                       <span className="text-white">Lead UX/UI Designer</span>
-                      <span className="text-emerald-400"> @ Design Agency</span>
+                      <span className="text-primary"> @ Design Agency</span>
                     </h4>
-                    <p className="text-sm text-gray-400">Novembro 2023 - Atual</p>
+                    <p className="text-sm text-gray-400">2022 - Presente</p>
                     <p className="text-gray-300 leading-relaxed">
-                      Liderando equipes de design em projetos enterprise, criando sistemas de design abrangentes e implementando metodologias ágeis. Responsável por estratégias de UX que resultaram em 40% de aumento na conversão dos clientes.
+                      Liderando projetos de design para clientes enterprise, criando sistemas abrangentes e soluções centradas no usuário com metodologias ágeis.
                     </p>
                     <div className="flex flex-wrap gap-2 mt-4">
-                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">Figma</span>
-                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">Design Systems</span>
-                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">User Research</span>
-                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">Prototyping</span>
-                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">Team Leadership</span>
+                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Figma</span>
+                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Design Systems</span>
+                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">User Research</span>
+                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Team Leadership</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Experience Item 2 */}
-                <div className="border-l-2 border-emerald-500/30 pl-6 pb-8 relative">
-                  <div className="absolute -left-2 top-0 w-3 h-3 bg-emerald-500 rounded-full"></div>
-                  <div className="space-y-3">
+                <div className="relative p-6 bg-zinc-900/30 rounded-xl border border-zinc-700/30 hover:border-primary/20 transition-all duration-300 dynamic-glow">
+                  <div className="absolute left-6 top-6 w-2 h-2 bg-primary rounded-full"></div>
+                  <div className="pl-6 space-y-3">
                     <h4 className="text-lg font-semibold">
                       <span className="text-white">UX Designer</span>
-                      <span className="text-emerald-400"> @ Tech Startup</span>
+                      <span className="text-primary"> @ Tech Startup</span>
                     </h4>
-                    <p className="text-sm text-gray-400">Abril 2021 - Outubro 2023</p>
+                    <p className="text-sm text-gray-400">2020 - 2022</p>
                     <p className="text-gray-300 leading-relaxed">
-                      Responsável pelo design de experiências para aplicações SaaS, conduzindo pesquisas de usuário e implementando melhorias que aumentaram a retenção em 35%. Colaboração próxima com desenvolvimento para implementação de interfaces.
+                      Responsável pela pesquisa de usuário, wireframing e prototipagem para aplicações mobile e web, focando em experiências otimizadas.
                     </p>
                     <div className="flex flex-wrap gap-2 mt-4">
-                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">React</span>
-                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">TypeScript</span>
-                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">Next.js</span>
-                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">UI/UX</span>
-                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">Responsive Design</span>
+                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">React</span>
+                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">TypeScript</span>
+                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Prototyping</span>
+                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">UI/UX</span>
                     </div>
                   </div>
                 </div>
 
-                {/* Experience Item 3 */}
-                <div className="border-l-2 border-emerald-500/30 pl-6 pb-8 relative">
-                  <div className="absolute -left-2 top-0 w-3 h-3 bg-emerald-500 rounded-full"></div>
-                  <div className="space-y-3">
+                {/* Education Item */}
+                <div className="relative p-6 bg-zinc-900/30 rounded-xl border border-zinc-700/30 hover:border-primary/20 transition-all duration-300 dynamic-glow">
+                  <div className="absolute left-6 top-6 w-2 h-2 bg-primary rounded-full"></div>
+                  <div className="pl-6 space-y-3">
                     <h4 className="text-lg font-semibold">
-                      <span className="text-white">Frontend Developer</span>
-                      <span className="text-emerald-400"> @ Creative Labs</span>
+                      <span className="text-white">Bacharelado em Design</span>
+                      <span className="text-primary"> @ Universidade Federal</span>
                     </h4>
-                    <p className="text-sm text-gray-400">Janeiro 2020 - Março 2021</p>
+                    <p className="text-sm text-gray-400">2017 - 2021</p>
                     <p className="text-gray-300 leading-relaxed">
-                      Desenvolvimento de interfaces modernas com foco em performance e acessibilidade. Implementação de animações avançadas e otimização de experiências mobile-first que melhoraram o engagement em 50%.
+                      Formação em Design com especialização em experiência do usuário, metodologias de pesquisa e design de interação.
                     </p>
                     <div className="flex flex-wrap gap-2 mt-4">
-                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">HTML5</span>
-                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">CSS3</span>
-                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">JavaScript</span>
-                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">Vue.js</span>
-                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">SASS</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Experience Item 4 */}
-                <div className="border-l-2 border-emerald-500/30 pl-6 relative">
-                  <div className="absolute -left-2 top-0 w-3 h-3 bg-emerald-500 rounded-full"></div>
-                  <div className="space-y-3">
-                    <h4 className="text-lg font-semibold">
-                      <span className="text-white">Freelance Designer</span>
-                      <span className="text-emerald-400"> @ Diversos Clientes</span>
-                    </h4>
-                    <p className="text-sm text-gray-400">Maio 2018 - Dezembro 2019</p>
-                    <p className="text-gray-300 leading-relaxed">
-                      Desenvolvimento de identidades visuais e websites para startups e pequenas empresas. Especialização em design responsivo e otimização de conversão, sempre focando na experiência do usuário final.
-                    </p>
-                    <div className="flex flex-wrap gap-2 mt-4">
-                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">Adobe XD</span>
-                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">Photoshop</span>
-                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">Illustrator</span>
-                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">Branding</span>
-                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">WordPress</span>
+                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Design Thinking</span>
+                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">User Research</span>
+                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Visual Design</span>
                     </div>
                   </div>
                 </div>
