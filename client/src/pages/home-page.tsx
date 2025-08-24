@@ -742,124 +742,143 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Right Side - Photo with Polygon Blur Effect */}
+              {/* Right Side - Photo with Seamless Background Blend */}
               <div className="animate-on-scroll flex justify-center lg:justify-end">
                 <div className="relative">
-                  {/* Polygon Background with Gradient Blur */}
-                  <div className="absolute inset-0 transform rotate-6">
-                    <div 
-                      className="w-80 h-96 bg-gradient-to-br from-primary/30 via-primary/20 to-transparent rounded-3xl blur-xl opacity-60"
-                      style={{
-                        clipPath: 'polygon(20% 0%, 100% 20%, 80% 100%, 0% 80%)'
-                      }}
-                    ></div>
+                  {/* Background blur effects for seamless blend */}
+                  <div className="absolute -inset-8">
+                    <div className="w-full h-full bg-gradient-radial from-primary/10 via-primary/5 to-transparent blur-3xl"></div>
                   </div>
-                  <div className="absolute inset-0 transform -rotate-3">
-                    <div 
-                      className="w-80 h-96 bg-gradient-to-tl from-blue-500/20 via-purple-500/20 to-transparent rounded-3xl blur-2xl opacity-40"
-                      style={{
-                        clipPath: 'polygon(0% 15%, 85% 0%, 100% 85%, 15% 100%)'
-                      }}
-                    ></div>
+                  <div className="absolute -inset-12">
+                    <div className="w-full h-full bg-gradient-radial from-blue-500/8 via-purple-500/8 to-transparent blur-2xl"></div>
                   </div>
                   
-                  {/* Photo Container */}
+                  {/* Photo Container with seamless edges */}
                   <div className="relative z-10">
-                    <div 
-                      className="w-72 h-80 overflow-hidden bg-zinc-900 shadow-2xl"
-                      style={{
-                        clipPath: 'polygon(10% 0%, 100% 15%, 90% 100%, 0% 85%)',
-                        background: 'linear-gradient(145deg, rgba(131, 109, 241, 0.1), rgba(0, 0, 0, 0.8))'
-                      }}
-                    >
+                    <div className="w-80 h-96 rounded-3xl overflow-hidden relative group">
+                      {/* Main image */}
                       <img
                         src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
                         alt="Profile"
-                        className="w-full h-full object-cover opacity-90 mix-blend-luminosity hover:mix-blend-normal transition-all duration-500"
+                        className="w-full h-full object-cover"
                       />
-                      {/* Gradient Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent opacity-80"></div>
+                      
+                      {/* Multiple gradient overlays for seamless edge blend */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
+                      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-transparent opacity-40"></div>
+                      <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20 opacity-50"></div>
+                      
+                      {/* Radial fade effect on edges */}
+                      <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-black/60 opacity-70"></div>
+                      
+                      {/* Primary color blend */}
+                      <div className="absolute inset-0 bg-gradient-to-tr from-primary/15 via-transparent to-transparent opacity-80"></div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Experience Timeline Carousel */}
+            {/* Experience Section - Vertical List Style */}
             <div className="mt-20 animate-on-scroll">
-              <h3 className="text-2xl font-semibold mb-8 text-center">Experiência & Trajetória</h3>
-              <Carousel
-                opts={{
-                  align: "start",
-                  loop: true,
-                  containScroll: "trimSnaps",
-                  skipSnaps: false,
-                }}
-                className="w-full"
-              >
-                <CarouselContent className="-ml-1 flex gap-2" data-carousel-content>
-                  <CarouselItem className="pl-1 sm:basis-1/2 lg:basis-1/3" data-carousel-item>
-                    <div className="p-6 bg-gradient-to-br from-zinc-900/80 to-zinc-800/40 rounded-xl border border-zinc-700/50 hover:border-primary/30 transition-all duration-300 h-full">
-                      <div className="flex items-start gap-4">
-                        <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                          <div className="w-4 h-4 bg-primary rounded-sm"></div>
-                        </div>
-                        <div className="space-y-2">
-                          <div className="text-xs text-primary font-medium">2022 - Presente</div>
-                          <h4 className="font-semibold text-white">Lead UX/UI Designer</h4>
-                          <p className="text-sm text-gray-400">Design Agency</p>
-                          <p className="text-xs text-gray-500 leading-relaxed">Liderando projetos de design para clientes enterprise, criando sistemas abrangentes e soluções centradas no usuário.</p>
-                        </div>
-                      </div>
+              <div className="flex items-center gap-3 mb-8">
+                <div className="w-8 h-8 bg-emerald-500/20 rounded-lg flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20 6h-2V4c0-1.11-.89-2-2-2H8c-1.11 0-2 .89-2 2v2H4c-1.11 0-2 .89-2 2v11c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zM8 4h8v2H8V4z"/>
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-semibold text-white">Experiência</h3>
+              </div>
+              
+              <div className="space-y-8">
+                {/* Experience Item 1 */}
+                <div className="border-l-2 border-emerald-500/30 pl-6 pb-8 relative">
+                  <div className="absolute -left-2 top-0 w-3 h-3 bg-emerald-500 rounded-full"></div>
+                  <div className="space-y-3">
+                    <h4 className="text-lg font-semibold">
+                      <span className="text-white">Lead UX/UI Designer</span>
+                      <span className="text-emerald-400"> @ Design Agency</span>
+                    </h4>
+                    <p className="text-sm text-gray-400">Novembro 2023 - Atual</p>
+                    <p className="text-gray-300 leading-relaxed">
+                      Liderando equipes de design em projetos enterprise, criando sistemas de design abrangentes e implementando metodologias ágeis. Responsável por estratégias de UX que resultaram em 40% de aumento na conversão dos clientes.
+                    </p>
+                    <div className="flex flex-wrap gap-2 mt-4">
+                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">Figma</span>
+                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">Design Systems</span>
+                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">User Research</span>
+                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">Prototyping</span>
+                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">Team Leadership</span>
                     </div>
-                  </CarouselItem>
-                  <CarouselItem className="pl-1 sm:basis-1/2 lg:basis-1/3" data-carousel-item>
-                    <div className="p-6 bg-gradient-to-br from-zinc-900/80 to-zinc-800/40 rounded-xl border border-zinc-700/50 hover:border-primary/30 transition-all duration-300 h-full">
-                      <div className="flex items-start gap-4">
-                        <div className="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                          <div className="w-4 h-4 bg-blue-500 rounded-sm"></div>
-                        </div>
-                        <div className="space-y-2">
-                          <div className="text-xs text-blue-400 font-medium">2020 - 2022</div>
-                          <h4 className="font-semibold text-white">UX Designer</h4>
-                          <p className="text-sm text-gray-400">Tech Startup</p>
-                          <p className="text-xs text-gray-500 leading-relaxed">Responsável pela pesquisa de usuário, wireframing e prototipagem para aplicações mobile e web.</p>
-                        </div>
-                      </div>
+                  </div>
+                </div>
+
+                {/* Experience Item 2 */}
+                <div className="border-l-2 border-emerald-500/30 pl-6 pb-8 relative">
+                  <div className="absolute -left-2 top-0 w-3 h-3 bg-emerald-500 rounded-full"></div>
+                  <div className="space-y-3">
+                    <h4 className="text-lg font-semibold">
+                      <span className="text-white">UX Designer</span>
+                      <span className="text-emerald-400"> @ Tech Startup</span>
+                    </h4>
+                    <p className="text-sm text-gray-400">Abril 2021 - Outubro 2023</p>
+                    <p className="text-gray-300 leading-relaxed">
+                      Responsável pelo design de experiências para aplicações SaaS, conduzindo pesquisas de usuário e implementando melhorias que aumentaram a retenção em 35%. Colaboração próxima com desenvolvimento para implementação de interfaces.
+                    </p>
+                    <div className="flex flex-wrap gap-2 mt-4">
+                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">React</span>
+                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">TypeScript</span>
+                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">Next.js</span>
+                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">UI/UX</span>
+                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">Responsive Design</span>
                     </div>
-                  </CarouselItem>
-                  <CarouselItem className="pl-1 sm:basis-1/2 lg:basis-1/3" data-carousel-item>
-                    <div className="p-6 bg-gradient-to-br from-zinc-900/80 to-zinc-800/40 rounded-xl border border-zinc-700/50 hover:border-primary/30 transition-all duration-300 h-full">
-                      <div className="flex items-start gap-4">
-                        <div className="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                          <div className="w-4 h-4 bg-green-500 rounded-sm"></div>
-                        </div>
-                        <div className="space-y-2">
-                          <div className="text-xs text-green-400 font-medium">2018 - 2020</div>
-                          <h4 className="font-semibold text-white">Design Specialist</h4>
-                          <p className="text-sm text-gray-400">Freelancer</p>
-                          <p className="text-xs text-gray-500 leading-relaxed">Desenvolvimento de identidades visuais e interfaces para diversos clientes, com foco em experiência do usuário.</p>
-                        </div>
-                      </div>
+                  </div>
+                </div>
+
+                {/* Experience Item 3 */}
+                <div className="border-l-2 border-emerald-500/30 pl-6 pb-8 relative">
+                  <div className="absolute -left-2 top-0 w-3 h-3 bg-emerald-500 rounded-full"></div>
+                  <div className="space-y-3">
+                    <h4 className="text-lg font-semibold">
+                      <span className="text-white">Frontend Developer</span>
+                      <span className="text-emerald-400"> @ Creative Labs</span>
+                    </h4>
+                    <p className="text-sm text-gray-400">Janeiro 2020 - Março 2021</p>
+                    <p className="text-gray-300 leading-relaxed">
+                      Desenvolvimento de interfaces modernas com foco em performance e acessibilidade. Implementação de animações avançadas e otimização de experiências mobile-first que melhoraram o engagement em 50%.
+                    </p>
+                    <div className="flex flex-wrap gap-2 mt-4">
+                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">HTML5</span>
+                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">CSS3</span>
+                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">JavaScript</span>
+                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">Vue.js</span>
+                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">SASS</span>
                     </div>
-                  </CarouselItem>
-                  <CarouselItem className="pl-1 sm:basis-1/2 lg:basis-1/3" data-carousel-item>
-                    <div className="p-6 bg-gradient-to-br from-zinc-900/80 to-zinc-800/40 rounded-xl border border-zinc-700/50 hover:border-primary/30 transition-all duration-300 h-full">
-                      <div className="flex items-start gap-4">
-                        <div className="w-10 h-10 bg-yellow-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                          <div className="w-4 h-4 bg-yellow-500 rounded-sm"></div>
-                        </div>
-                        <div className="space-y-2">
-                          <div className="text-xs text-yellow-400 font-medium">2017 - 2018</div>
-                          <h4 className="font-semibold text-white">Master in UX Design</h4>
-                          <p className="text-sm text-gray-400">Design University</p>
-                          <p className="text-xs text-gray-500 leading-relaxed">Especialização em metodologias de pesquisa de usuário e design de interação.</p>
-                        </div>
-                      </div>
+                  </div>
+                </div>
+
+                {/* Experience Item 4 */}
+                <div className="border-l-2 border-emerald-500/30 pl-6 relative">
+                  <div className="absolute -left-2 top-0 w-3 h-3 bg-emerald-500 rounded-full"></div>
+                  <div className="space-y-3">
+                    <h4 className="text-lg font-semibold">
+                      <span className="text-white">Freelance Designer</span>
+                      <span className="text-emerald-400"> @ Diversos Clientes</span>
+                    </h4>
+                    <p className="text-sm text-gray-400">Maio 2018 - Dezembro 2019</p>
+                    <p className="text-gray-300 leading-relaxed">
+                      Desenvolvimento de identidades visuais e websites para startups e pequenas empresas. Especialização em design responsivo e otimização de conversão, sempre focando na experiência do usuário final.
+                    </p>
+                    <div className="flex flex-wrap gap-2 mt-4">
+                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">Adobe XD</span>
+                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">Photoshop</span>
+                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">Illustrator</span>
+                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">Branding</span>
+                      <span className="px-3 py-1 bg-zinc-800 text-emerald-400 text-xs rounded-full border border-emerald-500/20">WordPress</span>
                     </div>
-                  </CarouselItem>
-                </CarouselContent>
-              </Carousel>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>

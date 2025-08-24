@@ -172,6 +172,11 @@ html {
   margin-left: 0.5rem;
 }
 
+/* Radial gradient utility */
+.bg-gradient-radial {
+  background: radial-gradient(circle, var(--tw-gradient-stops));
+}
+
 /* Dynamic gradient spotlights - Inspired by Stefano Bartoletti */
 .spotlight-container {
   position: fixed;
