@@ -685,119 +685,181 @@ export default function HomePage() {
         </section>
         */}
 
-        {/* About Section */}
-        <section id="about" className="py-16 md:py-24 px-4 relative z-20">
+        {/* About Section - New Modern Design */}
+        <section id="about" className="py-16 md:py-20 px-4 relative z-20">
           <div className="max-w-[1200px] mx-auto">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              {/* Text Content */}
-              <div className="animate-on-scroll">
-                <h2 className="text-3xl md:text-4xl font-semibold leading-tight mb-6">
-                  Olá, sou desenvolvedor apaixonado por criar experiências
-                  digitais incríveis
-                </h2>
-                <p className="text-lg text-gray-400 mb-8 leading-relaxed">
-                  Com mais de 3 anos de experiência em desenvolvimento frontend
-                  e fullstack, especializo-me em criar interfaces elegantes e
-                  funcionais que conectam pessoas e tecnologia de forma natural.
-                </p>
-                <p className="text-base text-gray-500 mb-8 leading-relaxed">
-                  Minha jornada começou com curiosidade sobre como as coisas
-                  funcionam na web, e hoje trabalho com empresas ao redor do
-                  mundo criando soluções que fazem a diferença no dia a dia das
-                  pessoas.
-                </p>
-                <div className="flex flex-wrap gap-3">
-                  <span className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">
-                    React
-                  </span>
-                  <span className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">
-                    TypeScript
-                  </span>
-                  <span className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">
-                    Vue.js
-                  </span>
-                  <span className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">
-                    Next.js
-                  </span>
-                  <span className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">
-                    UI/UX Design
-                  </span>
+            <div className="grid lg:grid-cols-2 gap-16 items-start">
+              {/* Left Side - Content */}
+              <div className="animate-on-scroll space-y-8">
+                <div>
+                  <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-white via-white to-primary bg-clip-text text-transparent">
+                    Sobre Mim
+                  </h2>
+                  <p className="text-lg text-gray-300 leading-relaxed">
+                    Lead UX/UI Designer apaixonado por criar experiências digitais que conectam pessoas e tecnologia de forma natural e intuitiva.
+                  </p>
+                </div>
+
+                {/* Skills Grid */}
+                <div className="space-y-6">
+                  <h3 className="text-xl font-semibold text-white">Skills</h3>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-3">
+                      <h4 className="text-sm font-medium text-primary">Design</h4>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50">UX/UI Design</span>
+                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50">Prototyping</span>
+                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50">Wireframing</span>
+                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50">Design Systems</span>
+                      </div>
+                    </div>
+                    <div className="space-y-3">
+                      <h4 className="text-sm font-medium text-primary">Tools</h4>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50">Figma</span>
+                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50">Adobe XD</span>
+                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50">Photoshop</span>
+                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50">After Effects</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Stats */}
+                <div className="grid grid-cols-3 gap-6">
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-primary mb-1">3+</div>
+                    <div className="text-xs text-gray-400">Anos</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-primary mb-1">50+</div>
+                    <div className="text-xs text-gray-400">Projetos</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-primary mb-1">100%</div>
+                    <div className="text-xs text-gray-400">Dedicação</div>
+                  </div>
                 </div>
               </div>
 
-              {/* Image/Avatar Section */}
-              <div className="animate-on-scroll flex justify-center md:justify-end">
+              {/* Right Side - Photo with Polygon Blur Effect */}
+              <div className="animate-on-scroll flex justify-center lg:justify-end">
                 <div className="relative">
-                  <div className="w-80 h-80 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
-                    <div className="w-72 h-72 rounded-xl bg-zinc-900 flex items-center justify-center overflow-hidden">
+                  {/* Polygon Background with Gradient Blur */}
+                  <div className="absolute inset-0 transform rotate-6">
+                    <div 
+                      className="w-80 h-96 bg-gradient-to-br from-primary/30 via-primary/20 to-transparent rounded-3xl blur-xl opacity-60"
+                      style={{
+                        clipPath: 'polygon(20% 0%, 100% 20%, 80% 100%, 0% 80%)'
+                      }}
+                    ></div>
+                  </div>
+                  <div className="absolute inset-0 transform -rotate-3">
+                    <div 
+                      className="w-80 h-96 bg-gradient-to-tl from-blue-500/20 via-purple-500/20 to-transparent rounded-3xl blur-2xl opacity-40"
+                      style={{
+                        clipPath: 'polygon(0% 15%, 85% 0%, 100% 85%, 15% 100%)'
+                      }}
+                    ></div>
+                  </div>
+                  
+                  {/* Photo Container */}
+                  <div className="relative z-10">
+                    <div 
+                      className="w-72 h-80 overflow-hidden bg-zinc-900 shadow-2xl"
+                      style={{
+                        clipPath: 'polygon(10% 0%, 100% 15%, 90% 100%, 0% 85%)',
+                        background: 'linear-gradient(145deg, rgba(131, 109, 241, 0.1), rgba(0, 0, 0, 0.8))'
+                      }}
+                    >
                       <img
                         src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
                         alt="Profile"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover opacity-90 mix-blend-luminosity hover:mix-blend-normal transition-all duration-500"
                       />
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent opacity-80"></div>
                     </div>
                   </div>
-                  <div className="absolute -bottom-4 -right-4 w-20 h-20 bg-primary rounded-full flex items-center justify-center">
-                    <span className="text-black font-bold text-xl">👋</span>
-                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Stats Section */}
-            <div className="grid md:grid-cols-3 gap-8 animate-on-scroll mt-16">
-              <div className="text-center p-6 rounded-xl bg-zinc-900/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 dynamic-glow">
-                <div className="text-3xl font-bold text-primary mb-2">3+</div>
-                <div className="text-gray-400">Anos de Experiência</div>
-              </div>
-              <div className="text-center p-6 rounded-xl bg-zinc-900/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 dynamic-glow">
-                <div className="text-3xl font-bold text-primary mb-2">50+</div>
-                <div className="text-gray-400">Projetos Realizados</div>
-              </div>
-              <div className="text-center p-6 rounded-xl bg-zinc-900/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 dynamic-glow">
-                <div className="text-3xl font-bold text-primary mb-2">100%</div>
-                <div className="text-gray-400">Dedicação</div>
-              </div>
-            </div>
-
-            {/* Philosophy Section */}
-            <div className="grid md:grid-cols-2 gap-12 items-center animate-on-scroll mt-16">
-              <div>
-                <h3 className="text-2xl font-semibold mb-6">Minha Filosofia</h3>
-                <p className="text-gray-400 mb-4 leading-relaxed">
-                  Acredito que a tecnologia deve ser invisible - funcionar de
-                  forma tão natural que as pessoas nem percebam sua
-                  complexidade. Cada linha de código que escrevo tem o objetivo
-                  de criar experiências mais humanas e acessíveis.
-                </p>
-                <p className="text-gray-400 leading-relaxed">
-                  Busco sempre equilibrar inovação técnica com usabilidade
-                  prática, criando produtos que não apenas impressionam, mas que
-                  realmente resolvem problemas reais das pessoas.
-                </p>
-              </div>
-              <div className="space-y-4">
-                <div className="p-4 border-l-4 border-primary bg-zinc-900/30 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 rounded-r-lg dynamic-glow">
-                  <h4 className="font-medium mb-2">Código Limpo</h4>
-                  <p className="text-sm text-gray-400">
-                    Escrevo código pensando em quem vai mantê-lo amanhã
-                  </p>
-                </div>
-                <div className="p-4 border-l-4 border-primary bg-zinc-900/30 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 rounded-r-lg dynamic-glow">
-                  <h4 className="font-medium mb-2">
-                    Design Centrado no Usuário
-                  </h4>
-                  <p className="text-sm text-gray-400">
-                    Cada decisão é tomada pensando na experiência final
-                  </p>
-                </div>
-                <div className="p-4 border-l-4 border-primary bg-zinc-900/30 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 rounded-r-lg dynamic-glow">
-                  <h4 className="font-medium mb-2">Aprendizado Contínuo</h4>
-                  <p className="text-sm text-gray-400">
-                    Tecnologia evolui rápido, e eu evoluo junto
-                  </p>
-                </div>
-              </div>
+            {/* Experience Timeline Carousel */}
+            <div className="mt-20 animate-on-scroll">
+              <h3 className="text-2xl font-semibold mb-8 text-center">Experiência & Trajetória</h3>
+              <Carousel
+                opts={{
+                  align: "start",
+                  loop: true,
+                  containScroll: "trimSnaps",
+                  skipSnaps: false,
+                }}
+                className="w-full"
+              >
+                <CarouselContent className="-ml-1 flex gap-2" data-carousel-content>
+                  <CarouselItem className="pl-1 sm:basis-1/2 lg:basis-1/3" data-carousel-item>
+                    <div className="p-6 bg-gradient-to-br from-zinc-900/80 to-zinc-800/40 rounded-xl border border-zinc-700/50 hover:border-primary/30 transition-all duration-300 h-full">
+                      <div className="flex items-start gap-4">
+                        <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <div className="w-4 h-4 bg-primary rounded-sm"></div>
+                        </div>
+                        <div className="space-y-2">
+                          <div className="text-xs text-primary font-medium">2022 - Presente</div>
+                          <h4 className="font-semibold text-white">Lead UX/UI Designer</h4>
+                          <p className="text-sm text-gray-400">Design Agency</p>
+                          <p className="text-xs text-gray-500 leading-relaxed">Liderando projetos de design para clientes enterprise, criando sistemas abrangentes e soluções centradas no usuário.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </CarouselItem>
+                  <CarouselItem className="pl-1 sm:basis-1/2 lg:basis-1/3" data-carousel-item>
+                    <div className="p-6 bg-gradient-to-br from-zinc-900/80 to-zinc-800/40 rounded-xl border border-zinc-700/50 hover:border-primary/30 transition-all duration-300 h-full">
+                      <div className="flex items-start gap-4">
+                        <div className="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <div className="w-4 h-4 bg-blue-500 rounded-sm"></div>
+                        </div>
+                        <div className="space-y-2">
+                          <div className="text-xs text-blue-400 font-medium">2020 - 2022</div>
+                          <h4 className="font-semibold text-white">UX Designer</h4>
+                          <p className="text-sm text-gray-400">Tech Startup</p>
+                          <p className="text-xs text-gray-500 leading-relaxed">Responsável pela pesquisa de usuário, wireframing e prototipagem para aplicações mobile e web.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </CarouselItem>
+                  <CarouselItem className="pl-1 sm:basis-1/2 lg:basis-1/3" data-carousel-item>
+                    <div className="p-6 bg-gradient-to-br from-zinc-900/80 to-zinc-800/40 rounded-xl border border-zinc-700/50 hover:border-primary/30 transition-all duration-300 h-full">
+                      <div className="flex items-start gap-4">
+                        <div className="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <div className="w-4 h-4 bg-green-500 rounded-sm"></div>
+                        </div>
+                        <div className="space-y-2">
+                          <div className="text-xs text-green-400 font-medium">2018 - 2020</div>
+                          <h4 className="font-semibold text-white">Design Specialist</h4>
+                          <p className="text-sm text-gray-400">Freelancer</p>
+                          <p className="text-xs text-gray-500 leading-relaxed">Desenvolvimento de identidades visuais e interfaces para diversos clientes, com foco em experiência do usuário.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </CarouselItem>
+                  <CarouselItem className="pl-1 sm:basis-1/2 lg:basis-1/3" data-carousel-item>
+                    <div className="p-6 bg-gradient-to-br from-zinc-900/80 to-zinc-800/40 rounded-xl border border-zinc-700/50 hover:border-primary/30 transition-all duration-300 h-full">
+                      <div className="flex items-start gap-4">
+                        <div className="w-10 h-10 bg-yellow-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <div className="w-4 h-4 bg-yellow-500 rounded-sm"></div>
+                        </div>
+                        <div className="space-y-2">
+                          <div className="text-xs text-yellow-400 font-medium">2017 - 2018</div>
+                          <h4 className="font-semibold text-white">Master in UX Design</h4>
+                          <p className="text-sm text-gray-400">Design University</p>
+                          <p className="text-xs text-gray-500 leading-relaxed">Especialização em metodologias de pesquisa de usuário e design de interação.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </CarouselItem>
+                </CarouselContent>
+              </Carousel>
             </div>
           </div>
         </section>
