@@ -22,8 +22,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
             />
           </AspectRatio>
         </div>
-        <div className="p-4">
-          <div className="flex items-center mb-2">
+        <div className="p-4 flex items-center justify-center">
+          <div className="flex items-center">
             <Avatar className="h-6 w-6 mr-2">
               <AvatarImage
                 src={project.user.avatarUrl || undefined}

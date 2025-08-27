@@ -302,34 +302,37 @@ export default function HomePage() {
         </section>
 
         {/* Project Highlights */}
-        <section className="py-20 px-4 relative z-20">
-          <div className="max-w-[1200px] mx-auto">
-            <div className="flex justify-between items-center mb-16">
-              <h2 className="text-2xl md:text-3xl font-semibold animate-slide-left">
-                Projetos em Destaque
-              </h2>
-              <Link
-                href="/projects"
-                className="text-primary hover:underline transition-all duration-200"
-              >
-                Ver todos
-              </Link>
+        <section className="py-20 relative z-20">
+          <div className="px-4 md:px-4">
+            <div className="max-w-[1200px] mx-auto">
+              <div className="flex justify-between items-center mb-16">
+                <h2 className="text-2xl md:text-3xl font-semibold animate-slide-left">
+                  Projetos em Destaque
+                </h2>
+                <Link
+                  href="/projects"
+                  className="text-primary hover:underline transition-all duration-200"
+                >
+                  Ver todos
+                </Link>
+              </div>
             </div>
+          </div>
 
-            <div className="animate-on-scroll relative">
-              <Carousel
-                ref={bestCarouselRef}
-                setApi={setBestApi}
-                opts={{
-                  align: "start",
-                  loop: true,
-                  containScroll: "trimSnaps",
-                  skipSnaps: false,
-                }}
-                className="w-full"
-              >
-                <div className="relative overflow-hidden">
-                  <CarouselContent className="-ml-1 flex gap-2" data-carousel-content>
+          <div className="animate-on-scroll relative">
+            <Carousel
+              ref={bestCarouselRef}
+              setApi={setBestApi}
+              opts={{
+                align: "start",
+                loop: true,
+                containScroll: "trimSnaps",
+                skipSnaps: false,
+              }}
+              className="w-full"
+            >
+              <div className="relative overflow-hidden">
+                <CarouselContent className="md:-ml-1 flex gap-2 pl-4 md:pl-0" data-carousel-content>
                     {projects && projects.length > 0
                       ? projects.slice(0, 6).map((project) => (
                           <CarouselItem
@@ -383,7 +386,7 @@ export default function HomePage() {
               </Carousel>
               <CarouselDots api={bestApi} className="mt-4" />
             </div>
-          </div>
+          
         </section>
 
         {/* Categories */}
@@ -465,26 +468,29 @@ export default function HomePage() {
         */}
 
         {/* Top Plugins */}
-        <section className="py-20 px-4 relative z-20">
-          <div className="max-w-[1200px] mx-auto">
-            <h2 className="text-2xl md:text-3xl font-semibold mb-16 animate-slide-left">
-              Softwares e Habilidades
-            </h2>
+        <section className="py-20 relative z-20">
+          <div className="px-4 md:px-4">
+            <div className="max-w-[1200px] mx-auto">
+              <h2 className="text-2xl md:text-3xl font-semibold mb-16 animate-slide-left">
+                Softwares e Habilidades
+              </h2>
+            </div>
+          </div>
 
-            <div className="animate-on-scroll relative">
-              <Carousel
-                ref={pluginsCarouselRef}
-                setApi={setPluginsApi}
-                opts={{
-                  align: "start",
-                  loop: true,
-                  containScroll: "trimSnaps",
-                  skipSnaps: false,
-                }}
-                className="w-full"
-              >
-                <div className="relative overflow-hidden">
-                  <CarouselContent className="-ml-1 flex gap-2" data-carousel-content>
+          <div className="animate-on-scroll relative">
+            <Carousel
+              ref={pluginsCarouselRef}
+              setApi={setPluginsApi}
+              opts={{
+                align: "start",
+                loop: true,
+                containScroll: "trimSnaps",
+                skipSnaps: false,
+              }}
+              className="w-full"
+            >
+              <div className="relative overflow-hidden">
+                <CarouselContent className="md:-ml-1 flex gap-2 pl-4 md:pl-0" data-carousel-content>
                     <CarouselItem className="pl-1 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
                       <PluginCard
                         title="Figma"
@@ -568,7 +574,7 @@ export default function HomePage() {
               </Carousel>
               <CarouselDots api={pluginsApi} className="mt-4" />
             </div>
-          </div>
+          
         </section>
 
         {/* Top Templates */}
