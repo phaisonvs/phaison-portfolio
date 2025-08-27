@@ -332,7 +332,7 @@ export default function HomePage() {
               className="w-full"
             >
               <div className="relative overflow-hidden">
-                <CarouselContent className="md:-ml-1 flex gap-2 pl-6 md:pl-0" data-carousel-content>
+                <CarouselContent className="md:-ml-1 flex gap-2 pl-4 md:pl-0" data-carousel-content>
                     {projects && projects.length > 0
                       ? projects.slice(0, 6).map((project) => (
                           <CarouselItem
@@ -376,8 +376,9 @@ export default function HomePage() {
                         ))}
                   </CarouselContent>
 
-                  {/* Gradient fade effect for desktop continuity */}
-                  <div className="hidden lg:block absolute top-0 right-0 bottom-0 w-20 bg-gradient-to-l from-black via-black/80 to-transparent pointer-events-none z-10"></div>
+                  {/* Gradient fade effects for mobile and desktop */}
+                  <div className="absolute top-0 left-0 bottom-0 w-8 md:w-12 bg-gradient-to-r from-black via-black/80 to-transparent pointer-events-none z-10"></div>
+                  <div className="absolute top-0 right-0 bottom-0 w-8 md:w-20 bg-gradient-to-l from-black via-black/80 to-transparent pointer-events-none z-10"></div>
                 </div>
                 <div className="flex justify-center items-center mt-4">
                   <CarouselPrevious className="bg-black/40 hover:bg-black/60 border-none" />
@@ -490,7 +491,7 @@ export default function HomePage() {
               className="w-full"
             >
               <div className="relative overflow-hidden">
-                <CarouselContent className="md:-ml-1 flex gap-2 pl-6 md:pl-0" data-carousel-content>
+                <CarouselContent className="md:-ml-1 flex gap-2 pl-4 md:pl-0" data-carousel-content>
                     <CarouselItem className="pl-1 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
                       <PluginCard
                         title="Figma"
@@ -564,8 +565,9 @@ export default function HomePage() {
                     </CarouselItem>
                   </CarouselContent>
 
-                  {/* Gradient fade effect for continuity */}
-                  <div className="hidden lg:block absolute top-0 right-0 bottom-0 w-20 bg-gradient-to-l from-black via-black/80 to-transparent pointer-events-none z-10"></div>
+                  {/* Gradient fade effects for mobile and desktop */}
+                  <div className="absolute top-0 left-0 bottom-0 w-8 md:w-12 bg-gradient-to-r from-black via-black/80 to-transparent pointer-events-none z-10"></div>
+                  <div className="absolute top-0 right-0 bottom-0 w-8 md:w-20 bg-gradient-to-l from-black via-black/80 to-transparent pointer-events-none z-10"></div>
                 </div>
                 <div className="flex justify-center items-center mt-4">
                   <CarouselPrevious className="bg-black/40 hover:bg-black/60 border-none" />
