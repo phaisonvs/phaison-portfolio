@@ -12,50 +12,29 @@ export function Header() {
   const { user, logoutMutation } = useAuth();
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('up');
 
   const handleLogout = () => {
     logoutMutation.mutate();
   };
 
   useEffect(() => {
-    let isScrolling = false;
-
     const handleScroll = () => {
-      if (isScrolling) return;
+      const currentScrollY = window.scrollY;
       
-      isScrolling = true;
-      requestAnimationFrame(() => {
-        const currentScrollY = window.scrollY;
-        
-        // Se está no topo, sempre mostrar
-        if (currentScrollY <= 50) {
-          setIsHeaderVisible(true);
-          setLastScrollY(currentScrollY);
-          isScrolling = false;
-          return;
-        }
-
-        // Determinar direção do scroll
-        if (currentScrollY > lastScrollY) {
-          // Scrolling para baixo
-          if (scrollDirection !== 'down') {
-            setScrollDirection('down');
-          }
-          if (currentScrollY > 100) {
-            setIsHeaderVisible(false);
-          }
-        } else if (currentScrollY < lastScrollY) {
-          // Scrolling para cima
-          if (scrollDirection !== 'up') {
-            setScrollDirection('up');
-          }
-          setIsHeaderVisible(true);
-        }
-
-        setLastScrollY(currentScrollY);
-        isScrolling = false;
-      });
+      // Se está no topo da página, sempre mostrar
+      if (currentScrollY < 10) {
+        setIsHeaderVisible(true);
+      }
+      // Se rolou para baixo suficiente, esconder
+      else if (currentScrollY > lastScrollY && currentScrollY > 80) {
+        setIsHeaderVisible(false);
+      }
+      // Se rolou para cima, mostrar
+      else if (currentScrollY < lastScrollY) {
+        setIsHeaderVisible(true);
+      }
+      
+      setLastScrollY(currentScrollY);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -63,7 +42,7 @@ export function Header() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [lastScrollY, scrollDirection]);
+  }, [lastScrollY]);
 
   const isActive = (path: string) => {
     return location === path;
