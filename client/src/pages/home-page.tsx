@@ -685,25 +685,57 @@ export default function HomePage() {
         </section>
         */}
 
-        {/* About Section - New Modern Design */}
+        {/* About Section - Optimized Design */}
         <section id="about" className="py-16 md:py-20 px-4 relative z-20">
           <div className="max-w-[1200px] mx-auto">
             <div className="grid lg:grid-cols-2 gap-16 items-start">
               {/* Left Side - Content */}
               <div className="animate-on-scroll space-y-8">
+                {/* Title with mobile image */}
                 <div>
-                  <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-white via-white to-primary bg-clip-text text-transparent">
-                    Sobre Mim
-                  </h2>
+                  <div className="flex items-center justify-between mb-4">
+                    <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white via-white to-primary bg-clip-text text-transparent">
+                      Sobre Mim
+                    </h2>
+                    {/* Mobile Image - visible only on mobile, next to title */}
+                    <div className="md:hidden relative">
+                      <div className="relative w-16 h-20">
+                        <div className="photo-container-blur">
+                          <img
+                            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                            alt="Profile"
+                            className="w-full h-full object-cover rounded-lg"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   <p className="text-lg text-gray-300 leading-relaxed">
                     Lead UX/UI Designer apaixonado por criar experiências digitais que conectam pessoas e tecnologia de forma natural e intuitiva.
                   </p>
                 </div>
 
-                {/* Skills Grid */}
+                {/* Stats - moved right after subtitle */}
+                <div className="grid grid-cols-3 gap-6 animate-on-scroll">
+                  <div className="text-center animate-on-scroll">
+                    <div className="text-2xl font-bold text-primary mb-1">3+</div>
+                    <div className="text-xs text-gray-400">Anos</div>
+                  </div>
+                  <div className="text-center animate-on-scroll">
+                    <div className="text-2xl font-bold text-primary mb-1">50+</div>
+                    <div className="text-xs text-gray-400">Projetos</div>
+                  </div>
+                  <div className="text-center animate-on-scroll">
+                    <div className="text-2xl font-bold text-primary mb-1">100%</div>
+                    <div className="text-xs text-gray-400">Dedicação</div>
+                  </div>
+                </div>
+
+                {/* Skills Grid - responsive layout */}
                 <div className="space-y-6 animate-on-scroll">
                   <h3 className="text-xl font-semibold text-white">Skills</h3>
-                  <div className="grid grid-cols-2 gap-4">
+                  {/* Desktop: side by side, Mobile: stacked */}
+                  <div className="grid md:grid-cols-2 grid-cols-1 gap-6 md:gap-4">
                     <div className="space-y-3 animate-on-scroll">
                       <h4 className="text-sm font-medium text-primary">Design</h4>
                       <div className="flex flex-wrap gap-2">
@@ -724,26 +756,10 @@ export default function HomePage() {
                     </div>
                   </div>
                 </div>
-
-                {/* Stats */}
-                <div className="grid grid-cols-3 gap-6 animate-on-scroll">
-                  <div className="text-center animate-on-scroll">
-                    <div className="text-2xl font-bold text-primary mb-1">3+</div>
-                    <div className="text-xs text-gray-400">Anos</div>
-                  </div>
-                  <div className="text-center animate-on-scroll">
-                    <div className="text-2xl font-bold text-primary mb-1">50+</div>
-                    <div className="text-xs text-gray-400">Projetos</div>
-                  </div>
-                  <div className="text-center animate-on-scroll">
-                    <div className="text-2xl font-bold text-primary mb-1">100%</div>
-                    <div className="text-xs text-gray-400">Dedicação</div>
-                  </div>
-                </div>
               </div>
 
-              {/* Right Side - Photo with Internal Blur Blend */}
-              <div className="animate-on-scroll flex justify-center lg:justify-end">
+              {/* Right Side - Photo (Desktop only) */}
+              <div className="animate-on-scroll hidden lg:flex justify-center lg:justify-end">
                 <div className="relative">
                   {/* Atmospheric background glow */}
                   <div className="absolute -inset-16 opacity-30">
