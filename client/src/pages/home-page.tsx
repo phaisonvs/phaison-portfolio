@@ -141,7 +141,7 @@ export default function HomePage() {
     );
 
     document
-      .querySelectorAll(".animate-on-scroll, .animate-slide-left")
+      .querySelectorAll(".animate-on-scroll, .animate-slide-left, .animate-fade-in-1, .animate-fade-in-2, .animate-fade-in-3, .animate-fade-in-4, .animate-fade-in-5, .animate-fade-in-6")
       .forEach((el) => {
         animatedElements.current.push(el as HTMLElement);
         observer.observe(el);
@@ -331,10 +331,10 @@ export default function HomePage() {
                 <div className="relative overflow-hidden">
                   <CarouselContent className="-ml-1 flex gap-2" data-carousel-content>
                     {projects && projects.length > 0
-                      ? projects.slice(0, 6).map((project) => (
+                      ? projects.slice(0, 6).map((project, index) => (
                           <CarouselItem
                             key={project.project.id}
-                            className="pl-1 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(50%-0.5rem)] lg:basis-[calc(22.22%-0.5rem)]"
+                            className={`pl-1 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(50%-0.5rem)] lg:basis-[calc(22.22%-0.5rem)] animate-fade-in-${index + 1}`}
                             data-carousel-item
                           >
                             <ProjectCard project={project} />
@@ -344,7 +344,7 @@ export default function HomePage() {
                         Array.from({ length: 6 }).map((_, index) => (
                           <CarouselItem
                             key={index}
-                            className="pl-1 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(50%-0.5rem)] lg:basis-[calc(22.22%-0.5rem)]"
+                            className={`pl-1 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(50%-0.5rem)] lg:basis-[calc(22.22%-0.5rem)] animate-fade-in-${index + 1}`}
                             data-carousel-item
                           >
                             <ProjectCard
