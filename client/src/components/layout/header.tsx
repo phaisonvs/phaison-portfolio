@@ -21,16 +21,26 @@ export function Header() {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       
+      console.log('Scroll event:', {
+        currentScrollY,
+        lastScrollY,
+        isHeaderVisible,
+        direction: currentScrollY > lastScrollY ? 'down' : 'up'
+      });
+      
       // Se está no topo da página, sempre mostrar
       if (currentScrollY < 10) {
+        console.log('At top, showing header');
         setIsHeaderVisible(true);
       }
       // Se rolou para baixo suficiente, esconder
       else if (currentScrollY > lastScrollY && currentScrollY > 80) {
+        console.log('Scrolling down, hiding header');
         setIsHeaderVisible(false);
       }
       // Se rolou para cima, mostrar
       else if (currentScrollY < lastScrollY) {
+        console.log('Scrolling up, showing header');
         setIsHeaderVisible(true);
       }
       
@@ -42,7 +52,7 @@ export function Header() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [lastScrollY]);
+  }, [lastScrollY, isHeaderVisible]);
 
   const isActive = (path: string) => {
     return location === path;
