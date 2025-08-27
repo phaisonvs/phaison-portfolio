@@ -324,10 +324,16 @@ export default function HomePage() {
               ref={bestCarouselRef}
               setApi={setBestApi}
               opts={{
-                align: "start",
+                align: "center",
                 loop: true,
                 containScroll: "trimSnaps",
                 skipSnaps: false,
+                breakpoints: {
+                  "(max-width: 768px)": {
+                    align: "center",
+                    dragFree: false,
+                  },
+                },
               }}
               className="w-full"
             >
@@ -337,7 +343,7 @@ export default function HomePage() {
                       ? projects.slice(0, 6).map((project) => (
                           <CarouselItem
                             key={project.project.id}
-                            className="pl-1 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(50%-0.5rem)] lg:basis-[calc(22.22%-0.5rem)]"
+                            className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(50%-0.5rem)] lg:basis-[calc(22.22%-0.5rem)]"
                             data-carousel-item
                           >
                             <ProjectCard project={project} />
@@ -347,7 +353,7 @@ export default function HomePage() {
                         Array.from({ length: 6 }).map((_, index) => (
                           <CarouselItem
                             key={index}
-                            className="pl-1 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(50%-0.5rem)] lg:basis-[calc(22.22%-0.5rem)]"
+                            className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(50%-0.5rem)] lg:basis-[calc(22.22%-0.5rem)]"
                             data-carousel-item
                           >
                             <ProjectCard
@@ -377,8 +383,8 @@ export default function HomePage() {
                   </CarouselContent>
 
                   {/* Gradient fade effects for mobile and desktop */}
-                  <div className="absolute top-0 left-0 bottom-0 w-8 md:w-12 bg-gradient-to-r from-black via-black/80 to-transparent pointer-events-none z-10"></div>
-                  <div className="absolute top-0 right-0 bottom-0 w-8 md:w-20 bg-gradient-to-l from-black via-black/80 to-transparent pointer-events-none z-10"></div>
+                  <div className="absolute top-0 left-0 bottom-0 w-16 md:w-20 bg-gradient-to-r from-black via-black/70 to-transparent pointer-events-none z-10"></div>
+                  <div className="absolute top-0 right-0 bottom-0 w-16 md:w-24 bg-gradient-to-l from-black via-black/70 to-transparent pointer-events-none z-10"></div>
                 </div>
                 <div className="flex justify-center items-center mt-4">
                   <CarouselPrevious className="bg-black/40 hover:bg-black/60 border-none" />
@@ -483,16 +489,22 @@ export default function HomePage() {
               ref={pluginsCarouselRef}
               setApi={setPluginsApi}
               opts={{
-                align: "start",
+                align: "center",
                 loop: true,
                 containScroll: "trimSnaps",
                 skipSnaps: false,
+                breakpoints: {
+                  "(max-width: 768px)": {
+                    align: "center",
+                    dragFree: false,
+                  },
+                },
               }}
               className="w-full"
             >
               <div className="relative overflow-hidden">
                 <CarouselContent className="md:-ml-1 flex gap-2 pl-4 md:pl-0" data-carousel-content>
-                    <CarouselItem className="pl-1 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
+                    <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
                       <PluginCard
                         title="Figma"
                         description="Design de interfaces e prototipagem"
@@ -501,7 +513,7 @@ export default function HomePage() {
                       />
                     </CarouselItem>
 
-                    <CarouselItem className="pl-1 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
+                    <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
                       <PluginCard
                         title="GitHub"
                         description="Controle de versão e colaboração"
@@ -510,7 +522,7 @@ export default function HomePage() {
                       />
                     </CarouselItem>
 
-                    <CarouselItem className="pl-1 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
+                    <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
                       <PluginCard
                         title="HTML"
                         description="Estruturação de conteúdo web"
@@ -519,7 +531,7 @@ export default function HomePage() {
                       />
                     </CarouselItem>
 
-                    <CarouselItem className="pl-1 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
+                    <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
                       <PluginCard
                         title="CSS"
                         description="Estilização e layout responsivo"
@@ -528,7 +540,7 @@ export default function HomePage() {
                       />
                     </CarouselItem>
 
-                    <CarouselItem className="pl-1 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
+                    <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
                       <PluginCard
                         title="JavaScript"
                         description="Interatividade e funcionalidades"
@@ -537,7 +549,7 @@ export default function HomePage() {
                       />
                     </CarouselItem>
 
-                    <CarouselItem className="pl-1 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
+                    <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
                       <PluginCard
                         title="Photoshop"
                         description="Edição e manipulação de imagens"
@@ -546,7 +558,7 @@ export default function HomePage() {
                       />
                     </CarouselItem>
 
-                    <CarouselItem className="pl-1 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
+                    <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
                       <PluginCard
                         title="Illustrator"
                         description="Criação de gráficos vetoriais"
@@ -555,7 +567,7 @@ export default function HomePage() {
                       />
                     </CarouselItem>
 
-                    <CarouselItem className="pl-1 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
+                    <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
                       <PluginCard
                         title="After Effects"
                         description="Animações e motion graphics"
@@ -566,8 +578,8 @@ export default function HomePage() {
                   </CarouselContent>
 
                   {/* Gradient fade effects for mobile and desktop */}
-                  <div className="absolute top-0 left-0 bottom-0 w-8 md:w-12 bg-gradient-to-r from-black via-black/80 to-transparent pointer-events-none z-10"></div>
-                  <div className="absolute top-0 right-0 bottom-0 w-8 md:w-20 bg-gradient-to-l from-black via-black/80 to-transparent pointer-events-none z-10"></div>
+                  <div className="absolute top-0 left-0 bottom-0 w-16 md:w-20 bg-gradient-to-r from-black via-black/70 to-transparent pointer-events-none z-10"></div>
+                  <div className="absolute top-0 right-0 bottom-0 w-16 md:w-24 bg-gradient-to-l from-black via-black/70 to-transparent pointer-events-none z-10"></div>
                 </div>
                 <div className="flex justify-center items-center mt-4">
                   <CarouselPrevious className="bg-black/40 hover:bg-black/60 border-none" />
