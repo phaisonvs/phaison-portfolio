@@ -686,24 +686,36 @@ p,
   }
 }
 
-/* Neon light animation for header */
-.neon-light-animate {
-  animation: neonSweep 4s ease-in-out infinite;
+/* Marching ants animation for header */
+.marching-ants {
+  position: relative;
 }
 
-@keyframes neonSweep {
+.marching-ants::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(
+    90deg,
+    rgba(131, 109, 241, 0.8) 0%,
+    rgba(131, 109, 241, 0.4) 25%,
+    transparent 50%,
+    rgba(131, 109, 241, 0.4) 75%,
+    rgba(131, 109, 241, 0.8) 100%
+  );
+  background-size: 40px 100%;
+  animation: marching-ants 2s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes marching-ants {
   0% {
-    background: linear-gradient(90deg, transparent 0%, transparent 100%);
-    box-shadow: none;
+    background-position: 0% 0%;
   }
-
-  50% {
-    background: linear-gradient(90deg, transparent 0%, rgba(46, 38, 137, 0.8) 50%, transparent 100%);
-    box-shadow: 0 0 20px rgba(46, 38, 137, 0.6);
-  }
-
   100% {
-    background: linear-gradient(90deg, transparent 0%, transparent 100%);
-    box-shadow: none;
+    background-position: 200% 0%;
   }
 }

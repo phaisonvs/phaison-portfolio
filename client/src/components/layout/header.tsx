@@ -80,8 +80,8 @@ export function Header() {
         isHeaderVisible ? 'translate-y-0' : '-translate-y-full'
       }`}
     >
-      {/* Neon light effect on bottom border */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/60 to-transparent neon-light-animate"></div>
+      {/* Marching ants effect on bottom border */}
+      <div className="absolute bottom-0 left-0 right-0 h-px marching-ants"></div>
       
       <div className="max-w-[1200px] mx-auto flex items-center justify-between py-4 px-4">
         <Link href="/" className="flex items-center space-x-2">
