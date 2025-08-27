@@ -138,6 +138,18 @@ html {
   transform: translateX(0);
 }
 
+/* Card fade-in from bottom animation for carousel */
+.card-fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.card-fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Header scroll behavior */
 .header-transition {
   will-change: transform;

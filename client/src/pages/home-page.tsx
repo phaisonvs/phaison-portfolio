@@ -141,7 +141,7 @@ export default function HomePage() {
     );
 
     document
-      .querySelectorAll(".animate-on-scroll, .animate-slide-left")
+      .querySelectorAll(".animate-on-scroll, .animate-slide-left, .card-fade-in")
       .forEach((el) => {
         animatedElements.current.push(el as HTMLElement);
         observer.observe(el);
@@ -331,10 +331,13 @@ export default function HomePage() {
                 <div className="relative overflow-hidden">
                   <CarouselContent className="-ml-1 flex gap-2" data-carousel-content>
                     {projects && projects.length > 0
-                      ? projects.slice(0, 6).map((project) => (
+                      ? projects.slice(0, 6).map((project, index) => (
                           <CarouselItem
                             key={project.project.id}
-                            className="pl-1 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(50%-0.5rem)] lg:basis-[calc(22.22%-0.5rem)]"
+                            className="pl-1 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(50%-0.5rem)] lg:basis-[calc(22.22%-0.5rem)] card-fade-in"
+                            style={{ 
+                              transitionDelay: `${index * 0.1}s`
+                            }}
                             data-carousel-item
                           >
                             <ProjectCard project={project} />
@@ -344,7 +347,10 @@ export default function HomePage() {
                         Array.from({ length: 6 }).map((_, index) => (
                           <CarouselItem
                             key={index}
-                            className="pl-1 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(50%-0.5rem)] lg:basis-[calc(22.22%-0.5rem)]"
+                            className="pl-1 basis-[calc(66.67%-0.5rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(50%-0.5rem)] lg:basis-[calc(22.22%-0.5rem)] card-fade-in"
+                            style={{ 
+                              transitionDelay: `${index * 0.1}s`
+                            }}
                             data-carousel-item
                           >
                             <ProjectCard
