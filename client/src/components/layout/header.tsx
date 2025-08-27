@@ -20,16 +20,20 @@ export function Header() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
+      const scrollDifference = Math.abs(currentScrollY - lastScrollY);
+      
+      // Só processar se houve um scroll significativo (evita micro movimentos)
+      if (scrollDifference < 5) return;
       
       // Se está no topo, sempre mostrar o header
-      if (currentScrollY < 10) {
+      if (currentScrollY <= 10) {
         setIsHeaderVisible(true);
       } else {
-        // Se rolou para baixo, esconder header
-        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Se rolou para baixo mais de 80px do topo, esconder header
+        if (currentScrollY > lastScrollY && currentScrollY > 80) {
           setIsHeaderVisible(false);
         }
-        // Se rolou para cima, mostrar header
+        // Se rolou para cima, mostrar header imediatamente
         else if (currentScrollY < lastScrollY) {
           setIsHeaderVisible(true);
         }
@@ -38,22 +42,18 @@ export function Header() {
       setLastScrollY(currentScrollY);
     };
 
-    // Throttle scroll events for better performance
-    let ticking = false;
+    // Melhor throttling com debounce
+    let timeoutId: NodeJS.Timeout;
     const scrollListener = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          handleScroll();
-          ticking = false;
-        });
-        ticking = true;
-      }
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(handleScroll, 10);
     };
 
     window.addEventListener('scroll', scrollListener, { passive: true });
     
     return () => {
       window.removeEventListener('scroll', scrollListener);
+      clearTimeout(timeoutId);
     };
   }, [lastScrollY]);
 
