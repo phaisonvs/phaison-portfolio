@@ -344,8 +344,11 @@ export default function ProjectDetail() {
           <div className="lg:col-span-4">
             {/* Mobile: Compact floating project info - only visible after scrolling 100px */}
             {showFloatingInfo && (
-              <div className={`fixed bottom-4 left-4 right-4 bg-zinc-900 rounded-xl p-4 z-50 shadow-2xl border border-zinc-700 lg:hidden transition-all duration-500 ease-in-out transform ${showFloatingInfo ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}`}>
-                <div className="flex items-center space-x-3">
+              <div className={`fixed bottom-4 left-4 right-4 z-50 lg:hidden transition-all duration-500 ease-in-out transform ${showFloatingInfo ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}`}>
+                <div className="relative">
+                  <div className="absolute inset-0 rounded-xl walking-light-border-mobile"></div>
+                  <div className="relative bg-zinc-900 rounded-xl p-4 shadow-2xl z-10">
+                    <div className="flex items-center space-x-3">
                   {/* Project Info - no image */}
                   <div className="flex-1 min-w-0">
                     <h3 className="font-semibold text-white truncate">{project.project.title}</h3>
@@ -404,14 +407,16 @@ export default function ProjectDetail() {
                     </div>
                   </div>
                 </div>
+                  </div>
+                </div>
               </div>
             )}
 
             {/* Desktop: Simplified sticky sidebar */}
             <div className="hidden lg:block bg-zinc-900 rounded-xl p-6 sticky top-24">
-              {/* Card de Compartilhamento com Animação Neon */}
+              {/* Card de Compartilhamento com Luzinha Circulante */}
               <div className="relative share-card-container">
-                <div className="absolute inset-0 rounded-xl neon-border"></div>
+                <div className="absolute inset-0 rounded-xl walking-light-border"></div>
                 <div className="relative bg-zinc-900 p-4 rounded-xl z-10">
                   <p className="text-sm text-gray-400 mb-3">Compartilhar</p>
                   <div className="flex space-x-4">
@@ -442,25 +447,61 @@ export default function ProjectDetail() {
           </div>
         </div>
 
-        {/* Shared CSS for neon animation */}
+        {/* Shared CSS for walking light animation */}
         <style>{`
-          .neon-border {
+          .walking-light-border {
             border-radius: 0.75rem;
-            background: linear-gradient(90deg, #4ade80, #3b82f6);
-            padding: 0.3rem;
-            opacity: 0.7;
-            filter: blur(6px);
-            animation: neonPulse 2s infinite alternate;
+            position: relative;
+            background: transparent;
           }
           
-          @keyframes neonPulse {
+          .walking-light-border::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 0.75rem;
+            background: conic-gradient(from 0deg, #4ade80, #3b82f6, #8b5cf6, #4ade80);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: xor;
+            -webkit-mask-composite: xor;
+            padding: 2px;
+            animation: walkingLight 4s linear infinite;
+          }
+          
+          .walking-light-border-mobile {
+            border-radius: 0.75rem;
+            position: relative;
+            background: transparent;
+          }
+          
+          .walking-light-border-mobile::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 0.75rem;
+            background: conic-gradient(from 0deg, #4ade80, #3b82f6, #8b5cf6, #4ade80);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: xor;
+            -webkit-mask-composite: xor;
+            padding: 2px;
+            animation: walkingLight 4s linear infinite;
+          }
+          
+          @keyframes walkingLight {
             0% {
-              opacity: 0.5;
-              background: linear-gradient(90deg, #4ade80, #3b82f6);
+              background: conic-gradient(from 0deg, #4ade80, #3b82f6, #8b5cf6, #4ade80);
+            }
+            25% {
+              background: conic-gradient(from 90deg, #4ade80, #3b82f6, #8b5cf6, #4ade80);
+            }
+            50% {
+              background: conic-gradient(from 180deg, #4ade80, #3b82f6, #8b5cf6, #4ade80);
+            }
+            75% {
+              background: conic-gradient(from 270deg, #4ade80, #3b82f6, #8b5cf6, #4ade80);
             }
             100% {
-              opacity: 0.8;
-              background: linear-gradient(90deg, #3b82f6, #4ade80);
+              background: conic-gradient(from 360deg, #4ade80, #3b82f6, #8b5cf6, #4ade80);
             }
           }
         `}</style>
