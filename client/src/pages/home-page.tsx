@@ -69,20 +69,18 @@ export default function HomePage() {
   // Animation on scroll
   const animatedElements = useRef<HTMLElement[]>([]);
 
-  // Enhanced parallax effect with optimized mobile touch support
+  // Enhanced parallax effect with mobile touch support
   useEffect(() => {
     let ticking = false;
-    let isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    
+
     const updateParallax = () => {
       const scrolled = window.pageYOffset;
       const phaisonBg = document.querySelector(".phaison-bg") as HTMLElement;
 
       if (phaisonBg) {
-        // Parallax scale effect with CSS3 transforms for better performance
+        // Parallax scale effect
         const scaleValue = 1 + scrolled * 0.002;
-        phaisonBg.style.transform = `scale3d(${scaleValue}, ${scaleValue}, 1)`;
-        phaisonBg.style.willChange = 'transform';
+        phaisonBg.style.transform = `scale(${scaleValue})`;
       }
 
       // Controle das elipses - para na seção "Pronto para o próximo projeto"
@@ -101,28 +99,24 @@ export default function HomePage() {
       ticking = false;
     };
 
-    // Optimized scroll handler for desktop
     const handleScroll = () => {
       if (!ticking) {
-        if (isMobile) {
-          // Direct update for mobile to avoid lag
-          updateParallax();
-        } else {
-          requestAnimationFrame(updateParallax);
-        }
+        requestAnimationFrame(updateParallax);
         ticking = true;
       }
     };
 
-    // Mobile-specific touch handling with immediate updates
-    let lastTouchTime = 0;
+    // Enhanced touch events for smooth mobile parallax
+    let touchThrottle = false;
     
     const handleTouchMove = (e: TouchEvent) => {
-      const now = performance.now();
-      // Limit to 60fps but ensure smooth scrolling
-      if (now - lastTouchTime > 16) {
-        updateParallax();
-        lastTouchTime = now;
+      // More frequent updates during touch for smoother mobile experience
+      if (!touchThrottle) {
+        requestAnimationFrame(() => {
+          updateParallax();
+          touchThrottle = false;
+        });
+        touchThrottle = true;
       }
     };
 
@@ -132,34 +126,26 @@ export default function HomePage() {
     };
 
     const handleTouchEnd = () => {
-      // Final update when touch ends
-      updateParallax();
+      // Final update when touch ends to ensure smooth transition
+      requestAnimationFrame(updateParallax);
     };
 
     // Initial call
     updateParallax();
 
-    if (isMobile) {
-      // Mobile: Use touch events for better responsiveness
-      window.addEventListener("touchstart", handleTouchStart, { passive: true });
-      window.addEventListener("touchmove", handleTouchMove, { passive: true });
-      window.addEventListener("touchend", handleTouchEnd, { passive: true });
-      window.addEventListener("scroll", handleScroll, { passive: true });
-    } else {
-      // Desktop: Use standard scroll with RAF
-      window.addEventListener("scroll", handleScroll, { passive: true });
-    }
-    
+    // Add event listeners with passive option for better performance
+    window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleScroll, { passive: true });
+    window.addEventListener("touchmove", handleTouchMove, { passive: true });
+    window.addEventListener("touchstart", handleTouchStart, { passive: true });
+    window.addEventListener("touchend", handleTouchEnd, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
-      if (isMobile) {
-        window.removeEventListener("touchmove", handleTouchMove);
-        window.removeEventListener("touchstart", handleTouchStart);
-        window.removeEventListener("touchend", handleTouchEnd);
-      }
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchend", handleTouchEnd);
     };
   }, []);
 

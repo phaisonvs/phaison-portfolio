@@ -735,28 +735,3 @@ p,
     opacity: 0;
   }
 }
-
-/* Parallax optimization for mobile devices */
-.phaison-bg {
-  /* Force hardware acceleration for smoother parallax on mobile */
-  backface-visibility: hidden;
-  perspective: 1000px;
-  transform-style: preserve-3d;
-  will-change: transform;
-  /* Reduce scroll jank on mobile */
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-}
-
-/* Mobile-specific optimizations */
-@media (max-width: 768px) {
-  .phaison-bg {
-    /* Additional mobile optimizations */
-    -webkit-backface-visibility: hidden;
-    -webkit-perspective: 1000px;
-    -webkit-transform-style: preserve-3d;
-    /* Ensure smooth transform animations */
-    transition: none;
-    animation-fill-mode: none;
-  }
-}
