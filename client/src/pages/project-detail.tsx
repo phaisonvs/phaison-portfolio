@@ -72,7 +72,7 @@ export default function ProjectDetail() {
     <div className="min-h-screen flex flex-col bg-black text-white">
       <Header />
 
-      <main className="flex-grow container mx-auto px-4 py-12 pt-20 md:pt-12">
+      <main className="flex-grow container mx-auto px-4 py-6 pt-20 md:pt-12 pb-20 md:pb-12">
         <Button 
           variant="outline" 
           className="mb-6"
@@ -81,6 +81,35 @@ export default function ProjectDetail() {
           <ArrowLeft className="h-4 w-4 mr-2" />
           Voltar para Projetos
         </Button>
+
+        {/* Mobile Layout: Project info below back button */}
+        <div className="block lg:hidden mb-8">
+          <h1 className="text-3xl font-semibold mb-4">{project.project.title}</h1>
+          
+          <div className="flex items-center mb-6">
+            <Avatar className="h-10 w-10 mr-3">
+              <AvatarImage
+                src={project.user.avatarUrl || undefined}
+                alt={project.user.name}
+              />
+              <AvatarFallback>
+                {getInitials(project.user.name)}
+              </AvatarFallback>
+            </Avatar>
+            <div>
+              <p className="font-medium">{project.user.name}</p>
+              <p className="text-sm text-gray-400">
+                {new Date(project.project.createdAt).toLocaleDateString()}
+              </p>
+            </div>
+          </div>
+
+          <Separator className="my-6" />
+
+          <div className="prose prose-invert max-w-none">
+            <p className="text-lg text-gray-300 whitespace-pre-line">{project.project.description}</p>
+          </div>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           {/* Gallery and details */}
@@ -96,30 +125,33 @@ export default function ProjectDetail() {
               />
             </div>
 
-            <h1 className="text-3xl font-semibold mb-4">{project.project.title}</h1>
-            
-            <div className="flex items-center mb-6">
-              <Avatar className="h-10 w-10 mr-3">
-                <AvatarImage
-                  src={project.user.avatarUrl || undefined}
-                  alt={project.user.name}
-                />
-                <AvatarFallback>
-                  {getInitials(project.user.name)}
-                </AvatarFallback>
-              </Avatar>
-              <div>
-                <p className="font-medium">{project.user.name}</p>
-                <p className="text-sm text-gray-400">
-                  {new Date(project.project.createdAt).toLocaleDateString()}
-                </p>
+            {/* Desktop Layout: Project info in normal position */}
+            <div className="hidden lg:block">
+              <h1 className="text-3xl font-semibold mb-4">{project.project.title}</h1>
+              
+              <div className="flex items-center mb-6">
+                <Avatar className="h-10 w-10 mr-3">
+                  <AvatarImage
+                    src={project.user.avatarUrl || undefined}
+                    alt={project.user.name}
+                  />
+                  <AvatarFallback>
+                    {getInitials(project.user.name)}
+                  </AvatarFallback>
+                </Avatar>
+                <div>
+                  <p className="font-medium">{project.user.name}</p>
+                  <p className="text-sm text-gray-400">
+                    {new Date(project.project.createdAt).toLocaleDateString()}
+                  </p>
+                </div>
               </div>
-            </div>
 
-            <Separator className="my-6" />
+              <Separator className="my-6" />
 
-            <div className="prose prose-invert max-w-none">
-              <p className="text-lg text-gray-300 whitespace-pre-line">{project.project.description}</p>
+              <div className="prose prose-invert max-w-none">
+                <p className="text-lg text-gray-300 whitespace-pre-line">{project.project.description}</p>
+              </div>
             </div>
             
             <Separator className="my-8" />
@@ -304,7 +336,27 @@ export default function ProjectDetail() {
 
           {/* Sidebar */}
           <div className="lg:col-span-4">
-            <div className="bg-zinc-900 rounded-xl p-6 sticky top-24">
+            {/* Mobile: Fixed bottom sidebar */}
+            <div className="fixed bottom-0 left-0 right-0 bg-zinc-900 p-4 z-50 border-t border-zinc-700 lg:hidden">
+              <div className="flex justify-center">
+                <div className="bg-zinc-800 rounded-lg px-4 py-2 max-w-sm">
+                  <p className="text-sm text-gray-400 text-center mb-2">Detalhes do Projeto</p>
+                  <div className="text-xs text-center space-y-1">
+                    <p><span className="text-gray-400">Categoria:</span> {project.project.category}</p>
+                    <div className="flex justify-center gap-1 flex-wrap">
+                      {project.tags.map(tag => (
+                        <Badge key={tag.id} variant="secondary" className="text-xs">
+                          {tag.name}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Desktop: Normal sticky sidebar */}
+            <div className="hidden lg:block bg-zinc-900 rounded-xl p-6 sticky top-24">
               <h3 className="text-xl font-semibold mb-4">Detalhes do Projeto</h3>
               
               <div className="mb-6">
