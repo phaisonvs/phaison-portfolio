@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useAuth } from "@/hooks/use-auth";
-import { Menu } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import logoPath from "@assets/logo-phaison_1749772164016.png";
 
 export function Header() {
@@ -63,11 +62,11 @@ export function Header() {
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-black/90 backdrop-blur-sm transition-transform duration-300 ease-in-out walking-light-border ${
+      className={`fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm transition-all duration-300 ease-in-out walking-light-border ${
         isHeaderVisible ? 'translate-y-0' : '-translate-y-full'
-      }`}
+      } ${isMenuOpen ? 'border-b-0' : 'border-b border-white/10'}`}
     >
-      
+      {/* Main Header */}
       <div className="max-w-[1200px] mx-auto flex items-center justify-between py-4 px-4">
         <Link href="/" className="flex items-center space-x-2">
           <img src={logoPath} alt="Phaison Logo" className="h-[24px]" />
@@ -101,54 +100,64 @@ export function Header() {
           </button>
         </nav>
 
-        {/* No admin area in header - completely hidden */}
-
         {/* Mobile Menu Button */}
-        <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
-          <SheetTrigger asChild>
-            <Button variant="ghost" className="p-0 md:hidden" aria-label="Toggle menu">
-              <Menu className="h-6 w-6" />
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="right" className="bg-black border-white/10">
-            <nav className="flex flex-col space-y-4 mt-8">
-              <button 
-                onClick={() => {
-                  handleScrollClick('hero');
-                  setIsMenuOpen(false);
-                }}
-                className={`text-lg font-medium text-left ${location === "/" ? "text-white" : "text-white/70"}`}
-              >
-                Início
-              </button>
-              <Link 
-                href="/projects" 
-                className={`text-lg font-medium ${isActive("/projects") ? "text-white" : "text-white/70"}`}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Projetos
-              </Link>
-              <button 
-                onClick={() => {
-                  handleScrollClick('about');
-                  setIsMenuOpen(false);
-                }}
-                className="text-lg font-medium text-left text-white/70"
-              >
-                Sobre Mim
-              </button>
-              <button 
-                onClick={() => {
-                  handleScrollClick('contact');
-                  setIsMenuOpen(false);
-                }}
-                className="text-lg font-medium text-left text-white/70"
-              >
-                Contato
-              </button>
-            </nav>
-          </SheetContent>
-        </Sheet>
+        <Button 
+          variant="ghost" 
+          className="p-0 md:hidden" 
+          aria-label="Toggle menu"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+        </Button>
+      </div>
+
+      {/* Mobile Menu - Expandable below header */}
+      <div className={`
+        md:hidden overflow-hidden transition-all duration-500 ease-in-out border-b border-white/10
+        ${isMenuOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'}
+      `}>
+        <nav className="max-w-[1200px] mx-auto px-4 py-6 bg-black/95">
+          <div className="flex flex-col space-y-6">
+            <button 
+              onClick={() => {
+                handleScrollClick('hero');
+                setIsMenuOpen(false);
+              }}
+              className={`text-lg font-medium text-left transition-colors duration-200 ${
+                location === "/" ? "text-white" : "text-white/70 hover:text-white"
+              }`}
+            >
+              Início
+            </button>
+            <Link 
+              href="/projects" 
+              className={`text-lg font-medium transition-colors duration-200 ${
+                isActive("/projects") ? "text-white" : "text-white/70 hover:text-white"
+              }`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Projetos
+            </Link>
+            <button 
+              onClick={() => {
+                handleScrollClick('about');
+                setIsMenuOpen(false);
+              }}
+              className="text-lg font-medium text-left text-white/70 hover:text-white transition-colors duration-200"
+            >
+              Sobre Mim
+            </button>
+            <button 
+              onClick={() => {
+                handleScrollClick('contact');
+                setIsMenuOpen(false);
+              }}
+              className="text-lg font-medium text-left text-white/70 hover:text-white transition-colors duration-200"
+            >
+              Contato
+            </button>
+          </div>
+        </nav>
       </div>
     </header>
   );
