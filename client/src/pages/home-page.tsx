@@ -69,9 +69,11 @@ export default function HomePage() {
   // Animation on scroll
   const animatedElements = useRef<HTMLElement[]>([]);
 
-  // Simple parallax effect for background image
+  // Enhanced parallax effect with mobile touch support
   useEffect(() => {
-    const handleScroll = () => {
+    let ticking = false;
+
+    const updateParallax = () => {
       const scrolled = window.pageYOffset;
       const phaisonBg = document.querySelector(".phaison-bg") as HTMLElement;
 
@@ -93,15 +95,57 @@ export default function HomePage() {
         spotlightContainer.style.height = maxHeight;
         ellipsesContainer.style.height = maxHeight;
       }
+      
+      ticking = false;
     };
 
-    handleScroll();
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    };
+
+    // Enhanced touch events for smooth mobile parallax
+    let touchThrottle = false;
+    
+    const handleTouchMove = (e: TouchEvent) => {
+      // More frequent updates during touch for smoother mobile experience
+      if (!touchThrottle) {
+        requestAnimationFrame(() => {
+          updateParallax();
+          touchThrottle = false;
+        });
+        touchThrottle = true;
+      }
+    };
+
+    const handleTouchStart = () => {
+      // Immediate parallax update on touch start
+      updateParallax();
+    };
+
+    const handleTouchEnd = () => {
+      // Final update when touch ends to ensure smooth transition
+      requestAnimationFrame(updateParallax);
+    };
+
+    // Initial call
+    updateParallax();
+
+    // Add event listeners with passive option for better performance
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleScroll, { passive: true });
+    window.addEventListener("touchmove", handleTouchMove, { passive: true });
+    window.addEventListener("touchstart", handleTouchStart, { passive: true });
+    window.addEventListener("touchend", handleTouchEnd, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchend", handleTouchEnd);
     };
   }, []);
 
@@ -246,7 +290,7 @@ export default function HomePage() {
           <div className="hero-fade-bottom"></div>
 
           <div className="max-w-[1200px] mx-auto text-center relative z-10 flex flex-col items-center justify-center h-full">
-            <div className="space-y-6 md:space-y-8">
+            <div className="space-y-6 md:space-y-8 max-w-[280px] md:max-w-full">
               <h1 className="leading-tight animate-on-scroll grainient-heading">
                 Oi, eu sou Phaison, Lead de UX/UI,
                 <br />
