@@ -61,62 +61,65 @@ export function Header() {
   };
 
   return (
-    <header 
-      className={`fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm transition-all duration-300 ease-in-out walking-light-border ${
-        isHeaderVisible ? 'translate-y-0' : '-translate-y-full'
-      } ${isMenuOpen ? 'border-b-0' : 'border-b border-white/10'}`}
-    >
-      {/* Main Header */}
-      <div className="max-w-[1200px] mx-auto flex items-center justify-between py-4 px-4">
-        <Link href="/" className="flex items-center space-x-2">
-          <img src={logoPath} alt="Phaison Logo" className="h-[24px]" />
-        </Link>
-
-        {/* Desktop Navigation */}
-        <nav className="hidden items-center space-x-8 md:flex flex-1 justify-center">
-          <button 
-            onClick={() => handleScrollClick('hero')}
-            className={`transition-colors duration-200 ${location === "/" ? "text-white" : "text-white/70 hover:text-primary"}`}
-          >
-            Início
-          </button>
-          <Link 
-            href="/projects" 
-            className={`transition-colors duration-200 ${isActive("/projects") ? "text-white" : "text-white/70 hover:text-primary"}`}
-          >
-            Projetos
+    <div className="relative">
+      {/* Main Header - Fixed */}
+      <header 
+        className={`fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm transition-all duration-300 ease-in-out walking-light-border ${
+          isHeaderVisible ? 'translate-y-0' : '-translate-y-full'
+        } border-b border-white/10`}
+      >
+        <div className="max-w-[1200px] mx-auto flex items-center justify-between py-4 px-4">
+          <Link href="/" className="flex items-center space-x-2">
+            <img src={logoPath} alt="Phaison Logo" className="h-[24px]" />
           </Link>
-          <button 
-            onClick={() => handleScrollClick('about')}
-            className="transition-colors duration-200 text-white/70 hover:text-primary"
-          >
-            Sobre Mim
-          </button>
-          <button 
-            onClick={() => handleScrollClick('contact')}
-            className="transition-colors duration-200 text-white/70 hover:text-primary"
-          >
-            Contato
-          </button>
-        </nav>
 
-        {/* Mobile Menu Button */}
-        <Button 
-          variant="ghost" 
-          className="p-0 md:hidden" 
-          aria-label="Toggle menu"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </Button>
-      </div>
+          {/* Desktop Navigation */}
+          <nav className="hidden items-center space-x-8 md:flex flex-1 justify-center">
+            <button 
+              onClick={() => handleScrollClick('hero')}
+              className={`transition-colors duration-200 ${location === "/" ? "text-white" : "text-white/70 hover:text-primary"}`}
+            >
+              Início
+            </button>
+            <Link 
+              href="/projects" 
+              className={`transition-colors duration-200 ${isActive("/projects") ? "text-white" : "text-white/70 hover:text-primary"}`}
+            >
+              Projetos
+            </Link>
+            <button 
+              onClick={() => handleScrollClick('about')}
+              className="transition-colors duration-200 text-white/70 hover:text-primary"
+            >
+              Sobre Mim
+            </button>
+            <button 
+              onClick={() => handleScrollClick('contact')}
+              className="transition-colors duration-200 text-white/70 hover:text-primary"
+            >
+              Contato
+            </button>
+          </nav>
 
-      {/* Mobile Menu - Expandable below header */}
+          {/* Mobile Menu Button */}
+          <Button 
+            variant="ghost" 
+            className="p-0 md:hidden" 
+            aria-label="Toggle menu"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </Button>
+        </div>
+      </header>
+
+      {/* Mobile Menu - Fixed and positioned below header */}
       <div className={`
-        md:hidden overflow-hidden transition-all duration-500 ease-in-out border-b border-white/10
-        ${isMenuOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'}
+        fixed top-[72px] left-0 right-0 z-40 md:hidden bg-black/95 backdrop-blur-sm border-b border-white/10
+        transition-all duration-500 ease-in-out overflow-hidden
+        ${isMenuOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0 border-b-0'}
       `}>
-        <nav className="max-w-[1200px] mx-auto px-4 py-6 bg-black/95">
+        <nav className="max-w-[1200px] mx-auto px-4 py-6">
           <div className="flex flex-col space-y-6">
             <button 
               onClick={() => {
@@ -159,6 +162,6 @@ export function Header() {
           </div>
         </nav>
       </div>
-    </header>
+    </div>
   );
 }
