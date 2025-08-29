@@ -20,17 +20,25 @@ export function Header() {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       
-      // Até 500px, sempre mostrar o header
-      if (currentScrollY <= 500) {
+      // Sempre mostrar o header quando estiver próximo do topo (até 100px)
+      if (currentScrollY <= 100) {
         setIsHeaderVisible(true);
       }
-      // Após 500px, ocultar quando rolar para baixo
-      else if (currentScrollY > 500 && currentScrollY > lastScrollY) {
-        setIsHeaderVisible(false);
+      // Entre 100px e 500px, ocultar quando rolar para baixo
+      else if (currentScrollY > 100 && currentScrollY <= 500) {
+        if (currentScrollY > lastScrollY) {
+          setIsHeaderVisible(false);
+        } else {
+          setIsHeaderVisible(true);
+        }
       }
-      // Após 500px, mostrar quando rolar para cima
-      else if (currentScrollY > 500 && currentScrollY < lastScrollY) {
-        setIsHeaderVisible(true);
+      // Após 500px, só mostrar se rolar muito para cima (diferença de pelo menos 50px)
+      else if (currentScrollY > 500) {
+        if (currentScrollY > lastScrollY) {
+          setIsHeaderVisible(false);
+        } else if (lastScrollY - currentScrollY > 50) {
+          setIsHeaderVisible(true);
+        }
       }
       
       setLastScrollY(currentScrollY);
