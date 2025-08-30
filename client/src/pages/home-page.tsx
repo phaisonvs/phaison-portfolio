@@ -286,7 +286,7 @@ export default function HomePage() {
           className="py-16 md:py-0 px-4 h-screen flex items-center justify-center relative overflow-hidden"
         >
           {/* Phaison Background Image */}
-          <div className="absolute inset-0 phaison-bg"></div>
+          <div className="absolute inset-0 phaison-bg mobile-hero-breathing"></div>
 
           {/* Gradient blend overlay */}
           <div className="absolute inset-0 moon-gradient-blend"></div>
