@@ -306,20 +306,21 @@ export default function HomePage() {
                 conversão.
               </p>
               <div className="flex justify-center gap-4 flex-wrap animate-on-scroll">
-                <Button asChild size="lg">
-                  <Link href="/projects">Veja meus projetos</Link>
-                </Button>
                 <Button
-                  variant="outline"
+                  asChild
                   size="lg"
-                  onClick={() => {
-                    const contactSection = document.getElementById("contact");
-                    if (contactSection) {
-                      contactSection.scrollIntoView({ behavior: "smooth" });
-                    }
-                  }}
+                  className="bg-primary hover:bg-primary/90"
                 >
-                  Contato
+                  <a href="https://calendly.com/phaison" target="_blank" rel="noopener noreferrer">
+                    <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                      <rect x="3" y="4" width="18" height="16" rx="2" fill="none" stroke="currentColor" strokeWidth="2"/>
+                      <path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" strokeWidth="2" fill="none"/>
+                    </svg>
+                    Agendar conversa
+                  </a>
+                </Button>
+                <Button variant="outline" size="lg" asChild>
+                  <Link href="/projects">Veja meus projetos</Link>
                 </Button>
               </div>
               
@@ -987,9 +988,12 @@ export default function HomePage() {
                   size="lg"
                   className="bg-primary hover:bg-primary/90"
                 >
-                  <a href="/curriculum.pdf" download="Curriculum-Phaison.pdf">
-                    <Download className="mr-2 h-4 w-4" />
-                    Baixar currículo
+                  <a href="https://calendly.com/phaison" target="_blank" rel="noopener noreferrer">
+                    <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                      <rect x="3" y="4" width="18" height="16" rx="2" fill="none" stroke="currentColor" strokeWidth="2"/>
+                      <path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" strokeWidth="2" fill="none"/>
+                    </svg>
+                    Agendar conversa
                   </a>
                 </Button>
                 <Button variant="outline" size="lg">

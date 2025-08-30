@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/use-auth";
@@ -11,10 +11,28 @@ export function Header() {
   const { user, logoutMutation } = useAuth();
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   const handleLogout = () => {
     logoutMutation.mutate();
   };
+
+  // Fechar menu ao clicar fora
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    if (isMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isMenuOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -130,8 +148,8 @@ export function Header() {
       {/* Mobile Menu - Fixed and positioned below header */}
       <div className={`
         fixed top-[72px] left-0 right-0 z-40 md:hidden bg-black/95 backdrop-blur-sm border-b border-white/10
-        transition-all duration-500 ease-in-out overflow-hidden
-        ${isMenuOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0 border-b-0'}
+        transition-all duration-500 ease-in-out overflow-hidden mobile-menu-light-border
+        ${isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 border-b-0'}
       `}>
         <nav className="max-w-[1200px] mx-auto px-4 py-6">
           <div className="flex flex-col space-y-6">
@@ -173,6 +191,20 @@ export function Header() {
             >
               Contato
             </button>
+            
+            {/* Portfolio Button */}
+            <a 
+              href="https://figma.com/@phaison" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 text-lg font-medium text-left text-white/70 hover:text-white transition-colors duration-200"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                <div className="w-3 h-3 bg-black rounded-full"></div>
+              </div>
+              Portfolio
+            </a>
           </div>
         </nav>
       </div>
