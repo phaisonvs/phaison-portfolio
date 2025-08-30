@@ -96,48 +96,82 @@ export function ImageGallery({ images, mainImage }: ImageGalleryProps) {
           className="max-w-[90vw] max-h-[90vh] p-0 bg-black/95 border-zinc-800" 
           onKeyDown={handleKeyDown}
         >
-          <div className="relative w-full h-full flex items-center justify-center">
-            {/* Close button */}
-            <button
-              onClick={closeLightbox}
-              className="absolute top-4 right-4 z-10 p-2 bg-black/50 hover:bg-black/75 rounded-full text-white/75 hover:text-white transition-colors"
-            >
-              <X className="h-5 w-5" />
-            </button>
-            
-            {/* Image */}
-            {selectedImage !== null && (
-              <div className="w-full h-full flex items-center justify-center p-4">
-                <img
-                  src={allImages[selectedImage].src}
-                  alt={allImages[selectedImage].alt}
-                  className="max-w-full max-h-[80vh] object-contain"
-                />
+          <div className="relative w-full h-full flex flex-col">
+            {/* Mobile: Controls above image */}
+            <div className="md:hidden flex justify-between items-center p-4 bg-black/80 backdrop-blur-sm">
+              <div className="flex items-center gap-4">
+                {allImages.length > 1 && (
+                  <>
+                    <button
+                      onClick={prevImage}
+                      className="p-2 bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors"
+                    >
+                      <ChevronLeft className="h-5 w-5" />
+                    </button>
+                    <div className="text-white text-sm">
+                      {selectedImage !== null ? selectedImage + 1 : 0} / {allImages.length}
+                    </div>
+                    <button
+                      onClick={nextImage}
+                      className="p-2 bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors"
+                    >
+                      <ChevronRight className="h-5 w-5" />
+                    </button>
+                  </>
+                )}
               </div>
-            )}
-            
-            {/* Navigation buttons */}
-            {allImages.length > 1 && (
-              <>
-                <button
-                  onClick={prevImage}
-                  className="absolute left-4 p-2 bg-black/50 hover:bg-black/75 rounded-full text-white/75 hover:text-white transition-colors"
-                >
-                  <ChevronLeft className="h-6 w-6" />
-                </button>
-                <button
-                  onClick={nextImage}
-                  className="absolute right-4 p-2 bg-black/50 hover:bg-black/75 rounded-full text-white/75 hover:text-white transition-colors"
-                >
-                  <ChevronRight className="h-6 w-6" />
-                </button>
-                
-                {/* Image counter */}
-                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 text-white text-sm py-1 px-3 rounded-full">
-                  {selectedImage !== null ? selectedImage + 1 : 0} / {allImages.length}
+              <button
+                onClick={closeLightbox}
+                className="p-2 bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+
+            {/* Image container */}
+            <div className="relative flex-1 flex items-center justify-center">
+              {/* Desktop: Close button */}
+              <button
+                onClick={closeLightbox}
+                className="hidden md:block absolute top-4 right-4 z-10 p-2 bg-black/50 hover:bg-black/75 rounded-full text-white/75 hover:text-white transition-colors"
+              >
+                <X className="h-5 w-5" />
+              </button>
+              
+              {/* Image */}
+              {selectedImage !== null && (
+                <div className="w-full h-full flex items-center justify-center p-4 md:p-8">
+                  <img
+                    src={allImages[selectedImage].src}
+                    alt={allImages[selectedImage].alt}
+                    className="max-w-full max-h-full object-contain"
+                  />
                 </div>
-              </>
-            )}
+              )}
+              
+              {/* Desktop: Navigation buttons */}
+              {allImages.length > 1 && (
+                <>
+                  <button
+                    onClick={prevImage}
+                    className="hidden md:block absolute left-4 p-2 bg-black/50 hover:bg-black/75 rounded-full text-white/75 hover:text-white transition-colors"
+                  >
+                    <ChevronLeft className="h-6 w-6" />
+                  </button>
+                  <button
+                    onClick={nextImage}
+                    className="hidden md:block absolute right-4 p-2 bg-black/50 hover:bg-black/75 rounded-full text-white/75 hover:text-white transition-colors"
+                  >
+                    <ChevronRight className="h-6 w-6" />
+                  </button>
+                  
+                  {/* Desktop: Image counter */}
+                  <div className="hidden md:block absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 text-white text-sm py-1 px-3 rounded-full">
+                    {selectedImage !== null ? selectedImage + 1 : 0} / {allImages.length}
+                  </div>
+                </>
+              )}
+            </div>
           </div>
         </DialogContent>
       </Dialog>

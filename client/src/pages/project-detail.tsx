@@ -31,7 +31,19 @@ export default function ProjectDetail() {
     // Handle scroll to show/hide floating info
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      setShowFloatingInfo(scrollY > 100);
+      const footer = document.querySelector('footer');
+      const isMobile = window.innerWidth < 768;
+      
+      if (isMobile && footer) {
+        // No mobile, calcular se está próximo do footer
+        const footerTop = footer.offsetTop;
+        const windowBottom = scrollY + window.innerHeight;
+        const shouldHideBeforeFooter = windowBottom > footerTop - 80; // 80px antes do footer
+        
+        setShowFloatingInfo(scrollY > 100 && !shouldHideBeforeFooter);
+      } else {
+        setShowFloatingInfo(scrollY > 100);
+      }
     };
 
     window.addEventListener('scroll', handleScroll);

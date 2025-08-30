@@ -77,11 +77,15 @@ export default function HomePage() {
     const updateParallax = () => {
       const scrolled = window.pageYOffset;
       const phaisonBg = document.querySelector(".phaison-bg") as HTMLElement;
+      const isMobile = window.innerWidth < 768;
 
-      if (phaisonBg) {
-        // Parallax scale effect
+      if (phaisonBg && !isMobile) {
+        // Parallax scale effect - apenas no desktop
         const scaleValue = 1 + scrolled * 0.002;
         phaisonBg.style.transform = `scale(${scaleValue})`;
+      } else if (phaisonBg && isMobile) {
+        // No mobile, manter escala fixa
+        phaisonBg.style.transform = `scale(1)`;
       }
 
       // Controle das elipses - para na seção "Pronto para o próximo projeto"
@@ -429,8 +433,8 @@ export default function HomePage() {
                   </CarouselContent>
 
                   {/* Gradient fade effects for mobile and desktop */}
-                  <div className="absolute top-0 left-0 bottom-0 w-16 md:w-20 bg-gradient-to-r from-black via-black/70 to-transparent pointer-events-none z-10"></div>
-                  <div className="absolute top-0 right-0 bottom-0 w-16 md:w-24 bg-gradient-to-l from-black via-black/70 to-transparent pointer-events-none z-10"></div>
+                  <div className="absolute top-0 left-0 bottom-0 w-16 md:w-20 bg-gradient-to-r from-black via-black/30 to-transparent pointer-events-none z-10"></div>
+                  <div className="absolute top-0 right-0 bottom-0 w-16 md:w-24 bg-gradient-to-l from-black via-black/30 to-transparent pointer-events-none z-10"></div>
                 </div>
                 <div className="flex justify-center items-center mt-4">
                   <CarouselPrevious className="bg-black/40 hover:bg-black/60 border-none" />
@@ -624,8 +628,8 @@ export default function HomePage() {
                   </CarouselContent>
 
                   {/* Gradient fade effects for mobile and desktop */}
-                  <div className="absolute top-0 left-0 bottom-0 w-16 md:w-20 bg-gradient-to-r from-black via-black/70 to-transparent pointer-events-none z-10"></div>
-                  <div className="absolute top-0 right-0 bottom-0 w-16 md:w-24 bg-gradient-to-l from-black via-black/70 to-transparent pointer-events-none z-10"></div>
+                  <div className="absolute top-0 left-0 bottom-0 w-16 md:w-20 bg-gradient-to-r from-black via-black/30 to-transparent pointer-events-none z-10"></div>
+                  <div className="absolute top-0 right-0 bottom-0 w-16 md:w-24 bg-gradient-to-l from-black via-black/30 to-transparent pointer-events-none z-10"></div>
                 </div>
                 <div className="flex justify-center items-center mt-4">
                   <CarouselPrevious className="bg-black/40 hover:bg-black/60 border-none" />
