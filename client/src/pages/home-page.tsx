@@ -278,7 +278,7 @@ export default function HomePage() {
         {/* Hero section */}
         <section
           id="hero"
-          className="py-16 md:py-0 px-4 min-h-[calc(100vh-73px)] md:min-h-screen flex items-center justify-center relative overflow-hidden"
+          className="py-16 md:py-0 px-4 h-screen flex items-center justify-center relative overflow-hidden"
         >
           {/* Phaison Background Image */}
           <div className="absolute inset-0 phaison-bg"></div>
@@ -286,8 +286,7 @@ export default function HomePage() {
           {/* Gradient blend overlay */}
           <div className="absolute inset-0 moon-gradient-blend"></div>
           
-          {/* Hero fade bottom effect */}
-          <div className="hero-fade-bottom"></div>
+
 
           <div className="max-w-[1200px] mx-auto text-center relative z-10 flex flex-col items-center justify-center h-full">
             <div className="space-y-6 md:space-y-8 max-w-[280px] md:max-w-full">
@@ -355,9 +354,11 @@ export default function HomePage() {
                 </h2>
                 <Link
                   href="/projects"
-                  className="text-primary hover:underline transition-all duration-200"
+                  className="text-white hover:text-primary transition-all duration-200 flex items-center gap-2 group"
                 >
-                  Ver todos
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
                 </Link>
               </div>
             </div>
@@ -758,7 +759,7 @@ export default function HomePage() {
                 {/* Title with mobile image */}
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white via-white to-primary bg-clip-text text-transparent">
+                    <h2 className="text-4xl md:text-5xl font-bold text-white">
                       Sobre Mim
                     </h2>
                     {/* Mobile Image - visible only on mobile, next to title */}
@@ -781,15 +782,15 @@ export default function HomePage() {
 
                 {/* Stats - moved right after subtitle */}
                 <div className="grid grid-cols-3 gap-6 animate-on-scroll">
-                  <div className="text-center animate-on-scroll">
+                  <div className="text-left animate-on-scroll">
                     <div className="text-2xl font-bold text-primary mb-1">3+</div>
                     <div className="text-xs text-gray-400">Anos</div>
                   </div>
-                  <div className="text-center animate-on-scroll">
+                  <div className="text-left animate-on-scroll">
                     <div className="text-2xl font-bold text-primary mb-1">50+</div>
                     <div className="text-xs text-gray-400">Projetos</div>
                   </div>
-                  <div className="text-center animate-on-scroll">
+                  <div className="text-left animate-on-scroll">
                     <div className="text-2xl font-bold text-primary mb-1">100%</div>
                     <div className="text-xs text-gray-400">Dedicação</div>
                   </div>
@@ -948,11 +949,11 @@ export default function HomePage() {
             </div>
 
             <h2 className="text-3xl md:text-5xl font-semibold mb-6 animate-on-scroll">
-              Pronto para o próximo projeto?
+              Vamos conversar?
             </h2>
             <p className="text-gray-400 text-lg md:text-xl mb-10 animate-on-scroll">
-              Vamos conversar sobre suas ideias e criar algo incrível juntos.
-              Entre em contato e vamos dar vida ao seu projeto.
+              Está interessado no meu trabalho? Gostaria de trocar ideias sobre design?
+              Entre em contato e vamos bater um papo.
             </p>
             <div className="space-y-8 animate-on-scroll">
               {/* Social Links */}
