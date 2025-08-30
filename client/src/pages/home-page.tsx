@@ -50,6 +50,7 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import { CarouselDots } from "@/components/ui/carousel-dots";
+import logoPath from "@assets/logo-phaison_1749772164016.png";
 
 export default function HomePage() {
   const { data: projects } = useQuery<ProjectWithTags[]>({
@@ -751,11 +752,11 @@ export default function HomePage() {
         */}
 
         {/* About Section - Optimized Design */}
-        <section id="about" className="py-16 md:py-20 px-4 relative z-20">
+        <section id="about" className="py-24 md:py-32 px-4 relative z-20">
           <div className="max-w-[1200px] mx-auto">
-            <div className="grid lg:grid-cols-2 gap-16 items-start">
+            <div className="grid lg:grid-cols-2 gap-20 items-start">
               {/* Left Side - Content */}
-              <div className="animate-on-scroll space-y-8">
+              <div className="animate-on-scroll space-y-12">
                 {/* Title with mobile image */}
                 <div>
                   <div className="flex items-center justify-between mb-4">
@@ -928,22 +929,13 @@ export default function HomePage() {
 
           <div className="relative z-20 max-w-[1200px] mx-auto text-center">
             <div className="mb-10 inline-block animate-on-scroll">
-              <div className="h-20 w-20 rounded-full bg-primary/20 purple-glow flex items-center justify-center mx-auto mb-6">
-                <div className="h-12 w-12 rounded-lg bg-primary flex items-center justify-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-8 w-8 text-white"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                    />
-                  </svg>
+              <div className="h-24 w-24 rounded-full bg-primary/20 purple-glow flex items-center justify-center mx-auto mb-6 backdrop-blur-sm border border-primary/20">
+                <div className="relative">
+                  <img 
+                    src={logoPath} 
+                    alt="Phaison Logo" 
+                    className="h-12 w-auto filter brightness-0 invert"
+                  />
                 </div>
               </div>
             </div>
@@ -999,6 +991,27 @@ export default function HomePage() {
                 <Button variant="outline" size="lg">
                   <Link href="/projects">Ver projetos</Link>
                 </Button>
+              </div>
+
+              {/* Floating Back to Top Button */}
+              <div className="flex justify-center mt-12">
+                <button
+                  onClick={() => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className="group bg-primary/20 hover:bg-primary/30 text-white border border-primary/20 hover:border-primary/40 backdrop-blur-sm rounded-full p-4 transition-all duration-300 animate-bounce hover:animate-none purple-glow"
+                  aria-label="Voltar ao topo"
+                >
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    className="h-6 w-6 transform group-hover:-translate-y-1 transition-transform duration-300" 
+                    fill="none" 
+                    viewBox="0 0 24 24" 
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+                  </svg>
+                </button>
               </div>
             </div>
           </div>
