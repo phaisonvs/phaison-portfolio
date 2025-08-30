@@ -50,6 +50,7 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import { CarouselDots } from "@/components/ui/carousel-dots";
+import { SchedulingModal } from "@/components/scheduling/scheduling-modal";
 import logoPath from "@assets/logo-phaison_1749772164016.png";
 
 export default function HomePage() {
@@ -69,6 +70,9 @@ export default function HomePage() {
 
   // Animation on scroll
   const animatedElements = useRef<HTMLElement[]>([]);
+
+  // Scheduling modal state
+  const [isSchedulingModalOpen, setIsSchedulingModalOpen] = useState(false);
 
   // Enhanced parallax effect with mobile touch support
   useEffect(() => {
@@ -307,17 +311,15 @@ export default function HomePage() {
               </p>
               <div className="flex justify-center gap-4 flex-wrap animate-on-scroll">
                 <Button
-                  asChild
                   size="lg"
                   className="bg-primary hover:bg-primary/90"
+                  onClick={() => setIsSchedulingModalOpen(true)}
                 >
-                  <a href="https://calendly.com/phaison" target="_blank" rel="noopener noreferrer">
-                    <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
-                      <rect x="3" y="4" width="18" height="16" rx="2" fill="none" stroke="currentColor" strokeWidth="2"/>
-                      <path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" strokeWidth="2" fill="none"/>
-                    </svg>
-                    Agendar conversa
-                  </a>
+                  <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                    <rect x="3" y="4" width="18" height="16" rx="2" fill="none" stroke="currentColor" strokeWidth="2"/>
+                    <path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" strokeWidth="2" fill="none"/>
+                  </svg>
+                  Agendar conversa
                 </Button>
                 <Button variant="outline" size="lg" asChild>
                   <Link href="/projects">Veja meus projetos</Link>
@@ -984,17 +986,15 @@ export default function HomePage() {
               {/* Buttons */}
               <div className="flex justify-center gap-4 flex-wrap">
                 <Button
-                  asChild
                   size="lg"
                   className="bg-primary hover:bg-primary/90"
+                  onClick={() => setIsSchedulingModalOpen(true)}
                 >
-                  <a href="https://calendly.com/phaison" target="_blank" rel="noopener noreferrer">
-                    <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
-                      <rect x="3" y="4" width="18" height="16" rx="2" fill="none" stroke="currentColor" strokeWidth="2"/>
-                      <path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" strokeWidth="2" fill="none"/>
-                    </svg>
-                    Agendar conversa
-                  </a>
+                  <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                    <rect x="3" y="4" width="18" height="16" rx="2" fill="none" stroke="currentColor" strokeWidth="2"/>
+                    <path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" strokeWidth="2" fill="none"/>
+                  </svg>
+                  Agendar conversa
                 </Button>
                 <Button variant="outline" size="lg">
                   <Link href="/projects">Ver projetos</Link>
@@ -1031,6 +1031,12 @@ export default function HomePage() {
       </main>
 
       <Footer />
+
+      {/* Scheduling Modal */}
+      <SchedulingModal 
+        isOpen={isSchedulingModalOpen} 
+        onClose={() => setIsSchedulingModalOpen(false)} 
+      />
     </div>
   );
 }
