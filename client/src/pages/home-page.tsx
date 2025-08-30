@@ -993,18 +993,22 @@ export default function HomePage() {
                 </Button>
               </div>
 
-              {/* Floating Back to Top Button */}
+              {/* Back to Top Button */}
               <div className="flex justify-center mt-12">
                 <button
                   onClick={() => {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="group bg-primary/20 hover:bg-primary/30 text-white border border-primary/20 hover:border-primary/40 backdrop-blur-sm rounded-full p-4 transition-all duration-300 animate-bounce hover:animate-none purple-glow"
+                  className="group bg-primary/20 hover:bg-primary/30 text-white border border-primary/20 hover:border-primary/40 backdrop-blur-sm rounded-full p-4 transition-all duration-500 hover:scale-105 purple-glow animate-pulse"
+                  style={{
+                    animationDuration: '3s',
+                    animationIterationCount: 'infinite'
+                  }}
                   aria-label="Voltar ao topo"
                 >
                   <svg 
                     xmlns="http://www.w3.org/2000/svg" 
-                    className="h-6 w-6 transform group-hover:-translate-y-1 transition-transform duration-300" 
+                    className="h-6 w-6 transform group-hover:-translate-y-1 transition-transform duration-500" 
                     fill="none" 
                     viewBox="0 0 24 24" 
                     stroke="currentColor"
