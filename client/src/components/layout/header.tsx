@@ -12,6 +12,7 @@ export function Header() {
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const menuRef = useRef<HTMLDivElement>(null);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleLogout = () => {
     logoutMutation.mutate();
@@ -26,65 +27,71 @@ export function Header() {
     };
 
     if (isMenuOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener("mousedown", handleClickOutside);
     }
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isMenuOpen]);
 
+  // Comportamento de scroll otimizado
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       
-      // Evitar cálculos desnecessários se a posição não mudou significativamente
-      if (Math.abs(currentScrollY - lastScrollY) < 5) return;
-      
-      // Sempre mostrar o header quando estiver próximo do topo (até 150px)
-      if (currentScrollY <= 150) {
-        setIsHeaderVisible(true);
+      // Limpar timeout anterior se existir
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
       }
-      // Entre 150px e 500px: comportamento normal de esconder/mostrar
-      else if (currentScrollY > 150 && currentScrollY <= 500) {
-        if (currentScrollY > lastScrollY) {
-          setIsHeaderVisible(false);
+      
+      // Debounce para otimizar performance
+      scrollTimeoutRef.current = setTimeout(() => {
+        // Sempre mostrar no topo da página
+        if (currentScrollY <= 100) {
+          setIsHeaderVisible(true);
         } else {
-          setIsHeaderVisible(true);
+          // Comportamento de scroll: esconder ao descer, mostrar ao subir
+          if (currentScrollY > lastScrollY) {
+            // Rolando para baixo - esconder header
+            setIsHeaderVisible(false);
+            // Fechar menu mobile se estiver aberto
+            if (isMenuOpen) {
+              setIsMenuOpen(false);
+            }
+          } else {
+            // Rolando para cima - mostrar header
+            setIsHeaderVisible(true);
+          }
         }
-      }
-      // Após 500px: mostrar quando rolar para cima (diferença mínima de 30px)
-      else if (currentScrollY > 500) {
-        if (currentScrollY > lastScrollY) {
-          // Rolando para baixo - esconder
-          setIsHeaderVisible(false);
-        } else if (lastScrollY - currentScrollY >= 30) {
-          // Rolando para cima com movimento significativo - mostrar
-          setIsHeaderVisible(true);
-        }
-        // Se está rolando para cima mas menos de 30px, manter estado atual
-      }
-      
-      setLastScrollY(currentScrollY);
+        
+        setLastScrollY(currentScrollY);
+      }, 10); // Debounce de 10ms para suavidade
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
     };
-  }, [lastScrollY]);
+  }, [lastScrollY, isMenuOpen]);
 
   const isActive = (path: string) => {
     return location === path;
   };
 
   const handleScrollClick = (sectionId: string) => {
-    if (location === '/') {
+    // Fechar menu mobile ao clicar em qualquer link
+    setIsMenuOpen(false);
+    
+    if (location === "/") {
       // Já estamos na home, só fazer scroll
       const section = document.getElementById(sectionId);
       if (section) {
-        section.scrollIntoView({ behavior: 'smooth' });
+        section.scrollIntoView({ behavior: "smooth" });
       }
     } else {
       // Navegue para home e adicione parâmetro na URL para fazer scroll
@@ -92,41 +99,53 @@ export function Header() {
     }
   };
 
+  const handleMenuToggle = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <div className="relative">
       {/* Main Header - Fixed */}
-      <header 
-        className={`fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm transition-all duration-300 ease-in-out walking-light-border ${
-          isHeaderVisible ? 'translate-y-0' : '-translate-y-full'
-        } border-b border-white/10`}
+      <header
+        className={`fixed top-0 left-0 right-0 z-[9999] bg-black/90 backdrop-blur-sm border-b border-white/10 walking-light-border transition-transform duration-300 ease-out ${
+          isHeaderVisible ? "translate-y-0" : "-translate-y-full"
+        }`}
       >
         <div className="max-w-[1200px] mx-auto flex items-center justify-between py-4 px-4">
-          <Link href="/" className="flex items-center space-x-2">
+          <Link href="/" className="flex items-center space-x-2 z-10">
             <img src={logoPath} alt="Phaison Logo" className="h-[24px]" />
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden items-center space-x-8 md:flex flex-1 justify-center">
-            <button 
-              onClick={() => handleScrollClick('hero')}
-              className={`transition-colors duration-200 ${location === "/" ? "text-white" : "text-white/70 hover:text-primary"}`}
+            <button
+              onClick={() => handleScrollClick("hero")}
+              className={`transition-colors duration-200 hover:text-primary ${
+                location === "/"
+                  ? "text-white"
+                  : "text-white/70"
+              }`}
             >
               Início
             </button>
-            <Link 
-              href="/projects" 
-              className={`transition-colors duration-200 ${isActive("/projects") ? "text-white" : "text-white/70 hover:text-primary"}`}
+            <Link
+              href="/projects"
+              className={`transition-colors duration-200 hover:text-primary ${
+                isActive("/projects")
+                  ? "text-white"
+                  : "text-white/70"
+              }`}
             >
               Projetos
             </Link>
-            <button 
-              onClick={() => handleScrollClick('about')}
+            <button
+              onClick={() => handleScrollClick("about")}
               className="transition-colors duration-200 text-white/70 hover:text-primary"
             >
               Sobre Mim
             </button>
-            <button 
-              onClick={() => handleScrollClick('contact')}
+            <button
+              onClick={() => handleScrollClick("contact")}
               className="transition-colors duration-200 text-white/70 hover:text-primary"
             >
               Contato
@@ -134,68 +153,70 @@ export function Header() {
           </nav>
 
           {/* Mobile Menu Button */}
-          <Button 
-            variant="ghost" 
-            className="p-0 md:hidden" 
+          <Button
+            variant="ghost"
+            className="p-0 md:hidden z-10"
             aria-label="Toggle menu"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            onClick={handleMenuToggle}
           >
-            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {isMenuOpen ? (
+              <X className="h-6 w-6 text-white" />
+            ) : (
+              <Menu className="h-6 w-6 text-white" />
+            )}
           </Button>
         </div>
       </header>
 
       {/* Mobile Menu - Fixed and positioned below header */}
-      <div className={`
-        fixed top-[72px] left-0 right-0 z-40 md:hidden bg-black/95 backdrop-blur-sm border-b border-white/10
-        transition-all duration-500 ease-in-out overflow-hidden mobile-menu-light-border
-        ${isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 border-b-0'}
-      `}>
+      <div
+        ref={menuRef}
+        className={`fixed left-0 right-0 z-[9998] md:hidden bg-black/95 backdrop-blur-sm border-b border-white/10 mobile-menu-light-border transition-all duration-300 ease-out overflow-hidden ${
+          isMenuOpen ? "top-[73px] max-h-96 opacity-100" : "top-[73px] max-h-0 opacity-0 border-b-0"
+        } ${
+          isHeaderVisible ? "" : "-translate-y-[73px]"
+        }`}
+      >
         <nav className="max-w-[1200px] mx-auto px-4 py-6">
           <div className="flex flex-col space-y-6">
-            <button 
-              onClick={() => {
-                handleScrollClick('hero');
-                setIsMenuOpen(false);
-              }}
-              className={`text-lg font-medium text-left transition-colors duration-200 ${
-                location === "/" ? "text-white" : "text-white/70 hover:text-white"
+            <button
+              onClick={() => handleScrollClick("hero")}
+              className={`text-lg font-medium text-left transition-colors duration-200 hover:text-white ${
+                location === "/"
+                  ? "text-white"
+                  : "text-white/70"
               }`}
             >
               Início
             </button>
-            <Link 
-              href="/projects" 
-              className={`text-lg font-medium transition-colors duration-200 ${
-                isActive("/projects") ? "text-white" : "text-white/70 hover:text-white"
+            <Link
+              href="/projects"
+              className={`text-lg font-medium transition-colors duration-200 hover:text-white ${
+                isActive("/projects")
+                  ? "text-white"
+                  : "text-white/70"
               }`}
               onClick={() => setIsMenuOpen(false)}
             >
               Projetos
             </Link>
-            <button 
-              onClick={() => {
-                handleScrollClick('about');
-                setIsMenuOpen(false);
-              }}
+            <button
+              onClick={() => handleScrollClick("about")}
               className="text-lg font-medium text-left text-white/70 hover:text-white transition-colors duration-200"
             >
               Sobre Mim
             </button>
-            <button 
-              onClick={() => {
-                handleScrollClick('contact');
-                setIsMenuOpen(false);
-              }}
+            <button
+              onClick={() => handleScrollClick("contact")}
               className="text-lg font-medium text-left text-white/70 hover:text-white transition-colors duration-200"
             >
               Contato
             </button>
-            
+
             {/* Portfolio Button */}
-            <a 
-              href="https://figma.com/@phaison" 
-              target="_blank" 
+            <a
+              href="https://figma.com/@phaison"
+              target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 text-lg font-medium text-left text-white/70 hover:text-white transition-colors duration-200"
               onClick={() => setIsMenuOpen(false)}

@@ -56,11 +56,13 @@ app.use((req, res, next) => {
     serveStatic(app);
   }
 
-  // ALWAYS serve the app on port 5000
+  // Serve the app on port 8080 with external access enabled
   // this serves both the API and the client.
-  // It is the only port that is not firewalled.
-  const port = 5000;
-  server.listen(port, "localhost", () => {
-    log(`serving on port ${port}`);
+  const port = 8080;
+  server.listen(port, "0.0.0.0", () => {
+    log(`🚀 Server running on:`);
+    log(`  ➜ Local:   http://localhost:${port}`);
+    log(`  ➜ Network: http://192.168.12.9:${port}`);
+    log(`  ➜ External: Accessible from any device on your network`);
   });
 })();

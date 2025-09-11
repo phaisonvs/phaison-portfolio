@@ -77,7 +77,9 @@ export default function ProjectDetail() {
           </Button>
           
           <div className="text-center py-12">
-            <h3 className="text-2xl font-semibold mb-2">Project not found</h3>
+            <h3 className="text-2xl font-normal mb-2" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
+              Project not found
+            </h3>
             <p className="text-gray-400 mb-6">
               The project you're looking for doesn't exist or has been removed.
             </p>
@@ -107,7 +109,9 @@ export default function ProjectDetail() {
 
         {/* Mobile Layout: Project info below back button */}
         <div className="block lg:hidden mb-8">
-          <h1 className="text-3xl font-semibold mb-4">{project.project.title}</h1>
+          <h1 className="text-3xl font-normal mb-4" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
+            {project.project.title}
+          </h1>
           
           <div className="flex items-center mb-6">
             <Avatar className="h-10 w-10 mr-3">
@@ -133,7 +137,9 @@ export default function ProjectDetail() {
           <div className="lg:col-span-8">
             {/* Desktop Layout: Project info above gallery */}
             <div className="hidden lg:block mb-8">
-              <h1 className="text-3xl font-semibold mb-4">{project.project.title}</h1>
+              <h1 className="text-3xl font-normal mb-4" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
+                {project.project.title}
+              </h1>
               
               <div className="flex items-center mb-6">
                 <Avatar className="h-10 w-10 mr-3">
@@ -176,14 +182,18 @@ export default function ProjectDetail() {
             
             {/* Seção de recursos/funcionalidades */}
             <div className="mt-10">
-              <h2 className="text-2xl font-semibold mb-8">Características do Projeto</h2>
+              <h2 className="text-2xl font-normal mb-8" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
+                Características do Projeto
+              </h2>
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {/* Recursos com base na categoria do projeto */}
                 {project.project.category === "Website" && (
                   <>
                     <div className="bg-zinc-900 rounded-xl p-6 border border-zinc-800">
-                      <h3 className="text-xl font-medium mb-3">Design Responsivo</h3>
+                      <h3 className="text-xl font-normal mb-3" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
+                        Design Responsivo
+                      </h3>
                       <p className="text-gray-400 mb-4">
                         Experiência perfeita em todos os dispositivos, de desktops a smartphones.
                       </p>
@@ -197,7 +207,9 @@ export default function ProjectDetail() {
                     </div>
                     
                     <div className="bg-zinc-900 rounded-xl p-6 border border-zinc-800">
-                      <h3 className="text-xl font-medium mb-3">Performance Otimizada</h3>
+                      <h3 className="text-xl font-normal mb-3" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
+                        Performance Otimizada
+                      </h3>
                       <p className="text-gray-400 mb-4">
                         Carregamento rápido e experiência fluida, com SEO aprimorado para melhor visibilidade.
                       </p>
@@ -209,7 +221,9 @@ export default function ProjectDetail() {
                     </div>
                     
                     <div className="bg-zinc-900 rounded-xl p-6 border border-zinc-800">
-                      <h3 className="text-xl font-medium mb-3">Gestão de Conteúdo</h3>
+                      <h3 className="text-xl font-normal mb-3" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
+                        Gestão de Conteúdo
+                      </h3>
                       <p className="text-gray-400 mb-4">
                         Painel administrativo intuitivo para gerenciar todos os aspectos do site.
                       </p>
@@ -225,7 +239,9 @@ export default function ProjectDetail() {
                 {project.project.category === "Mobile App" && (
                   <>
                     <div className="bg-zinc-900 rounded-xl p-6 border border-zinc-800">
-                      <h3 className="text-xl font-medium mb-3">Experiência Nativa</h3>
+                      <h3 className="text-xl font-normal mb-3" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
+                        Experiência Nativa
+                      </h3>
                       <p className="text-gray-400 mb-4">
                         Desenvolvido para iOS e Android utilizando as melhores práticas de cada plataforma.
                       </p>
@@ -239,7 +255,9 @@ export default function ProjectDetail() {
                     </div>
                     
                     <div className="bg-zinc-900 rounded-xl p-6 border border-zinc-800">
-                      <h3 className="text-xl font-medium mb-3">Funcionamento Offline</h3>
+                      <h3 className="text-xl font-normal mb-3" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
+                        Funcionamento Offline
+                      </h3>
                       <p className="text-gray-400 mb-4">
                         Acesso às funcionalidades principais mesmo sem conexão com internet.
                       </p>
@@ -251,7 +269,9 @@ export default function ProjectDetail() {
                     </div>
                     
                     <div className="bg-zinc-900 rounded-xl p-6 border border-zinc-800">
-                      <h3 className="text-xl font-medium mb-3">Notificações Push</h3>
+                      <h3 className="text-xl font-normal mb-3" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
+                        Notificações Push
+                      </h3>
                       <p className="text-gray-400 mb-4">
                         Sistema de engajamento com notificações personalizadas baseadas no perfil do usuário.
                       </p>
@@ -268,7 +288,9 @@ export default function ProjectDetail() {
                 {(project.project.category !== "Website" && project.project.category !== "Mobile App") && (
                   <>
                     <div className="bg-zinc-900 rounded-xl p-6 border border-zinc-800">
-                      <h3 className="text-xl font-medium mb-3">Design Intuitivo</h3>
+                      <h3 className="text-xl font-normal mb-3" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
+                        Design Intuitivo
+                      </h3>
                       <p className="text-gray-400 mb-4">
                         Interface pensada para facilitar a interação e proporcionar a melhor experiência de usuário.
                       </p>
@@ -282,7 +304,9 @@ export default function ProjectDetail() {
                     </div>
                     
                     <div className="bg-zinc-900 rounded-xl p-6 border border-zinc-800">
-                      <h3 className="text-xl font-medium mb-3">Personalização</h3>
+                      <h3 className="text-xl font-normal mb-3" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
+                        Personalização
+                      </h3>
                       <p className="text-gray-400 mb-4">
                         Múltiplas opções de customização para atender às necessidades específicas de cada cliente.
                       </p>
@@ -294,7 +318,9 @@ export default function ProjectDetail() {
                     </div>
                     
                     <div className="bg-zinc-900 rounded-xl p-6 border border-zinc-800">
-                      <h3 className="text-xl font-medium mb-3">Suporte Premium</h3>
+                      <h3 className="text-xl font-normal mb-3" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
+                        Suporte Premium
+                      </h3>
                       <p className="text-gray-400 mb-4">
                         Equipe especializada disponível para garantir o sucesso do projeto em todas as etapas.
                       </p>
@@ -314,7 +340,9 @@ export default function ProjectDetail() {
                   <div className="p-6 flex flex-col justify-center">
                     {project.project.category === "Website" && (
                       <>
-                        <h3 className="text-xl font-medium mb-2">Integração com APIs</h3>
+                        <h3 className="text-xl font-normal mb-2" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
+                          Integração com APIs
+                        </h3>
                         <p className="text-gray-400 mb-4">
                           Conecte seu site a sistemas externos facilmente através de APIs RESTful e GraphQL.
                         </p>
@@ -322,7 +350,9 @@ export default function ProjectDetail() {
                     )}
                     {project.project.category === "Mobile App" && (
                       <>
-                        <h3 className="text-xl font-medium mb-2">Biometria e Segurança</h3>
+                        <h3 className="text-xl font-normal mb-2" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
+                          Biometria e Segurança
+                        </h3>
                         <p className="text-gray-400 mb-4">
                           Autenticação avançada com reconhecimento facial e digital para maior segurança.
                         </p>
@@ -330,7 +360,9 @@ export default function ProjectDetail() {
                     )}
                     {(project.project.category !== "Website" && project.project.category !== "Mobile App") && (
                       <>
-                        <h3 className="text-xl font-medium mb-2">Análise de Dados</h3>
+                        <h3 className="text-xl font-normal mb-2" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
+                          Análise de Dados
+                        </h3>
                         <p className="text-gray-400 mb-4">
                           Visualizações interativas e relatórios detalhados para tomada de decisões inteligentes.
                         </p>
@@ -360,7 +392,9 @@ export default function ProjectDetail() {
                 <div className="flex items-start space-x-4">
                   {/* Project Info - no image */}
                   <div className="flex-1 min-w-0 space-y-2">
-                    <h3 className="font-semibold text-white truncate text-lg">{project.project.title}</h3>
+                    <h3 className="font-normal truncate text-lg" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
+                      {project.project.title}
+                    </h3>
                     <div className="flex items-center space-x-2 text-sm text-gray-400">
                       <Avatar className="h-6 w-6">
                         <AvatarImage

@@ -42,7 +42,7 @@ export default function AboutPage() {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               {/* Text Content */}
               <div className="animate-on-scroll">
-                <h1 className="text-4xl md:text-5xl font-semibold leading-tight mb-6">
+                <h1 className="text-4xl md:text-5xl font-normal leading-tight mb-6" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
                   Olá, sou desenvolvedor apaixonado por criar experiências digitais incríveis
                 </h1>
                 <p className="text-lg text-gray-400 mb-8 leading-relaxed">
@@ -117,7 +117,9 @@ export default function AboutPage() {
                   className="w-10 h-10 rounded-full object-cover"
                 />
               </div>
-              <h2 className="text-3xl md:text-4xl font-semibold mb-4">Experiência Profissional</h2>
+              <h2 className="text-3xl md:text-4xl font-normal mb-4" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
+                Experiência Profissional
+              </h2>
               <p className="text-gray-400 max-w-2xl mx-auto">
                 Minha trajetória profissional construindo produtos digitais em empresas de diferentes portes e segmentos.
               </p>
@@ -158,7 +160,9 @@ export default function AboutPage() {
           <div className="max-w-[1200px] mx-auto">
             <div className="grid md:grid-cols-2 gap-12 items-center animate-on-scroll">
               <div>
-                <h2 className="text-3xl font-semibold mb-6">Minha Filosofia</h2>
+                <h2 className="text-3xl font-normal mb-6" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
+                  Minha Filosofia
+                </h2>
                 <p className="text-gray-400 mb-4 leading-relaxed">
                   Acredito que a tecnologia deve ser invisible - funcionar de forma tão natural 
                   que as pessoas nem percebam sua complexidade. Cada linha de código que escrevo 
@@ -172,15 +176,21 @@ export default function AboutPage() {
               </div>
               <div className="space-y-4">
                 <div className="p-4 border-l-4 border-primary bg-zinc-900/30 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 rounded-r-lg">
-                  <h3 className="font-medium mb-2">Código Limpo</h3>
+                  <h3 className="text-lg font-normal mb-2" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
+                    Código Limpo
+                  </h3>
                   <p className="text-sm text-gray-400">Escrevo código pensando em quem vai mantê-lo amanhã</p>
                 </div>
                 <div className="p-4 border-l-4 border-primary bg-zinc-900/30 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 rounded-r-lg">
-                  <h3 className="font-medium mb-2">Design Centrado no Usuário</h3>
+                  <h3 className="text-lg font-normal mb-2" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
+                    Design Centrado no Usuário
+                  </h3>
                   <p className="text-sm text-gray-400">Cada decisão é tomada pensando na experiência final</p>
                 </div>
                 <div className="p-4 border-l-4 border-primary bg-zinc-900/30 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 rounded-r-lg">
-                  <h3 className="font-medium mb-2">Aprendizado Contínuo</h3>
+                  <h3 className="text-lg font-normal mb-2" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
+                    Aprendizado Contínuo
+                  </h3>
                   <p className="text-sm text-gray-400">Tecnologia evolui rápido, e eu evoluo junto</p>
                 </div>
               </div>
