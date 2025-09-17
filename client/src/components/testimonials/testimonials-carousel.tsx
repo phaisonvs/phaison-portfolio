@@ -99,7 +99,7 @@ export default function TestimonialsCarousel() {
                 >
                   <div
                     className={`
-                      relative rounded-full overflow-hidden transition-all duration-500 ease-in-out border-2 w-9 h-9 md:w-12 md:h-[58px]
+                      relative rounded-full overflow-hidden transition-all duration-500 ease-in-out border-2 w-9 h-9 md:w-10 md:h-10
                       ${index > 0 ? '-ml-3 md:-ml-[15.36px]' : ''}
                       ${isActive || isHovered 
                         ? 'border-primary ring-2 ring-primary/50' 
