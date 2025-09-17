@@ -347,10 +347,6 @@ export default function HomePage() {
                 </Button>
               </div>
               
-              {/* Testimonials Carousel - desktop version inside hero */}
-              <div className="hidden md:block mt-8 animate-on-scroll">
-                <TestimonialsCarousel />
-              </div>
               
               {/* Scroll indicator - only visible on tablet/desktop */}
               <div className="hidden md:flex justify-center mt-16">
@@ -377,10 +373,6 @@ export default function HomePage() {
             </div>
           </div>
           
-          {/* Testimonials Carousel - fora do div selecionado em mobile */}
-          <div className="md:hidden mt-6 animate-on-scroll relative z-10 w-full">
-            <TestimonialsCarousel />
-          </div>
           
         </section>
 
@@ -479,6 +471,20 @@ export default function HomePage() {
               <CarouselDots api={bestApi} className="mt-4" />
             </div>
           
+        </section>
+
+        {/* Testimonials Section */}
+        <section className="py-16 relative z-20">
+          <div className="px-4 md:px-4">
+            <div className="max-w-[1200px] mx-auto">
+              <h2 className="text-2xl md:text-3xl font-medium animate-slide-left mb-12 text-center">
+                O que dizem sobre meu trabalho
+              </h2>
+              <div className="animate-on-scroll">
+                <TestimonialsCarousel />
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* Categories */}
