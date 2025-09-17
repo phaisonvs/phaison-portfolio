@@ -79,12 +79,12 @@ export default function TestimonialsCarousel() {
   const current = testimonials[currentIndex];
 
   return (
-    <div className="testimonials-carousel w-full max-w-4xl mx-auto px-4">
+    <div className="testimonials-carousel w-full max-w-6xl mx-auto px-4">
       {/* Container principal */}
-      <div className="relative bg-gradient-to-br from-gray-900/80 to-gray-800/60 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-gray-700/50">
+      <div className="relative backdrop-blur-sm rounded-2xl p-4 md:p-8 border border-gray-700/50 flex flex-row items-center gap-4 md:gap-8">
         
         {/* Mensagem central */}
-        <div className="text-center mb-8 min-h-[140px] md:min-h-[120px] flex flex-col justify-center">
+        <div className="flex-1 text-left min-h-[120px] flex flex-col justify-center">
           <div className="relative overflow-hidden">
             <blockquote 
               className="text-base md:text-lg lg:text-xl text-white font-medium leading-relaxed transition-all duration-700 ease-in-out opacity-100 transform translate-y-0"
@@ -101,26 +101,29 @@ export default function TestimonialsCarousel() {
         </div>
 
         {/* Avatar carousel */}
-        <div className="flex justify-center items-center">
-          <div className="relative flex items-center justify-center gap-2 md:gap-4">
+        <div className="flex-shrink-0">
+          <div className="relative flex items-center justify-center">
             {testimonials.map((testimonial, index) => {
               const isActive = index === currentIndex;
               const isHovered = hoveredIndex === index;
+              const avatarSize = { '--size': '48px', '--md-size': '64px' } as React.CSSProperties;
               
               return (
                 <div
                   key={testimonial.id}
-                  className="relative transition-all duration-300 ease-in-out cursor-pointer"
+                  className={`relative transition-all duration-500 ease-in-out cursor-pointer ${isActive || isHovered ? 'z-20' : 'z-10'}`}
+                  style={avatarSize}
                   onMouseEnter={() => handleMouseEnter(index)}
                   onMouseLeave={handleMouseLeave}
                   data-testid={`testimonial-avatar-${index}`}
                 >
                   <div
                     className={`
-                      relative rounded-full overflow-hidden transition-all duration-500 ease-in-out transform
+                      relative rounded-full overflow-hidden transition-all duration-500 ease-in-out border-2 w-[var(--size)] h-[var(--size)] md:w-[var(--md-size)] md:h-[var(--md-size)]
+                      ${index > 0 ? 'ml-[calc(var(--size)*-0.2)] md:ml-[calc(var(--md-size)*-0.2)]' : ''}
                       ${isActive || isHovered 
-                        ? 'w-12 h-12 md:w-16 md:h-16 ring-2 ring-primary ring-offset-2 ring-offset-gray-900/50 scale-110' 
-                        : 'w-10 h-10 md:w-12 md:h-12 hover:scale-105'
+                        ? 'border-primary ring-2 ring-primary/50 shadow-lg shadow-primary/30' 
+                        : 'border-gray-600 hover:border-gray-400'
                       }
                     `}
                   >
@@ -150,7 +153,7 @@ export default function TestimonialsCarousel() {
         </div>
 
         {/* Progress bar */}
-        <div className="mt-6 flex justify-center">
+        <div className="mt-6 md:mt-0 md:absolute md:bottom-6 md:left-1/2 md:transform md:-translate-x-1/2 flex justify-center">
           <div className="flex gap-1">
             {testimonials.map((_, index) => (
               <div
