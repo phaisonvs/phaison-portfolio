@@ -13,6 +13,7 @@ import { ArrowLeft, Loader2 } from "lucide-react";
 import { ImageGallery } from "@/components/projects/image-gallery";
 import { PinterestGallery } from "@/components/projects/pinterest-gallery";
 import { AppScreensCarousel } from "@/components/projects/app-screens-carousel";
+import { StoriesCarousel } from "@/components/projects/stories-carousel";
 
 export default function ProjectDetail() {
   const { id } = useParams<{ id: string }>();
@@ -340,7 +341,7 @@ export default function ProjectDetail() {
                 )}
               </div>
               
-              {/* Banner específico baseado na categoria */}
+              {/* Banner específico baseado na categoria - Padronizado para todos os projetos */}
               <div className="mt-8 bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800">
                 <div className="grid grid-cols-1 md:grid-cols-2">
                   <div className="p-6 flex flex-col justify-center">
@@ -354,17 +355,33 @@ export default function ProjectDetail() {
                     )}
                     {project.project.category === "Mobile App" && (
                       <>
-                        <h3 className="text-xl font-medium mb-2">Biometria e Segurança</h3>
+                        <h3 className="text-xl font-medium mb-2">Integração com APIs</h3>
                         <p className="text-gray-400 mb-4">
-                          Autenticação avançada com reconhecimento facial e digital para maior segurança.
+                          Conecte seu aplicativo com serviços externos e APIs nativas para funcionalidades avançadas.
                         </p>
                       </>
                     )}
-                    {(project.project.category !== "Website" && project.project.category !== "Mobile App") && (
+                    {project.project.category === "3D Design" && (
                       <>
-                        <h3 className="text-xl font-medium mb-2">Análise de Dados</h3>
+                        <h3 className="text-xl font-medium mb-2">Integração com APIs</h3>
                         <p className="text-gray-400 mb-4">
-                          Visualizações interativas e relatórios detalhados para tomada de decisões inteligentes.
+                          Integração com ferramentas 3D e plataformas de renderização para workflows otimizados.
+                        </p>
+                      </>
+                    )}
+                    {project.project.category === "UI/UX" && (
+                      <>
+                        <h3 className="text-xl font-medium mb-2">Integração com APIs</h3>
+                        <p className="text-gray-400 mb-4">
+                          Prototipagem conectada com dados reais através de APIs para testes mais precisos.
+                        </p>
+                      </>
+                    )}
+                    {project.project.category === "Branding" && (
+                      <>
+                        <h3 className="text-xl font-medium mb-2">Integração com APIs</h3>
+                        <p className="text-gray-400 mb-4">
+                          Sistemas de identidade digital integrados com plataformas e ferramentas de marketing.
                         </p>
                       </>
                     )}
@@ -380,6 +397,40 @@ export default function ProjectDetail() {
                     />
                   </div>
                 </div>
+              </div>
+
+              {/* Stories Carousel - Novo carrossel de destaques do projeto */}
+              <div className="mt-10">
+                <StoriesCarousel 
+                  stories={[
+                    {
+                      image: project.project.imageUrl,
+                      title: "Visual Principal",
+                      description: "Design principal que define a identidade e propósito do projeto"
+                    },
+                    {
+                      image: (project.project.galleryImages && project.project.galleryImages.length > 0) 
+                        ? project.project.galleryImages[0] 
+                        : project.project.imageUrl,
+                      title: "Detalhes da Interface",
+                      description: "Elementos cuidadosamente pensados para a melhor experiência do usuário"
+                    },
+                    {
+                      image: (project.project.galleryImages && project.project.galleryImages.length > 1) 
+                        ? project.project.galleryImages[1] 
+                        : project.project.imageUrl,
+                      title: "Funcionalidades",
+                      description: "Recursos desenvolvidos para atender às necessidades específicas dos usuários"
+                    },
+                    {
+                      image: (project.project.galleryImages && project.project.galleryImages.length > 2) 
+                        ? project.project.galleryImages[2] 
+                        : project.project.imageUrl,
+                      title: "Resultado Final",
+                      description: "Produto finalizado com todos os detalhes e funcionalidades implementadas"
+                    }
+                  ]}
+                />
               </div>
             </div>
           </div>
