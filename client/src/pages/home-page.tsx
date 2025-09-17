@@ -51,6 +51,7 @@ import {
 } from "@/components/ui/carousel";
 import { CarouselDots } from "@/components/ui/carousel-dots";
 import { SchedulingModal } from "@/components/scheduling/scheduling-modal";
+import TestimonialsCarousel from "@/components/testimonials/testimonials-carousel";
 import logoPath from "@assets/logo-phaison_1749772164016.png";
 
 export default function HomePage() {
@@ -324,6 +325,11 @@ export default function HomePage() {
                 <Button variant="outline" size="lg" asChild>
                   <Link href="/projects">Veja meus projetos</Link>
                 </Button>
+              </div>
+              
+              {/* Testimonials Carousel */}
+              <div className="mt-16 mb-8 animate-on-scroll">
+                <TestimonialsCarousel />
               </div>
               
               {/* Scroll indicator - only visible on tablet/desktop */}
