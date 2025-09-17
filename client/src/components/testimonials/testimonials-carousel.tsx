@@ -89,7 +89,7 @@ export default function TestimonialsCarousel() {
             {testimonials.map((testimonial, index) => {
               const isActive = index === currentIndex;
               const isHovered = hoveredIndex === index;
-              const avatarSize = { '--size': '48px', '--md-size': '64px' } as React.CSSProperties;
+              const avatarSize = { '--size': '48px', '--height': '58px' } as React.CSSProperties;
               
               return (
                 <div
@@ -102,8 +102,8 @@ export default function TestimonialsCarousel() {
                 >
                   <div
                     className={`
-                      relative rounded-full overflow-hidden transition-all duration-500 ease-in-out border-2 w-[var(--size)] h-[var(--size)] md:w-[var(--md-size)] md:h-[var(--md-size)]
-                      ${index > 0 ? 'ml-[calc(var(--size)*-0.32)] md:ml-[calc(var(--md-size)*-0.32)]' : ''}
+                      relative rounded-full overflow-hidden transition-all duration-500 ease-in-out border-2 w-[var(--size)] h-[var(--height)]
+                      ${index > 0 ? 'ml-[calc(var(--size)*-0.32)]' : ''}
                       ${isActive || isHovered 
                         ? 'border-primary ring-2 ring-primary/50' 
                         : 'border-gray-600 hover:border-gray-400'
@@ -138,7 +138,7 @@ export default function TestimonialsCarousel() {
         <div className="flex-1 text-center md:text-left min-h-[120px] flex flex-col justify-center max-w-xl">
           <div className="relative overflow-hidden">
             <blockquote 
-              className="text-lg md:text-xl text-gray-400 font-medium leading-relaxed transition-all duration-700 ease-in-out opacity-100 transform translate-y-0 break-words"
+              className="text-base text-gray-400 font-medium leading-relaxed transition-all duration-700 ease-in-out opacity-100 transform translate-y-0 break-words"
               key={`message-${current.id}`}
               data-testid="testimonial-message"
             >

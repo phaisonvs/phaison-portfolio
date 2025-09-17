@@ -313,7 +313,7 @@ export default function HomePage() {
               <div className="flex justify-center gap-4 flex-wrap animate-on-scroll">
                 <Button
                   size="lg"
-                  className="bg-primary hover:bg-primary/90"
+                  className="hidden md:flex bg-primary hover:bg-primary/90"
                   onClick={() => setIsSchedulingModalOpen(true)}
                 >
                   <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
@@ -325,11 +325,6 @@ export default function HomePage() {
                 <Button variant="outline" size="lg" asChild>
                   <Link href="/projects">Veja meus projetos</Link>
                 </Button>
-              </div>
-              
-              {/* Testimonials Carousel */}
-              <div className="mt-16 mb-8 animate-on-scroll">
-                <TestimonialsCarousel />
               </div>
               
               {/* Scroll indicator - only visible on tablet/desktop */}
@@ -353,6 +348,20 @@ export default function HomePage() {
                     </div>
                   </button>
                 </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Testimonials Carousel - fora do container em mobile */}
+          <div className="md:hidden px-4 mt-8 animate-on-scroll">
+            <TestimonialsCarousel />
+          </div>
+          
+          {/* Testimonials Carousel - dentro do container em desktop */}
+          <div className="hidden md:block">
+            <div className="max-w-[1200px] mx-auto text-center relative z-10">
+              <div className="mt-16 mb-8 animate-on-scroll">
+                <TestimonialsCarousel />
               </div>
             </div>
           </div>
