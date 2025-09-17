@@ -477,9 +477,6 @@ export default function HomePage() {
         <section className="py-16 relative z-20">
           <div className="px-4 md:px-4">
             <div className="max-w-[1200px] mx-auto">
-              <h2 className="text-2xl md:text-3xl font-medium animate-slide-left mb-12 text-center">
-                O que dizem sobre meu trabalho
-              </h2>
               <div className="animate-on-scroll">
                 <TestimonialsCarousel />
               </div>
@@ -594,69 +591,69 @@ export default function HomePage() {
               className="w-full"
             >
               <div className="relative overflow-hidden">
-                <CarouselContent className="md:-ml-1 flex gap-2 pl-4 md:pl-0" data-carousel-content>
-                    <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
-                      <PluginCard
-                        title="Figma"
-                        icon={FaFigma}
-                        iconBgColor="bg-[#836DF1]"
-                      />
+                <CarouselContent className="md:-ml-1 flex gap-4 pl-4 md:pl-0" data-carousel-content>
+                    {/* Primeiro grupo - Figma e GitHub */}
+                    <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(50%-0.5rem)] lg:basis-[calc(33.33%-0.5rem)]" data-carousel-item>
+                      <div className="flex flex-col gap-4">
+                        <PluginCard
+                          title="Figma"
+                          icon={FaFigma}
+                          iconBgColor="bg-[#836DF1]"
+                        />
+                        <PluginCard
+                          title="GitHub"
+                          icon={FaGithub}
+                          iconBgColor="bg-gray-700"
+                        />
+                      </div>
                     </CarouselItem>
 
-                    <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
-                      <PluginCard
-                        title="GitHub"
-                        icon={FaGithub}
-                        iconBgColor="bg-gray-700"
-                      />
+                    {/* Segundo grupo - HTML e CSS */}
+                    <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(50%-0.5rem)] lg:basis-[calc(33.33%-0.5rem)]" data-carousel-item>
+                      <div className="flex flex-col gap-4">
+                        <PluginCard
+                          title="HTML"
+                          icon={FaHtml5}
+                          iconBgColor="bg-orange-500"
+                        />
+                        <PluginCard
+                          title="CSS"
+                          icon={FaCss3Alt}
+                          iconBgColor="bg-blue-500"
+                        />
+                      </div>
                     </CarouselItem>
 
-                    <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
-                      <PluginCard
-                        title="HTML"
-                        icon={FaHtml5}
-                        iconBgColor="bg-orange-500"
-                      />
+                    {/* Terceiro grupo - JavaScript e Photoshop */}
+                    <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(50%-0.5rem)] lg:basis-[calc(33.33%-0.5rem)]" data-carousel-item>
+                      <div className="flex flex-col gap-4">
+                        <PluginCard
+                          title="JavaScript"
+                          icon={FaJs}
+                          iconBgColor="bg-yellow-500"
+                        />
+                        <PluginCard
+                          title="Photoshop"
+                          icon={SiAdobephotoshop}
+                          iconBgColor="bg-blue-600"
+                        />
+                      </div>
                     </CarouselItem>
 
-                    <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
-                      <PluginCard
-                        title="CSS"
-                        icon={FaCss3Alt}
-                        iconBgColor="bg-blue-500"
-                      />
-                    </CarouselItem>
-
-                    <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
-                      <PluginCard
-                        title="JavaScript"
-                        icon={FaJs}
-                        iconBgColor="bg-yellow-500"
-                      />
-                    </CarouselItem>
-
-                    <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
-                      <PluginCard
-                        title="Photoshop"
-                        icon={SiAdobephotoshop}
-                        iconBgColor="bg-blue-600"
-                      />
-                    </CarouselItem>
-
-                    <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
-                      <PluginCard
-                        title="Illustrator"
-                        icon={SiAdobeillustrator}
-                        iconBgColor="bg-orange-600"
-                      />
-                    </CarouselItem>
-
-                    <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
-                      <PluginCard
-                        title="After Effects"
-                        icon={SiAdobeaftereffects}
-                        iconBgColor="bg-[#836DF1]"
-                      />
+                    {/* Quarto grupo - Illustrator e After Effects */}
+                    <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(50%-0.5rem)] lg:basis-[calc(33.33%-0.5rem)]" data-carousel-item>
+                      <div className="flex flex-col gap-4">
+                        <PluginCard
+                          title="Illustrator"
+                          icon={SiAdobeillustrator}
+                          iconBgColor="bg-orange-600"
+                        />
+                        <PluginCard
+                          title="After Effects"
+                          icon={SiAdobeaftereffects}
+                          iconBgColor="bg-[#836DF1]"
+                        />
+                      </div>
                     </CarouselItem>
                   </CarouselContent>
 

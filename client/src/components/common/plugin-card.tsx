@@ -14,11 +14,11 @@ export function PluginCard({ title, description, icon: Icon, iconBgColor }: Plug
   return (
     <Card className="bg-zinc-900 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 h-full">
       <CardContent className="p-4 h-full flex flex-col justify-center">
-        <div className="flex items-center mb-4">
-          <div className={`h-10 w-10 rounded-xl ${iconBgColor} flex items-center justify-center mr-3`}>
+        <div className="flex items-start mb-4">
+          <div className={`h-10 w-10 rounded-xl ${iconBgColor} flex items-center justify-center mr-3 flex-shrink-0`}>
             <Icon className="h-6 w-6 text-white" size={24} />
           </div>
-          <h3 className="font-medium">{title}</h3>
+          <h3 className="font-medium leading-tight pt-1">{title}</h3>
         </div>
         {description && <p className="text-sm text-gray-400">{description}</p>}
       </CardContent>
