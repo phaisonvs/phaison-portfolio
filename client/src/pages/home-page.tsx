@@ -34,6 +34,7 @@ import {
   FaHtml5,
   FaCss3Alt,
   FaJs,
+  FaWhatsapp,
 } from "react-icons/fa";
 import {
   SiAdobe,
@@ -347,13 +348,12 @@ export default function HomePage() {
                 <Button
                   size="lg"
                   className="md:hidden bg-primary hover:bg-primary/90"
-                  onClick={() => setIsSchedulingModalOpen(true)}
+                  asChild
                 >
-                  <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
-                    <rect x="3" y="4" width="18" height="16" rx="2" fill="none" stroke="currentColor" strokeWidth="2"/>
-                    <path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" strokeWidth="2" fill="none"/>
-                  </svg>
-                  Agendar conversa
+                  <a href="https://wa.me/5531992031320?text=Oi%2C%20Phaison!%20Venho%20do%20seu%20site%20portf%C3%B3lio%2C%20est%C3%A1%20dispon%C3%ADvel%20para%20uma%20conversa%3F" target="_blank" rel="noopener noreferrer">
+                    <FaWhatsapp className="mr-2 h-4 w-4" />
+                    Conversar com Phaison
+                  </a>
                 </Button>
                 <Button variant="outline" size="lg" asChild>
                   <Link href="/projects">Veja meus projetos</Link>
@@ -1016,13 +1016,12 @@ export default function HomePage() {
                 <Button
                   size="lg"
                   className="bg-primary hover:bg-primary/90"
-                  onClick={() => setIsSchedulingModalOpen(true)}
+                  asChild
                 >
-                  <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
-                    <rect x="3" y="4" width="18" height="16" rx="2" fill="none" stroke="currentColor" strokeWidth="2"/>
-                    <path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" strokeWidth="2" fill="none"/>
-                  </svg>
-                  Agendar conversa
+                  <a href="https://wa.me/5531992031320?text=Oi%2C%20Phaison!%20Venho%20do%20seu%20site%20portf%C3%B3lio%2C%20est%C3%A1%20dispon%C3%ADvel%20para%20uma%20conversa%3F" target="_blank" rel="noopener noreferrer">
+                    <FaWhatsapp className="mr-2 h-4 w-4" />
+                    Conversar com Phaison
+                  </a>
                 </Button>
                 <Button variant="outline" size="lg">
                   <Link href="/projects">Ver projetos</Link>
