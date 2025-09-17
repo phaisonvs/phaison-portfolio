@@ -14,10 +14,7 @@ run = ["npm", "run", "start"]
 [[ports]]
 localPort = 5000
 externalPort = 80
-
-[[ports]]
-localPort = 45285
-externalPort = 3000
+exposeLocalhost = true
 
 [workflows]
 runButton = "Project"
