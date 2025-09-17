@@ -3,6 +3,7 @@ import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/use-auth";
 import { Menu, X } from "lucide-react";
+import { FaFigma } from "react-icons/fa";
 import logoPath from "@assets/logo-phaison_1749772164016.png";
 
 export function Header() {
@@ -125,12 +126,25 @@ export function Header() {
             >
               Sobre Mim
             </button>
-            <button 
-              onClick={() => handleScrollClick('contact')}
-              className="transition-colors duration-200 text-white/70 hover:text-primary"
-            >
-              Contato
-            </button>
+            <div className="flex items-center space-x-2">
+              <button 
+                onClick={() => handleScrollClick('contact')}
+                className="transition-colors duration-200 text-white/70 hover:text-primary"
+              >
+                Contato
+              </button>
+              <a 
+                href="https://figma.com/@phaison" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group transition-colors duration-200 text-white/70 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded"
+                title="Portfolio no Figma"
+                aria-label="Acessar portfolio no Figma"
+                data-testid="link-figma-portfolio"
+              >
+                <FaFigma className="h-5 w-5 group-hover:scale-110 transition-transform duration-200" />
+              </a>
+            </div>
           </nav>
 
           {/* Mobile Menu Button */}

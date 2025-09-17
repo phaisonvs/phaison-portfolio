@@ -51,7 +51,6 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import { CarouselDots } from "@/components/ui/carousel-dots";
-import { SchedulingModal } from "@/components/scheduling/scheduling-modal";
 import TestimonialsCarousel from "@/components/testimonials/testimonials-carousel";
 import logoPath from "@assets/logo-phaison_1749772164016.png";
 
@@ -73,8 +72,6 @@ export default function HomePage() {
   // Animation on scroll
   const animatedElements = useRef<HTMLElement[]>([]);
 
-  // Scheduling modal state
-  const [isSchedulingModalOpen, setIsSchedulingModalOpen] = useState(false);
 
   // Enhanced parallax effect with mobile touch support
   useEffect(() => {
@@ -347,10 +344,10 @@ export default function HomePage() {
               <div className="flex justify-center gap-4 flex-wrap hero-rise-up">
                 <Button
                   size="lg"
-                  className="md:hidden bg-primary hover:bg-primary/90"
+                  className="bg-primary hover:bg-primary/90"
                   asChild
                 >
-                  <a href="https://wa.me/5531992031320?text=Oi%2C%20Phaison!%20Venho%20do%20seu%20site%20portf%C3%B3lio%2C%20est%C3%A1%20dispon%C3%ADvel%20para%20uma%20conversa%3F" target="_blank" rel="noopener noreferrer">
+                  <a href="https://wa.me/5531992031320?text=Oi%2C%20Phaison!%20Venho%20do%20seu%20site%20portf%C3%B3lio%2C%20est%C3%A1%20dispon%C3%ADvel%20para%20uma%20conversa%3F" target="_blank" rel="noopener noreferrer" data-testid="button-whatsapp-hero" aria-label="Iniciar conversa no WhatsApp">
                     <FaWhatsapp className="mr-2 h-4 w-4" />
                     Conversar com Phaison
                   </a>
@@ -1018,7 +1015,7 @@ export default function HomePage() {
                   className="bg-primary hover:bg-primary/90"
                   asChild
                 >
-                  <a href="https://wa.me/5531992031320?text=Oi%2C%20Phaison!%20Venho%20do%20seu%20site%20portf%C3%B3lio%2C%20est%C3%A1%20dispon%C3%ADvel%20para%20uma%20conversa%3F" target="_blank" rel="noopener noreferrer">
+                  <a href="https://wa.me/5531992031320?text=Oi%2C%20Phaison!%20Venho%20do%20seu%20site%20portf%C3%B3lio%2C%20est%C3%A1%20dispon%C3%ADvel%20para%20uma%20conversa%3F" target="_blank" rel="noopener noreferrer" data-testid="button-whatsapp-contact" aria-label="Iniciar conversa no WhatsApp">
                     <FaWhatsapp className="mr-2 h-4 w-4" />
                     Conversar com Phaison
                   </a>
@@ -1059,11 +1056,6 @@ export default function HomePage() {
 
       <Footer />
 
-      {/* Scheduling Modal */}
-      <SchedulingModal 
-        isOpen={isSchedulingModalOpen} 
-        onClose={() => setIsSchedulingModalOpen(false)} 
-      />
     </div>
   );
 }
