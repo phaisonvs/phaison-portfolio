@@ -142,8 +142,8 @@ export function Header() {
                   aria-label="Acessar portfolio no Figma"
                   data-testid="link-figma-portfolio"
                 >
-                  <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center group-hover:scale-110 transition-all duration-200">
-                    <FaFigma className="h-4 w-4 text-black" />
+                  <div className="w-8 h-8 rounded-full bg-zinc-900/80 border-2 border-primary/60 flex items-center justify-center group-hover:scale-110 group-hover:border-primary group-hover:shadow-lg group-hover:shadow-primary/20 transition-all duration-200">
+                    <FaFigma className="h-4 w-4 text-white" />
                   </div>
                 </a>
                 
