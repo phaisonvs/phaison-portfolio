@@ -288,7 +288,7 @@ export default function HomePage() {
         {/* Hero section */}
         <section
           id="hero"
-          className="py-16 md:py-0 px-4 h-screen flex items-center justify-center relative overflow-hidden"
+          className="py-16 md:py-0 px-4 md:h-screen flex flex-col items-center justify-start md:justify-center relative overflow-hidden"
         >
           {/* Phaison Background Image */}
           <div className="absolute inset-0 phaison-bg mobile-hero-breathing"></div>
@@ -298,7 +298,7 @@ export default function HomePage() {
           
 
 
-          <div className="max-w-[1200px] mx-auto text-center relative z-10 flex flex-col items-center justify-center h-full">
+          <div className="max-w-[1200px] mx-auto text-center relative z-10 flex flex-col items-center justify-center md:h-full">
             <div className="space-y-6 md:space-y-8 max-w-[280px] md:max-w-full">
               <h1 className="leading-tight animate-on-scroll grainient-heading">
                 Oi, eu sou Phaison, Lead de UX/UI,
@@ -327,11 +327,6 @@ export default function HomePage() {
                 </Button>
               </div>
               
-              {/* Testimonials Carousel - visible em mobile dentro do hero */}
-              <div className="md:hidden mt-8 animate-on-scroll">
-                <TestimonialsCarousel />
-              </div>
-              
               {/* Scroll indicator - only visible on tablet/desktop */}
               <div className="hidden md:flex justify-center mt-16">
                 <div className="animate-bounce">
@@ -355,6 +350,11 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
+          </div>
+          
+          {/* Testimonials Carousel - fora do div selecionado em mobile */}
+          <div className="md:hidden mt-6 animate-on-scroll relative z-10 w-full">
+            <TestimonialsCarousel />
           </div>
           
           {/* Testimonials Carousel - dentro do container em desktop */}
