@@ -12,6 +12,7 @@ import { getInitials } from "@/lib/utils";
 import { ArrowLeft, Loader2 } from "lucide-react";
 import { ImageGallery } from "@/components/projects/image-gallery";
 import { PinterestGallery } from "@/components/projects/pinterest-gallery";
+import { AppScreensCarousel } from "@/components/projects/app-screens-carousel";
 
 export default function ProjectDetail() {
   const { id } = useParams<{ id: string }>();
@@ -164,6 +165,37 @@ export default function ProjectDetail() {
                 mainImage={project.project.imageUrl}
               />
             </div>
+
+            {/* App Screens Carousel - mostrar para projetos de aplicativo */}
+            {(project.project.category?.toLowerCase().includes('app') || 
+              project.project.category === "Aplicativo") && (
+              <div className="mb-8">
+                <AppScreensCarousel 
+                  screens={[
+                    {
+                      src: "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
+                      title: "Tela Principal",
+                      description: "Interface inicial com navegação intuitiva"
+                    },
+                    {
+                      src: "https://images.unsplash.com/photo-1556656793-08538906a9f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
+                      title: "Dashboard",
+                      description: "Visualização completa das funcionalidades"
+                    },
+                    {
+                      src: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
+                      title: "Perfil do Usuário",
+                      description: "Gerenciamento de conta e configurações"
+                    },
+                    {
+                      src: "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
+                      title: "Configurações",
+                      description: "Personalização e ajustes do aplicativo"
+                    }
+                  ]}
+                />
+              </div>
+            )}
 
             {/* Project Description - Appears below gallery for both mobile and desktop */}
             <div className="mb-8">

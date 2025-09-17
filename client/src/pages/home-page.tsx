@@ -369,7 +369,7 @@ export default function HomePage() {
           <div className="px-4 md:px-4">
             <div className="max-w-[1200px] mx-auto">
               <div className="flex justify-between items-center mb-16">
-                <h2 className="text-2xl md:text-3xl font-semibold animate-slide-left">
+                <h2 className="text-2xl md:text-3xl font-medium animate-slide-left">
                   Projetos em Destaque
                 </h2>
                 <Link
@@ -543,7 +543,7 @@ export default function HomePage() {
         <section className="py-20 relative z-20">
           <div className="px-4 md:px-4">
             <div className="max-w-[1200px] mx-auto">
-              <h2 className="text-2xl md:text-3xl font-semibold mb-16 animate-slide-left">
+              <h2 className="text-2xl md:text-3xl font-medium mb-16 animate-slide-left">
                 Softwares e Habilidades
               </h2>
             </div>
@@ -572,7 +572,6 @@ export default function HomePage() {
                     <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
                       <PluginCard
                         title="Figma"
-                        description="Design de interfaces e prototipagem"
                         icon={FaFigma}
                         iconBgColor="bg-[#836DF1]"
                       />
@@ -581,7 +580,6 @@ export default function HomePage() {
                     <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
                       <PluginCard
                         title="GitHub"
-                        description="Controle de versão e colaboração"
                         icon={FaGithub}
                         iconBgColor="bg-gray-700"
                       />
@@ -590,7 +588,6 @@ export default function HomePage() {
                     <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
                       <PluginCard
                         title="HTML"
-                        description="Estruturação de conteúdo web"
                         icon={FaHtml5}
                         iconBgColor="bg-orange-500"
                       />
@@ -599,7 +596,6 @@ export default function HomePage() {
                     <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
                       <PluginCard
                         title="CSS"
-                        description="Estilização e layout responsivo"
                         icon={FaCss3Alt}
                         iconBgColor="bg-blue-500"
                       />
@@ -608,7 +604,6 @@ export default function HomePage() {
                     <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
                       <PluginCard
                         title="JavaScript"
-                        description="Interatividade e funcionalidades"
                         icon={FaJs}
                         iconBgColor="bg-yellow-500"
                       />
@@ -617,7 +612,6 @@ export default function HomePage() {
                     <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
                       <PluginCard
                         title="Photoshop"
-                        description="Edição e manipulação de imagens"
                         icon={SiAdobephotoshop}
                         iconBgColor="bg-blue-600"
                       />
@@ -626,7 +620,6 @@ export default function HomePage() {
                     <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
                       <PluginCard
                         title="Illustrator"
-                        description="Criação de gráficos vetoriais"
                         icon={SiAdobeillustrator}
                         iconBgColor="bg-orange-600"
                       />
@@ -635,7 +628,6 @@ export default function HomePage() {
                     <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
                       <PluginCard
                         title="After Effects"
-                        description="Animações e motion graphics"
                         icon={SiAdobeaftereffects}
                         iconBgColor="bg-[#836DF1]"
                       />
@@ -779,7 +771,7 @@ export default function HomePage() {
                 {/* Title with mobile image */}
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-4xl md:text-5xl font-bold text-white">
+                    <h2 className="text-4xl md:text-5xl font-medium text-white">
                       Sobre Mim
                     </h2>
                     {/* Mobile Image - visible only on mobile, next to title */}
@@ -818,7 +810,7 @@ export default function HomePage() {
 
                 {/* Skills Grid - responsive layout */}
                 <div className="space-y-6 animate-on-scroll">
-                  <h3 className="text-xl font-semibold text-white">Skills</h3>
+                  <h3 className="text-xl font-medium text-white">Skills</h3>
                   {/* Desktop: side by side, Mobile: stacked */}
                   <div className="grid md:grid-cols-2 grid-cols-1 gap-6 md:gap-4">
                     <div className="space-y-3 animate-on-scroll">
@@ -867,21 +859,18 @@ export default function HomePage() {
 
             {/* Experience & Education */}
             <div className="mt-20 animate-on-scroll">
-              <h3 className="text-2xl font-semibold mb-8 text-white animate-on-scroll">Experiência & Formação</h3>
+              <h3 className="text-2xl font-medium mb-8 text-white animate-on-scroll">Experiência & Formação</h3>
               
               <div className="space-y-6">
                 {/* Experience Item 1 */}
                 <div className="relative p-6 bg-zinc-900/30 rounded-xl border border-zinc-700/30 hover:border-primary/20 transition-all duration-300 dynamic-glow animate-on-scroll">
                   <div className="absolute left-6 top-6 w-2 h-2 bg-primary rounded-full"></div>
                   <div className="pl-6 space-y-3">
-                    <h4 className="text-lg font-semibold animate-on-scroll">
+                    <h4 className="text-lg font-medium animate-on-scroll">
                       <span className="text-white">Lead UX/UI Designer</span>
                       <span className="text-primary"> @ Design Agency</span>
                     </h4>
                     <p className="text-sm text-gray-400 animate-on-scroll">2022 - Presente</p>
-                    <p className="text-gray-300 leading-relaxed animate-on-scroll">
-                      Liderando projetos de design para clientes enterprise, criando sistemas abrangentes e soluções centradas no usuário com metodologias ágeis.
-                    </p>
                     <div className="flex flex-wrap gap-2 mt-4 animate-on-scroll">
                       <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Figma</span>
                       <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Design Systems</span>
@@ -895,14 +884,11 @@ export default function HomePage() {
                 <div className="relative p-6 bg-zinc-900/30 rounded-xl border border-zinc-700/30 hover:border-primary/20 transition-all duration-300 dynamic-glow animate-on-scroll">
                   <div className="absolute left-6 top-6 w-2 h-2 bg-primary rounded-full"></div>
                   <div className="pl-6 space-y-3">
-                    <h4 className="text-lg font-semibold animate-on-scroll">
+                    <h4 className="text-lg font-medium animate-on-scroll">
                       <span className="text-white">UX Designer</span>
                       <span className="text-primary"> @ Tech Startup</span>
                     </h4>
                     <p className="text-sm text-gray-400 animate-on-scroll">2020 - 2022</p>
-                    <p className="text-gray-300 leading-relaxed animate-on-scroll">
-                      Responsável pela pesquisa de usuário, wireframing e prototipagem para aplicações mobile e web, focando em experiências otimizadas.
-                    </p>
                     <div className="flex flex-wrap gap-2 mt-4 animate-on-scroll">
                       <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">React</span>
                       <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">TypeScript</span>
@@ -916,14 +902,11 @@ export default function HomePage() {
                 <div className="relative p-6 bg-zinc-900/30 rounded-xl border border-zinc-700/30 hover:border-primary/20 transition-all duration-300 dynamic-glow animate-on-scroll">
                   <div className="absolute left-6 top-6 w-2 h-2 bg-primary rounded-full"></div>
                   <div className="pl-6 space-y-3">
-                    <h4 className="text-lg font-semibold animate-on-scroll">
+                    <h4 className="text-lg font-medium animate-on-scroll">
                       <span className="text-white">Bacharelado em Design</span>
                       <span className="text-primary"> @ Universidade Federal</span>
                     </h4>
                     <p className="text-sm text-gray-400 animate-on-scroll">2017 - 2021</p>
-                    <p className="text-gray-300 leading-relaxed animate-on-scroll">
-                      Formação em Design com especialização em experiência do usuário, metodologias de pesquisa e design de interação.
-                    </p>
                     <div className="flex flex-wrap gap-2 mt-4 animate-on-scroll">
                       <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Design Thinking</span>
                       <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">User Research</span>
@@ -959,7 +942,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <h2 className="text-3xl md:text-5xl font-semibold mb-6 animate-on-scroll">
+            <h2 className="text-3xl md:text-5xl font-medium mb-6 animate-on-scroll">
               Vamos conversar?
             </h2>
             <p className="text-gray-400 text-lg md:text-xl mb-10 animate-on-scroll">

@@ -5,7 +5,7 @@ import React from "react";
 
 interface PluginCardProps {
   title: string;
-  description: string;
+  description?: string;
   icon: LucideIcon | IconType | React.ComponentType<any>;
   iconBgColor: string;
 }
@@ -20,7 +20,7 @@ export function PluginCard({ title, description, icon: Icon, iconBgColor }: Plug
           </div>
           <h3 className="font-medium">{title}</h3>
         </div>
-        <p className="text-sm text-gray-400">{description}</p>
+        {description && <p className="text-sm text-gray-400">{description}</p>}
       </CardContent>
     </Card>
   );
