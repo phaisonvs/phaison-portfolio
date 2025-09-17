@@ -342,16 +342,6 @@ export default function HomePage() {
                 conversão.
               </p>
               <div className="flex justify-center gap-4 flex-wrap hero-rise-up">
-                <Button
-                  size="lg"
-                  className="bg-primary hover:bg-primary/90"
-                  asChild
-                >
-                  <a href="https://wa.me/5531992031320?text=Oi%2C%20Phaison!%20Venho%20do%20seu%20site%20portf%C3%B3lio%2C%20est%C3%A1%20dispon%C3%ADvel%20para%20uma%20conversa%3F" target="_blank" rel="noopener noreferrer" data-testid="button-whatsapp-hero" aria-label="Iniciar conversa no WhatsApp">
-                    <FaWhatsapp className="mr-2 h-4 w-4" />
-                    Conversar com Phaison
-                  </a>
-                </Button>
                 <Button variant="outline" size="lg" asChild>
                   <Link href="/projects">Veja meus projetos</Link>
                 </Button>
