@@ -206,6 +206,39 @@ export default function HomePage() {
     };
   }, []);
 
+  // Experience cards stacking effect
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+          }
+        });
+      },
+      {
+        threshold: 0.3,
+        rootMargin: "0px 0px -50px 0px",
+      },
+    );
+
+    // Observe all experience cards
+    const cards = document.querySelectorAll(".experience-card");
+    cards.forEach((card) => {
+      if (card instanceof Element) {
+        observer.observe(card);
+      }
+    });
+
+    return () => {
+      cards.forEach((card) => {
+        if (card instanceof Element) {
+          observer.unobserve(card);
+        }
+      });
+    };
+  }, []);
+
   // Best projects carousel scroll interaction
   useEffect(() => {
     const carousel = bestCarouselRef.current;
@@ -300,17 +333,17 @@ export default function HomePage() {
 
           <div className="max-w-[1200px] mx-auto text-center relative z-10 flex flex-col items-center justify-center md:h-full">
             <div className="space-y-6 md:space-y-8 max-w-[280px] md:max-w-full">
-              <h1 className="leading-tight animate-on-scroll grainient-heading">
+              <h1 className="leading-tight hero-fade-left grainient-heading">
                 Oi, eu sou Phaison, Lead de UX/UI,
                 <br />
                 especialista em soluções digitais.
               </h1>
-              <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto animate-on-scroll grainient-text">
+              <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto hero-slide-left grainient-text">
                 Integro design estratégico e CRO para experiências
                 <br className="hidden md:block" /> digitais testadas e de alta
                 conversão.
               </p>
-              <div className="flex justify-center gap-4 flex-wrap animate-on-scroll">
+              <div className="flex justify-center gap-4 flex-wrap hero-rise-up">
                 <Button
                   size="lg"
                   className="md:hidden bg-primary hover:bg-primary/90"
@@ -863,14 +896,14 @@ export default function HomePage() {
               
               <div className="space-y-6">
                 {/* Experience Item 1 */}
-                <div className="relative p-6 bg-zinc-900/30 rounded-xl border border-zinc-700/30 hover:border-primary/20 transition-all duration-300 dynamic-glow animate-on-scroll">
+                <div className="experience-card relative p-6 bg-zinc-900/30 rounded-xl border border-zinc-700/30 hover:border-primary/20 transition-all duration-300 dynamic-glow">
                   <div className="absolute left-6 top-6 w-2 h-2 bg-primary rounded-full"></div>
                   <div className="pl-6 space-y-3">
                     <h4 className="text-lg font-medium animate-on-scroll">
                       <span className="text-white">Lead UX/UI Designer</span>
-                      <span className="text-primary"> @ Design Agency</span>
+                      <span className="text-primary"> @ Design Agency </span>
+                      <span className="text-gray-400 text-sm">• 2022 - Presente</span>
                     </h4>
-                    <p className="text-sm text-gray-400 animate-on-scroll">2022 - Presente</p>
                     <div className="flex flex-wrap gap-2 mt-4 animate-on-scroll">
                       <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Figma</span>
                       <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Design Systems</span>
@@ -881,14 +914,14 @@ export default function HomePage() {
                 </div>
 
                 {/* Experience Item 2 */}
-                <div className="relative p-6 bg-zinc-900/30 rounded-xl border border-zinc-700/30 hover:border-primary/20 transition-all duration-300 dynamic-glow animate-on-scroll">
+                <div className="experience-card relative p-6 bg-zinc-900/30 rounded-xl border border-zinc-700/30 hover:border-primary/20 transition-all duration-300 dynamic-glow">
                   <div className="absolute left-6 top-6 w-2 h-2 bg-primary rounded-full"></div>
                   <div className="pl-6 space-y-3">
                     <h4 className="text-lg font-medium animate-on-scroll">
                       <span className="text-white">UX Designer</span>
-                      <span className="text-primary"> @ Tech Startup</span>
+                      <span className="text-primary"> @ Tech Startup </span>
+                      <span className="text-gray-400 text-sm">• 2020 - 2022</span>
                     </h4>
-                    <p className="text-sm text-gray-400 animate-on-scroll">2020 - 2022</p>
                     <div className="flex flex-wrap gap-2 mt-4 animate-on-scroll">
                       <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">React</span>
                       <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">TypeScript</span>
@@ -899,14 +932,14 @@ export default function HomePage() {
                 </div>
 
                 {/* Education Item */}
-                <div className="relative p-6 bg-zinc-900/30 rounded-xl border border-zinc-700/30 hover:border-primary/20 transition-all duration-300 dynamic-glow animate-on-scroll">
+                <div className="experience-card relative p-6 bg-zinc-900/30 rounded-xl border border-zinc-700/30 hover:border-primary/20 transition-all duration-300 dynamic-glow">
                   <div className="absolute left-6 top-6 w-2 h-2 bg-primary rounded-full"></div>
                   <div className="pl-6 space-y-3">
                     <h4 className="text-lg font-medium animate-on-scroll">
                       <span className="text-white">Bacharelado em Design</span>
-                      <span className="text-primary"> @ Universidade Federal</span>
+                      <span className="text-primary"> @ Universidade Federal </span>
+                      <span className="text-gray-400 text-sm">• 2017 - 2021</span>
                     </h4>
-                    <p className="text-sm text-gray-400 animate-on-scroll">2017 - 2021</p>
                     <div className="flex flex-wrap gap-2 mt-4 animate-on-scroll">
                       <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Design Thinking</span>
                       <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">User Research</span>
