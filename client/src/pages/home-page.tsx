@@ -5,7 +5,6 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { ProjectCard } from "@/components/projects/project-card";
 import { CategoryCard } from "@/components/common/category-card";
-import { PluginCard } from "@/components/common/plugin-card";
 import { TemplateCard } from "@/components/common/template-card";
 
 import { useQuery } from "@tanstack/react-query";
@@ -62,12 +61,10 @@ export default function HomePage() {
   // Carousel APIs
   const [bestApi, setBestApi] = useState<CarouselApi | null>(null);
   const [categoriesApi, setCategoriesApi] = useState<CarouselApi | null>(null);
-  const [pluginsApi, setPluginsApi] = useState<CarouselApi | null>(null);
   const [templatesApi, setTemplatesApi] = useState<CarouselApi | null>(null);
 
   // Scroll interaction for carousels
   const bestCarouselRef = useRef<HTMLDivElement>(null);
-  const pluginsCarouselRef = useRef<HTMLDivElement>(null);
 
   // Animation on scroll
   const animatedElements = useRef<HTMLElement[]>([]);
@@ -267,35 +264,6 @@ export default function HomePage() {
     };
   }, [bestApi]);
 
-  // Plugins carousel scroll interaction
-  useEffect(() => {
-    const carousel = pluginsCarouselRef.current;
-    if (!carousel || !pluginsApi) return;
-
-    const handleWheel = (e: WheelEvent) => {
-      // Verifica se o mouse está especificamente sobre um card
-      const target = e.target as Element;
-      const closestCard = target.closest('[data-carousel-item], .project-card, .plugin-card');
-      
-      if (closestCard && carousel.contains(closestCard)) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        // Scroll to the right on wheel down, left on wheel up
-        if (e.deltaY > 0) {
-          pluginsApi.scrollNext();
-        } else {
-          pluginsApi.scrollPrev();
-        }
-      }
-    };
-
-    carousel.addEventListener("wheel", handleWheel, { passive: false });
-
-    return () => {
-      carousel.removeEventListener("wheel", handleWheel);
-    };
-  }, [pluginsApi]);
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-matte text-white relative overflow-hidden">
@@ -562,113 +530,89 @@ export default function HomePage() {
         </section>
         */}
 
-        {/* Top Plugins */}
+        {/* Softwares e Habilidades - New Clean Layout */}
         <section className="py-20 relative z-20">
           <div className="px-4 md:px-4">
             <div className="max-w-[1200px] mx-auto">
-              <h2 className="text-2xl md:text-3xl font-medium mb-16 animate-slide-left">
-                Softwares e Habilidades
-              </h2>
+              <div className="grid lg:grid-cols-12 gap-8 items-start">
+                {/* Title - Left Side */}
+                <div className="lg:col-span-4">
+                  <h2 className="text-2xl md:text-3xl font-medium text-left animate-slide-left">
+                    Softwares e Habilidades
+                  </h2>
+                </div>
+
+                {/* Skills Grid - Right Side */}
+                <div className="lg:col-span-8 animate-on-scroll">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                    {/* Figma */}
+                    <div className="group flex flex-col items-center p-4 bg-zinc-900/40 hover:bg-zinc-800/60 rounded-xl border border-zinc-700/30 hover:border-primary/30 transition-all duration-300 hover:scale-105" data-testid="skill-figma">
+                      <div className="w-12 h-12 rounded-lg bg-[#836DF1] flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                        <FaFigma className="h-6 w-6 text-white" />
+                      </div>
+                      <span className="text-sm font-medium text-white group-hover:text-primary transition-colors duration-300">Figma</span>
+                    </div>
+
+                    {/* GitHub */}
+                    <div className="group flex flex-col items-center p-4 bg-zinc-900/40 hover:bg-zinc-800/60 rounded-xl border border-zinc-700/30 hover:border-primary/30 transition-all duration-300 hover:scale-105" data-testid="skill-github">
+                      <div className="w-12 h-12 rounded-lg bg-gray-700 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                        <FaGithub className="h-6 w-6 text-white" />
+                      </div>
+                      <span className="text-sm font-medium text-white group-hover:text-primary transition-colors duration-300">GitHub</span>
+                    </div>
+
+                    {/* HTML */}
+                    <div className="group flex flex-col items-center p-4 bg-zinc-900/40 hover:bg-zinc-800/60 rounded-xl border border-zinc-700/30 hover:border-primary/30 transition-all duration-300 hover:scale-105" data-testid="skill-html">
+                      <div className="w-12 h-12 rounded-lg bg-orange-500 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                        <FaHtml5 className="h-6 w-6 text-white" />
+                      </div>
+                      <span className="text-sm font-medium text-white group-hover:text-primary transition-colors duration-300">HTML</span>
+                    </div>
+
+                    {/* CSS */}
+                    <div className="group flex flex-col items-center p-4 bg-zinc-900/40 hover:bg-zinc-800/60 rounded-xl border border-zinc-700/30 hover:border-primary/30 transition-all duration-300 hover:scale-105" data-testid="skill-css">
+                      <div className="w-12 h-12 rounded-lg bg-blue-500 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                        <FaCss3Alt className="h-6 w-6 text-white" />
+                      </div>
+                      <span className="text-sm font-medium text-white group-hover:text-primary transition-colors duration-300">CSS</span>
+                    </div>
+
+                    {/* JavaScript */}
+                    <div className="group flex flex-col items-center p-4 bg-zinc-900/40 hover:bg-zinc-800/60 rounded-xl border border-zinc-700/30 hover:border-primary/30 transition-all duration-300 hover:scale-105" data-testid="skill-javascript">
+                      <div className="w-12 h-12 rounded-lg bg-yellow-500 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                        <FaJs className="h-6 w-6 text-white" />
+                      </div>
+                      <span className="text-sm font-medium text-white group-hover:text-primary transition-colors duration-300">JavaScript</span>
+                    </div>
+
+                    {/* Photoshop */}
+                    <div className="group flex flex-col items-center p-4 bg-zinc-900/40 hover:bg-zinc-800/60 rounded-xl border border-zinc-700/30 hover:border-primary/30 transition-all duration-300 hover:scale-105" data-testid="skill-photoshop">
+                      <div className="w-12 h-12 rounded-lg bg-blue-600 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                        <SiAdobephotoshop className="h-6 w-6 text-white" />
+                      </div>
+                      <span className="text-sm font-medium text-white group-hover:text-primary transition-colors duration-300">Photoshop</span>
+                    </div>
+
+                    {/* Illustrator */}
+                    <div className="group flex flex-col items-center p-4 bg-zinc-900/40 hover:bg-zinc-800/60 rounded-xl border border-zinc-700/30 hover:border-primary/30 transition-all duration-300 hover:scale-105" data-testid="skill-illustrator">
+                      <div className="w-12 h-12 rounded-lg bg-orange-600 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                        <SiAdobeillustrator className="h-6 w-6 text-white" />
+                      </div>
+                      <span className="text-sm font-medium text-white group-hover:text-primary transition-colors duration-300">Illustrator</span>
+                    </div>
+
+                    {/* After Effects */}
+                    <div className="group flex flex-col items-center p-4 bg-zinc-900/40 hover:bg-zinc-800/60 rounded-xl border border-zinc-700/30 hover:border-primary/30 transition-all duration-300 hover:scale-105" data-testid="skill-after-effects">
+                      <div className="w-12 h-12 rounded-lg bg-[#836DF1] flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                        <SiAdobeaftereffects className="h-6 w-6 text-white" />
+                      </div>
+                      <span className="text-sm font-medium text-white group-hover:text-primary transition-colors duration-300">After Effects</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-
-          <div className="animate-on-scroll relative">
-            <Carousel
-              ref={pluginsCarouselRef}
-              setApi={setPluginsApi}
-              opts={{
-                align: "center",
-                loop: true,
-                containScroll: "trimSnaps",
-                skipSnaps: false,
-                breakpoints: {
-                  "(max-width: 768px)": {
-                    align: "center",
-                    dragFree: false,
-                  },
-                },
-              }}
-              className="w-full"
-            >
-              <div className="relative overflow-hidden">
-                <CarouselContent className="md:-ml-1 flex gap-4 pl-4 md:pl-0" data-carousel-content>
-                    {/* Primeiro grupo - Figma e GitHub */}
-                    <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(50%-0.5rem)] lg:basis-[calc(33.33%-0.5rem)]" data-carousel-item>
-                      <div className="flex flex-col gap-4">
-                        <PluginCard
-                          title="Figma"
-                          icon={FaFigma}
-                          iconBgColor="bg-[#836DF1]"
-                        />
-                        <PluginCard
-                          title="GitHub"
-                          icon={FaGithub}
-                          iconBgColor="bg-gray-700"
-                        />
-                      </div>
-                    </CarouselItem>
-
-                    {/* Segundo grupo - HTML e CSS */}
-                    <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(50%-0.5rem)] lg:basis-[calc(33.33%-0.5rem)]" data-carousel-item>
-                      <div className="flex flex-col gap-4">
-                        <PluginCard
-                          title="HTML"
-                          icon={FaHtml5}
-                          iconBgColor="bg-orange-500"
-                        />
-                        <PluginCard
-                          title="CSS"
-                          icon={FaCss3Alt}
-                          iconBgColor="bg-blue-500"
-                        />
-                      </div>
-                    </CarouselItem>
-
-                    {/* Terceiro grupo - JavaScript e Photoshop */}
-                    <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(50%-0.5rem)] lg:basis-[calc(33.33%-0.5rem)]" data-carousel-item>
-                      <div className="flex flex-col gap-4">
-                        <PluginCard
-                          title="JavaScript"
-                          icon={FaJs}
-                          iconBgColor="bg-yellow-500"
-                        />
-                        <PluginCard
-                          title="Photoshop"
-                          icon={SiAdobephotoshop}
-                          iconBgColor="bg-blue-600"
-                        />
-                      </div>
-                    </CarouselItem>
-
-                    {/* Quarto grupo - Illustrator e After Effects */}
-                    <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(50%-0.5rem)] lg:basis-[calc(33.33%-0.5rem)]" data-carousel-item>
-                      <div className="flex flex-col gap-4">
-                        <PluginCard
-                          title="Illustrator"
-                          icon={SiAdobeillustrator}
-                          iconBgColor="bg-orange-600"
-                        />
-                        <PluginCard
-                          title="After Effects"
-                          icon={SiAdobeaftereffects}
-                          iconBgColor="bg-[#836DF1]"
-                        />
-                      </div>
-                    </CarouselItem>
-                  </CarouselContent>
-
-                  {/* Gradient fade effects for mobile and desktop */}
-                  <div className="absolute top-0 left-0 bottom-0 w-16 md:w-20 bg-gradient-to-r from-black via-black/30 to-transparent pointer-events-none z-10"></div>
-                  <div className="absolute top-0 right-0 bottom-0 w-16 md:w-24 bg-gradient-to-l from-black via-black/30 to-transparent pointer-events-none z-10"></div>
-                </div>
-                <div className="flex justify-center items-center mt-4">
-                  <CarouselPrevious className="bg-black/40 hover:bg-black/60 border-none" />
-                  <CarouselNext className="bg-black/40 hover:bg-black/60 border-none" />
-                </div>
-              </Carousel>
-              <CarouselDots api={pluginsApi} className="mt-4" />
-            </div>
-          
         </section>
 
         {/* Top Templates */}
