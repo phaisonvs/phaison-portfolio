@@ -126,24 +126,35 @@ export function Header() {
             >
               Sobre Mim
             </button>
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-6">
               <button 
                 onClick={() => handleScrollClick('contact')}
                 className="transition-colors duration-200 text-white/70 hover:text-primary"
               >
                 Contato
               </button>
-              <a 
-                href="https://figma.com/@phaison" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="group transition-colors duration-200 text-white/70 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded"
-                title="Portfolio no Figma"
-                aria-label="Acessar portfolio no Figma"
-                data-testid="link-figma-portfolio"
-              >
-                <FaFigma className="h-5 w-5 group-hover:scale-110 transition-transform duration-200" />
-              </a>
+              <div className="relative group">
+                <a 
+                  href="https://figma.com/@phaison" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="block transition-all duration-200 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded-full"
+                  aria-label="Acessar portfolio no Figma"
+                  data-testid="link-figma-portfolio"
+                >
+                  <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center group-hover:scale-110 transition-all duration-200">
+                    <FaFigma className="h-4 w-4 text-black" />
+                  </div>
+                </a>
+                
+                {/* Hover Tooltip */}
+                <div className="absolute top-12 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-200 pointer-events-none z-50">
+                  <div className="bg-primary text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap">
+                    Portfólio no Figma
+                    <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-primary rotate-45"></div>
+                  </div>
+                </div>
+              </div>
             </div>
           </nav>
 
