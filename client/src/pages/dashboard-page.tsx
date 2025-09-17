@@ -68,9 +68,7 @@ export default function DashboardPage() {
       <Dialog open={showNewProjectModal} onOpenChange={setShowNewProjectModal}>
         <DialogContent className="max-w-4xl bg-zinc-900 border-zinc-800">
           <DialogHeader>
-            <DialogTitle className="text-xl font-normal" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
-              Adicionar Novo Projeto
-            </DialogTitle>
+            <DialogTitle className="text-xl font-semibold">Adicionar Novo Projeto</DialogTitle>
             <DialogDescription>
               Preencha os dados do seu novo projeto para publicação
             </DialogDescription>
@@ -91,9 +89,7 @@ export default function DashboardPage() {
       <Dialog open={showEditProjectModal} onOpenChange={setShowEditProjectModal}>
         <DialogContent className="max-w-4xl bg-zinc-900 border-zinc-800">
           <DialogHeader>
-            <DialogTitle className="text-xl font-normal" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
-              Editar Projeto
-            </DialogTitle>
+            <DialogTitle className="text-xl font-semibold">Editar Projeto</DialogTitle>
             <DialogDescription>
               Faça as alterações necessárias no seu projeto
             </DialogDescription>
@@ -117,9 +113,7 @@ export default function DashboardPage() {
       {!isProjects && !isNewProject && !isEditProject && (
         <div className="space-y-8">
           <div className="flex justify-between items-center">
-            <h1 className="text-2xl font-normal" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
-              Seu Dashboard
-            </h1>
+            <h1 className="text-2xl font-semibold">Seu Dashboard</h1>
             <div className="flex space-x-2">
               <Button variant="outline" onClick={() => setLocation("/dashboard/projects")}>
                 <Eye className="mr-2 h-4 w-4" />
@@ -181,9 +175,7 @@ export default function DashboardPage() {
 
           {/* Recent Projects */}
           <div className="space-y-4">
-            <h2 className="text-xl font-normal" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
-              Projetos Recentes
-            </h2>
+            <h2 className="text-xl font-semibold">Projetos Recentes</h2>
             <ProjectsTable onEdit={handleEditProject} />
           </div>
         </div>
@@ -193,9 +185,7 @@ export default function DashboardPage() {
       {isProjects && (
         <div className="space-y-6">
           <div className="flex justify-between items-center">
-            <h1 className="text-2xl font-normal" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
-              Gerenciar Projetos
-            </h1>
+            <h1 className="text-2xl font-semibold">Gerenciar Projetos</h1>
             <div className="flex space-x-2">
               <Button variant="outline" onClick={() => setLocation("/dashboard")}>
                 <LayoutDashboard className="mr-2 h-4 w-4" />

@@ -94,21 +94,17 @@ export default function HomePage() {
 
       // Controle das elipses - para na seção "Pronto para o próximo projeto"
       const contactSection = document.getElementById("contact");
-      const spotlightContainer = document.querySelector(
-        ".spotlight-container"
-      ) as HTMLElement;
-      const ellipsesContainer = document.querySelector(
-        ".cta-ellipses-container"
-      ) as HTMLElement;
-
+      const spotlightContainer = document.querySelector(".spotlight-container") as HTMLElement;
+      const ellipsesContainer = document.querySelector(".cta-ellipses-container") as HTMLElement;
+      
       if (contactSection && spotlightContainer && ellipsesContainer) {
         const contactTop = contactSection.offsetTop;
         const maxHeight = contactTop + "px";
-
+        
         spotlightContainer.style.height = maxHeight;
         ellipsesContainer.style.height = maxHeight;
       }
-
+      
       ticking = false;
     };
 
@@ -121,7 +117,7 @@ export default function HomePage() {
 
     // Enhanced touch events for smooth mobile parallax
     let touchThrottle = false;
-
+    
     const handleTouchMove = (e: TouchEvent) => {
       // More frequent updates during touch for smoother mobile experience
       if (!touchThrottle) {
@@ -194,7 +190,7 @@ export default function HomePage() {
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     document
@@ -217,10 +213,8 @@ export default function HomePage() {
     const handleWheel = (e: WheelEvent) => {
       // Verifica se o mouse está especificamente sobre um card
       const target = e.target as Element;
-      const closestCard = target.closest(
-        "[data-carousel-item], .project-card, .plugin-card"
-      );
-
+      const closestCard = target.closest('[data-carousel-item], .project-card, .plugin-card');
+      
       if (closestCard && carousel.contains(closestCard)) {
         e.preventDefault();
         e.stopPropagation();
@@ -249,10 +243,8 @@ export default function HomePage() {
     const handleWheel = (e: WheelEvent) => {
       // Verifica se o mouse está especificamente sobre um card
       const target = e.target as Element;
-      const closestCard = target.closest(
-        "[data-carousel-item], .project-card, .plugin-card"
-      );
-
+      const closestCard = target.closest('[data-carousel-item], .project-card, .plugin-card');
+      
       if (closestCard && carousel.contains(closestCard)) {
         e.preventDefault();
         e.stopPropagation();
@@ -274,7 +266,7 @@ export default function HomePage() {
   }, [pluginsApi]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-matte text-white relative">
+    <div className="min-h-screen flex flex-col bg-gradient-matte text-white relative overflow-hidden">
       {/* Dynamic gradient spotlights */}
       <div className="spotlight-container">
         <div className="spotlight-element spotlight-top"></div>
@@ -302,10 +294,12 @@ export default function HomePage() {
 
           {/* Gradient blend overlay */}
           <div className="absolute inset-0 moon-gradient-blend"></div>
+          
+
 
           <div className="max-w-[1200px] mx-auto text-center relative z-10 flex flex-col items-center justify-center h-full">
             <div className="space-y-6 md:space-y-8 max-w-[280px] md:max-w-full">
-              <h1 className="text-4xl md:text-5xl font-normal leading-tight animate-on-scroll grainient-heading" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
+              <h1 className="leading-tight animate-on-scroll grainient-heading">
                 Oi, eu sou Phaison, Lead de UX/UI,
                 <br />
                 especialista em soluções digitais.
@@ -321,27 +315,9 @@ export default function HomePage() {
                   className="bg-primary hover:bg-primary/90"
                   onClick={() => setIsSchedulingModalOpen(true)}
                 >
-                  <svg
-                    className="mr-2 h-4 w-4"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <rect
-                      x="3"
-                      y="4"
-                      width="18"
-                      height="16"
-                      rx="2"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    />
-                    <path
-                      d="M16 2v4M8 2v4M3 10h18"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      fill="none"
-                    />
+                  <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                    <rect x="3" y="4" width="18" height="16" rx="2" fill="none" stroke="currentColor" strokeWidth="2"/>
+                    <path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" strokeWidth="2" fill="none"/>
                   </svg>
                   Agendar conversa
                 </Button>
@@ -349,17 +325,15 @@ export default function HomePage() {
                   <Link href="/projects">Veja meus projetos</Link>
                 </Button>
               </div>
-
-              {/* Scroll indicator - visible on all devices */}
-              <div className="flex justify-center explore-button-container">
+              
+              {/* Scroll indicator - only visible on tablet/desktop */}
+              <div className="hidden md:flex justify-center mt-16">
                 <div className="animate-bounce">
                   <button
                     onClick={() => {
-                      const nextSection = document.querySelector(
-                        "section:nth-of-type(2)"
-                      );
+                      const nextSection = document.querySelector('section:nth-of-type(2)');
                       if (nextSection) {
-                        nextSection.scrollIntoView({ behavior: "smooth" });
+                        nextSection.scrollIntoView({ behavior: 'smooth' });
                       }
                     }}
                     className="group flex flex-col items-center gap-2 text-gray-400 hover:text-primary transition-colors duration-300 cursor-pointer"
@@ -383,26 +357,15 @@ export default function HomePage() {
           <div className="px-4 md:px-4">
             <div className="max-w-[1200px] mx-auto">
               <div className="flex justify-between items-center mb-16">
-                <h2 className="text-2xl md:text-3xl font-normal animate-slide-left" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
+                <h2 className="text-2xl md:text-3xl font-semibold animate-slide-left">
                   Projetos em Destaque
                 </h2>
                 <Link
                   href="/projects"
                   className="text-white hover:text-primary transition-all duration-200 flex items-center gap-2 group"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5 transform group-hover:translate-x-1 transition-transform duration-200"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </Link>
               </div>
@@ -428,64 +391,62 @@ export default function HomePage() {
               className="w-full"
             >
               <div className="relative overflow-hidden">
-                <CarouselContent
-                  className="md:-ml-1 flex gap-6 pl-4 md:pl-0"
-                  data-carousel-content
-                >
-                  {projects && projects.length > 0
-                    ? projects.slice(0, 6).map((project) => (
-                        <CarouselItem
-                          key={project.project.id}
-                          className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(50%-0.5rem)] lg:basis-[calc(22.22%-0.5rem)]"
-                          data-carousel-item
-                        >
-                          <ProjectCard project={project} />
-                        </CarouselItem>
-                      ))
-                    : // Placeholder cards when no projects exist
-                      Array.from({ length: 6 }).map((_, index) => (
-                        <CarouselItem
-                          key={index}
-                          className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(50%-0.5rem)] lg:basis-[calc(22.22%-0.5rem)]"
-                          data-carousel-item
-                        >
-                          <ProjectCard
-                            project={{
-                              project: {
-                                id: index,
-                                title: "Projeto Exemplo",
-                                description: "Um belo projeto de exemplo",
-                                imageUrl: `https://source.unsplash.com/random/600x800?design,${index}`,
-                                galleryImages: [],
-                                sectionDisplay: "general",
-                                userId: 1,
-                                category: "Exemplo",
-                                publishedStatus: "published",
-                                createdAt: new Date().toISOString(),
-                              },
-                              user: {
-                                id: 1,
-                                name: "João Designer",
-                                avatarUrl: null,
-                              },
-                              tags: [{ id: 1, name: "Website" }],
-                            }}
-                          />
-                        </CarouselItem>
-                      ))}
-                </CarouselContent>
+                <CarouselContent className="md:-ml-1 flex gap-2 pl-4 md:pl-0" data-carousel-content>
+                    {projects && projects.length > 0
+                      ? projects.slice(0, 6).map((project) => (
+                          <CarouselItem
+                            key={project.project.id}
+                            className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(50%-0.5rem)] lg:basis-[calc(22.22%-0.5rem)]"
+                            data-carousel-item
+                          >
+                            <ProjectCard project={project} />
+                          </CarouselItem>
+                        ))
+                      : // Placeholder cards when no projects exist
+                        Array.from({ length: 6 }).map((_, index) => (
+                          <CarouselItem
+                            key={index}
+                            className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(50%-0.5rem)] lg:basis-[calc(22.22%-0.5rem)]"
+                            data-carousel-item
+                          >
+                            <ProjectCard
+                              project={{
+                                project: {
+                                  id: index,
+                                  title: "Projeto Exemplo",
+                                  description: "Um belo projeto de exemplo",
+                                  imageUrl: `https://source.unsplash.com/random/600x800?design,${index}`,
+                                  galleryImages: [],
+                                  sectionDisplay: "general",
+                                  userId: 1,
+                                  category: "Exemplo",
+                                  publishedStatus: "published",
+                                  createdAt: new Date().toISOString(),
+                                },
+                                user: {
+                                  id: 1,
+                                  name: "João Designer",
+                                  avatarUrl: null,
+                                },
+                                tags: [{ id: 1, name: "Website" }],
+                              }}
+                            />
+                          </CarouselItem>
+                        ))}
+                  </CarouselContent>
 
-                {/* Gradient fade effects for mobile and desktop */}
-                <div className="absolute top-0 left-0 bottom-0 w-16 md:w-20 bg-gradient-to-r from-black via-black/30 to-transparent pointer-events-none z-10"></div>
-                <div className="absolute top-0 right-0 bottom-0 w-16 md:w-24 bg-gradient-to-l from-black via-black/30 to-transparent pointer-events-none z-10"></div>
-              </div>
-              <div className="flex justify-center items-center mt-4">
-                <CarouselPrevious className="bg-black/40 hover:bg-black/60 border-none" />
-                <CarouselNext className="bg-black/40 hover:bg-black/60 border-none" />
-              </div>
-            </Carousel>
-            <CarouselDots api={bestApi} className="mt-4" />
-          </div>
+                  {/* Gradient fade effects for mobile and desktop */}
+                  <div className="absolute top-0 left-0 bottom-0 w-16 md:w-20 bg-gradient-to-r from-black via-black/30 to-transparent pointer-events-none z-10"></div>
+                  <div className="absolute top-0 right-0 bottom-0 w-16 md:w-24 bg-gradient-to-l from-black via-black/30 to-transparent pointer-events-none z-10"></div>
+                </div>
+                <div className="flex justify-center items-center mt-4">
+                  <CarouselPrevious className="bg-black/40 hover:bg-black/60 border-none" />
+                  <CarouselNext className="bg-black/40 hover:bg-black/60 border-none" />
+                </div>
+              </Carousel>
+              <CarouselDots api={bestApi} className="mt-4" />
+            </div>
+          
         </section>
 
         {/* Categories */}
@@ -570,7 +531,7 @@ export default function HomePage() {
         <section className="py-20 relative z-20">
           <div className="px-4 md:px-4">
             <div className="max-w-[1200px] mx-auto">
-              <h2 className="text-2xl md:text-3xl font-normal mb-16 animate-slide-left" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
+              <h2 className="text-2xl md:text-3xl font-semibold mb-16 animate-slide-left">
                 Softwares e Habilidades
               </h2>
             </div>
@@ -595,118 +556,92 @@ export default function HomePage() {
               className="w-full"
             >
               <div className="relative overflow-hidden">
-                <CarouselContent
-                  className="md:-ml-1 flex gap-2 pl-4 md:pl-0"
-                  data-carousel-content
-                >
-                  <CarouselItem
-                    className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]"
-                    data-carousel-item
-                  >
-                    <PluginCard
-                      title="Figma"
-                      description="Design de interfaces e prototipagem"
-                      icon={FaFigma}
-                      iconBgColor="bg-[#836DF1]"
-                    />
-                  </CarouselItem>
+                <CarouselContent className="md:-ml-1 flex gap-2 pl-4 md:pl-0" data-carousel-content>
+                    <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
+                      <PluginCard
+                        title="Figma"
+                        description="Design de interfaces e prototipagem"
+                        icon={FaFigma}
+                        iconBgColor="bg-[#836DF1]"
+                      />
+                    </CarouselItem>
 
-                  <CarouselItem
-                    className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]"
-                    data-carousel-item
-                  >
-                    <PluginCard
-                      title="GitHub"
-                      description="Controle de versão e colaboração"
-                      icon={FaGithub}
-                      iconBgColor="bg-gray-700"
-                    />
-                  </CarouselItem>
+                    <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
+                      <PluginCard
+                        title="GitHub"
+                        description="Controle de versão e colaboração"
+                        icon={FaGithub}
+                        iconBgColor="bg-gray-700"
+                      />
+                    </CarouselItem>
 
-                  <CarouselItem
-                    className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]"
-                    data-carousel-item
-                  >
-                    <PluginCard
-                      title="HTML"
-                      description="Estruturação de conteúdo web"
-                      icon={FaHtml5}
-                      iconBgColor="bg-orange-500"
-                    />
-                  </CarouselItem>
+                    <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
+                      <PluginCard
+                        title="HTML"
+                        description="Estruturação de conteúdo web"
+                        icon={FaHtml5}
+                        iconBgColor="bg-orange-500"
+                      />
+                    </CarouselItem>
 
-                  <CarouselItem
-                    className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]"
-                    data-carousel-item
-                  >
-                    <PluginCard
-                      title="CSS"
-                      description="Estilização e layout responsivo"
-                      icon={FaCss3Alt}
-                      iconBgColor="bg-blue-500"
-                    />
-                  </CarouselItem>
+                    <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
+                      <PluginCard
+                        title="CSS"
+                        description="Estilização e layout responsivo"
+                        icon={FaCss3Alt}
+                        iconBgColor="bg-blue-500"
+                      />
+                    </CarouselItem>
 
-                  <CarouselItem
-                    className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]"
-                    data-carousel-item
-                  >
-                    <PluginCard
-                      title="JavaScript"
-                      description="Interatividade e funcionalidades"
-                      icon={FaJs}
-                      iconBgColor="bg-yellow-500"
-                    />
-                  </CarouselItem>
+                    <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
+                      <PluginCard
+                        title="JavaScript"
+                        description="Interatividade e funcionalidades"
+                        icon={FaJs}
+                        iconBgColor="bg-yellow-500"
+                      />
+                    </CarouselItem>
 
-                  <CarouselItem
-                    className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]"
-                    data-carousel-item
-                  >
-                    <PluginCard
-                      title="Photoshop"
-                      description="Edição e manipulação de imagens"
-                      icon={SiAdobephotoshop}
-                      iconBgColor="bg-blue-600"
-                    />
-                  </CarouselItem>
+                    <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
+                      <PluginCard
+                        title="Photoshop"
+                        description="Edição e manipulação de imagens"
+                        icon={SiAdobephotoshop}
+                        iconBgColor="bg-blue-600"
+                      />
+                    </CarouselItem>
 
-                  <CarouselItem
-                    className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]"
-                    data-carousel-item
-                  >
-                    <PluginCard
-                      title="Illustrator"
-                      description="Criação de gráficos vetoriais"
-                      icon={SiAdobeillustrator}
-                      iconBgColor="bg-orange-600"
-                    />
-                  </CarouselItem>
+                    <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
+                      <PluginCard
+                        title="Illustrator"
+                        description="Criação de gráficos vetoriais"
+                        icon={SiAdobeillustrator}
+                        iconBgColor="bg-orange-600"
+                      />
+                    </CarouselItem>
 
-                  <CarouselItem
-                    className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]"
-                    data-carousel-item
-                  >
-                    <PluginCard
-                      title="After Effects"
-                      description="Animações e motion graphics"
-                      icon={SiAdobeaftereffects}
-                      iconBgColor="bg-[#836DF1]"
-                    />
-                  </CarouselItem>
-                </CarouselContent>
+                    <CarouselItem className="pl-1 basis-[calc(80%-1rem)] sm:basis-[calc(50%-0.5rem)] md:basis-[calc(33.33%-0.5rem)] lg:basis-[calc(25%-0.5rem)]" data-carousel-item>
+                      <PluginCard
+                        title="After Effects"
+                        description="Animações e motion graphics"
+                        icon={SiAdobeaftereffects}
+                        iconBgColor="bg-[#836DF1]"
+                      />
+                    </CarouselItem>
+                  </CarouselContent>
 
-                {/* Gradient fade effects for mobile and desktop */}
-                <div className="absolute top-0 left-0 bottom-0 w-16 md:w-20 bg-gradient-to-r from-black via-black/30 to-transparent pointer-events-none z-10"></div>
-                <div className="absolute top-0 right-0 bottom-0 w-16 md:w-24 bg-gradient-to-l from-black via-black/30 to-transparent pointer-events-none z-10"></div>
-              </div>
-              <div className="flex justify-center items-center mt-4">
-                <CarouselPrevious className="bg-black/40 hover:bg-black/60 border-none" />
-                <CarouselNext className="bg-black/40 hover:bg-black/60 border-none" />
-              </div>
-            </Carousel>
-            <CarouselDots api={pluginsApi} className="mt-4" />
-          </div>
+                  {/* Gradient fade effects for mobile and desktop */}
+                  <div className="absolute top-0 left-0 bottom-0 w-16 md:w-20 bg-gradient-to-r from-black via-black/30 to-transparent pointer-events-none z-10"></div>
+                  <div className="absolute top-0 right-0 bottom-0 w-16 md:w-24 bg-gradient-to-l from-black via-black/30 to-transparent pointer-events-none z-10"></div>
+                </div>
+                <div className="flex justify-center items-center mt-4">
+                  <CarouselPrevious className="bg-black/40 hover:bg-black/60 border-none" />
+                  <CarouselNext className="bg-black/40 hover:bg-black/60 border-none" />
+                </div>
+              </Carousel>
+              <CarouselDots api={pluginsApi} className="mt-4" />
+            </div>
+          
         </section>
 
         {/* Top Templates */}
@@ -832,7 +767,7 @@ export default function HomePage() {
                 {/* Title with mobile image */}
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-4xl md:text-5xl font-normal" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
+                    <h2 className="text-4xl md:text-5xl font-bold text-white">
                       Sobre Mim
                     </h2>
                     {/* Mobile Image - visible only on mobile, next to title */}
@@ -849,77 +784,47 @@ export default function HomePage() {
                     </div>
                   </div>
                   <p className="text-lg text-gray-300 leading-relaxed">
-                    Lead UX/UI Designer apaixonado por criar experiências
-                    digitais que conectam pessoas e tecnologia de forma natural
-                    e intuitiva.
+                    Lead UX/UI Designer apaixonado por criar experiências digitais que conectam pessoas e tecnologia de forma natural e intuitiva.
                   </p>
                 </div>
 
                 {/* Stats - moved right after subtitle */}
                 <div className="grid grid-cols-3 gap-6 animate-on-scroll">
                   <div className="text-left animate-on-scroll">
-                    <div className="text-2xl font-bold text-primary mb-1">
-                      3+
-                    </div>
+                    <div className="text-2xl font-bold text-primary mb-1">3+</div>
                     <div className="text-xs text-gray-400">Anos</div>
                   </div>
                   <div className="text-left animate-on-scroll">
-                    <div className="text-2xl font-bold text-primary mb-1">
-                      50+
-                    </div>
+                    <div className="text-2xl font-bold text-primary mb-1">50+</div>
                     <div className="text-xs text-gray-400">Projetos</div>
                   </div>
                   <div className="text-left animate-on-scroll">
-                    <div className="text-2xl font-bold text-primary mb-1">
-                      100%
-                    </div>
+                    <div className="text-2xl font-bold text-primary mb-1">100%</div>
                     <div className="text-xs text-gray-400">Dedicação</div>
                   </div>
                 </div>
 
                 {/* Skills Grid - responsive layout */}
                 <div className="space-y-6 animate-on-scroll">
-                  <h3 className="text-xl font-normal" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
-                    Skills
-                  </h3>
+                  <h3 className="text-xl font-semibold text-white">Skills</h3>
                   {/* Desktop: side by side, Mobile: stacked */}
                   <div className="grid md:grid-cols-2 grid-cols-1 gap-6 md:gap-4">
                     <div className="space-y-3 animate-on-scroll">
-                      <h4 className="text-sm font-medium text-primary">
-                        Design
-                      </h4>
+                      <h4 className="text-sm font-medium text-primary">Design</h4>
                       <div className="flex flex-wrap gap-2">
-                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">
-                          UX/UI Design
-                        </span>
-                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">
-                          Prototyping
-                        </span>
-                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">
-                          Wireframing
-                        </span>
-                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">
-                          Design Systems
-                        </span>
+                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">UX/UI Design</span>
+                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">Prototyping</span>
+                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">Wireframing</span>
+                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">Design Systems</span>
                       </div>
                     </div>
                     <div className="space-y-3 animate-on-scroll">
-                      <h4 className="text-sm font-medium text-primary">
-                        Tools
-                      </h4>
+                      <h4 className="text-sm font-medium text-primary">Tools</h4>
                       <div className="flex flex-wrap gap-2">
-                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">
-                          Figma
-                        </span>
-                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">
-                          Adobe XD
-                        </span>
-                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">
-                          Photoshop
-                        </span>
-                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">
-                          After Effects
-                        </span>
+                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">Figma</span>
+                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">Adobe XD</span>
+                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">Photoshop</span>
+                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">After Effects</span>
                       </div>
                     </div>
                   </div>
@@ -933,7 +838,7 @@ export default function HomePage() {
                   <div className="absolute -inset-16 opacity-30">
                     <div className="w-full h-full bg-gradient-radial from-primary/20 to-transparent blur-3xl"></div>
                   </div>
-
+                  
                   {/* Photo with internal blur mask */}
                   <div className="relative w-80 h-96">
                     <div className="photo-container-blur">
@@ -950,42 +855,26 @@ export default function HomePage() {
 
             {/* Experience & Education */}
             <div className="mt-20 animate-on-scroll">
-              <h3 className="text-2xl font-normal mb-8 animate-on-scroll" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
-                Experiência & Formação
-              </h3>
-
+              <h3 className="text-2xl font-semibold mb-8 text-white animate-on-scroll">Experiência & Formação</h3>
+              
               <div className="space-y-6">
                 {/* Experience Item 1 */}
                 <div className="relative p-6 bg-zinc-900/30 rounded-xl border border-zinc-700/30 hover:border-primary/20 transition-all duration-300 dynamic-glow animate-on-scroll">
                   <div className="absolute left-6 top-6 w-2 h-2 bg-primary rounded-full"></div>
                   <div className="pl-6 space-y-3">
-                    <h4 className="text-lg font-normal animate-on-scroll">
-                      <span style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
-                        Lead UX/UI Designer
-                      </span>
+                    <h4 className="text-lg font-semibold animate-on-scroll">
+                      <span className="text-white">Lead UX/UI Designer</span>
                       <span className="text-primary"> @ Design Agency</span>
                     </h4>
-                    <p className="text-sm text-gray-400 animate-on-scroll">
-                      2022 - Presente
-                    </p>
+                    <p className="text-sm text-gray-400 animate-on-scroll">2022 - Presente</p>
                     <p className="text-gray-300 leading-relaxed animate-on-scroll">
-                      Liderando projetos de design para clientes enterprise,
-                      criando sistemas abrangentes e soluções centradas no
-                      usuário com metodologias ágeis.
+                      Liderando projetos de design para clientes enterprise, criando sistemas abrangentes e soluções centradas no usuário com metodologias ágeis.
                     </p>
                     <div className="flex flex-wrap gap-2 mt-4 animate-on-scroll">
-                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">
-                        Figma
-                      </span>
-                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">
-                        Design Systems
-                      </span>
-                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">
-                        User Research
-                      </span>
-                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">
-                        Team Leadership
-                      </span>
+                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Figma</span>
+                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Design Systems</span>
+                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">User Research</span>
+                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Team Leadership</span>
                     </div>
                   </div>
                 </div>
@@ -994,33 +883,19 @@ export default function HomePage() {
                 <div className="relative p-6 bg-zinc-900/30 rounded-xl border border-zinc-700/30 hover:border-primary/20 transition-all duration-300 dynamic-glow animate-on-scroll">
                   <div className="absolute left-6 top-6 w-2 h-2 bg-primary rounded-full"></div>
                   <div className="pl-6 space-y-3">
-                    <h4 className="text-lg font-normal animate-on-scroll">
-                      <span style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
-                        UX Designer
-                      </span>
+                    <h4 className="text-lg font-semibold animate-on-scroll">
+                      <span className="text-white">UX Designer</span>
                       <span className="text-primary"> @ Tech Startup</span>
                     </h4>
-                    <p className="text-sm text-gray-400 animate-on-scroll">
-                      2020 - 2022
-                    </p>
+                    <p className="text-sm text-gray-400 animate-on-scroll">2020 - 2022</p>
                     <p className="text-gray-300 leading-relaxed animate-on-scroll">
-                      Responsável pela pesquisa de usuário, wireframing e
-                      prototipagem para aplicações mobile e web, focando em
-                      experiências otimizadas.
+                      Responsável pela pesquisa de usuário, wireframing e prototipagem para aplicações mobile e web, focando em experiências otimizadas.
                     </p>
                     <div className="flex flex-wrap gap-2 mt-4 animate-on-scroll">
-                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">
-                        React
-                      </span>
-                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">
-                        TypeScript
-                      </span>
-                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">
-                        Prototyping
-                      </span>
-                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">
-                        UI/UX
-                      </span>
+                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">React</span>
+                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">TypeScript</span>
+                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Prototyping</span>
+                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">UI/UX</span>
                     </div>
                   </div>
                 </div>
@@ -1029,32 +904,18 @@ export default function HomePage() {
                 <div className="relative p-6 bg-zinc-900/30 rounded-xl border border-zinc-700/30 hover:border-primary/20 transition-all duration-300 dynamic-glow animate-on-scroll">
                   <div className="absolute left-6 top-6 w-2 h-2 bg-primary rounded-full"></div>
                   <div className="pl-6 space-y-3">
-                    <h4 className="text-lg font-normal animate-on-scroll">
-                      <span style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
-                        Bacharelado em Design
-                      </span>
-                      <span className="text-primary">
-                        {" "}
-                        @ Universidade Federal
-                      </span>
+                    <h4 className="text-lg font-semibold animate-on-scroll">
+                      <span className="text-white">Bacharelado em Design</span>
+                      <span className="text-primary"> @ Universidade Federal</span>
                     </h4>
-                    <p className="text-sm text-gray-400 animate-on-scroll">
-                      2017 - 2021
-                    </p>
+                    <p className="text-sm text-gray-400 animate-on-scroll">2017 - 2021</p>
                     <p className="text-gray-300 leading-relaxed animate-on-scroll">
-                      Formação em Design com especialização em experiência do
-                      usuário, metodologias de pesquisa e design de interação.
+                      Formação em Design com especialização em experiência do usuário, metodologias de pesquisa e design de interação.
                     </p>
                     <div className="flex flex-wrap gap-2 mt-4 animate-on-scroll">
-                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">
-                        Design Thinking
-                      </span>
-                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">
-                        User Research
-                      </span>
-                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">
-                        Visual Design
-                      </span>
+                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Design Thinking</span>
+                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">User Research</span>
+                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Visual Design</span>
                     </div>
                   </div>
                 </div>
@@ -1077,21 +938,21 @@ export default function HomePage() {
             <div className="mb-10 inline-block animate-on-scroll">
               <div className="h-24 w-24 rounded-full bg-primary/20 purple-glow flex items-center justify-center mx-auto mb-6 backdrop-blur-sm border border-primary/20">
                 <div className="relative">
-                  <img
-                    src={logoPath}
-                    alt="Phaison Logo"
+                  <img 
+                    src={logoPath} 
+                    alt="Phaison Logo" 
                     className="h-12 w-auto filter brightness-0 invert"
                   />
                 </div>
               </div>
             </div>
 
-            <h2 className="text-3xl md:text-5xl font-normal mb-6 animate-on-scroll" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
+            <h2 className="text-3xl md:text-5xl font-semibold mb-6 animate-on-scroll">
               Vamos conversar?
             </h2>
             <p className="text-gray-400 text-lg md:text-xl mb-10 animate-on-scroll">
-              Está interessado no meu trabalho? Gostaria de trocar ideias sobre
-              design? Entre em contato e vamos bater um papo.
+              Está interessado no meu trabalho? Gostaria de trocar ideias sobre design?
+              Entre em contato e vamos bater um papo.
             </p>
             <div className="space-y-8 animate-on-scroll">
               {/* Social Links */}
@@ -1129,27 +990,9 @@ export default function HomePage() {
                   className="bg-primary hover:bg-primary/90"
                   onClick={() => setIsSchedulingModalOpen(true)}
                 >
-                  <svg
-                    className="mr-2 h-4 w-4"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <rect
-                      x="3"
-                      y="4"
-                      width="18"
-                      height="16"
-                      rx="2"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    />
-                    <path
-                      d="M16 2v4M8 2v4M3 10h18"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      fill="none"
-                    />
+                  <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                    <rect x="3" y="4" width="18" height="16" rx="2" fill="none" stroke="currentColor" strokeWidth="2"/>
+                    <path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" strokeWidth="2" fill="none"/>
                   </svg>
                   Agendar conversa
                 </Button>
@@ -1162,28 +1005,23 @@ export default function HomePage() {
               <div className="flex justify-center mt-12">
                 <button
                   onClick={() => {
-                    window.scrollTo({ top: 0, behavior: "smooth" });
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
                   className="group bg-primary/20 hover:bg-primary/30 text-white border border-primary/20 hover:border-primary/40 backdrop-blur-sm rounded-full p-4 transition-all duration-500 hover:scale-105 purple-glow animate-pulse"
                   style={{
-                    animationDuration: "3s",
-                    animationIterationCount: "infinite",
+                    animationDuration: '3s',
+                    animationIterationCount: 'infinite'
                   }}
                   aria-label="Voltar ao topo"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 transform group-hover:-translate-y-1 transition-transform duration-500"
-                    fill="none"
-                    viewBox="0 0 24 24"
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    className="h-6 w-6 transform group-hover:-translate-y-1 transition-transform duration-500" 
+                    fill="none" 
+                    viewBox="0 0 24 24" 
                     stroke="currentColor"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M5 15l7-7 7 7"
-                    />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
                   </svg>
                 </button>
               </div>
@@ -1195,9 +1033,9 @@ export default function HomePage() {
       <Footer />
 
       {/* Scheduling Modal */}
-      <SchedulingModal
-        isOpen={isSchedulingModalOpen}
-        onClose={() => setIsSchedulingModalOpen(false)}
+      <SchedulingModal 
+        isOpen={isSchedulingModalOpen} 
+        onClose={() => setIsSchedulingModalOpen(false)} 
       />
     </div>
   );
