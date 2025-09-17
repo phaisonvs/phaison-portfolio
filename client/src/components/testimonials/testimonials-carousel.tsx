@@ -81,10 +81,10 @@ export default function TestimonialsCarousel() {
   return (
     <div className="testimonials-carousel w-full max-w-6xl mx-auto px-4">
       {/* Container principal */}
-      <div className="relative p-4 md:p-8 flex flex-row items-center gap-4 md:gap-8">
+      <div className="relative p-4 md:p-8 flex flex-col md:flex-row items-center gap-6 md:gap-8">
         
         {/* Avatar carousel */}
-        <div className="flex-shrink-0">
+        <div className="flex-shrink-0 text-center">
           <div className="relative flex items-center justify-center">
             {testimonials.map((testimonial, index) => {
               const isActive = index === currentIndex;
@@ -126,10 +126,16 @@ export default function TestimonialsCarousel() {
               );
             })}
           </div>
+          
+          {/* Nome e cargo em mobile - centralizado abaixo das fotos */}
+          <div className="mt-4 md:hidden transition-all duration-700 ease-in-out opacity-100 transform translate-y-0" key={`author-mobile-${current.id}`}>
+            <p className="text-primary font-semibold text-sm" data-testid="testimonial-author-mobile">{current.name}</p>
+            <p className="text-xs text-gray-400" data-testid="testimonial-role-mobile">{current.role}</p>
+          </div>
         </div>
 
         {/* Mensagem central */}
-        <div className="flex-1 text-left min-h-[120px] flex flex-col justify-center max-w-md">
+        <div className="flex-1 text-center md:text-left min-h-[120px] flex flex-col justify-center max-w-md">
           <div className="relative overflow-hidden">
             <blockquote 
               className="text-lg md:text-xl text-gray-400 font-medium leading-relaxed transition-all duration-700 ease-in-out opacity-100 transform translate-y-0"
@@ -139,9 +145,11 @@ export default function TestimonialsCarousel() {
               "{current.message}"
             </blockquote>
           </div>
-          <div className="mt-4 transition-all duration-700 ease-in-out opacity-100 transform translate-y-0" key={`author-${current.id}`}>
-            <p className="text-primary font-semibold text-sm md:text-base" data-testid="testimonial-author">{current.name}</p>
-            <p className="text-xs md:text-sm text-gray-400" data-testid="testimonial-role">{current.role}</p>
+          
+          {/* Nome e cargo em desktop - abaixo da mensagem */}
+          <div className="mt-4 hidden md:block transition-all duration-700 ease-in-out opacity-100 transform translate-y-0" key={`author-desktop-${current.id}`}>
+            <p className="text-primary font-semibold text-sm md:text-base" data-testid="testimonial-author-desktop">{current.name}</p>
+            <p className="text-xs md:text-sm text-gray-400" data-testid="testimonial-role-desktop">{current.role}</p>
           </div>
         </div>
       </div>
