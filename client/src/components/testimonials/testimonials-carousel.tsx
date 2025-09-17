@@ -81,7 +81,7 @@ export default function TestimonialsCarousel() {
   return (
     <div className="testimonials-carousel w-full max-w-[1000px] mx-auto px-4">
       {/* Container principal */}
-      <div className="relative p-4 md:p-8 flex flex-col md:flex-row items-center gap-4 md:gap-8">
+      <div className="relative p-4 md:p-8 flex flex-col md:flex-row items-center gap-2 md:gap-4">
         
         {/* Avatar carousel */}
         <div className="flex-shrink-0 text-center">
@@ -89,21 +89,18 @@ export default function TestimonialsCarousel() {
             {testimonials.map((testimonial, index) => {
               const isActive = index === currentIndex;
               const isHovered = hoveredIndex === index;
-              const avatarSize = { '--size': '48px', '--height': '58px' } as React.CSSProperties;
-              
               return (
                 <div
                   key={testimonial.id}
                   className={`relative transition-all duration-500 ease-in-out cursor-pointer ${isActive || isHovered ? 'z-20' : 'z-10'}`}
-                  style={avatarSize}
                   onMouseEnter={() => handleMouseEnter(index)}
                   onMouseLeave={handleMouseLeave}
                   data-testid={`testimonial-avatar-${index}`}
                 >
                   <div
                     className={`
-                      relative rounded-full overflow-hidden transition-all duration-500 ease-in-out border-2 w-[var(--size)] h-[var(--height)]
-                      ${index > 0 ? 'ml-[calc(var(--size)*-0.32)]' : ''}
+                      relative rounded-full overflow-hidden transition-all duration-500 ease-in-out border-2 w-9 h-9 md:w-12 md:h-[58px]
+                      ${index > 0 ? '-ml-3 md:-ml-[15.36px]' : ''}
                       ${isActive || isHovered 
                         ? 'border-primary ring-2 ring-primary/50' 
                         : 'border-gray-600 hover:border-gray-400'
