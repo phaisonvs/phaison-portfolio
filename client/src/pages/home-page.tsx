@@ -305,7 +305,7 @@ export default function HomePage() {
 
           <div className="max-w-[1200px] mx-auto text-center relative z-10 flex flex-col items-center justify-center h-full">
             <div className="space-y-6 md:space-y-8 max-w-[280px] md:max-w-full">
-              <h1 className="text-4xl md:text-5xl font-normal leading-tight animate-on-scroll grainient-heading" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1)'}}">
+              <h1 className="text-4xl md:text-5xl font-normal leading-tight animate-on-scroll grainient-heading" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
                 Oi, eu sou Phaison, Lead de UX/UI,
                 <br />
                 especialista em soluções digitais.
@@ -383,7 +383,7 @@ export default function HomePage() {
           <div className="px-4 md:px-4">
             <div className="max-w-[1200px] mx-auto">
               <div className="flex justify-between items-center mb-16">
-                <h2 className="text-2xl md:text-3xl font-normal animate-slide-left" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1)'}}">
+                <h2 className="text-2xl md:text-3xl font-normal animate-slide-left" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
                   Projetos em Destaque
                 </h2>
                 <Link
@@ -570,7 +570,7 @@ export default function HomePage() {
         <section className="py-20 relative z-20">
           <div className="px-4 md:px-4">
             <div className="max-w-[1200px] mx-auto">
-              <h2 className="text-2xl md:text-3xl font-normal mb-16 animate-slide-left" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1)'}}">
+              <h2 className="text-2xl md:text-3xl font-normal mb-16 animate-slide-left" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
                 Softwares e Habilidades
               </h2>
             </div>
@@ -832,7 +832,7 @@ export default function HomePage() {
                 {/* Title with mobile image */}
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-4xl md:text-5xl font-normal" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1)'}}">
+                    <h2 className="text-4xl md:text-5xl font-normal" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
                       Sobre Mim
                     </h2>
                     {/* Mobile Image - visible only on mobile, next to title */}
@@ -879,7 +879,7 @@ export default function HomePage() {
 
                 {/* Skills Grid - responsive layout */}
                 <div className="space-y-6 animate-on-scroll">
-                  <h3 className="text-xl font-normal" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1)'}}">
+                  <h3 className="text-xl font-normal" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
                     Skills
                   </h3>
                   {/* Desktop: side by side, Mobile: stacked */}
@@ -950,7 +950,7 @@ export default function HomePage() {
 
             {/* Experience & Education */}
             <div className="mt-20 animate-on-scroll">
-              <h3 className="text-2xl font-normal mb-8 animate-on-scroll" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1)'}}">
+              <h3 className="text-2xl font-normal mb-8 animate-on-scroll" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
                 Experiência & Formação
               </h3>
 
@@ -1086,7 +1086,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <h2 className="text-3xl md:text-5xl font-normal mb-6 animate-on-scroll" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1)'}}">
+            <h2 className="text-3xl md:text-5xl font-normal mb-6 animate-on-scroll" style={{color: 'rgb(156 163 175 / var(--tw-text-opacity, 1))'}}>
               Vamos conversar?
             </h2>
             <p className="text-gray-400 text-lg md:text-xl mb-10 animate-on-scroll">

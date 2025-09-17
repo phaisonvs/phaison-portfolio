@@ -56,9 +56,9 @@ app.use((req, res, next) => {
     serveStatic(app);
   }
 
-  // Serve the app on port 8080 with external access enabled
+  // Serve the app on port 5000 with external access enabled
   // this serves both the API and the client.
-  const port = 8080;
+  const port = 5000;
   server.listen(port, "0.0.0.0", () => {
     log(`🚀 Server running on:`);
     log(`  ➜ Local:   http://localhost:${port}`);
