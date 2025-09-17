@@ -327,6 +327,11 @@ export default function HomePage() {
                 </Button>
               </div>
               
+              {/* Testimonials Carousel - visible em mobile dentro do hero */}
+              <div className="md:hidden mt-8 animate-on-scroll">
+                <TestimonialsCarousel />
+              </div>
+              
               {/* Scroll indicator - only visible on tablet/desktop */}
               <div className="hidden md:flex justify-center mt-16">
                 <div className="animate-bounce">
@@ -350,11 +355,6 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-          </div>
-          
-          {/* Testimonials Carousel - fora do container em mobile */}
-          <div className="md:hidden px-4 mt-8 animate-on-scroll">
-            <TestimonialsCarousel />
           </div>
           
           {/* Testimonials Carousel - dentro do container em desktop */}

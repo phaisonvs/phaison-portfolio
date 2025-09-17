@@ -81,7 +81,7 @@ export default function TestimonialsCarousel() {
   return (
     <div className="testimonials-carousel w-full max-w-[1000px] mx-auto px-4">
       {/* Container principal */}
-      <div className="relative p-4 md:p-8 flex flex-col md:flex-row items-center gap-6 md:gap-8">
+      <div className="relative p-4 md:p-8 flex flex-col md:flex-row items-center gap-4 md:gap-8">
         
         {/* Avatar carousel */}
         <div className="flex-shrink-0 text-center">
