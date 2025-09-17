@@ -133,12 +133,12 @@ export function Header() {
               >
                 Contato
               </button>
-              <div className="relative group">
+              <div className="relative">
                 <a 
                   href="https://figma.com/@phaison" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="block transition-all duration-200 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded-full"
+                  className="group block transition-all duration-200 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded-full"
                   aria-label="Acessar portfolio no Figma"
                   data-testid="link-figma-portfolio"
                 >
