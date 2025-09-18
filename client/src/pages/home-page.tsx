@@ -349,7 +349,7 @@ export default function HomePage() {
           <div className="px-4 md:px-4">
             <div className="max-w-[1200px] mx-auto">
               <div className="flex justify-between items-center mb-16">
-                <h2 className="text-2xl md:text-3xl font-medium animate-slide-left">
+                <h2 className="text-xl md:text-2xl font-medium animate-slide-left tracking-tight">
                   Projetos em Destaque
                 </h2>
                 <Link
@@ -537,7 +537,7 @@ export default function HomePage() {
               <div className="grid lg:grid-cols-12 gap-8 items-start">
                 {/* Title - Left Side */}
                 <div className="lg:col-span-4">
-                  <h2 className="text-2xl md:text-3xl font-medium text-left animate-slide-left">
+                  <h2 className="text-xl md:text-2xl font-medium text-left animate-slide-left tracking-tight">
                     Softwares e Habilidades
                   </h2>
                 </div>
@@ -738,7 +738,7 @@ export default function HomePage() {
                 {/* Title with mobile image */}
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-4xl md:text-5xl font-medium text-white">
+                    <h2 className="text-2xl md:text-3xl font-medium text-white tracking-tight">
                       Sobre Mim
                     </h2>
                     {/* Mobile Image - visible only on mobile, next to title */}
@@ -777,7 +777,7 @@ export default function HomePage() {
 
                 {/* Skills Grid - responsive layout */}
                 <div className="space-y-6 animate-on-scroll">
-                  <h3 className="text-xl font-medium text-white">Skills</h3>
+                  <h3 className="text-lg font-medium text-white tracking-tight">Skills</h3>
                   {/* Desktop: side by side, Mobile: stacked */}
                   <div className="grid md:grid-cols-2 grid-cols-1 gap-6 md:gap-4">
                     <div className="space-y-3 animate-on-scroll">
@@ -826,7 +826,7 @@ export default function HomePage() {
 
             {/* Experience & Education */}
             <div className="mt-20 animate-on-scroll">
-              <h3 className="text-2xl font-medium mb-8 text-white animate-on-scroll">Experiência & Formação</h3>
+              <h3 className="text-lg font-medium mb-8 text-white animate-on-scroll tracking-tight">Experiência & Formação</h3>
               
               <div className="space-y-6">
                 {/* Experience Item 1 */}

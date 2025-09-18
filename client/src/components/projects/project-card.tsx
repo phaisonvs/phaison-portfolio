@@ -12,13 +12,13 @@ interface ProjectCardProps {
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
     <Link href={`/projects/${project.project.id}`}>
-      <Card className="group relative overflow-hidden rounded-xl bg-zinc-900 transition-all duration-300 hover:cursor-pointer hover:shadow-lg hover:shadow-primary/20">
+      <Card className="group relative overflow-hidden rounded-xl bg-zinc-900 transition-all duration-500 ease-out hover:cursor-pointer hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2">
         <div className="overflow-hidden">
           <AspectRatio ratio={3/4} className="bg-zinc-900">
             <img
               src={project.project.imageUrl}
               alt={project.project.title}
-              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02] group-hover:-translate-y-1"
             />
           </AspectRatio>
         </div>
@@ -33,7 +33,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 {getInitials(project.user.name)}
               </AvatarFallback>
             </Avatar>
-            <span className="text-sm text-gray-300">{project.user.name}</span>
+            <span className="text-sm font-medium text-gray-200">{project.user.name}</span>
           </div>
         </div>
       </Card>
