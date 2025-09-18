@@ -81,9 +81,22 @@ export default function TestimonialsCarousel() {
   return (
     <div className="testimonials-carousel w-full max-w-[1000px] mx-auto px-4">
       {/* Container principal */}
-      <div className="relative p-4 md:p-8 flex flex-col md:flex-row items-center gap-2 md:gap-4">
+      <div className="relative p-4 md:p-8 flex flex-col items-center gap-6">
         
-        {/* Avatar carousel */}
+        {/* Mensagem - posicionada no topo e centralizada */}
+        <div className="text-center max-w-2xl">
+          <div className="relative overflow-hidden">
+            <blockquote 
+              className="text-lg md:text-xl text-gray-300 font-medium leading-relaxed transition-all duration-700 ease-in-out opacity-100 transform translate-y-0 break-words"
+              key={`message-${current.id}`}
+              data-testid="testimonial-message"
+            >
+              "{current.message}"
+            </blockquote>
+          </div>
+        </div>
+
+        {/* Avatar carousel - posicionado abaixo da mensagem e centralizado */}
         <div className="flex-shrink-0 text-center">
           <div className="relative flex items-center justify-center">
             {testimonials.map((testimonial, index) => {
@@ -99,8 +112,8 @@ export default function TestimonialsCarousel() {
                 >
                   <div
                     className={`
-                      relative rounded-full overflow-hidden transition-all duration-500 ease-in-out border-2 w-9 h-9 md:w-10 md:h-10
-                      ${index > 0 ? '-ml-3 md:-ml-[15.36px]' : ''}
+                      relative rounded-full overflow-hidden transition-all duration-500 ease-in-out border-2 w-10 h-10 md:w-12 md:h-12
+                      ${index > 0 ? '-ml-3 md:-ml-4' : ''}
                       ${isActive || isHovered 
                         ? 'border-primary ring-2 ring-primary/50' 
                         : 'border-gray-600 hover:border-gray-400'
@@ -124,23 +137,10 @@ export default function TestimonialsCarousel() {
             })}
           </div>
           
-          {/* Nome e cargo - centralizado abaixo das fotos em todas as telas */}
+          {/* Nome e cargo - centralizado abaixo das fotos */}
           <div className="mt-4 transition-all duration-700 ease-in-out opacity-100 transform translate-y-0" key={`author-${current.id}`}>
             <p className="text-primary font-semibold text-sm md:text-base" data-testid="testimonial-author">{current.name}</p>
             <p className="text-xs md:text-sm text-gray-400" data-testid="testimonial-role">{current.role}</p>
-          </div>
-        </div>
-
-        {/* Mensagem central */}
-        <div className="flex-1 text-center md:text-left min-h-[120px] flex flex-col justify-center max-w-xl">
-          <div className="relative overflow-hidden">
-            <blockquote 
-              className="text-base text-gray-400 font-medium leading-relaxed transition-all duration-700 ease-in-out opacity-100 transform translate-y-0 break-words"
-              key={`message-${current.id}`}
-              data-testid="testimonial-message"
-            >
-              "{current.message}"
-            </blockquote>
           </div>
         </div>
       </div>

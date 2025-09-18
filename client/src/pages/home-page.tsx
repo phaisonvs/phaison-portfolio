@@ -543,10 +543,10 @@ export default function HomePage() {
                 </div>
 
                 {/* Skills Grid - Right Side */}
-                <div className="lg:col-span-8 animate-on-scroll">
+                <div className="lg:col-span-8">
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                     {/* Figma */}
-                    <div className="flex flex-col items-center p-4 bg-zinc-900/40 rounded-xl border border-zinc-700/30" data-testid="skill-figma">
+                    <div className="flex flex-col items-center p-4 bg-zinc-900/40 rounded-xl border border-zinc-700/30 animate-on-scroll" style={{ transitionDelay: '0.1s' }} data-testid="skill-figma">
                       <div className="w-12 h-12 rounded-lg bg-[#836DF1] flex items-center justify-center mb-3">
                         <FaFigma className="h-6 w-6 text-white" />
                       </div>
@@ -554,7 +554,7 @@ export default function HomePage() {
                     </div>
 
                     {/* GitHub */}
-                    <div className="flex flex-col items-center p-4 bg-zinc-900/40 rounded-xl border border-zinc-700/30" data-testid="skill-github">
+                    <div className="flex flex-col items-center p-4 bg-zinc-900/40 rounded-xl border border-zinc-700/30 animate-on-scroll" style={{ transitionDelay: '0.2s' }} data-testid="skill-github">
                       <div className="w-12 h-12 rounded-lg bg-gray-700 flex items-center justify-center mb-3">
                         <FaGithub className="h-6 w-6 text-white" />
                       </div>
@@ -562,7 +562,7 @@ export default function HomePage() {
                     </div>
 
                     {/* HTML */}
-                    <div className="flex flex-col items-center p-4 bg-zinc-900/40 rounded-xl border border-zinc-700/30" data-testid="skill-html">
+                    <div className="flex flex-col items-center p-4 bg-zinc-900/40 rounded-xl border border-zinc-700/30 animate-on-scroll" style={{ transitionDelay: '0.3s' }} data-testid="skill-html">
                       <div className="w-12 h-12 rounded-lg bg-orange-500 flex items-center justify-center mb-3">
                         <FaHtml5 className="h-6 w-6 text-white" />
                       </div>
@@ -570,7 +570,7 @@ export default function HomePage() {
                     </div>
 
                     {/* CSS */}
-                    <div className="flex flex-col items-center p-4 bg-zinc-900/40 rounded-xl border border-zinc-700/30" data-testid="skill-css">
+                    <div className="flex flex-col items-center p-4 bg-zinc-900/40 rounded-xl border border-zinc-700/30 animate-on-scroll" style={{ transitionDelay: '0.4s' }} data-testid="skill-css">
                       <div className="w-12 h-12 rounded-lg bg-blue-500 flex items-center justify-center mb-3">
                         <FaCss3Alt className="h-6 w-6 text-white" />
                       </div>
@@ -578,7 +578,7 @@ export default function HomePage() {
                     </div>
 
                     {/* JavaScript */}
-                    <div className="flex flex-col items-center p-4 bg-zinc-900/40 rounded-xl border border-zinc-700/30" data-testid="skill-javascript">
+                    <div className="flex flex-col items-center p-4 bg-zinc-900/40 rounded-xl border border-zinc-700/30 animate-on-scroll" style={{ transitionDelay: '0.5s' }} data-testid="skill-javascript">
                       <div className="w-12 h-12 rounded-lg bg-yellow-500 flex items-center justify-center mb-3">
                         <FaJs className="h-6 w-6 text-white" />
                       </div>
@@ -586,7 +586,7 @@ export default function HomePage() {
                     </div>
 
                     {/* Photoshop */}
-                    <div className="flex flex-col items-center p-4 bg-zinc-900/40 rounded-xl border border-zinc-700/30" data-testid="skill-photoshop">
+                    <div className="flex flex-col items-center p-4 bg-zinc-900/40 rounded-xl border border-zinc-700/30 animate-on-scroll" style={{ transitionDelay: '0.6s' }} data-testid="skill-photoshop">
                       <div className="w-12 h-12 rounded-lg bg-blue-600 flex items-center justify-center mb-3">
                         <SiAdobephotoshop className="h-6 w-6 text-white" />
                       </div>
@@ -594,7 +594,7 @@ export default function HomePage() {
                     </div>
 
                     {/* Illustrator */}
-                    <div className="flex flex-col items-center p-4 bg-zinc-900/40 rounded-xl border border-zinc-700/30" data-testid="skill-illustrator">
+                    <div className="flex flex-col items-center p-4 bg-zinc-900/40 rounded-xl border border-zinc-700/30 animate-on-scroll" style={{ transitionDelay: '0.7s' }} data-testid="skill-illustrator">
                       <div className="w-12 h-12 rounded-lg bg-orange-600 flex items-center justify-center mb-3">
                         <SiAdobeillustrator className="h-6 w-6 text-white" />
                       </div>
@@ -602,7 +602,7 @@ export default function HomePage() {
                     </div>
 
                     {/* After Effects */}
-                    <div className="flex flex-col items-center p-4 bg-zinc-900/40 rounded-xl border border-zinc-700/30" data-testid="skill-after-effects">
+                    <div className="flex flex-col items-center p-4 bg-zinc-900/40 rounded-xl border border-zinc-700/30 animate-on-scroll" style={{ transitionDelay: '0.8s' }} data-testid="skill-after-effects">
                       <div className="w-12 h-12 rounded-lg bg-[#836DF1] flex items-center justify-center mb-3">
                         <SiAdobeaftereffects className="h-6 w-6 text-white" />
                       </div>
