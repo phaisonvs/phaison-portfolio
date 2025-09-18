@@ -69,11 +69,6 @@
     /* Scroll mais suave e controlado */
     overflow-x: hidden;
     scroll-behavior: smooth;
-    /* Critical performance optimizations */
-    background-color: #000;
-    will-change: scroll-position;
-    transform: translateZ(0);
-    backface-visibility: hidden;
   }
 
   /* Slower scroll effect - ADJUST THIS FOR DIFFERENT SPEEDS */
@@ -289,34 +284,16 @@ html {
   pointer-events: none;
 }
 
-/* Background gradient for main site container - optimized for performance */
-.bg-gradient-matte {
-  background: linear-gradient(135deg,
-    hsl(248, 39%, 20%) 0%,
-    hsl(252, 56%, 12%) 25%,
-    hsl(0, 0%, 0%) 50%,
-    hsl(248, 39%, 8%) 75%,
-    hsl(0, 0%, 0%) 100%);
-  background-attachment: fixed;
-  will-change: transform;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  contain: layout style paint;
-}
-
-/* Dynamic gradient spotlights - Optimized for performance */
+/* Dynamic gradient spotlights - Inspired by Stefano Bartoletti */
 .spotlight-container {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 100vh;
+  height: 100vh; /* Será controlado dinamicamente pelo JS */
   pointer-events: none;
   overflow: hidden;
   z-index: 15;
-  will-change: transform;
-  transform: translateZ(0);
-  contain: layout;
 }
 
 .spotlight-element {
@@ -324,9 +301,6 @@ html {
   border-radius: 50%;
   filter: blur(80px);
   pointer-events: none;
-  will-change: transform, opacity;
-  backface-visibility: hidden;
-  transform: translateZ(0);
 }
 
 .spotlight-top {
