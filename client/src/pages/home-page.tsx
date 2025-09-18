@@ -546,67 +546,67 @@ export default function HomePage() {
                 <div className="lg:col-span-8 animate-on-scroll">
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                     {/* Figma */}
-                    <div className="group flex flex-col items-center p-4 bg-zinc-900/40 rounded-xl border border-zinc-700/30 hover:border-primary/20 transition-colors duration-300" data-testid="skill-figma">
-                      <div className="w-12 h-12 rounded-lg bg-[#836DF1] flex items-center justify-center mb-3">
+                    <div className="group flex flex-col items-center p-4 bg-zinc-900/40 hover:bg-zinc-800/60 rounded-xl border border-zinc-700/30 hover:border-primary/30 transition-all duration-300 hover:scale-105" data-testid="skill-figma">
+                      <div className="w-12 h-12 rounded-lg bg-[#836DF1] flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
                         <FaFigma className="h-6 w-6 text-white" />
                       </div>
-                      <span className="text-sm font-medium text-white">Figma</span>
+                      <span className="text-sm font-medium text-white group-hover:text-primary transition-colors duration-300">Figma</span>
                     </div>
 
                     {/* GitHub */}
-                    <div className="group flex flex-col items-center p-4 bg-zinc-900/40 rounded-xl border border-zinc-700/30 hover:border-primary/20 transition-colors duration-300" data-testid="skill-github">
-                      <div className="w-12 h-12 rounded-lg bg-gray-700 flex items-center justify-center mb-3">
+                    <div className="group flex flex-col items-center p-4 bg-zinc-900/40 hover:bg-zinc-800/60 rounded-xl border border-zinc-700/30 hover:border-primary/30 transition-all duration-300 hover:scale-105" data-testid="skill-github">
+                      <div className="w-12 h-12 rounded-lg bg-gray-700 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
                         <FaGithub className="h-6 w-6 text-white" />
                       </div>
-                      <span className="text-sm font-medium text-white">GitHub</span>
+                      <span className="text-sm font-medium text-white group-hover:text-primary transition-colors duration-300">GitHub</span>
                     </div>
 
                     {/* HTML */}
-                    <div className="group flex flex-col items-center p-4 bg-zinc-900/40 rounded-xl border border-zinc-700/30 hover:border-primary/20 transition-colors duration-300" data-testid="skill-html">
-                      <div className="w-12 h-12 rounded-lg bg-orange-500 flex items-center justify-center mb-3">
+                    <div className="group flex flex-col items-center p-4 bg-zinc-900/40 hover:bg-zinc-800/60 rounded-xl border border-zinc-700/30 hover:border-primary/30 transition-all duration-300 hover:scale-105" data-testid="skill-html">
+                      <div className="w-12 h-12 rounded-lg bg-orange-500 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
                         <FaHtml5 className="h-6 w-6 text-white" />
                       </div>
-                      <span className="text-sm font-medium text-white">HTML</span>
+                      <span className="text-sm font-medium text-white group-hover:text-primary transition-colors duration-300">HTML</span>
                     </div>
 
                     {/* CSS */}
-                    <div className="group flex flex-col items-center p-4 bg-zinc-900/40 rounded-xl border border-zinc-700/30 hover:border-primary/20 transition-colors duration-300" data-testid="skill-css">
-                      <div className="w-12 h-12 rounded-lg bg-blue-500 flex items-center justify-center mb-3">
+                    <div className="group flex flex-col items-center p-4 bg-zinc-900/40 hover:bg-zinc-800/60 rounded-xl border border-zinc-700/30 hover:border-primary/30 transition-all duration-300 hover:scale-105" data-testid="skill-css">
+                      <div className="w-12 h-12 rounded-lg bg-blue-500 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
                         <FaCss3Alt className="h-6 w-6 text-white" />
                       </div>
-                      <span className="text-sm font-medium text-white">CSS</span>
+                      <span className="text-sm font-medium text-white group-hover:text-primary transition-colors duration-300">CSS</span>
                     </div>
 
                     {/* JavaScript */}
-                    <div className="group flex flex-col items-center p-4 bg-zinc-900/40 rounded-xl border border-zinc-700/30 hover:border-primary/20 transition-colors duration-300" data-testid="skill-javascript">
-                      <div className="w-12 h-12 rounded-lg bg-yellow-500 flex items-center justify-center mb-3">
+                    <div className="group flex flex-col items-center p-4 bg-zinc-900/40 hover:bg-zinc-800/60 rounded-xl border border-zinc-700/30 hover:border-primary/30 transition-all duration-300 hover:scale-105" data-testid="skill-javascript">
+                      <div className="w-12 h-12 rounded-lg bg-yellow-500 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
                         <FaJs className="h-6 w-6 text-white" />
                       </div>
-                      <span className="text-sm font-medium text-white">JavaScript</span>
+                      <span className="text-sm font-medium text-white group-hover:text-primary transition-colors duration-300">JavaScript</span>
                     </div>
 
                     {/* Photoshop */}
-                    <div className="group flex flex-col items-center p-4 bg-zinc-900/40 rounded-xl border border-zinc-700/30 hover:border-primary/20 transition-colors duration-300" data-testid="skill-photoshop">
-                      <div className="w-12 h-12 rounded-lg bg-blue-600 flex items-center justify-center mb-3">
+                    <div className="group flex flex-col items-center p-4 bg-zinc-900/40 hover:bg-zinc-800/60 rounded-xl border border-zinc-700/30 hover:border-primary/30 transition-all duration-300 hover:scale-105" data-testid="skill-photoshop">
+                      <div className="w-12 h-12 rounded-lg bg-blue-600 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
                         <SiAdobephotoshop className="h-6 w-6 text-white" />
                       </div>
-                      <span className="text-sm font-medium text-white">Photoshop</span>
+                      <span className="text-sm font-medium text-white group-hover:text-primary transition-colors duration-300">Photoshop</span>
                     </div>
 
                     {/* Illustrator */}
-                    <div className="group flex flex-col items-center p-4 bg-zinc-900/40 rounded-xl border border-zinc-700/30 hover:border-primary/20 transition-colors duration-300" data-testid="skill-illustrator">
-                      <div className="w-12 h-12 rounded-lg bg-orange-600 flex items-center justify-center mb-3">
+                    <div className="group flex flex-col items-center p-4 bg-zinc-900/40 hover:bg-zinc-800/60 rounded-xl border border-zinc-700/30 hover:border-primary/30 transition-all duration-300 hover:scale-105" data-testid="skill-illustrator">
+                      <div className="w-12 h-12 rounded-lg bg-orange-600 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
                         <SiAdobeillustrator className="h-6 w-6 text-white" />
                       </div>
-                      <span className="text-sm font-medium text-white">Illustrator</span>
+                      <span className="text-sm font-medium text-white group-hover:text-primary transition-colors duration-300">Illustrator</span>
                     </div>
 
                     {/* After Effects */}
-                    <div className="group flex flex-col items-center p-4 bg-zinc-900/40 rounded-xl border border-zinc-700/30 hover:border-primary/20 transition-colors duration-300" data-testid="skill-after-effects">
-                      <div className="w-12 h-12 rounded-lg bg-[#836DF1] flex items-center justify-center mb-3">
+                    <div className="group flex flex-col items-center p-4 bg-zinc-900/40 hover:bg-zinc-800/60 rounded-xl border border-zinc-700/30 hover:border-primary/30 transition-all duration-300 hover:scale-105" data-testid="skill-after-effects">
+                      <div className="w-12 h-12 rounded-lg bg-[#836DF1] flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
                         <SiAdobeaftereffects className="h-6 w-6 text-white" />
                       </div>
-                      <span className="text-sm font-medium text-white">After Effects</span>
+                      <span className="text-sm font-medium text-white group-hover:text-primary transition-colors duration-300">After Effects</span>
                     </div>
                   </div>
                 </div>
@@ -729,205 +729,155 @@ export default function HomePage() {
         </section>
         */}
 
-        {/* About Section - Visual Creative Design */}
-        <section id="about" className="py-24 md:py-32 px-4 relative z-20 overflow-hidden">
-          <div className="max-w-[1200px] mx-auto relative">
-            {/* Creative Visual Layout */}
-            <div className="grid lg:grid-cols-12 gap-8 items-start">
-              {/* Left Side - Main Content */}
-              <div className="lg:col-span-8 space-y-8 animate-on-scroll">
-                {/* Hero Name & Role */}
-                <div className="relative">
-                  <h1 className="text-6xl md:text-8xl lg:text-9xl font-light text-white/5 absolute -top-8 -left-4 select-none">
-                    Phaison
-                  </h1>
-                  <div className="relative z-10 space-y-4">
-                    <h2 className="text-4xl md:text-6xl font-medium text-white leading-tight">
-                      Phaison
+        {/* About Section - Optimized Design */}
+        <section id="about" className="py-24 md:py-32 px-4 relative z-20">
+          <div className="max-w-[1200px] mx-auto">
+            <div className="grid lg:grid-cols-2 gap-20 items-start">
+              {/* Left Side - Content */}
+              <div className="animate-on-scroll space-y-12">
+                {/* Title with mobile image */}
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <h2 className="text-4xl md:text-5xl font-medium text-white">
+                      Sobre Mim
                     </h2>
-                    <div className="flex items-center gap-4 text-gray-400">
-                      <div className="w-12 h-px bg-primary"></div>
-                      <span className="text-sm md:text-base">UX/UI Lead Designer</span>
+                    {/* Mobile Image - visible only on mobile, next to title */}
+                    <div className="md:hidden relative">
+                      <div className="relative w-16 h-20">
+                        <div className="photo-container-blur">
+                          <img
+                            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                            alt="Profile"
+                            className="w-full h-full object-cover rounded-lg"
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-
-                {/* Philosophy Text */}
-                <div className="space-y-6 animate-on-scroll">
-                  <p className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-2xl">
-                    Como designer sou louco pelo design craft, 
-                    foco em criar experiências que equilibram impacto 
-                    visual e funcionalidade, valorizo muito decisões 
-                    fundamentadas e aprendizado contínuo.
+                  <p className="text-lg text-gray-300 leading-relaxed">
+                    Lead UX/UI Designer apaixonado por criar experiências digitais que conectam pessoas e tecnologia de forma natural e intuitiva.
                   </p>
-                  
-                  {/* Stats Row */}
-                  <div className="grid grid-cols-3 gap-8 pt-8 border-t border-zinc-800/50">
-                    <div className="text-center animate-on-scroll">
-                      <div className="text-3xl md:text-4xl font-light text-primary mb-2">3+</div>
-                      <div className="text-sm text-gray-400 uppercase tracking-wide">Anos de experiência</div>
-                    </div>
-                    <div className="text-center animate-on-scroll">
-                      <div className="text-3xl md:text-4xl font-light text-primary mb-2">50+</div>
-                      <div className="text-sm text-gray-400 uppercase tracking-wide">Projetos realizados</div>
-                    </div>
-                    <div className="text-center animate-on-scroll">
-                      <div className="text-3xl md:text-4xl font-light text-primary mb-2">100%</div>
-                      <div className="text-sm text-gray-400 uppercase tracking-wide">Dedicação e paixão</div>
-                    </div>
+                </div>
+
+                {/* Stats - moved right after subtitle */}
+                <div className="grid grid-cols-3 gap-6 animate-on-scroll">
+                  <div className="text-left animate-on-scroll">
+                    <div className="text-2xl font-bold text-primary mb-1">3+</div>
+                    <div className="text-xs text-gray-400">Anos</div>
+                  </div>
+                  <div className="text-left animate-on-scroll">
+                    <div className="text-2xl font-bold text-primary mb-1">50+</div>
+                    <div className="text-xs text-gray-400">Projetos</div>
+                  </div>
+                  <div className="text-left animate-on-scroll">
+                    <div className="text-2xl font-bold text-primary mb-1">100%</div>
+                    <div className="text-xs text-gray-400">Dedicação</div>
                   </div>
                 </div>
 
-                {/* Skills & Approach */}
-                <div className="grid md:grid-cols-2 gap-12 pt-12 animate-on-scroll">
-                  <div className="space-y-4">
-                    <h3 className="text-xl font-medium text-primary uppercase tracking-wide">Abordagem</h3>
-                    <div className="space-y-3">
-                      <div className="flex items-center gap-3">
-                        <div className="w-2 h-2 bg-primary rounded-full"></div>
-                        <span className="text-gray-300">Design Thinking</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <div className="w-2 h-2 bg-primary rounded-full"></div>
-                        <span className="text-gray-300">User-Centered Design</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <div className="w-2 h-2 bg-primary rounded-full"></div>
-                        <span className="text-gray-300">Prototipagem Rápida</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <div className="w-2 h-2 bg-primary rounded-full"></div>
-                        <span className="text-gray-300">Aprendizado Contínuo</span>
+                {/* Skills Grid - responsive layout */}
+                <div className="space-y-6 animate-on-scroll">
+                  <h3 className="text-xl font-medium text-white">Skills</h3>
+                  {/* Desktop: side by side, Mobile: stacked */}
+                  <div className="grid md:grid-cols-2 grid-cols-1 gap-6 md:gap-4">
+                    <div className="space-y-3 animate-on-scroll">
+                      <h4 className="text-sm font-medium text-primary">Design</h4>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">UX/UI Design</span>
+                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">Prototyping</span>
+                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">Wireframing</span>
+                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">Design Systems</span>
                       </div>
                     </div>
-                  </div>
-
-                  <div className="space-y-4">
-                    <h3 className="text-xl font-medium text-primary uppercase tracking-wide">Especialidades</h3>
-                    <div className="space-y-3">
-                      <div className="flex items-center gap-3">
-                        <div className="w-2 h-2 bg-primary rounded-full"></div>
-                        <span className="text-gray-300">Interface Design</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <div className="w-2 h-2 bg-primary rounded-full"></div>
-                        <span className="text-gray-300">Design Systems</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <div className="w-2 h-2 bg-primary rounded-full"></div>
-                        <span className="text-gray-300">User Experience</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <div className="w-2 h-2 bg-primary rounded-full"></div>
-                        <span className="text-gray-300">Visual Design</span>
+                    <div className="space-y-3 animate-on-scroll">
+                      <h4 className="text-sm font-medium text-primary">Tools</h4>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">Figma</span>
+                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">Adobe XD</span>
+                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">Photoshop</span>
+                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">After Effects</span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Right Side - Creative Visual Elements */}
-              <div className="lg:col-span-4 relative animate-on-scroll">
-                <div className="space-y-6">
-                  {/* Creative Quote */}
-                  <div className="bg-zinc-900/40 border border-zinc-700/30 rounded-2xl p-6 backdrop-blur-sm">
-                    <div className="text-2xl md:text-3xl text-primary mb-4">
-                      "
-                    </div>
-                    <p className="text-gray-300 text-sm md:text-base leading-relaxed italic">
-                      Apaixonado por fotografia, filmes, natureza, tecnologia 
-                      e muita adrenalina.
-                    </p>
-                    <div className="flex items-center justify-end mt-4">
-                      <div className="w-8 h-px bg-primary"></div>
-                    </div>
+              {/* Right Side - Photo (Desktop only) */}
+              <div className="animate-on-scroll hidden lg:flex justify-center lg:justify-end">
+                <div className="relative">
+                  {/* Atmospheric background glow */}
+                  <div className="absolute -inset-16 opacity-30">
+                    <div className="w-full h-full bg-gradient-radial from-primary/20 to-transparent blur-3xl"></div>
                   </div>
-
-                  {/* Profile Image Card */}
-                  <div className="relative group">
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div className="relative bg-zinc-900/40 border border-zinc-700/30 rounded-2xl p-4 backdrop-blur-sm">
-                      <div className="aspect-[4/5] rounded-xl overflow-hidden">
-                        <img
-                          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                          alt="Phaison - UX/UI Designer"
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
-                      </div>
-                      <div className="mt-4 text-center">
-                        <div className="text-sm text-gray-400">UX/UI Lead Designer</div>
-                        <div className="text-xs text-gray-500 mt-1">Design • Technology • Innovation</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Decorative Elements */}
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="aspect-square bg-gradient-to-br from-primary/10 to-transparent rounded-xl border border-primary/20 flex items-center justify-center">
-                      <div className="text-primary text-2xl font-light">∞</div>
-                    </div>
-                    <div className="aspect-square bg-zinc-900/40 border border-zinc-700/30 rounded-xl flex items-center justify-center backdrop-blur-sm">
-                      <div className="text-gray-400 text-xs text-center leading-tight">
-                        Creativity<br />meets<br />Function
-                      </div>
+                  
+                  {/* Photo with internal blur mask */}
+                  <div className="relative w-80 h-96">
+                    <div className="photo-container-blur">
+                      <img
+                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="Profile"
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Experience Timeline - Compact */}
+            {/* Experience & Education */}
             <div className="mt-20 animate-on-scroll">
-              <h3 className="text-2xl font-medium mb-12 text-white">Jornada Profissional</h3>
+              <h3 className="text-2xl font-medium mb-8 text-white animate-on-scroll">Experiência & Formação</h3>
               
-              <div className="grid md:grid-cols-3 gap-8">
-                {/* Current Role */}
-                <div className="relative group">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="relative bg-zinc-900/30 border border-zinc-700/30 rounded-xl p-6 backdrop-blur-sm">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-3 h-3 bg-primary rounded-full"></div>
-                      <span className="text-primary text-sm font-medium">2022 - Presente</span>
-                    </div>
-                    <h4 className="text-lg font-medium text-white mb-2">Lead UX/UI Designer</h4>
-                    <p className="text-gray-400 text-sm mb-4">Design Agency</p>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded">Leadership</span>
-                      <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded">Design Systems</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Previous Role */}
-                <div className="relative group">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="relative bg-zinc-900/30 border border-zinc-700/30 rounded-xl p-6 backdrop-blur-sm">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-3 h-3 bg-zinc-500 rounded-full"></div>
-                      <span className="text-zinc-400 text-sm font-medium">2020 - 2022</span>
-                    </div>
-                    <h4 className="text-lg font-medium text-white mb-2">UX Designer</h4>
-                    <p className="text-gray-400 text-sm mb-4">Tech Startup</p>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="px-2 py-1 bg-zinc-700/50 text-gray-400 text-xs rounded">UX Research</span>
-                      <span className="px-2 py-1 bg-zinc-700/50 text-gray-400 text-xs rounded">Prototyping</span>
+              <div className="space-y-6">
+                {/* Experience Item 1 */}
+                <div className="experience-card relative p-6 bg-zinc-900/30 rounded-xl border border-zinc-700/30 hover:border-primary/20 transition-all duration-300 dynamic-glow">
+                  <div className="absolute left-6 top-6 w-2 h-2 bg-primary rounded-full"></div>
+                  <div className="pl-6 space-y-3">
+                    <h4 className="text-lg font-medium animate-on-scroll">
+                      <span className="text-white">Lead UX/UI Designer</span>
+                      <span className="text-primary"> @ Design Agency </span>
+                      <span className="text-gray-400 text-sm">• 2022 - Presente</span>
+                    </h4>
+                    <div className="flex flex-wrap gap-2 mt-4 animate-on-scroll">
+                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Figma</span>
+                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Design Systems</span>
+                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">User Research</span>
+                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Team Leadership</span>
                     </div>
                   </div>
                 </div>
 
-                {/* Education */}
-                <div className="relative group">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="relative bg-zinc-900/30 border border-zinc-700/30 rounded-xl p-6 backdrop-blur-sm">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-3 h-3 bg-zinc-500 rounded-full"></div>
-                      <span className="text-zinc-400 text-sm font-medium">2017 - 2021</span>
+                {/* Experience Item 2 */}
+                <div className="experience-card relative p-6 bg-zinc-900/30 rounded-xl border border-zinc-700/30 hover:border-primary/20 transition-all duration-300 dynamic-glow">
+                  <div className="absolute left-6 top-6 w-2 h-2 bg-primary rounded-full"></div>
+                  <div className="pl-6 space-y-3">
+                    <h4 className="text-lg font-medium animate-on-scroll">
+                      <span className="text-white">UX Designer</span>
+                      <span className="text-primary"> @ Tech Startup </span>
+                      <span className="text-gray-400 text-sm">• 2020 - 2022</span>
+                    </h4>
+                    <div className="flex flex-wrap gap-2 mt-4 animate-on-scroll">
+                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">React</span>
+                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">TypeScript</span>
+                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Prototyping</span>
+                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">UI/UX</span>
                     </div>
-                    <h4 className="text-lg font-medium text-white mb-2">Bacharelado em Design</h4>
-                    <p className="text-gray-400 text-sm mb-4">Universidade Federal</p>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="px-2 py-1 bg-zinc-700/50 text-gray-400 text-xs rounded">Design Thinking</span>
-                      <span className="px-2 py-1 bg-zinc-700/50 text-gray-400 text-xs rounded">Visual Design</span>
+                  </div>
+                </div>
+
+                {/* Education Item */}
+                <div className="experience-card relative p-6 bg-zinc-900/30 rounded-xl border border-zinc-700/30 hover:border-primary/20 transition-all duration-300 dynamic-glow">
+                  <div className="absolute left-6 top-6 w-2 h-2 bg-primary rounded-full"></div>
+                  <div className="pl-6 space-y-3">
+                    <h4 className="text-lg font-medium animate-on-scroll">
+                      <span className="text-white">Bacharelado em Design</span>
+                      <span className="text-primary"> @ Universidade Federal </span>
+                      <span className="text-gray-400 text-sm">• 2017 - 2021</span>
+                    </h4>
+                    <div className="flex flex-wrap gap-2 mt-4 animate-on-scroll">
+                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Design Thinking</span>
+                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">User Research</span>
+                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Visual Design</span>
                     </div>
                   </div>
                 </div>
