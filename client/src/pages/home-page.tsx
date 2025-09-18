@@ -546,67 +546,67 @@ export default function HomePage() {
                 <div className="lg:col-span-8 animate-on-scroll">
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                     {/* Figma */}
-                    <div className="group flex flex-col items-center p-4 bg-zinc-900/40 hover:bg-zinc-800/60 rounded-xl border border-zinc-700/30 hover:border-primary/30 transition-all duration-300 hover:scale-105" data-testid="skill-figma">
-                      <div className="w-12 h-12 rounded-lg bg-[#836DF1] flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                    <div className="flex flex-col items-center p-4 bg-zinc-900/40 rounded-xl border border-zinc-700/30" data-testid="skill-figma">
+                      <div className="w-12 h-12 rounded-lg bg-[#836DF1] flex items-center justify-center mb-3">
                         <FaFigma className="h-6 w-6 text-white" />
                       </div>
-                      <span className="text-sm font-medium text-white group-hover:text-primary transition-colors duration-300">Figma</span>
+                      <span className="text-sm font-medium text-white">Figma</span>
                     </div>
 
                     {/* GitHub */}
-                    <div className="group flex flex-col items-center p-4 bg-zinc-900/40 hover:bg-zinc-800/60 rounded-xl border border-zinc-700/30 hover:border-primary/30 transition-all duration-300 hover:scale-105" data-testid="skill-github">
-                      <div className="w-12 h-12 rounded-lg bg-gray-700 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                    <div className="flex flex-col items-center p-4 bg-zinc-900/40 rounded-xl border border-zinc-700/30" data-testid="skill-github">
+                      <div className="w-12 h-12 rounded-lg bg-gray-700 flex items-center justify-center mb-3">
                         <FaGithub className="h-6 w-6 text-white" />
                       </div>
-                      <span className="text-sm font-medium text-white group-hover:text-primary transition-colors duration-300">GitHub</span>
+                      <span className="text-sm font-medium text-white">GitHub</span>
                     </div>
 
                     {/* HTML */}
-                    <div className="group flex flex-col items-center p-4 bg-zinc-900/40 hover:bg-zinc-800/60 rounded-xl border border-zinc-700/30 hover:border-primary/30 transition-all duration-300 hover:scale-105" data-testid="skill-html">
-                      <div className="w-12 h-12 rounded-lg bg-orange-500 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                    <div className="flex flex-col items-center p-4 bg-zinc-900/40 rounded-xl border border-zinc-700/30" data-testid="skill-html">
+                      <div className="w-12 h-12 rounded-lg bg-orange-500 flex items-center justify-center mb-3">
                         <FaHtml5 className="h-6 w-6 text-white" />
                       </div>
-                      <span className="text-sm font-medium text-white group-hover:text-primary transition-colors duration-300">HTML</span>
+                      <span className="text-sm font-medium text-white">HTML</span>
                     </div>
 
                     {/* CSS */}
-                    <div className="group flex flex-col items-center p-4 bg-zinc-900/40 hover:bg-zinc-800/60 rounded-xl border border-zinc-700/30 hover:border-primary/30 transition-all duration-300 hover:scale-105" data-testid="skill-css">
-                      <div className="w-12 h-12 rounded-lg bg-blue-500 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                    <div className="flex flex-col items-center p-4 bg-zinc-900/40 rounded-xl border border-zinc-700/30" data-testid="skill-css">
+                      <div className="w-12 h-12 rounded-lg bg-blue-500 flex items-center justify-center mb-3">
                         <FaCss3Alt className="h-6 w-6 text-white" />
                       </div>
-                      <span className="text-sm font-medium text-white group-hover:text-primary transition-colors duration-300">CSS</span>
+                      <span className="text-sm font-medium text-white">CSS</span>
                     </div>
 
                     {/* JavaScript */}
-                    <div className="group flex flex-col items-center p-4 bg-zinc-900/40 hover:bg-zinc-800/60 rounded-xl border border-zinc-700/30 hover:border-primary/30 transition-all duration-300 hover:scale-105" data-testid="skill-javascript">
-                      <div className="w-12 h-12 rounded-lg bg-yellow-500 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                    <div className="flex flex-col items-center p-4 bg-zinc-900/40 rounded-xl border border-zinc-700/30" data-testid="skill-javascript">
+                      <div className="w-12 h-12 rounded-lg bg-yellow-500 flex items-center justify-center mb-3">
                         <FaJs className="h-6 w-6 text-white" />
                       </div>
-                      <span className="text-sm font-medium text-white group-hover:text-primary transition-colors duration-300">JavaScript</span>
+                      <span className="text-sm font-medium text-white">JavaScript</span>
                     </div>
 
                     {/* Photoshop */}
-                    <div className="group flex flex-col items-center p-4 bg-zinc-900/40 hover:bg-zinc-800/60 rounded-xl border border-zinc-700/30 hover:border-primary/30 transition-all duration-300 hover:scale-105" data-testid="skill-photoshop">
-                      <div className="w-12 h-12 rounded-lg bg-blue-600 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                    <div className="flex flex-col items-center p-4 bg-zinc-900/40 rounded-xl border border-zinc-700/30" data-testid="skill-photoshop">
+                      <div className="w-12 h-12 rounded-lg bg-blue-600 flex items-center justify-center mb-3">
                         <SiAdobephotoshop className="h-6 w-6 text-white" />
                       </div>
-                      <span className="text-sm font-medium text-white group-hover:text-primary transition-colors duration-300">Photoshop</span>
+                      <span className="text-sm font-medium text-white">Photoshop</span>
                     </div>
 
                     {/* Illustrator */}
-                    <div className="group flex flex-col items-center p-4 bg-zinc-900/40 hover:bg-zinc-800/60 rounded-xl border border-zinc-700/30 hover:border-primary/30 transition-all duration-300 hover:scale-105" data-testid="skill-illustrator">
-                      <div className="w-12 h-12 rounded-lg bg-orange-600 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                    <div className="flex flex-col items-center p-4 bg-zinc-900/40 rounded-xl border border-zinc-700/30" data-testid="skill-illustrator">
+                      <div className="w-12 h-12 rounded-lg bg-orange-600 flex items-center justify-center mb-3">
                         <SiAdobeillustrator className="h-6 w-6 text-white" />
                       </div>
-                      <span className="text-sm font-medium text-white group-hover:text-primary transition-colors duration-300">Illustrator</span>
+                      <span className="text-sm font-medium text-white">Illustrator</span>
                     </div>
 
                     {/* After Effects */}
-                    <div className="group flex flex-col items-center p-4 bg-zinc-900/40 hover:bg-zinc-800/60 rounded-xl border border-zinc-700/30 hover:border-primary/30 transition-all duration-300 hover:scale-105" data-testid="skill-after-effects">
-                      <div className="w-12 h-12 rounded-lg bg-[#836DF1] flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                    <div className="flex flex-col items-center p-4 bg-zinc-900/40 rounded-xl border border-zinc-700/30" data-testid="skill-after-effects">
+                      <div className="w-12 h-12 rounded-lg bg-[#836DF1] flex items-center justify-center mb-3">
                         <SiAdobeaftereffects className="h-6 w-6 text-white" />
                       </div>
-                      <span className="text-sm font-medium text-white group-hover:text-primary transition-colors duration-300">After Effects</span>
+                      <span className="text-sm font-medium text-white">After Effects</span>
                     </div>
                   </div>
                 </div>
@@ -729,156 +729,138 @@ export default function HomePage() {
         </section>
         */}
 
-        {/* About Section - Optimized Design */}
+        {/* About Section - New Asymmetric Design */}
         <section id="about" className="py-24 md:py-32 px-4 relative z-20">
           <div className="max-w-[1200px] mx-auto">
             <div className="grid lg:grid-cols-2 gap-20 items-start">
               {/* Left Side - Content */}
-              <div className="animate-on-scroll space-y-12">
-                {/* Title with mobile image */}
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-2xl md:text-3xl font-medium text-white tracking-tight">
-                      Sobre Mim
-                    </h2>
-                    {/* Mobile Image - visible only on mobile, next to title */}
-                    <div className="md:hidden relative">
-                      <div className="relative w-16 h-20">
-                        <div className="photo-container-blur">
-                          <img
-                            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                            alt="Profile"
-                            className="w-full h-full object-cover rounded-lg"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <p className="text-lg text-gray-300 leading-relaxed">
-                    Lead UX/UI Designer apaixonado por criar experiências digitais que conectam pessoas e tecnologia de forma natural e intuitiva.
-                  </p>
-                </div>
-
-                {/* Stats - moved right after subtitle */}
-                <div className="grid grid-cols-3 gap-6 animate-on-scroll">
-                  <div className="text-left animate-on-scroll">
-                    <div className="text-2xl font-bold text-primary mb-1">3+</div>
-                    <div className="text-xs text-gray-400">Anos</div>
-                  </div>
-                  <div className="text-left animate-on-scroll">
-                    <div className="text-2xl font-bold text-primary mb-1">50+</div>
-                    <div className="text-xs text-gray-400">Projetos</div>
-                  </div>
-                  <div className="text-left animate-on-scroll">
-                    <div className="text-2xl font-bold text-primary mb-1">100%</div>
-                    <div className="text-xs text-gray-400">Dedicação</div>
-                  </div>
-                </div>
-
-                {/* Skills Grid - responsive layout */}
-                <div className="space-y-6 animate-on-scroll">
-                  <h3 className="text-lg font-medium text-white tracking-tight">Skills</h3>
-                  {/* Desktop: side by side, Mobile: stacked */}
-                  <div className="grid md:grid-cols-2 grid-cols-1 gap-6 md:gap-4">
-                    <div className="space-y-3 animate-on-scroll">
-                      <h4 className="text-sm font-medium text-primary">Design</h4>
-                      <div className="flex flex-wrap gap-2">
-                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">UX/UI Design</span>
-                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">Prototyping</span>
-                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">Wireframing</span>
-                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">Design Systems</span>
-                      </div>
-                    </div>
-                    <div className="space-y-3 animate-on-scroll">
-                      <h4 className="text-sm font-medium text-primary">Tools</h4>
-                      <div className="flex flex-wrap gap-2">
-                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">Figma</span>
-                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">Adobe XD</span>
-                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">Photoshop</span>
-                        <span className="px-3 py-1 bg-zinc-800/60 text-gray-300 text-xs rounded-full border border-zinc-700/50 animate-on-scroll">After Effects</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div className="animate-on-scroll">
+                <h2 className="text-lg font-medium text-white tracking-tight mb-6">
+                  Sobre Mim
+                </h2>
+                <p className="text-lg text-gray-300 leading-relaxed">
+                  Lead UX/UI Designer apaixonado por criar experiências digitais que conectam pessoas e tecnologia de forma natural e intuitiva.
+                </p>
               </div>
 
-              {/* Right Side - Photo (Desktop only) */}
-              <div className="animate-on-scroll hidden lg:flex justify-center lg:justify-end">
-                <div className="relative">
-                  {/* Atmospheric background glow */}
-                  <div className="absolute -inset-16 opacity-30">
-                    <div className="w-full h-full bg-gradient-radial from-primary/20 to-transparent blur-3xl"></div>
-                  </div>
-                  
-                  {/* Photo with internal blur mask */}
-                  <div className="relative w-80 h-96">
-                    <div className="photo-container-blur">
+              {/* Right Side - Asymmetric Photo Grid */}
+              <div className="animate-on-scroll">
+                <div className="grid grid-cols-6 grid-rows-4 gap-3 h-96">
+                  {/* Large Photo - spans 4 columns, 3 rows */}
+                  <div className="col-span-4 row-span-3 relative">
+                    <div className="photo-container-blur h-full">
                       <img
                         src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                        alt="Profile"
-                        className="w-full h-full object-cover"
+                        alt="Profile Main"
+                        className="w-full h-full object-cover rounded-lg"
+                      />
+                    </div>
+                  </div>
+                  
+                  {/* Small Photo 1 - top right */}
+                  <div className="col-span-2 row-span-1 relative">
+                    <div className="photo-container-blur h-full">
+                      <img
+                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+                        alt="Profile Detail 1"
+                        className="w-full h-full object-cover rounded-lg"
+                      />
+                    </div>
+                  </div>
+                  
+                  {/* Small Photo 2 - middle right */}
+                  <div className="col-span-2 row-span-2 relative">
+                    <div className="photo-container-blur h-full">
+                      <img
+                        src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+                        alt="Profile Detail 2"
+                        className="w-full h-full object-cover rounded-lg"
+                      />
+                    </div>
+                  </div>
+                  
+                  {/* Wide Photo - bottom, spans 4 columns */}
+                  <div className="col-span-4 row-span-1 relative">
+                    <div className="photo-container-blur h-full">
+                      <img
+                        src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        alt="Workspace"
+                        className="w-full h-full object-cover rounded-lg"
+                      />
+                    </div>
+                  </div>
+                  
+                  {/* Small square - bottom right */}
+                  <div className="col-span-2 row-span-1 relative">
+                    <div className="photo-container-blur h-full">
+                      <img
+                        src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+                        alt="Profile Detail 3"
+                        className="w-full h-full object-cover rounded-lg"
                       />
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
+        </section>
 
-            {/* Experience & Education */}
-            <div className="mt-20 animate-on-scroll">
-              <h3 className="text-lg font-medium mb-8 text-white animate-on-scroll tracking-tight">Experiência & Formação</h3>
-              
-              <div className="space-y-6">
-                {/* Experience Item 1 */}
-                <div className="experience-card relative p-6 bg-zinc-900/30 rounded-xl border border-zinc-700/30 hover:border-primary/20 transition-all duration-300 dynamic-glow">
-                  <div className="absolute left-6 top-6 w-2 h-2 bg-primary rounded-full"></div>
-                  <div className="pl-6 space-y-3">
-                    <h4 className="text-lg font-medium animate-on-scroll">
-                      <span className="text-white">Lead UX/UI Designer</span>
-                      <span className="text-primary"> @ Design Agency </span>
-                      <span className="text-gray-400 text-sm">• 2022 - Presente</span>
-                    </h4>
-                    <div className="flex flex-wrap gap-2 mt-4 animate-on-scroll">
-                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Figma</span>
-                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Design Systems</span>
-                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">User Research</span>
-                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Team Leadership</span>
-                    </div>
+        {/* Experience & Education Section */}
+        <section className="py-24 md:py-32 px-4 relative z-20">
+          <div className="max-w-[1200px] mx-auto animate-on-scroll">
+            <h2 className="text-lg font-medium mb-8 text-white animate-on-scroll tracking-tight">Experiência & Formação</h2>
+            
+            <div className="space-y-6">
+              {/* Experience Item 1 */}
+              <div className="experience-card relative p-6 bg-zinc-900/30 rounded-xl border border-zinc-700/30 hover:border-primary/20 transition-all duration-300 dynamic-glow">
+                <div className="absolute left-6 top-6 w-2 h-2 bg-primary rounded-full"></div>
+                <div className="pl-6 space-y-3">
+                  <h4 className="text-lg font-medium animate-on-scroll">
+                    <span className="text-white">Lead UX/UI Designer</span>
+                    <span className="text-primary"> @ Design Agency </span>
+                    <span className="text-gray-400 text-sm">• 2022 - Presente</span>
+                  </h4>
+                  <div className="flex flex-wrap gap-2 mt-4 animate-on-scroll">
+                    <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Figma</span>
+                    <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Design Systems</span>
+                    <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">User Research</span>
+                    <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Team Leadership</span>
                   </div>
                 </div>
+              </div>
 
-                {/* Experience Item 2 */}
-                <div className="experience-card relative p-6 bg-zinc-900/30 rounded-xl border border-zinc-700/30 hover:border-primary/20 transition-all duration-300 dynamic-glow">
-                  <div className="absolute left-6 top-6 w-2 h-2 bg-primary rounded-full"></div>
-                  <div className="pl-6 space-y-3">
-                    <h4 className="text-lg font-medium animate-on-scroll">
-                      <span className="text-white">UX Designer</span>
-                      <span className="text-primary"> @ Tech Startup </span>
-                      <span className="text-gray-400 text-sm">• 2020 - 2022</span>
-                    </h4>
-                    <div className="flex flex-wrap gap-2 mt-4 animate-on-scroll">
-                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">React</span>
-                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">TypeScript</span>
-                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Prototyping</span>
-                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">UI/UX</span>
-                    </div>
+              {/* Experience Item 2 */}
+              <div className="experience-card relative p-6 bg-zinc-900/30 rounded-xl border border-zinc-700/30 hover:border-primary/20 transition-all duration-300 dynamic-glow">
+                <div className="absolute left-6 top-6 w-2 h-2 bg-primary rounded-full"></div>
+                <div className="pl-6 space-y-3">
+                  <h4 className="text-lg font-medium animate-on-scroll">
+                    <span className="text-white">UX Designer</span>
+                    <span className="text-primary"> @ Tech Startup </span>
+                    <span className="text-gray-400 text-sm">• 2020 - 2022</span>
+                  </h4>
+                  <div className="flex flex-wrap gap-2 mt-4 animate-on-scroll">
+                    <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">React</span>
+                    <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">TypeScript</span>
+                    <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Prototyping</span>
+                    <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">UI/UX</span>
                   </div>
                 </div>
+              </div>
 
-                {/* Education Item */}
-                <div className="experience-card relative p-6 bg-zinc-900/30 rounded-xl border border-zinc-700/30 hover:border-primary/20 transition-all duration-300 dynamic-glow">
-                  <div className="absolute left-6 top-6 w-2 h-2 bg-primary rounded-full"></div>
-                  <div className="pl-6 space-y-3">
-                    <h4 className="text-lg font-medium animate-on-scroll">
-                      <span className="text-white">Bacharelado em Design</span>
-                      <span className="text-primary"> @ Universidade Federal </span>
-                      <span className="text-gray-400 text-sm">• 2017 - 2021</span>
-                    </h4>
-                    <div className="flex flex-wrap gap-2 mt-4 animate-on-scroll">
-                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Design Thinking</span>
-                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">User Research</span>
-                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Visual Design</span>
-                    </div>
+              {/* Education Item */}
+              <div className="experience-card relative p-6 bg-zinc-900/30 rounded-xl border border-zinc-700/30 hover:border-primary/20 transition-all duration-300 dynamic-glow">
+                <div className="absolute left-6 top-6 w-2 h-2 bg-primary rounded-full"></div>
+                <div className="pl-6 space-y-3">
+                  <h4 className="text-lg font-medium animate-on-scroll">
+                    <span className="text-white">Bacharelado em Design</span>
+                    <span className="text-primary"> @ Universidade Federal </span>
+                    <span className="text-gray-400 text-sm">• 2017 - 2021</span>
+                  </h4>
+                  <div className="flex flex-wrap gap-2 mt-4 animate-on-scroll">
+                    <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Design Thinking</span>
+                    <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">User Research</span>
+                    <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Visual Design</span>
                   </div>
                 </div>
               </div>
